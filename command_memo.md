@@ -99,5 +99,33 @@ cd ~/TEAM_AIM
 source install/setup.bash
 ros2 run mission_1_1 control_cav_mission_1_1
 
-# (참고) 경로 CSV는 /root/TEAM_AIM/src/global_path/path_mission1_01.csv 사용
 ================================================================================
+================================================================================
+# mission_1_2 실행 방법
+
+<CHECK VERSION MODE>
+colcon build
+export ROS_DOMAIN_ID=107
+cd ~/TEAM_AIM/Mobility_Challenge_Simulator
+source install/setup.bash
+ros2 launch simulator_launch simulator_launch.py
+
+# CAV1
+colcon build --packages-select mission_1_2
+source install/setup.bash
+export ROS_DOMAIN_ID=107
+export CAV_ID=1
+ros2 run mission_1_2 control_cav_mission_1_2
+
+# CAV2
+colcon build --packages-select mission_1_2
+source install/setup.bash
+export ROS_DOMAIN_ID=107
+export CAV_ID=2
+ros2 run mission_1_2 control_cav_mission_1_2
+
+# CONTROL TOWER
+colcon build --packages-select mission_1_2
+source install/setup.bash
+export ROS_DOMAIN_ID=107
+ros2 run mission_1_2 control_tower_mission_1_2

@@ -16,7 +16,7 @@ ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-110}
 cd /root/TEAM_AIM
 source /root/TEAM_AIM/install/setup.bash
 # mission_2
-if [ "$PROBLEM_ID" = "2" ]; then
+if [ "$PROBLEM_ID" = "3" ]; then
     if [ "$ROLE" = "simulator" ]; then
         export ROS_DOMAIN_ID=110
         cd /root/TEAM_AIM/Mobility_Challenge_Simulator
@@ -30,7 +30,7 @@ if [ "$PROBLEM_ID" = "2" ]; then
         exit 2
     fi
 # mission_3
-elif [ "$PROBLEM_ID" = "3" ]; then
+elif [ "$PROBLEM_ID" = "4" ]; then
     if [ "$ROLE" = "simulator" ]; then
         export ROS_DOMAIN_ID=101
         cd /root/TEAM_AIM/Mobility_Challenge_Simulator
@@ -66,13 +66,16 @@ elif [ "$PROBLEM_ID" = "1" ]; then
 # mission_1_2
 elif [ "$PROBLEM_ID" = "2" ]; then
     if [ "$ROLE" = "simulator" ]; then
-        export ROS_DOMAIN_ID=105
+        export ROS_DOMAIN_ID=107
         cd /root/TEAM_AIM/Mobility_Challenge_Simulator
         ros2 launch simulator_launch simulator_launch.py
     elif [ "$ROLE" = "cav" ]; then
-        export ROS_DOMAIN_ID=105
+        export ROS_DOMAIN_ID=107
         export CAV_ID=$CAV_ID
-        ros2 run mission_1_2 control_cav_mission_1_2    
+        ros2 run mission_1_2 control_cav_mission_1_2
+    elif [ "$ROLE" = "tower" ]; then
+        export ROS_DOMAIN_ID=107
+        ros2 run mission_1_2 control_tower_mission_1_2
     else
         echo "[ERROR] Unknown ROLE for mission_1_2 : $ROLE" >&2
         exit 2

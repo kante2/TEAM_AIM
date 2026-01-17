@@ -1,0 +1,69 @@
+[0.023s] Invoking command in '/root/TEAM_AIM/build/mission_1_2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_1_2 -- -j16 -l16
+[0.054s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.076s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.203s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.232s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.234s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.367s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.403s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.404s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.513s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[0.540s] -- Found visualization_msgs: 2.0.5 (/opt/ros/foxy/share/visualization_msgs/cmake)
+[0.590s] -- Found tf2: 0.13.14 (/opt/ros/foxy/share/tf2/cmake)
+[0.598s] -- Found ament_index_cpp: 1.1.0 (/opt/ros/foxy/share/ament_index_cpp/cmake)
+[0.604s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[0.675s] -- Added test 'copyright' to check source files copyright and LICENSE
+[0.677s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.677s] -- Configured cppcheck include dirs: 
+[0.677s] -- Configured cppcheck exclude dirs and/or files: 
+[0.677s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[0.677s] -- Configured cpplint exclude dirs and/or files: 
+[0.677s] -- Added test 'lint_cmake' to check CMake code style
+[0.677s] -- Added test 'uncrustify' to check C / C++ code style
+[0.677s] -- Configured uncrustify additional arguments: 
+[0.678s] -- Added test 'xmllint' to check XML markup files
+[0.681s] -- Configuring done
+[0.695s] -- Generating done
+[0.697s] -- Build files have been written to: /root/TEAM_AIM/build/mission_1_2
+[0.728s] [35m[1mScanning dependencies of target control_cav_mission_1_2[0m
+[0.729s] [35m[1mScanning dependencies of target control_tower_mission_1_2[0m
+[0.768s] [ 25%] [32mBuilding CXX object CMakeFiles/control_tower_mission_1_2.dir/src/control_tower_mission_1_2.cpp.o[0m
+[0.768s] [ 50%] [32mBuilding CXX object CMakeFiles/control_cav_mission_1_2.dir/src/control_cav_mission_1_2.cpp.o[0m
+[2.107s] [01m[K/root/TEAM_AIM/src/mission_1_2/src/control_tower_mission_1_2.cpp:[m[K In function ‘[01m[Kint select_sub_cav_for_two_vehicles(int, const std::vector<int>&, Pose, double, int)[m[K’:
+[2.107s] [01m[K/root/TEAM_AIM/src/mission_1_2/src/control_tower_mission_1_2.cpp:269:10:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kzone_origin[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.107s]   269 |     [01;35m[KPose zone_origin[m[K,
+[2.107s]       |     [01;35m[K~~~~~^~~~~~~~~~~[m[K
+[2.143s] [01m[K/root/TEAM_AIM/src/mission_1_2/src/control_cav_mission_1_2.cpp:[m[K In function ‘[01m[Kbool loadPathCsv(const string&, std::vector<integrate_path_struct>&)[m[K’:
+[2.144s] [01m[K/root/TEAM_AIM/src/mission_1_2/src/control_cav_mission_1_2.cpp:141:5:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kif[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
+[2.144s]   141 |     [01;35m[Kif[m[K (!(ss >> x)) continue; if (!(ss >> comma)) continue; if (!(ss >> y)) continue;
+[2.144s]       |     [01;35m[K^~[m[K
+[2.144s] [01m[K/root/TEAM_AIM/src/mission_1_2/src/control_cav_mission_1_2.cpp:141:31:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kif[m[K’
+[2.144s]   141 |     if (!(ss >> x)) continue; [01;36m[Kif[m[K (!(ss >> comma)) continue; if (!(ss >> y)) continue;
+[2.144s]       |                               [01;36m[K^~[m[K
+[7.074s] [ 75%] [32m[1mLinking CXX executable control_tower_mission_1_2[0m
+[7.390s] [ 75%] Built target control_tower_mission_1_2
+[8.537s] [100%] [32m[1mLinking CXX executable control_cav_mission_1_2[0m
+[8.921s] [100%] Built target control_cav_mission_1_2
+[8.942s] Invoked command in '/root/TEAM_AIM/build/mission_1_2' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_1_2 -- -j16 -l16
+[8.993s] Invoking command in '/root/TEAM_AIM/build/mission_1_2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/mission_1_2
+[9.002s] -- Install configuration: ""
+[9.003s] -- Installing: /root/TEAM_AIM/install/mission_1_2/lib/mission_1_2/control_cav_mission_1_2
+[9.006s] -- Set runtime path of "/root/TEAM_AIM/install/mission_1_2/lib/mission_1_2/control_cav_mission_1_2" to ""
+[9.006s] -- Installing: /root/TEAM_AIM/install/mission_1_2/lib/mission_1_2/control_tower_mission_1_2
+[9.009s] -- Set runtime path of "/root/TEAM_AIM/install/mission_1_2/lib/mission_1_2/control_tower_mission_1_2" to ""
+[9.009s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/ament_index/resource_index/package_run_dependencies/mission_1_2
+[9.009s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/ament_index/resource_index/parent_prefix_path/mission_1_2
+[9.009s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/environment/ament_prefix_path.sh
+[9.009s] -- Installing: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/environment/ament_prefix_path.dsv
+[9.010s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/environment/path.sh
+[9.010s] -- Installing: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/environment/path.dsv
+[9.011s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/local_setup.bash
+[9.011s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/local_setup.sh
+[9.011s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/local_setup.zsh
+[9.011s] -- Installing: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/local_setup.dsv
+[9.011s] -- Installing: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/package.dsv
+[9.011s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/ament_index/resource_index/packages/mission_1_2
+[9.011s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/cmake/mission_1_2Config.cmake
+[9.011s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/cmake/mission_1_2Config-version.cmake
+[9.011s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/package.xml
+[9.013s] Invoked command in '/root/TEAM_AIM/build/mission_1_2' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/mission_1_2

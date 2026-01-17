@@ -7656,3 +7656,138 @@ CAV Pos: (-3.89, 2.55)
   Lane 2 : O FREE
   Lane 3 : O FREE
 -> Current: 2 -> Next: 2
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (-3.87, 2.55)
+  Lane 1 : X OCCUPIED
+  Lane 2 : O FREE
+  Lane 3 : O FREE
+-> Current: 2 -> Next: 2
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 3 (size: 2927, start_idx: 411)[0m
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (2.64, 2.45)
+  Lane 1 : O FREE
+  Lane 2 : O FREE
+  Lane 3 : O FREE
+-> Current: 3 -> Next: 3
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (5.09, 2.07)
+  Lane 1 : X OCCUPIED
+  Lane 2 : O FREE
+  Lane 3 : O FREE
+-> Current: 3 -> Next: 3
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (-3.87, 2.55)
+  Lane 1 : X OCCUPIED
+  Lane 2 : O FREE
+  Lane 3 : O FREE
+-> Current: 3 -> Next: 3
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 2 (size: 3033, start_idx: 322)[0m
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 3 (size: 2927, start_idx: 410)[0m
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (2.20, 2.47)
+  Lane 1 : O FREE
+  Lane 2 : O FREE
+  Lane 3 : O FREE
+-> Current: 3 -> Next: 3
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (4.92, 2.32)
+  Lane 1 : O FREE
+  Lane 2 : X OCCUPIED
+  Lane 3 : O FREE
+-> Current: 3 -> Next: 3
+[33m[WARN]: [OVERLAP] Path 2 & 3 merged. Forcing Lane 3 -> Lane 2 recognition.[0m
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 2 (size: 3033, start_idx: 1094)[0m
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 1 (size: 3188, start_idx: 1185)[0m
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (5.39, -0.31)
+>>> OVERLAP DETECTED! Forcing Lane 3 -> Lane 2 logic <<<
+  Lane 1 : O FREE
+  Lane 2 : X OCCUPIED
+  Lane 3 : X OCCUPIED (Overlap Force)
+-> Current: 1 -> Next: 1
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (4.99, -2.66)
+>>> OVERLAP DETECTED! Forcing Lane 3 -> Lane 2 logic <<<
+  Lane 1 : O FREE
+  Lane 2 : O FREE
+  Lane 3 : X OCCUPIED (Overlap Force)
+-> Current: 1 -> Next: 1
+[33m[WARN]: [OVERLAP] Path 2 & 3 merged. Forcing Lane 3 -> Lane 2 recognition.[0m
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 2 (size: 3033, start_idx: 1417)[0m
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 1 (size: 3188, start_idx: 1630)[0m
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (2.11, -2.66)
+  Lane 1 : O FREE
+  Lane 2 : O FREE
+  Lane 3 : O FREE
+-> Current: 1 -> Next: 1
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 2 (size: 3033, start_idx: 1939)[0m
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (-0.82, -2.56)
+  Lane 1 : X OCCUPIED
+  Lane 2 : X OCCUPIED
+  Lane 3 : X OCCUPIED
+-> Current: 2 -> Next: 2
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 3 (size: 2927, start_idx: 1998)[0m
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (-2.69, 1.72)
+  Lane 1 : O FREE
+  Lane 2 : X OCCUPIED
+  Lane 3 : O FREE
+-> Current: 3 -> Next: 3
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 2 (size: 3033, start_idx: 316)[0m
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 3 (size: 2927, start_idx: 413)[0m
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (1.12, 2.41)
+  Lane 1 : X OCCUPIED
+  Lane 2 : X OCCUPIED
+  Lane 3 : O FREE
+-> Current: 3 -> Next: 3
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (4.10, 2.45)
+  Lane 1 : O FREE
+  Lane 2 : X OCCUPIED
+  Lane 3 : O FREE
+-> Current: 3 -> Next: 3
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (5.19, 0.69)
+  Lane 1 : O FREE
+  Lane 2 : O FREE
+  Lane 3 : O FREE
+-> Current: 3 -> Next: 3
+[33m[WARN]: [OVERLAP] Path 2 & 3 merged. Forcing Lane 3 -> Lane 2 recognition.[0m
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 2 (size: 3033, start_idx: 1089)[0m
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 1 (size: 3188, start_idx: 1187)[0m
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (5.39, -2.15)
+>>> OVERLAP DETECTED! Forcing Lane 3 -> Lane 2 logic <<<
+  Lane 1 : O FREE
+  Lane 2 : O FREE
+  Lane 3 : X OCCUPIED (Overlap Force)
+-> Current: 1 -> Next: 1
+[33m[WARN]: [OVERLAP] Path 2 & 3 merged. Forcing Lane 3 -> Lane 2 recognition.[0m
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 2 (size: 3033, start_idx: 1418)[0m
+[0m[INFO]: [LANE_SWITCH] Switched to Lane 1 (size: 3188, start_idx: 1626)[0m
+
+=== [Lane Status] (CAV1) ===
+CAV Pos: (3.12, -2.69)
+>>> OVERLAP DETECTED! Forcing Lane 3 -> Lane 2 logic <<<
+  Lane 1 : O FREE
+  Lane 2 : X OCCUPIED
+  Lane 3 : X OCCUPIED (Overlap Force)
+-> Current: 1 -> Next: 1

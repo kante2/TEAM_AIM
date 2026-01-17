@@ -1,0 +1,7 @@
+[01m[K/root/TEAM_AIM/src/mission_1_2/src/control_cav_mission_1_2.cpp:[m[K In function ‘[01m[Kbool loadPathCsv(const string&, std::vector<integrate_path_struct>&)[m[K’:
+[01m[K/root/TEAM_AIM/src/mission_1_2/src/control_cav_mission_1_2.cpp:141:5:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kif[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
+  141 |     [01;35m[Kif[m[K (!(ss >> x)) continue; if (!(ss >> comma)) continue; if (!(ss >> y)) continue;
+      |     [01;35m[K^~[m[K
+[01m[K/root/TEAM_AIM/src/mission_1_2/src/control_cav_mission_1_2.cpp:141:31:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kif[m[K’
+  141 |     if (!(ss >> x)) continue; [01;36m[Kif[m[K (!(ss >> comma)) continue; if (!(ss >> y)) continue;
+      |                               [01;36m[K^~[m[K

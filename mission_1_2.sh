@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+# Simulator
+( PROBLEM_ID=2 ROLE=simulator ./entrypoint.sh ) &
+
+# CAVs
+( PROBLEM_ID=2 ROLE=cav CAV_ID=1 ./entrypoint.sh ) &
+( PROBLEM_ID=2 ROLE=cav CAV_ID=2 ./entrypoint.sh ) &
+
+# control tower
+( PROBLEM_ID=2 ROLE=tower ./entrypoint.sh ) &
+
+wait

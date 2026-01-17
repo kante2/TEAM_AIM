@@ -1,0 +1,24 @@
+[0.027s] Invoking command in '/root/TEAM_AIM/build/mission_1_2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_1_2 -- -j16 -l16
+[0.128s] [ 50%] Built target control_tower_mission_1_2
+[0.175s] [100%] Built target control_cav_mission_1_2
+[0.201s] Invoked command in '/root/TEAM_AIM/build/mission_1_2' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_1_2 -- -j16 -l16
+[0.278s] Invoking command in '/root/TEAM_AIM/build/mission_1_2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/mission_1_2
+[0.290s] -- Install configuration: ""
+[0.290s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/lib/mission_1_2/control_cav_mission_1_2
+[0.290s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/lib/mission_1_2/control_tower_mission_1_2
+[0.290s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/ament_index/resource_index/package_run_dependencies/mission_1_2
+[0.290s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/ament_index/resource_index/parent_prefix_path/mission_1_2
+[0.290s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/environment/ament_prefix_path.sh
+[0.291s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/environment/ament_prefix_path.dsv
+[0.291s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/environment/path.sh
+[0.291s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/environment/path.dsv
+[0.291s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/local_setup.bash
+[0.291s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/local_setup.sh
+[0.291s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/local_setup.zsh
+[0.291s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/local_setup.dsv
+[0.291s] -- Installing: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/package.dsv
+[0.291s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/ament_index/resource_index/packages/mission_1_2
+[0.291s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/cmake/mission_1_2Config.cmake
+[0.291s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/cmake/mission_1_2Config-version.cmake
+[0.291s] -- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/package.xml
+[0.296s] Invoked command in '/root/TEAM_AIM/build/mission_1_2' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/mission_1_2

@@ -1,0 +1,24 @@
+[35m[1mScanning dependencies of target control_cav_mission_1_2[0m
+[ 50%] Built target control_tower_mission_1_2
+[ 75%] [32mBuilding CXX object CMakeFiles/control_cav_mission_1_2.dir/src/control_cav_mission_1_2.cpp.o[0m
+[100%] [32m[1mLinking CXX executable control_cav_mission_1_2[0m
+[100%] Built target control_cav_mission_1_2
+-- Install configuration: ""
+-- Installing: /root/TEAM_AIM/install/mission_1_2/lib/mission_1_2/control_cav_mission_1_2
+-- Set runtime path of "/root/TEAM_AIM/install/mission_1_2/lib/mission_1_2/control_cav_mission_1_2" to ""
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/lib/mission_1_2/control_tower_mission_1_2
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/ament_index/resource_index/package_run_dependencies/mission_1_2
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/ament_index/resource_index/parent_prefix_path/mission_1_2
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/environment/ament_prefix_path.sh
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/environment/ament_prefix_path.dsv
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/environment/path.sh
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/environment/path.dsv
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/local_setup.bash
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/local_setup.sh
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/local_setup.zsh
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/local_setup.dsv
+-- Installing: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/package.dsv
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/ament_index/resource_index/packages/mission_1_2
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/cmake/mission_1_2Config.cmake
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/cmake/mission_1_2Config-version.cmake
+-- Up-to-date: /root/TEAM_AIM/install/mission_1_2/share/mission_1_2/package.xml

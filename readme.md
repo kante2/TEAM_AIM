@@ -4,7 +4,7 @@
 chmod +x /root/TEAM_AIM/mission_1_1.sh && ./mission_1_1.sh
 
 # mission_1_2
-chmod +x /root/TEAM_AIM/mission_1_1.sh && ./mission_1_1.sh
+chmod +x /root/TEAM_AIM/mission_1_2.sh && ./mission_1_2.sh
 
 # mission_2
 chmod +x /root/TEAM_AIM/mission_2.sh && ./mission_2.sh

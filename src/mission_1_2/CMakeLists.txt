@@ -38,6 +38,27 @@ find_package(ament_index_cpp REQUIRED)
 # Mission 2 executables: prefer specific versions if present, otherwise
 # fall back to the single existing `src/control_cav_mission_2.cpp` source.
 # =============================================================================
+add_executable(control_cav_mission_1_2 src/control_cav_mission_1_2.cpp)
+ament_target_dependencies(control_cav_mission_1_2
+  rclcpp
+  geometry_msgs
+  std_msgs
+  tf2
+  visualization_msgs
+)
+install(TARGETS control_cav_mission_1_2
+  DESTINATION lib/${PROJECT_NAME})
+
+add_executable(control_tower_mission_1_2 src/control_tower_mission_1_2.cpp)
+ament_target_dependencies(control_tower_mission_1_2
+  rclcpp
+  geometry_msgs
+  std_msgs
+  tf2
+  visualization_msgs
+)
+install(TARGETS control_tower_mission_1_2
+  DESTINATION lib/${PROJECT_NAME})
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/control/control_cav_mission_2_ver2.cpp)
   add_executable(control_cav_mission_2_ver2 src/control/control_cav_mission_2_ver2.cpp)
   ament_target_dependencies(control_cav_mission_2_ver2
