@@ -1,0 +1,77 @@
+[
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -x c++-header -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/cmake_pch.hxx.gch -c /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx.cxx",
+  "file": "/root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx.cxx"
+},
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/src/app/app.cpp.o -c /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/app.cpp",
+  "file": "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/app.cpp"
+},
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/src/app/functions/vehicle.cpp.o -c /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/functions/vehicle.cpp",
+  "file": "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/functions/vehicle.cpp"
+},
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/src/app/plugins/collision.cpp.o -c /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/plugins/collision.cpp",
+  "file": "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/plugins/collision.cpp"
+},
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/src/app/plugins/mapload.cpp.o -c /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/plugins/mapload.cpp",
+  "file": "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/plugins/mapload.cpp"
+},
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/src/app/plugins/ros.cpp.o -c /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/plugins/ros.cpp",
+  "file": "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/plugins/ros.cpp"
+},
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/src/app/plugins/user.cpp.o -c /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/plugins/user.cpp",
+  "file": "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/plugins/user.cpp"
+},
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/src/app/plugins/vehicle.cpp.o -c /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/plugins/vehicle.cpp",
+  "file": "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/plugins/vehicle.cpp"
+},
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/src/app/plugins/worldsetting.cpp.o -c /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/plugins/worldsetting.cpp",
+  "file": "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/app/plugins/worldsetting.cpp"
+},
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/src/engine/entry.cpp.o -c /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/engine/entry.cpp",
+  "file": "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/engine/entry.cpp"
+},
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/src/engine/plugins/camera.cpp.o -c /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/engine/plugins/camera.cpp",
+  "file": "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/engine/plugins/camera.cpp"
+},
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/src/engine/plugins/mouse.cpp.o -c /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/engine/plugins/mouse.cpp",
+  "file": "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/engine/plugins/mouse.cpp"
+},
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/src/engine/plugins/physics.cpp.o -c /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/engine/plugins/physics.cpp",
+  "file": "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/engine/plugins/physics.cpp"
+},
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/src/engine/plugins/render.cpp.o -c /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/engine/plugins/render.cpp",
+  "file": "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/engine/plugins/render.cpp"
+},
+{
+  "directory": "/root/TEAM_AIM/build/simulator",
+  "command": "/usr/bin/c++  -DDEBUG -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -DUSE_ROS2 -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/include -I/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/../scene_srv/include -isystem /root/TEAM_AIM/install/scene_srv/include -isystem /opt/ros/foxy/include -isystem /usr/lib/cmake/glm  -g   -std=gnu++17 -Winvalid-pch -include /root/TEAM_AIM/build/simulator/CMakeFiles/simulation_node.dir/cmake_pch.hxx -o CMakeFiles/simulation_node.dir/src/stb.cpp.o -c /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/stb.cpp",
+  "file": "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator/src/stb.cpp"
+}
+]

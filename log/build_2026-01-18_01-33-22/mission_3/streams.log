@@ -1,0 +1,47 @@
+[0.018s] Invoking command in '/root/TEAM_AIM/build/mission_3': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_3 -- -j16 -l16
+[0.066s] [35m[1mScanning dependencies of target control_cav_mission_3[0m
+[0.085s] [ 50%] Built target control_tower_mission_3
+[0.105s] [ 75%] [32mBuilding CXX object CMakeFiles/control_cav_mission_3.dir/src/control_cav_mission_3.cpp.o[0m
+[1.101s] [01m[K/root/TEAM_AIM/src/mission_3/src/control_cav_mission_3.cpp:[m[K In function ‘[01m[Kbool isCorner(const std::vector<integrate_path_struct>&, double, int)[m[K’:
+[1.102s] [01m[K/root/TEAM_AIM/src/mission_3/src/control_cav_mission_3.cpp:283:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kdiff_deg[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[1.102s]   283 |     double [01;35m[Kdiff_deg[m[K = diff * (180.0 / M_PI);
+[1.102s]       |            [01;35m[K^~~~~~~~[m[K
+[1.102s] [01m[K/root/TEAM_AIM/src/mission_3/src/control_cav_mission_3.cpp:248:82:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KL_d[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[1.102s]   248 | bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, [01;35m[Kdouble L_d[m[K, int closest_idx) {
+[1.102s]       |                                                                           [01;35m[K~~~~~~~^~~[m[K
+[1.103s] [01m[K/root/TEAM_AIM/src/mission_3/src/control_cav_mission_3.cpp:[m[K In function ‘[01m[Kbool CheckAllFinished(const std::vector<CavState>&)[m[K’:
+[1.103s] [01m[K/root/TEAM_AIM/src/mission_3/src/control_cav_mission_3.cpp:309:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<CavState>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[1.103s]   309 |     for (int i = 0; [01;35m[Ki < cav_list.size()[m[K; ++i) {
+[1.103s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~~~[m[K
+[1.104s] [01m[K/root/TEAM_AIM/src/mission_3/src/control_cav_mission_3.cpp:315:24:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<CavState>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[1.104s]   315 |     if ([01;35m[Kfinished_count == cav_list.size() - 1[m[K) {
+[1.104s]       |         [01;35m[K~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[1.104s] [01m[K/root/TEAM_AIM/src/mission_3/src/control_cav_mission_3.cpp:308:14:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[Kcurrent_cav[m[K’ set but not used [[01;35m[K-Wunused-but-set-variable[m[K]
+[1.104s]   308 |     CavState [01;35m[Kcurrent_cav[m[K = cav_list[0]; // 임시 변수 선언
+[1.104s]       |              [01;35m[K^~~~~~~~~~~[m[K
+[4.889s] [100%] [32m[1mLinking CXX executable control_cav_mission_3[0m
+[5.116s] [100%] Built target control_cav_mission_3
+[5.126s] Invoked command in '/root/TEAM_AIM/build/mission_3' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_3 -- -j16 -l16
+[5.169s] Invoking command in '/root/TEAM_AIM/build/mission_3': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/mission_3
+[5.179s] -- Install configuration: ""
+[5.179s] -- Installing: /root/TEAM_AIM/install/mission_3/lib/mission_3/control_cav_mission_3
+[5.182s] -- Set runtime path of "/root/TEAM_AIM/install/mission_3/lib/mission_3/control_cav_mission_3" to ""
+[5.183s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/lib/mission_3/control_tower_mission_3
+[5.183s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/launch
+[5.183s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/launch/run_mission_3.launch.py
+[5.183s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/ament_index/resource_index/package_run_dependencies/mission_3
+[5.183s] -- Installing: /root/TEAM_AIM/install/mission_3/share/ament_index/resource_index/parent_prefix_path/mission_3
+[5.184s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/environment/ament_prefix_path.sh
+[5.184s] -- Installing: /root/TEAM_AIM/install/mission_3/share/mission_3/environment/ament_prefix_path.dsv
+[5.184s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/environment/path.sh
+[5.184s] -- Installing: /root/TEAM_AIM/install/mission_3/share/mission_3/environment/path.dsv
+[5.184s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/local_setup.bash
+[5.184s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/local_setup.sh
+[5.184s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/local_setup.zsh
+[5.184s] -- Installing: /root/TEAM_AIM/install/mission_3/share/mission_3/local_setup.dsv
+[5.185s] -- Installing: /root/TEAM_AIM/install/mission_3/share/mission_3/package.dsv
+[5.185s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/ament_index/resource_index/packages/mission_3
+[5.185s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/cmake/mission_3Config.cmake
+[5.185s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/cmake/mission_3Config-version.cmake
+[5.185s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/package.xml
+[5.188s] Invoked command in '/root/TEAM_AIM/build/mission_3' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/mission_3

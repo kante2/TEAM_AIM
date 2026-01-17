@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from scene_srv/srv/SceneSignal.srv
+// generated code does not contain a copyright notice
+
+
+module scene_srv {
+  module srv {
+    struct SceneSignal_Request {
+      int64 signal;
+
+      int64 state;
+    };
+    struct SceneSignal_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

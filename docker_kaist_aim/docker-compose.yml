@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  ros2-foxy-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: team_aim:latest
+    container_name: kaist_contest_aim
+
+    working_dir: /root/TEAM_AIM
+
+    network_mode: host
+    ipc: host
+    privileged: true
+
+    gpus: all
+
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID-100}
+      - RMW_IMPLEMENTATION=${RMW_IMPLEMENTATION-rmw_fastrtps_cpp}
+
+      - TZ=Asia/Seoul
+      - XAUTHORITY=/root/.Xauthority
+
+    volumes:
+      # Host: /home/kante/TEAM_AIM  ->  Container: /root/TEAM_AIM
+      - /home/kante/TEAM_AIM:/root/TEAM_AIM
+
+      # GUI (X11)
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ${HOME}/.Xauthority:/root/.Xauthority:rw
+
+      # Time sync
+      - /etc/localtime:/etc/localtime:ro
+
+      # Device access
+      - /dev:/dev
+      - /dev/dri:/dev/dri
+
+      # SSH keys (optional)
+      - ${HOME}/.ssh:/root/.ssh:ro
+
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+    command: ["bash", "-lc", "source /root/.bashrc && sleep infinity"]

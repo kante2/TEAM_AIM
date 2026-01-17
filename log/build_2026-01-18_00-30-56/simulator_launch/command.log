@@ -1,0 +1,6 @@
+Invoking command in '/root/TEAM_AIM/build/simulator_launch': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator_launch -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/simulator_launch
+Invoked command in '/root/TEAM_AIM/build/simulator_launch' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator_launch -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/simulator_launch
+Invoking command in '/root/TEAM_AIM/build/simulator_launch': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/simulator_launch -- -j16 -l16
+Invoked command in '/root/TEAM_AIM/build/simulator_launch' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/simulator_launch -- -j16 -l16
+Invoking command in '/root/TEAM_AIM/build/simulator_launch': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/simulator_launch
+Invoked command in '/root/TEAM_AIM/build/simulator_launch' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/simulator_launch

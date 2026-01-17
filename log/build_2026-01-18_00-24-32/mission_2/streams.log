@@ -1,0 +1,105 @@
+[0.082s] Invoking command in '/root/TEAM_AIM/build/mission_2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/src/mission_2 -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/mission_2
+[0.178s] -- The C compiler identification is GNU 9.4.0
+[0.262s] -- The CXX compiler identification is GNU 9.4.0
+[0.266s] -- Check for working C compiler: /usr/bin/cc
+[0.381s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.382s] -- Detecting C compiler ABI info
+[0.509s] -- Detecting C compiler ABI info - done
+[0.518s] -- Detecting C compile features
+[0.518s] -- Detecting C compile features - done
+[0.521s] -- Check for working CXX compiler: /usr/bin/c++
+[0.671s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.671s] -- Detecting CXX compiler ABI info
+[0.815s] -- Detecting CXX compiler ABI info - done
+[0.833s] -- Detecting CXX compile features
+[0.834s] -- Detecting CXX compile features - done
+[0.839s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.873s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.873s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.133s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[1.191s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.204s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[1.409s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[1.480s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.663s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.765s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.767s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.768s] -- Looking for pthread.h
+[1.923s] -- Looking for pthread.h - found
+[1.923s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[2.079s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[2.079s] -- Looking for pthread_create in pthreads
+[2.220s] -- Looking for pthread_create in pthreads - not found
+[2.220s] -- Looking for pthread_create in pthread
+[2.374s] -- Looking for pthread_create in pthread - found
+[2.376s] -- Found Threads: TRUE  
+[2.654s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[2.710s] -- Found visualization_msgs: 2.0.5 (/opt/ros/foxy/share/visualization_msgs/cmake)
+[2.830s] -- Found tf2: 0.13.14 (/opt/ros/foxy/share/tf2/cmake)
+[2.849s] -- Found ament_index_cpp: 1.1.0 (/opt/ros/foxy/share/ament_index_cpp/cmake)
+[2.861s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[2.991s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.993s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.993s] -- Configured cppcheck include dirs: 
+[2.993s] -- Configured cppcheck exclude dirs and/or files: 
+[2.994s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[2.994s] -- Configured cpplint exclude dirs and/or files: 
+[2.998s] -- Added test 'lint_cmake' to check CMake code style
+[2.999s] -- Added test 'uncrustify' to check C / C++ code style
+[2.999s] -- Configured uncrustify additional arguments: 
+[2.999s] -- Added test 'xmllint' to check XML markup files
+[3.015s] -- Configuring done
+[3.016s] CMake Error at CMakeLists.txt:92 (add_executable):
+[3.016s]   Cannot find source file:
+[3.016s] 
+[3.016s]     src/decision/roi_visualizer.cpp
+[3.016s] 
+[3.016s]   Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+[3.016s]   .hpp .hxx .in .txx
+[3.017s] 
+[3.017s] 
+[3.017s] CMake Error at CMakeLists.txt:68 (add_executable):
+[3.017s]   Cannot find source file:
+[3.017s] 
+[3.017s]     src/control/control_cav_mission_2_ver4_refactored.cpp
+[3.017s] 
+[3.017s]   Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+[3.017s]   .hpp .hxx .in .txx
+[3.018s] 
+[3.018s] 
+[3.018s] CMake Error at CMakeLists.txt:54 (add_executable):
+[3.018s]   Cannot find source file:
+[3.018s] 
+[3.018s]     src/control/control_cav_mission_2_ver2_refactored.cpp
+[3.021s] 
+[3.022s]   Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+[3.023s]   .hpp .hxx .in .txx
+[3.023s] 
+[3.023s] 
+[3.023s] CMake Error at CMakeLists.txt:40 (add_executable):
+[3.024s]   Cannot find source file:
+[3.024s] 
+[3.024s]     src/control/control_cav_mission_2_ver2.cpp
+[3.024s] 
+[3.024s]   Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+[3.024s]   .hpp .hxx .in .txx
+[3.024s] 
+[3.024s] 
+[3.024s] CMake Error at CMakeLists.txt:92 (add_executable):
+[3.025s]   No SOURCES given to target: roi_visualizer
+[3.025s] 
+[3.025s] 
+[3.025s] CMake Error at CMakeLists.txt:68 (add_executable):
+[3.025s]   No SOURCES given to target: control_cav_mission_2_ver4_refactored
+[3.025s] 
+[3.025s] 
+[3.025s] CMake Error at CMakeLists.txt:54 (add_executable):
+[3.025s]   No SOURCES given to target: control_cav_mission_2_ver2_refactored
+[3.026s] 
+[3.026s] 
+[3.026s] CMake Error at CMakeLists.txt:40 (add_executable):
+[3.026s]   No SOURCES given to target: control_cav_mission_2_ver2
+[3.026s] 
+[3.027s] 
+[3.027s] CMake Generate step failed.  Build files cannot be regenerated correctly.
+[3.028s] Invoked command in '/root/TEAM_AIM/build/mission_2' returned '1': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/src/mission_2 -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/mission_2

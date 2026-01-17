@@ -1,0 +1,449 @@
+[0.000000] (-) TimerEvent: {}
+[0.001830] (domain_bridge) JobQueued: {'identifier': 'domain_bridge', 'dependencies': OrderedDict()}
+[0.001944] (mission_2) JobQueued: {'identifier': 'mission_2', 'dependencies': OrderedDict()}
+[0.002017] (mission_3) JobQueued: {'identifier': 'mission_3', 'dependencies': OrderedDict()}
+[0.002082] (scene_srv) JobQueued: {'identifier': 'scene_srv', 'dependencies': OrderedDict()}
+[0.002116] (simulator_launch) JobQueued: {'identifier': 'simulator_launch', 'dependencies': OrderedDict()}
+[0.002162] (communication_manager) JobQueued: {'identifier': 'communication_manager', 'dependencies': OrderedDict([('domain_bridge', '/root/TEAM_AIM/install/domain_bridge'), ('scene_srv', '/root/TEAM_AIM/install/scene_srv')])}
+[0.002243] (hv_handler) JobQueued: {'identifier': 'hv_handler', 'dependencies': OrderedDict([('scene_srv', '/root/TEAM_AIM/install/scene_srv')])}
+[0.002261] (simulator) JobQueued: {'identifier': 'simulator', 'dependencies': OrderedDict([('scene_srv', '/root/TEAM_AIM/install/scene_srv')])}
+[0.002282] (scene_srv) JobStarted: {'identifier': 'scene_srv'}
+[0.018134] (domain_bridge) JobStarted: {'identifier': 'domain_bridge'}
+[0.033025] (mission_2) JobStarted: {'identifier': 'mission_2'}
+[0.047265] (mission_3) JobStarted: {'identifier': 'mission_3'}
+[0.068839] (simulator_launch) JobStarted: {'identifier': 'simulator_launch'}
+[0.090940] (scene_srv) JobProgress: {'identifier': 'scene_srv', 'progress': 'cmake'}
+[0.091526] (scene_srv) Command: {'cmd': ['/usr/bin/cmake', '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/scene_srv', '-DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/scene_srv'], 'cwd': '/root/TEAM_AIM/build/scene_srv', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('WS', '/root/kaist_contest_ws'), ('ROS_NAMESPACE', 'central'), ('HOSTNAME', 'kante-ASUS-TUF-Gaming-A14-FA401UU-FA401UU'), ('GIT_ASKPASS', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/helpers/browser.sh'), ('HOME', '/root'), ('TERM_PROGRAM_VERSION', '1.108.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-d74629c1-d2a0-469f-a130-8ffa5c5ee5cc.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/root/kaist_contest_ws'), ('ROS_DISTRO', 'foxy'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XAUTHORITY', '/root/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-4d2a2c3084.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('ROS_DOMAIN_ID', '100'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/root/TEAM_AIM/build/scene_srv'), ('LC_ALL', 'C.UTF-8'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('TZ', 'Asia/Seoul'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.099972] (-) TimerEvent: {}
+[0.108670] (domain_bridge) JobProgress: {'identifier': 'domain_bridge', 'progress': 'cmake'}
+[0.109781] (domain_bridge) Command: {'cmd': ['/usr/bin/cmake', '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/domain_bridge', '-DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/domain_bridge'], 'cwd': '/root/TEAM_AIM/build/domain_bridge', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('WS', '/root/kaist_contest_ws'), ('ROS_NAMESPACE', 'central'), ('HOSTNAME', 'kante-ASUS-TUF-Gaming-A14-FA401UU-FA401UU'), ('GIT_ASKPASS', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/helpers/browser.sh'), ('HOME', '/root'), ('TERM_PROGRAM_VERSION', '1.108.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-d74629c1-d2a0-469f-a130-8ffa5c5ee5cc.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/root/kaist_contest_ws'), ('ROS_DISTRO', 'foxy'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XAUTHORITY', '/root/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-4d2a2c3084.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('ROS_DOMAIN_ID', '100'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/root/TEAM_AIM/build/domain_bridge'), ('LC_ALL', 'C.UTF-8'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('TZ', 'Asia/Seoul'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.116539] (mission_2) JobProgress: {'identifier': 'mission_2', 'progress': 'cmake'}
+[0.116893] (mission_2) Command: {'cmd': ['/usr/bin/cmake', '/root/TEAM_AIM/src/mission_2', '-DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/mission_2'], 'cwd': '/root/TEAM_AIM/build/mission_2', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('WS', '/root/kaist_contest_ws'), ('ROS_NAMESPACE', 'central'), ('HOSTNAME', 'kante-ASUS-TUF-Gaming-A14-FA401UU-FA401UU'), ('GIT_ASKPASS', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/helpers/browser.sh'), ('HOME', '/root'), ('TERM_PROGRAM_VERSION', '1.108.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-d74629c1-d2a0-469f-a130-8ffa5c5ee5cc.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/root/kaist_contest_ws'), ('ROS_DISTRO', 'foxy'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XAUTHORITY', '/root/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-4d2a2c3084.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('ROS_DOMAIN_ID', '100'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/root/TEAM_AIM/build/mission_2'), ('LC_ALL', 'C.UTF-8'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('TZ', 'Asia/Seoul'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.123949] (mission_3) JobProgress: {'identifier': 'mission_3', 'progress': 'cmake'}
+[0.127698] (mission_3) Command: {'cmd': ['/usr/bin/cmake', '/root/TEAM_AIM/src/mission_3', '-DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/mission_3'], 'cwd': '/root/TEAM_AIM/build/mission_3', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('WS', '/root/kaist_contest_ws'), ('ROS_NAMESPACE', 'central'), ('HOSTNAME', 'kante-ASUS-TUF-Gaming-A14-FA401UU-FA401UU'), ('GIT_ASKPASS', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/helpers/browser.sh'), ('HOME', '/root'), ('TERM_PROGRAM_VERSION', '1.108.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-d74629c1-d2a0-469f-a130-8ffa5c5ee5cc.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/root/kaist_contest_ws'), ('ROS_DISTRO', 'foxy'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XAUTHORITY', '/root/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-4d2a2c3084.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('ROS_DOMAIN_ID', '100'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/root/TEAM_AIM/build/mission_3'), ('LC_ALL', 'C.UTF-8'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('TZ', 'Asia/Seoul'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.141836] (simulator_launch) JobProgress: {'identifier': 'simulator_launch', 'progress': 'cmake'}
+[0.142412] (simulator_launch) Command: {'cmd': ['/usr/bin/cmake', '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator_launch', '-DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/simulator_launch'], 'cwd': '/root/TEAM_AIM/build/simulator_launch', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('WS', '/root/kaist_contest_ws'), ('ROS_NAMESPACE', 'central'), ('HOSTNAME', 'kante-ASUS-TUF-Gaming-A14-FA401UU-FA401UU'), ('GIT_ASKPASS', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/helpers/browser.sh'), ('HOME', '/root'), ('TERM_PROGRAM_VERSION', '1.108.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-d74629c1-d2a0-469f-a130-8ffa5c5ee5cc.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/root/kaist_contest_ws'), ('ROS_DISTRO', 'foxy'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XAUTHORITY', '/root/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-4d2a2c3084.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('ROS_DOMAIN_ID', '100'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/root/TEAM_AIM/build/simulator_launch'), ('LC_ALL', 'C.UTF-8'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('TZ', 'Asia/Seoul'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.200103] (-) TimerEvent: {}
+[0.228265] (scene_srv) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.245323] (domain_bridge) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.254250] (mission_2) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.267261] (mission_3) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.293883] (simulator_launch) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.300233] (-) TimerEvent: {}
+[0.364771] (scene_srv) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.373423] (scene_srv) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.377489] (domain_bridge) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.384549] (domain_bridge) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.389052] (mission_2) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.398875] (mission_2) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.400450] (-) TimerEvent: {}
+[0.401711] (mission_3) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.412339] (mission_3) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.422053] (simulator_launch) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.434090] (simulator_launch) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.500597] (-) TimerEvent: {}
+[0.547179] (scene_srv) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.549020] (scene_srv) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.568963] (domain_bridge) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.574052] (domain_bridge) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.583361] (mission_3) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.583774] (mission_2) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.585069] (mission_3) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.585385] (mission_2) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.600728] (-) TimerEvent: {}
+[0.620475] (simulator_launch) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.620842] (simulator_launch) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.700866] (-) TimerEvent: {}
+[0.735257] (scene_srv) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.745173] (domain_bridge) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.751105] (mission_2) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.756802] (mission_3) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.757733] (scene_srv) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.764935] (scene_srv) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.765212] (scene_srv) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.773246] (domain_bridge) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.773493] (domain_bridge) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.776029] (mission_2) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.776287] (mission_2) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.778960] (domain_bridge) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.781190] (mission_2) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.788909] (simulator_launch) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.789348] (mission_3) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.789828] (mission_3) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.794425] (mission_3) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.801132] (-) TimerEvent: {}
+[0.814336] (simulator_launch) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.814828] (simulator_launch) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.820376] (simulator_launch) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.901267] (-) TimerEvent: {}
+[0.952154] (scene_srv) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.958197] (scene_srv) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.958615] (mission_2) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.958951] (domain_bridge) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.960617] (mission_2) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.960957] (domain_bridge) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.978497] (mission_3) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.980882] (mission_3) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.001422] (-) TimerEvent: {}
+[1.022687] (simulator_launch) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[1.024898] (simulator_launch) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.101703] (-) TimerEvent: {}
+[1.155806] (scene_srv) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.161156] (domain_bridge) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.165206] (mission_2) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.178576] (scene_srv) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.179345] (scene_srv) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.185114] (scene_srv) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[1.187285] (domain_bridge) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.188253] (domain_bridge) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.191185] (mission_2) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.192153] (mission_2) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.193374] (domain_bridge) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[1.194871] (mission_3) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.197476] (mission_2) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[1.201810] (-) TimerEvent: {}
+[1.217365] (simulator_launch) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.219603] (mission_3) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.222130] (mission_3) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.227730] (mission_3) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[1.234482] (scene_srv) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[1.236602] (scene_srv) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.242799] (simulator_launch) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.243768] (simulator_launch) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.245096] (domain_bridge) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[1.245359] (domain_bridge) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.246856] (mission_2) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[1.247139] (mission_2) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.249371] (simulator_launch) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[1.281186] (mission_3) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[1.281549] (mission_3) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.303057] (simulator_launch) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[1.303460] (-) TimerEvent: {}
+[1.304333] (simulator_launch) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.403590] (-) TimerEvent: {}
+[1.504044] (-) TimerEvent: {}
+[1.588480] (domain_bridge) StdoutLine: {'line': b'-- Found rcl: 1.1.14 (/opt/ros/foxy/share/rcl/cmake)\n'}
+[1.588808] (scene_srv) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[1.594633] (scene_srv) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.597702] (mission_2) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[1.604172] (-) TimerEvent: {}
+[1.607348] (scene_srv) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.610962] (mission_3) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[1.655696] (domain_bridge) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.671260] (domain_bridge) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.689648] (mission_2) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.701279] (mission_3) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.703518] (mission_2) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.704244] (-) TimerEvent: {}
+[1.712822] (mission_3) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.744907] (simulator_launch) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.747957] (simulator_launch) StdoutLine: {'line': b'-- Generating done\n'}
+[1.749757] (simulator_launch) StdoutLine: {'line': b'-- Build files have been written to: /root/TEAM_AIM/build/simulator_launch\n'}
+[1.755203] (simulator_launch) CommandEnded: {'returncode': 0}
+[1.762240] (simulator_launch) JobProgress: {'identifier': 'simulator_launch', 'progress': 'build'}
+[1.762324] (simulator_launch) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/TEAM_AIM/build/simulator_launch', '--', '-j16', '-l16'], 'cwd': '/root/TEAM_AIM/build/simulator_launch', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('WS', '/root/kaist_contest_ws'), ('ROS_NAMESPACE', 'central'), ('HOSTNAME', 'kante-ASUS-TUF-Gaming-A14-FA401UU-FA401UU'), ('GIT_ASKPASS', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/helpers/browser.sh'), ('HOME', '/root'), ('TERM_PROGRAM_VERSION', '1.108.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-d74629c1-d2a0-469f-a130-8ffa5c5ee5cc.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/root/kaist_contest_ws'), ('ROS_DISTRO', 'foxy'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XAUTHORITY', '/root/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-4d2a2c3084.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('ROS_DOMAIN_ID', '100'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/root/TEAM_AIM/build/simulator_launch'), ('LC_ALL', 'C.UTF-8'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('TZ', 'Asia/Seoul'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[1.804468] (-) TimerEvent: {}
+[1.850968] (simulator_launch) CommandEnded: {'returncode': 0}
+[1.852795] (scene_srv) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[1.868261] (domain_bridge) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[1.900972] (simulator_launch) JobProgress: {'identifier': 'simulator_launch', 'progress': 'install'}
+[1.904764] (-) TimerEvent: {}
+[1.913879] (mission_2) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[1.932306] (simulator_launch) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/TEAM_AIM/build/simulator_launch'], 'cwd': '/root/TEAM_AIM/build/simulator_launch', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('WS', '/root/kaist_contest_ws'), ('ROS_NAMESPACE', 'central'), ('HOSTNAME', 'kante-ASUS-TUF-Gaming-A14-FA401UU-FA401UU'), ('GIT_ASKPASS', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/helpers/browser.sh'), ('HOME', '/root'), ('TERM_PROGRAM_VERSION', '1.108.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-d74629c1-d2a0-469f-a130-8ffa5c5ee5cc.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/root/kaist_contest_ws'), ('ROS_DISTRO', 'foxy'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XAUTHORITY', '/root/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-4d2a2c3084.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('ROS_DOMAIN_ID', '100'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/root/TEAM_AIM/build/simulator_launch'), ('LC_ALL', 'C.UTF-8'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('TZ', 'Asia/Seoul'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[1.934593] (scene_srv) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[1.936781] (mission_3) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[1.948878] (domain_bridge) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[1.954587] (simulator_launch) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[1.955108] (simulator_launch) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/launch\n'}
+[1.955297] (simulator_launch) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/launch/simulator_launch.py\n'}
+[1.955540] (simulator_launch) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/simulator_launch/share/ament_index/resource_index/package_run_dependencies/simulator_launch\n'}
+[1.955711] (simulator_launch) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/simulator_launch/share/ament_index/resource_index/parent_prefix_path/simulator_launch\n'}
+[1.955829] (simulator_launch) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/environment/ament_prefix_path.sh\n'}
+[1.955910] (simulator_launch) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/environment/ament_prefix_path.dsv\n'}
+[1.956200] (simulator_launch) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/environment/path.sh\n'}
+[1.956393] (simulator_launch) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/environment/path.dsv\n'}
+[1.956665] (simulator_launch) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/local_setup.bash\n'}
+[1.956923] (simulator_launch) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/local_setup.sh\n'}
+[1.957292] (simulator_launch) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/local_setup.zsh\n'}
+[1.957717] (simulator_launch) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/local_setup.dsv\n'}
+[1.957966] (simulator_launch) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/package.dsv\n'}
+[1.958300] (simulator_launch) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/simulator_launch/share/ament_index/resource_index/packages/simulator_launch\n'}
+[1.958577] (simulator_launch) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/cmake/simulator_launchConfig.cmake\n'}
+[1.958824] (simulator_launch) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/cmake/simulator_launchConfig-version.cmake\n'}
+[1.959120] (simulator_launch) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/package.xml\n'}
+[1.962838] (simulator_launch) CommandEnded: {'returncode': 0}
+[1.982599] (mission_2) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[1.993151] (mission_3) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[2.004896] (-) TimerEvent: {}
+[2.078872] (simulator_launch) JobEnded: {'identifier': 'simulator_launch', 'rc': 0}
+[2.105437] (-) TimerEvent: {}
+[2.105996] (scene_srv) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.131082] (domain_bridge) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.170675] (mission_2) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.183761] (mission_3) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.205554] (-) TimerEvent: {}
+[2.207472] (scene_srv) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") \n'}
+[2.249092] (domain_bridge) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[2.250392] (domain_bridge) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[2.252124] (domain_bridge) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[2.279840] (mission_2) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[2.281782] (mission_2) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[2.283281] (mission_2) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[2.290135] (mission_3) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[2.292140] (mission_3) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[2.293630] (mission_3) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[2.305724] (-) TimerEvent: {}
+[2.405559] (domain_bridge) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[2.405851] (-) TimerEvent: {}
+[2.406170] (domain_bridge) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[2.420906] (scene_srv) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)\n'}
+[2.434515] (mission_2) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[2.435429] (mission_2) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[2.448910] (mission_3) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[2.449398] (mission_3) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[2.506022] (-) TimerEvent: {}
+[2.561336] (domain_bridge) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[2.561708] (domain_bridge) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[2.586345] (mission_2) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[2.586716] (mission_2) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[2.598862] (mission_3) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[2.599248] (mission_3) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[2.606042] (-) TimerEvent: {}
+[2.656085] (scene_srv) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.669740] (scene_srv) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.686390] (domain_bridge) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[2.686710] (domain_bridge) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[2.704490] (scene_srv) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[2.704905] (mission_2) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[2.705218] (mission_2) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[2.706109] (-) TimerEvent: {}
+[2.707382] (scene_srv) StdoutLine: {'line': b'-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)\n'}
+[2.717385] (mission_3) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[2.719492] (mission_3) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[2.754339] (scene_srv) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[2.754766] (scene_srv) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[2.754919] (scene_srv) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8\n'}
+[2.755075] (scene_srv) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so\n'}
+[2.791316] (scene_srv) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[2.806808] (-) TimerEvent: {}
+[2.841650] (domain_bridge) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[2.844225] (domain_bridge) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[2.864196] (mission_2) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[2.866186] (mission_2) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[2.877226] (scene_srv) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[2.883118] (mission_3) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[2.887024] (mission_3) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[2.892396] (domain_bridge) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[2.906968] (-) TimerEvent: {}
+[2.924278] (scene_srv) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[2.927740] (scene_srv) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[2.929744] (scene_srv) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.942107] (scene_srv) StdoutLine: {'line': b'-- Configuring done\n'}
+[3.001856] (scene_srv) StdoutLine: {'line': b'-- Generating done\n'}
+[3.006343] (scene_srv) StdoutLine: {'line': b'-- Build files have been written to: /root/TEAM_AIM/build/scene_srv\n'}
+[3.007090] (-) TimerEvent: {}
+[3.037022] (scene_srv) CommandEnded: {'returncode': 0}
+[3.043661] (scene_srv) JobProgress: {'identifier': 'scene_srv', 'progress': 'build'}
+[3.043940] (scene_srv) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/TEAM_AIM/build/scene_srv', '--', '-j16', '-l16'], 'cwd': '/root/TEAM_AIM/build/scene_srv', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('WS', '/root/kaist_contest_ws'), ('ROS_NAMESPACE', 'central'), ('HOSTNAME', 'kante-ASUS-TUF-Gaming-A14-FA401UU-FA401UU'), ('GIT_ASKPASS', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/helpers/browser.sh'), ('HOME', '/root'), ('TERM_PROGRAM_VERSION', '1.108.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-d74629c1-d2a0-469f-a130-8ffa5c5ee5cc.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/root/kaist_contest_ws'), ('ROS_DISTRO', 'foxy'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XAUTHORITY', '/root/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-4d2a2c3084.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-13ee27f0-1746-4162-94ff-f8c7e42a4c72.sock'), ('ROS_DOMAIN_ID', '100'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/root/TEAM_AIM/build/scene_srv'), ('LC_ALL', 'C.UTF-8'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('TZ', 'Asia/Seoul'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[3.107327] (-) TimerEvent: {}
+[3.128401] (mission_2) StdoutLine: {'line': b'-- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)\n'}
+[3.134121] (domain_bridge) StdoutLine: {'line': b'-- Found rosbag2_cpp: 0.3.11 (/opt/ros/foxy/share/rosbag2_cpp/cmake)\n'}
+[3.142811] (scene_srv) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[3.146974] (scene_srv) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target scene_srv__cpp\x1b[0m\n'}
+[3.147281] (mission_3) StdoutLine: {'line': b'-- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)\n'}
+[3.173096] (scene_srv) StdoutLine: {'line': b'[  5%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[3.192851] (mission_2) StdoutLine: {'line': b'-- Found visualization_msgs: 2.0.5 (/opt/ros/foxy/share/visualization_msgs/cmake)\n'}
+[3.204395] (mission_3) StdoutLine: {'line': b'-- Found visualization_msgs: 2.0.5 (/opt/ros/foxy/share/visualization_msgs/cmake)\n'}
+[3.207415] (-) TimerEvent: {}
+[3.220509] (domain_bridge) StdoutLine: {'line': b"-- Setting yaml-cpp_DIR to: '/opt/ros/foxy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/lib/cmake/yaml-cpp'\n"}
+[3.232518] (domain_bridge) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[3.255587] (domain_bridge) StdoutLine: {'line': b'-- Found zstd_vendor: 0.3.11 (/opt/ros/foxy/share/zstd_vendor/cmake)\n'}
+[3.257390] (domain_bridge) StdoutLine: {'line': b'-- Found zstd: /opt/ros/foxy/lib/libzstd.so  \n'}
+[3.298329] (domain_bridge) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") \n'}
+[3.307868] (-) TimerEvent: {}
+[3.315633] (mission_2) StdoutLine: {'line': b'-- Found tf2: 0.13.14 (/opt/ros/foxy/share/tf2/cmake)\n'}
+[3.319724] (mission_3) StdoutLine: {'line': b'-- Found tf2: 0.13.14 (/opt/ros/foxy/share/tf2/cmake)\n'}
+[3.343659] (mission_2) StdoutLine: {'line': b'-- Found ament_index_cpp: 1.1.0 (/opt/ros/foxy/share/ament_index_cpp/cmake)\n'}
+[3.344829] (mission_3) StdoutLine: {'line': b'-- Found ament_index_cpp: 1.1.0 (/opt/ros/foxy/share/ament_index_cpp/cmake)\n'}
+[3.357380] (mission_3) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[3.357663] (mission_2) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[3.408023] (-) TimerEvent: {}
+[3.444687] (mission_2) StderrLine: {'line': b'CMake Error at /opt/ros/foxy/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:53 (message):\n'}
+[3.446834] (mission_2) StderrLine: {'line': b"  ament_package_xml() package name 'mission_2' in '/package.xml' does not\n"}
+[3.447019] (mission_2) StderrLine: {'line': b"  match current PROJECT_NAME 'problem_1_1'.  You must call project() with the\n"}
+[3.447146] (mission_2) StderrLine: {'line': b'  same package name before.\n'}
+[3.447252] (mission_2) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[3.447349] (mission_2) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_lint_auto/cmake/ament_lint_auto_find_test_dependencies.cmake:31 (ament_package_xml)\n'}
+[3.447446] (mission_2) StderrLine: {'line': b'  CMakeLists.txt:113 (ament_lint_auto_find_test_dependencies)\n'}
+[3.447541] (mission_2) StderrLine: {'line': b'\n'}
+[3.452677] (mission_2) StderrLine: {'line': b'\n'}
+[3.452846] (mission_3) StderrLine: {'line': b'CMake Error at /opt/ros/foxy/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:53 (message):\n'}
+[3.453023] (mission_3) StderrLine: {'line': b"  ament_package_xml() package name 'mission_3' in '/package.xml' does not\n"}
+[3.453141] (mission_3) StderrLine: {'line': b"  match current PROJECT_NAME 'problem_1_1'.  You must call project() with the\n"}
+[3.453250] (mission_3) StderrLine: {'line': b'  same package name before.\n'}
+[3.453601] (mission_3) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[3.453748] (mission_3) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_lint_auto/cmake/ament_lint_auto_find_test_dependencies.cmake:31 (ament_package_xml)\n'}
+[3.453880] (mission_3) StderrLine: {'line': b'  CMakeLists.txt:92 (ament_lint_auto_find_test_dependencies)\n'}
+[3.454021] (mission_3) StderrLine: {'line': b'\n'}
+[3.454159] (mission_3) StderrLine: {'line': b'\n'}
+[3.454279] (mission_3) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[3.454441] (mission_3) StdoutLine: {'line': b'See also "/root/TEAM_AIM/build/mission_3/CMakeFiles/CMakeOutput.log".\n'}
+[3.454570] (mission_3) StdoutLine: {'line': b'See also "/root/TEAM_AIM/build/mission_3/CMakeFiles/CMakeError.log".\n'}
+[3.454685] (mission_2) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[3.454801] (mission_2) StdoutLine: {'line': b'See also "/root/TEAM_AIM/build/mission_2/CMakeFiles/CMakeOutput.log".\n'}
+[3.454909] (mission_2) StdoutLine: {'line': b'See also "/root/TEAM_AIM/build/mission_2/CMakeFiles/CMakeError.log".\n'}
+[3.464644] (mission_2) CommandEnded: {'returncode': 1}
+[3.476041] (mission_3) CommandEnded: {'returncode': 1}
+[3.492808] (domain_bridge) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)\n'}
+[3.508219] (-) TimerEvent: {}
+[3.510895] (mission_2) JobEnded: {'identifier': 'mission_2', 'rc': 1}
+[3.512063] (mission_3) JobEnded: {'identifier': 'mission_3', 'rc': 'SIGINT'}
+[3.608360] (-) TimerEvent: {}
+[3.651286] (scene_srv) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target scene_srv__rosidl_generator_c\x1b[0m\n'}
+[3.681351] (scene_srv) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding C object CMakeFiles/scene_srv__rosidl_generator_c.dir/rosidl_generator_c/scene_srv/srv/detail/scene_signal__functions.c.o\x1b[0m\n'}
+[3.684616] (scene_srv) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding C object CMakeFiles/scene_srv__rosidl_generator_c.dir/rosidl_generator_c/scene_srv/srv/detail/start_signal__functions.c.o\x1b[0m\n'}
+[3.686640] (scene_srv) StdoutLine: {'line': b'[ 10%] Built target scene_srv__cpp\n'}
+[3.706516] (scene_srv) StdoutLine: {'line': b'[ 17%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[3.706857] (scene_srv) StdoutLine: {'line': b'[ 17%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[3.707049] (scene_srv) StdoutLine: {'line': b'[ 17%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[3.708436] (-) TimerEvent: {}
+[3.770552] (domain_bridge) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.783423] (domain_bridge) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.797061] (scene_srv) StdoutLine: {'line': b'[ 20%] \x1b[32m\x1b[1mLinking C shared library libscene_srv__rosidl_generator_c.so\x1b[0m\n'}
+[3.808588] (-) TimerEvent: {}
+[3.829420] (domain_bridge) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[3.834217] (domain_bridge) StdoutLine: {'line': b'-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)\n'}
+[3.882007] (scene_srv) StdoutLine: {'line': b'[ 20%] Built target scene_srv__rosidl_generator_c\n'}
+[3.887549] (domain_bridge) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[3.887957] (domain_bridge) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[3.888128] (domain_bridge) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8\n'}
+[3.888250] (domain_bridge) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so\n'}
+[3.902844] (scene_srv) StdoutLine: {'line': b'[ 25%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[3.903240] (scene_srv) StdoutLine: {'line': b'[ 25%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[3.908681] (-) TimerEvent: {}
+[3.926649] (domain_bridge) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[4.008799] (-) TimerEvent: {}
+[4.047155] (domain_bridge) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[4.108919] (-) TimerEvent: {}
+[4.124518] (scene_srv) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target scene_srv__rosidl_typesupport_cpp\x1b[0m\n'}
+[4.155889] (scene_srv) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/scene_srv__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/scene_srv/srv/scene_signal__type_support.cpp.o\x1b[0m\n'}
+[4.160065] (scene_srv) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target scene_srv__rosidl_typesupport_introspection_cpp\x1b[0m\n'}
+[4.165612] (scene_srv) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/scene_srv__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/scene_srv/srv/start_signal__type_support.cpp.o\x1b[0m\n'}
+[4.195220] (scene_srv) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/scene_srv__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/scene_srv/srv/detail/scene_signal__type_support.cpp.o\x1b[0m\n'}
+[4.197230] (scene_srv) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/scene_srv__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/scene_srv/srv/detail/start_signal__type_support.cpp.o\x1b[0m\n'}
+[4.197963] (scene_srv) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target scene_srv__rosidl_typesupport_fastrtps_cpp\x1b[0m\n'}
+[4.209057] (-) TimerEvent: {}
+[4.245372] (scene_srv) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/scene_srv__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/scene_srv/srv/detail/dds_fastrtps/scene_signal__type_support.cpp.o\x1b[0m\n'}
+[4.245684] (scene_srv) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding CXX object CMakeFiles/scene_srv__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/scene_srv/srv/detail/dds_fastrtps/start_signal__type_support.cpp.o\x1b[0m\n'}
+[4.309331] (-) TimerEvent: {}
+[4.352159] (scene_srv) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target scene_srv__rosidl_typesupport_c\x1b[0m\n'}
+[4.391943] (scene_srv) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/scene_srv__rosidl_typesupport_c.dir/rosidl_typesupport_c/scene_srv/srv/scene_signal__type_support.cpp.o\x1b[0m\n'}
+[4.402735] (scene_srv) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding CXX object CMakeFiles/scene_srv__rosidl_typesupport_c.dir/rosidl_typesupport_c/scene_srv/srv/start_signal__type_support.cpp.o\x1b[0m\n'}
+[4.409470] (-) TimerEvent: {}
+[4.481776] (scene_srv) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target scene_srv__rosidl_typesupport_introspection_c\x1b[0m\n'}
+[4.498949] (scene_srv) StdoutLine: {'line': b'[ 48%] \x1b[32m\x1b[1mLinking CXX shared library libscene_srv__rosidl_typesupport_c.so\x1b[0m\n'}
+[4.509777] (-) TimerEvent: {}
+[4.525067] (domain_bridge) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[4.526346] (domain_bridge) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8\n'}
+[4.526912] (domain_bridge) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so\n'}
+[4.540080] (scene_srv) StdoutLine: {'line': b'[ 53%] \x1b[32mBuilding C object CMakeFiles/scene_srv__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/scene_srv/srv/detail/scene_signal__type_support.c.o\x1b[0m\n'}
+[4.541343] (scene_srv) StdoutLine: {'line': b'[ 53%] \x1b[32mBuilding C object CMakeFiles/scene_srv__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/scene_srv/srv/detail/start_signal__type_support.c.o\x1b[0m\n'}
+[4.609921] (-) TimerEvent: {}
+[4.618729] (scene_srv) StdoutLine: {'line': b'[ 53%] Built target scene_srv__rosidl_typesupport_c\n'}
+[4.637191] (scene_srv) StdoutLine: {'line': b'[ 56%] \x1b[32m\x1b[1mLinking C shared library libscene_srv__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[4.717517] (-) TimerEvent: {}
+[4.735572] (scene_srv) StdoutLine: {'line': b'[ 56%] Built target scene_srv__rosidl_typesupport_introspection_c\n'}
+[4.817661] (-) TimerEvent: {}
+[4.829761] (scene_srv) StdoutLine: {'line': b'[ 58%] \x1b[32m\x1b[1mLinking CXX shared library libscene_srv__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[4.846519] (scene_srv) StdoutLine: {'line': b'[ 61%] \x1b[32m\x1b[1mLinking CXX shared library libscene_srv__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[4.917393] (scene_srv) StdoutLine: {'line': b'[ 61%] Built target scene_srv__rosidl_typesupport_cpp\n'}
+[4.917833] (-) TimerEvent: {}
+[4.965798] (scene_srv) StdoutLine: {'line': b'[ 61%] Built target scene_srv__rosidl_typesupport_introspection_cpp\n'}
+[5.018029] (-) TimerEvent: {}
+[5.036125] (domain_bridge) StderrLine: {'line': b'CMake Error at test/CMakeLists.txt:5 (find_package):\n'}
+[5.037098] (domain_bridge) StderrLine: {'line': b'  By not providing "Findtest_msgs.cmake" in CMAKE_MODULE_PATH this project\n'}
+[5.037270] (domain_bridge) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[5.037428] (domain_bridge) StderrLine: {'line': b'  "test_msgs", but CMake did not find one.\n'}
+[5.037551] (domain_bridge) StderrLine: {'line': b'\n'}
+[5.037676] (domain_bridge) StderrLine: {'line': b'  Could not find a package configuration file provided by "test_msgs" with\n'}
+[5.037796] (domain_bridge) StderrLine: {'line': b'  any of the following names:\n'}
+[5.037911] (domain_bridge) StderrLine: {'line': b'\n'}
+[5.038040] (domain_bridge) StderrLine: {'line': b'    test_msgsConfig.cmake\n'}
+[5.038170] (domain_bridge) StderrLine: {'line': b'    test_msgs-config.cmake\n'}
+[5.038287] (domain_bridge) StderrLine: {'line': b'\n'}
+[5.038398] (domain_bridge) StderrLine: {'line': b'  Add the installation prefix of "test_msgs" to CMAKE_PREFIX_PATH or set\n'}
+[5.038510] (domain_bridge) StderrLine: {'line': b'  "test_msgs_DIR" to a directory containing one of the above files.  If\n'}
+[5.038621] (domain_bridge) StderrLine: {'line': b'  "test_msgs" provides a separate development package or SDK, be sure it has\n'}
+[5.038735] (domain_bridge) StderrLine: {'line': b'  been installed.\n'}
+[5.038864] (domain_bridge) StderrLine: {'line': b'\n'}
+[5.038996] (domain_bridge) StderrLine: {'line': b'\n'}
+[5.045601] (domain_bridge) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[5.045806] (domain_bridge) StdoutLine: {'line': b'See also "/root/TEAM_AIM/build/domain_bridge/CMakeFiles/CMakeOutput.log".\n'}
+[5.045951] (domain_bridge) StdoutLine: {'line': b'See also "/root/TEAM_AIM/build/domain_bridge/CMakeFiles/CMakeError.log".\n'}
+[5.064744] (domain_bridge) JobEnded: {'identifier': 'domain_bridge', 'rc': 'SIGINT'}
+[5.101052] (scene_srv) StdoutLine: {'line': b'[ 64%] \x1b[32m\x1b[1mLinking CXX shared library libscene_srv__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[5.118157] (-) TimerEvent: {}
+[5.218545] (-) TimerEvent: {}
+[5.262249] (scene_srv) StdoutLine: {'line': b'[ 64%] Built target scene_srv__rosidl_typesupport_fastrtps_cpp\n'}
+[5.285040] (scene_srv) StdoutLine: {'line': b'[ 66%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[5.318662] (-) TimerEvent: {}
+[5.419111] (-) TimerEvent: {}
+[5.519544] (-) TimerEvent: {}
+[5.619883] (-) TimerEvent: {}
+[5.682489] (scene_srv) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target scene_srv__rosidl_typesupport_fastrtps_c\x1b[0m\n'}
+[5.720082] (-) TimerEvent: {}
+[5.720453] (scene_srv) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/scene_srv__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/scene_srv/srv/detail/start_signal__type_support_c.cpp.o\x1b[0m\n'}
+[5.720782] (scene_srv) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/scene_srv__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/scene_srv/srv/detail/scene_signal__type_support_c.cpp.o\x1b[0m\n'}
+[5.820208] (-) TimerEvent: {}
+[5.920634] (-) TimerEvent: {}
+[6.021137] (-) TimerEvent: {}
+[6.121837] (-) TimerEvent: {}
+[6.222410] (-) TimerEvent: {}
+[6.267392] (scene_srv) StdoutLine: {'line': b'[ 74%] \x1b[32m\x1b[1mLinking CXX shared library libscene_srv__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[6.322542] (-) TimerEvent: {}
+[6.422947] (-) TimerEvent: {}
+[6.426964] (scene_srv) StdoutLine: {'line': b'[ 74%] Built target scene_srv__rosidl_typesupport_fastrtps_c\n'}
+[6.450726] (scene_srv) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target scene_srv\x1b[0m\n'}
+[6.473280] (scene_srv) StdoutLine: {'line': b'[ 74%] Built target scene_srv\n'}
+[6.496471] (scene_srv) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target scene_srv__py\x1b[0m\n'}
+[6.523094] (-) TimerEvent: {}
+[6.526541] (scene_srv) StdoutLine: {'line': b'[ 76%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[6.623255] (-) TimerEvent: {}
+[6.723775] (-) TimerEvent: {}
+[6.824210] (-) TimerEvent: {}
+[6.928049] (-) TimerEvent: {}
+[7.028465] (-) TimerEvent: {}
+[7.128887] (-) TimerEvent: {}
+[7.229518] (-) TimerEvent: {}
+[7.330028] (-) TimerEvent: {}
+[7.407236] (scene_srv) StdoutLine: {'line': b'[ 76%] Built target scene_srv__py\n'}
+[7.428502] (scene_srv) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target scene_srv__python\x1b[0m\n'}
+[7.430093] (-) TimerEvent: {}
+[7.480715] (scene_srv) StdoutLine: {'line': b'[ 79%] \x1b[32mBuilding C object CMakeFiles/scene_srv__python.dir/rosidl_generator_py/scene_srv/srv/_start_signal_s.c.o\x1b[0m\n'}
+[7.481082] (scene_srv) StdoutLine: {'line': b'[ 82%] \x1b[32mBuilding C object CMakeFiles/scene_srv__python.dir/rosidl_generator_py/scene_srv/srv/_scene_signal_s.c.o\x1b[0m\n'}
+[7.530270] (-) TimerEvent: {}
+[7.630794] (-) TimerEvent: {}
+[7.651124] (scene_srv) StdoutLine: {'line': b'[ 84%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/scene_srv/libscene_srv__python.so\x1b[0m\n'}
+[7.730909] (-) TimerEvent: {}
+[7.735605] (scene_srv) StdoutLine: {'line': b'[ 84%] Built target scene_srv__python\n'}
+[7.760095] (scene_srv) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target scene_srv__rosidl_typesupport_introspection_c__pyext\x1b[0m\n'}
+[7.760455] (scene_srv) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target scene_srv__rosidl_typesupport_fastrtps_c__pyext\x1b[0m\n'}
+[7.761676] (scene_srv) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target scene_srv__rosidl_typesupport_c__pyext\x1b[0m\n'}
+[7.807705] (scene_srv) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/scene_srv__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/scene_srv/_scene_srv_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[7.808090] (scene_srv) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/scene_srv__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/scene_srv/_scene_srv_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[7.815513] (scene_srv) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding C object CMakeFiles/scene_srv__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/scene_srv/_scene_srv_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[7.831058] (-) TimerEvent: {}
+[7.931512] (-) TimerEvent: {}
+[8.013790] (scene_srv) StdoutLine: {'line': b'[ 94%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/scene_srv/scene_srv_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[8.017955] (scene_srv) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/scene_srv/scene_srv_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[8.023537] (scene_srv) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX shared library rosidl_generator_py/scene_srv/scene_srv_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[8.031642] (-) TimerEvent: {}
+[8.098526] (scene_srv) StdoutLine: {'line': b'[100%] Built target scene_srv__rosidl_typesupport_c__pyext\n'}
+[8.098884] (scene_srv) StdoutLine: {'line': b'[100%] Built target scene_srv__rosidl_typesupport_introspection_c__pyext\n'}
+[8.131760] (-) TimerEvent: {}
+[8.159468] (scene_srv) StdoutLine: {'line': b'[100%] Built target scene_srv__rosidl_typesupport_fastrtps_c__pyext\n'}
+[8.190356] (scene_srv) JobEnded: {'identifier': 'scene_srv', 'rc': 'SIGINT'}
+[8.201479] (communication_manager) JobSkipped: {'identifier': 'communication_manager'}
+[8.201664] (hv_handler) JobSkipped: {'identifier': 'hv_handler'}
+[8.201760] (simulator) JobSkipped: {'identifier': 'simulator'}
+[8.201803] (-) EventReactorShutdown: {}

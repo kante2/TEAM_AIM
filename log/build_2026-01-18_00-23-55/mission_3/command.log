@@ -1,0 +1,2 @@
+Invoking command in '/root/TEAM_AIM/build/mission_3': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/src/mission_3 -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/mission_3
+Invoked command in '/root/TEAM_AIM/build/mission_3' returned '1': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/src/mission_3 -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/mission_3

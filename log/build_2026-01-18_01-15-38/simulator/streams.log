@@ -1,0 +1,109 @@
+[0.040s] Invoking command in '/root/TEAM_AIM/build/simulator': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/simulator
+[0.131s] -- The C compiler identification is GNU 9.4.0
+[0.198s] -- The CXX compiler identification is GNU 9.4.0
+[0.204s] -- Check for working C compiler: /usr/bin/cc
+[0.301s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.303s] -- Detecting C compiler ABI info
+[0.377s] -- Detecting C compiler ABI info - done
+[0.390s] -- Detecting C compile features
+[0.396s] -- Detecting C compile features - done
+[0.402s] -- Check for working CXX compiler: /usr/bin/c++
+[0.503s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.504s] -- Detecting CXX compiler ABI info
+[0.592s] -- Detecting CXX compiler ABI info - done
+[0.600s] -- Detecting CXX compile features
+[0.600s] -- Detecting CXX compile features - done
+[0.604s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.626s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.626s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.769s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.815s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.821s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.925s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[0.953s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.030s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.068s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.069s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.069s] -- Looking for pthread.h
+[1.145s] -- Looking for pthread.h - found
+[1.145s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.219s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.219s] -- Looking for pthread_create in pthreads
+[1.282s] -- Looking for pthread_create in pthreads - not found
+[1.282s] -- Looking for pthread_create in pthread
+[1.348s] -- Looking for pthread_create in pthread - found
+[1.349s] -- Found Threads: TRUE  
+[1.455s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[1.477s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[1.491s] -- Found ament_index_cpp: 1.1.0 (/opt/ros/foxy/share/ament_index_cpp/cmake)
+[1.493s] -- Found scene_srv: 0.0.0 (/root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake)
+[1.507s] -- Found SDL3: /usr/local/lib/cmake/SDL3
+[1.552s] -- Configuring done
+[1.561s] -- Generating done
+[1.562s] -- Build files have been written to: /root/TEAM_AIM/build/simulator
+[1.570s] Invoked command in '/root/TEAM_AIM/build/simulator' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/simulator
+[1.574s] Invoking command in '/root/TEAM_AIM/build/simulator': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/simulator -- -j16 -l16
+[1.626s] [35m[1mScanning dependencies of target simulation_node[0m
+[1.751s] [  6%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/cmake_pch.hxx.gch[0m
+[4.796s] [ 12%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/collision.cpp.o[0m
+[4.796s] [ 18%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/app.cpp.o[0m
+[4.796s] [ 25%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/ros.cpp.o[0m
+[4.799s] [ 31%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/mapload.cpp.o[0m
+[4.799s] [ 37%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/functions/vehicle.cpp.o[0m
+[4.809s] [ 43%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/user.cpp.o[0m
+[4.810s] [ 50%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/vehicle.cpp.o[0m
+[4.813s] [ 56%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/entry.cpp.o[0m
+[4.813s] [ 62%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/plugins/physics.cpp.o[0m
+[4.813s] [ 68%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/worldsetting.cpp.o[0m
+[4.813s] [ 75%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/plugins/mouse.cpp.o[0m
+[4.813s] [ 81%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/plugins/camera.cpp.o[0m
+[4.817s] [ 87%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/plugins/render.cpp.o[0m
+[4.821s] [ 93%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/stb.cpp.o[0m
+[53.212s] [100%] [32m[1mLinking CXX executable bin/simulation_node[0m
+[55.718s] [34m[1mCopying resource folder to build directory[0m
+[55.762s] [100%] Built target simulation_node
+[55.794s] Invoked command in '/root/TEAM_AIM/build/simulator' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/simulator -- -j16 -l16
+[55.857s] Invoking command in '/root/TEAM_AIM/build/simulator': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/simulator
+[55.868s] -- Install configuration: "Debug"
+[55.868s] -- Installing: /root/TEAM_AIM/install/simulator/lib/simulator/simulation_node
+[55.903s] -- Set runtime path of "/root/TEAM_AIM/install/simulator/lib/simulator/simulation_node" to ""
+[55.903s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource
+[55.903s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader
+[55.903s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/post.frag
+[55.903s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/3Dobject.frag
+[55.903s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/fComposite.frag
+[55.903s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dtext.vert
+[55.903s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/post.vert
+[55.903s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dtext.frag
+[55.903s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dsprite.vert
+[55.903s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/fAntialiasing.frag
+[55.903s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dsprite.frag
+[55.903s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/3Dobject.vert
+[55.904s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets
+[55.904s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/map.json
+[55.906s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/map.obj
+[55.910s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/path.json
+[55.911s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/IDs.png
+[55.912s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/map.mtl
+[55.912s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/sign.png
+[55.912s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/config.ini
+[55.912s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/font
+[55.912s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/font/CascadiaMono.json
+[55.912s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/font/CascadiaMono.ttf
+[55.913s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/font/CascadiaMono.png
+[55.913s] -- Installing: /root/TEAM_AIM/install/simulator/share/ament_index/resource_index/package_run_dependencies/simulator
+[55.913s] -- Installing: /root/TEAM_AIM/install/simulator/share/ament_index/resource_index/parent_prefix_path/simulator
+[55.914s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/environment/ament_prefix_path.sh
+[55.914s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/environment/ament_prefix_path.dsv
+[55.914s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/environment/path.sh
+[55.914s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/environment/path.dsv
+[55.914s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.bash
+[55.915s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.sh
+[55.915s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.zsh
+[55.915s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.dsv
+[55.915s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/package.dsv
+[55.915s] -- Installing: /root/TEAM_AIM/install/simulator/share/ament_index/resource_index/packages/simulator
+[55.916s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/cmake/simulatorConfig.cmake
+[55.916s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/cmake/simulatorConfig-version.cmake
+[55.916s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/package.xml
+[55.922s] Invoked command in '/root/TEAM_AIM/build/simulator' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/simulator

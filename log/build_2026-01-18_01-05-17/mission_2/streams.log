@@ -1,0 +1,49 @@
+[0.044s] Invoking command in '/root/TEAM_AIM/build/mission_2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_2 -- -j16 -l16
+[0.069s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.085s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.201s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.228s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.231s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.341s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.379s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.380s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.455s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[0.475s] -- Found visualization_msgs: 2.0.5 (/opt/ros/foxy/share/visualization_msgs/cmake)
+[0.527s] -- Found tf2: 0.13.14 (/opt/ros/foxy/share/tf2/cmake)
+[0.534s] -- Found ament_index_cpp: 1.1.0 (/opt/ros/foxy/share/ament_index_cpp/cmake)
+[0.584s] -- Configuring done
+[0.591s] -- Generating done
+[0.592s] -- Build files have been written to: /root/TEAM_AIM/build/mission_2
+[0.630s] [35m[1mScanning dependencies of target control_cav_mission_2[0m
+[0.660s] [ 50%] [32mBuilding CXX object CMakeFiles/control_cav_mission_2.dir/src/control_cav_mission_2.cpp.o[0m
+[1.577s] [01m[K/root/TEAM_AIM/src/mission_2/src/control_cav_mission_2.cpp:[m[K In function ‘[01m[Kvoid change_csv_state(int, int, std::shared_ptr<rclcpp::Node>)[m[K’:
+[1.578s] [01m[K/root/TEAM_AIM/src/mission_2/src/control_cav_mission_2.cpp:580:27:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcav_id[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[1.578s]   580 | void change_csv_state([01;35m[Kint cav_id[m[K, int new_lane, std::shared_ptr<rclcpp::Node> node) {
+[1.578s]       |                       [01;35m[K~~~~^~~~~~[m[K
+[1.627s] [01m[K/root/TEAM_AIM/src/mission_2/src/control_cav_mission_2.cpp:[m[K In lambda function:
+[1.627s] [01m[K/root/TEAM_AIM/src/mission_2/src/control_cav_mission_2.cpp:935:20:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[Klane_start_distance[m[K’ set but not used [[01;35m[K-Wunused-but-set-variable[m[K]
+[1.628s]   935 |             double [01;35m[Klane_start_distance[m[K = 1e10;
+[1.628s]       |                    [01;35m[K^~~~~~~~~~~~~~~~~~~[m[K
+[5.545s] [100%] [32m[1mLinking CXX executable control_cav_mission_2[0m
+[5.771s] [100%] Built target control_cav_mission_2
+[5.783s] Invoked command in '/root/TEAM_AIM/build/mission_2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_2 -- -j16 -l16
+[5.813s] Invoking command in '/root/TEAM_AIM/build/mission_2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/mission_2
+[5.823s] -- Install configuration: ""
+[5.823s] -- Installing: /root/TEAM_AIM/install/mission_2/lib/mission_2/control_cav_mission_2
+[5.826s] -- Set runtime path of "/root/TEAM_AIM/install/mission_2/lib/mission_2/control_cav_mission_2" to ""
+[5.827s] -- Up-to-date: /root/TEAM_AIM/install/mission_2/share/ament_index/resource_index/package_run_dependencies/mission_2
+[5.827s] -- Installing: /root/TEAM_AIM/install/mission_2/share/ament_index/resource_index/parent_prefix_path/mission_2
+[5.828s] -- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/environment/ament_prefix_path.sh
+[5.828s] -- Installing: /root/TEAM_AIM/install/mission_2/share/mission_2/environment/ament_prefix_path.dsv
+[5.828s] -- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/environment/path.sh
+[5.828s] -- Installing: /root/TEAM_AIM/install/mission_2/share/mission_2/environment/path.dsv
+[5.828s] -- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/local_setup.bash
+[5.828s] -- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/local_setup.sh
+[5.828s] -- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/local_setup.zsh
+[5.829s] -- Installing: /root/TEAM_AIM/install/mission_2/share/mission_2/local_setup.dsv
+[5.829s] -- Installing: /root/TEAM_AIM/install/mission_2/share/mission_2/package.dsv
+[5.829s] -- Up-to-date: /root/TEAM_AIM/install/mission_2/share/ament_index/resource_index/packages/mission_2
+[5.829s] -- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/cmake/mission_2Config.cmake
+[5.829s] -- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/cmake/mission_2Config-version.cmake
+[5.829s] -- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/package.xml
+[5.833s] Invoked command in '/root/TEAM_AIM/build/mission_2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/mission_2

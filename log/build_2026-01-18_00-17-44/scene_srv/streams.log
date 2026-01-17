@@ -1,0 +1,156 @@
+[0.055s] Invoking command in '/root/TEAM_AIM/build/scene_srv': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/scene_srv -- -j16 -l16
+[0.156s] [  7%] Built target scene_srv__cpp
+[0.156s] [ 12%] Built target scene_srv__rosidl_generator_c
+[0.198s] [ 53%] Built target scene_srv__rosidl_typesupport_introspection_cpp
+[0.198s] [ 53%] Built target scene_srv__rosidl_typesupport_introspection_c
+[0.199s] [ 53%] Built target scene_srv__rosidl_typesupport_c
+[0.199s] [ 53%] Built target scene_srv__rosidl_typesupport_cpp
+[0.200s] [ 64%] Built target scene_srv__rosidl_typesupport_fastrtps_cpp
+[0.253s] [ 74%] Built target scene_srv__rosidl_typesupport_fastrtps_c
+[0.285s] [ 74%] Built target scene_srv
+[0.330s] [ 76%] Built target scene_srv__py
+[0.384s] [ 84%] Built target scene_srv__python
+[0.427s] [ 94%] Built target scene_srv__rosidl_typesupport_introspection_c__pyext
+[0.428s] [ 94%] Built target scene_srv__rosidl_typesupport_c__pyext
+[0.428s] [100%] Built target scene_srv__rosidl_typesupport_fastrtps_c__pyext
+[0.452s] Invoked command in '/root/TEAM_AIM/build/scene_srv' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/scene_srv -- -j16 -l16
+[0.569s] Invoking command in '/root/TEAM_AIM/build/scene_srv': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/scene_srv
+[0.585s] -- Install configuration: ""
+[0.585s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/ament_index/resource_index/rosidl_interfaces/scene_srv
+[0.585s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv
+[0.585s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv
+[0.585s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/start_signal.h
+[0.585s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/scene_signal.h
+[0.586s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail
+[0.586s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/scene_signal__type_support.h
+[0.586s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/scene_signal__struct.h
+[0.586s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/scene_signal__functions.c
+[0.586s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/start_signal__functions.h
+[0.586s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/start_signal__struct.h
+[0.586s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/start_signal__functions.c
+[0.587s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/start_signal__type_support.h
+[0.587s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/scene_signal__functions.h
+[0.587s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/msg
+[0.587s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/msg/rosidl_generator_c__visibility_control.h
+[0.587s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/environment/library_path.sh
+[0.588s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/environment/library_path.dsv
+[0.588s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/libscene_srv__rosidl_generator_c.so
+[0.589s] -- Set runtime path of "/root/TEAM_AIM/install/scene_srv/lib/libscene_srv__rosidl_generator_c.so" to ""
+[0.589s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv
+[0.589s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv
+[0.589s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail
+[0.589s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/scene_signal__rosidl_typesupport_fastrtps_c.h
+[0.589s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/start_signal__rosidl_typesupport_fastrtps_c.h
+[0.589s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv/msg
+[0.589s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[0.589s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/libscene_srv__rosidl_typesupport_fastrtps_c.so
+[0.590s] -- Set runtime path of "/root/TEAM_AIM/install/scene_srv/lib/libscene_srv__rosidl_typesupport_fastrtps_c.so" to ""
+[0.590s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv
+[0.590s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv
+[0.590s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail
+[0.590s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/start_signal__rosidl_typesupport_fastrtps_cpp.hpp
+[0.591s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/dds_fastrtps
+[0.591s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/scene_signal__rosidl_typesupport_fastrtps_cpp.hpp
+[0.591s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv/msg
+[0.591s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[0.591s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/libscene_srv__rosidl_typesupport_fastrtps_cpp.so
+[0.592s] -- Set runtime path of "/root/TEAM_AIM/install/scene_srv/lib/libscene_srv__rosidl_typesupport_fastrtps_cpp.so" to ""
+[0.592s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv
+[0.592s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv
+[0.592s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail
+[0.592s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/scene_signal__rosidl_typesupport_introspection_c.h
+[0.592s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/start_signal__rosidl_typesupport_introspection_c.h
+[0.592s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/start_signal__type_support.c
+[0.593s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/scene_signal__type_support.c
+[0.593s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv/msg
+[0.593s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[0.593s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/libscene_srv__rosidl_typesupport_introspection_c.so
+[0.593s] -- Set runtime path of "/root/TEAM_AIM/install/scene_srv/lib/libscene_srv__rosidl_typesupport_introspection_c.so" to ""
+[0.594s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/libscene_srv__rosidl_typesupport_c.so
+[0.594s] -- Set runtime path of "/root/TEAM_AIM/install/scene_srv/lib/libscene_srv__rosidl_typesupport_c.so" to ""
+[0.594s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv
+[0.594s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv
+[0.594s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/scene_signal.hpp
+[0.594s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail
+[0.595s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/scene_signal__builder.hpp
+[0.595s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/start_signal__builder.hpp
+[0.595s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/start_signal__struct.hpp
+[0.595s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/start_signal__traits.hpp
+[0.595s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/start_signal__type_support.hpp
+[0.595s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/scene_signal__traits.hpp
+[0.595s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/scene_signal__type_support.hpp
+[0.595s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/scene_signal__struct.hpp
+[0.596s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/start_signal.hpp
+[0.596s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv/msg
+[0.596s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/msg/rosidl_generator_cpp__visibility_control.hpp
+[0.596s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv
+[0.596s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv
+[0.596s] -- Up-to-date: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail
+[0.596s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/start_signal__type_support.cpp
+[0.596s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/start_signal__rosidl_typesupport_introspection_cpp.hpp
+[0.596s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/scene_signal__type_support.cpp
+[0.597s] -- Installing: /root/TEAM_AIM/install/scene_srv/include/scene_srv/srv/detail/scene_signal__rosidl_typesupport_introspection_cpp.hpp
+[0.597s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/libscene_srv__rosidl_typesupport_introspection_cpp.so
+[0.597s] -- Set runtime path of "/root/TEAM_AIM/install/scene_srv/lib/libscene_srv__rosidl_typesupport_introspection_cpp.so" to ""
+[0.597s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/libscene_srv__rosidl_typesupport_cpp.so
+[0.598s] -- Set runtime path of "/root/TEAM_AIM/install/scene_srv/lib/libscene_srv__rosidl_typesupport_cpp.so" to ""
+[0.598s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/environment/pythonpath.sh
+[0.598s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/environment/pythonpath.dsv
+[0.599s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages/scene_srv/__init__.py
+[0.636s] Compiling '/root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages/scene_srv/__init__.py'...
+[0.646s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages/scene_srv/srv
+[0.646s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages/scene_srv/srv/_scene_signal.py
+[0.646s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages/scene_srv/srv/__init__.py
+[0.646s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages/scene_srv/srv/_scene_signal_s.c
+[0.646s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages/scene_srv/srv/_start_signal.py
+[0.646s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages/scene_srv/srv/_start_signal_s.c
+[0.647s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages/scene_srv/scene_srv_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so
+[0.647s] -- Set runtime path of "/root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages/scene_srv/scene_srv_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so" to ""
+[0.648s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages/scene_srv/scene_srv_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so
+[0.648s] -- Set runtime path of "/root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages/scene_srv/scene_srv_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so" to ""
+[0.648s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages/scene_srv/scene_srv_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so
+[0.649s] -- Set runtime path of "/root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages/scene_srv/scene_srv_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so" to ""
+[0.649s] -- Installing: /root/TEAM_AIM/install/scene_srv/lib/libscene_srv__python.so
+[0.650s] -- Set runtime path of "/root/TEAM_AIM/install/scene_srv/lib/libscene_srv__python.so" to ""
+[0.650s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/srv/SceneSignal.idl
+[0.650s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/srv/StartSignal.idl
+[0.650s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/srv/SceneSignal.srv
+[0.651s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/srv/SceneSignal_Request.msg
+[0.651s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/srv/SceneSignal_Response.msg
+[0.651s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/srv/StartSignal.srv
+[0.651s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/srv/StartSignal_Request.msg
+[0.651s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/srv/StartSignal_Response.msg
+[0.652s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/ament_index/resource_index/package_run_dependencies/scene_srv
+[0.652s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/ament_index/resource_index/parent_prefix_path/scene_srv
+[0.652s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/environment/ament_prefix_path.sh
+[0.652s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/environment/ament_prefix_path.dsv
+[0.653s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/environment/path.sh
+[0.653s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/environment/path.dsv
+[0.653s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/local_setup.bash
+[0.653s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/local_setup.sh
+[0.653s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/local_setup.zsh
+[0.654s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/local_setup.dsv
+[0.654s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/package.dsv
+[0.654s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/ament_index/resource_index/packages/scene_srv
+[0.655s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/scene_srv__rosidl_generator_cExport.cmake
+[0.655s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/scene_srv__rosidl_generator_cExport-noconfig.cmake
+[0.655s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/scene_srv__rosidl_typesupport_introspection_cExport.cmake
+[0.655s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/scene_srv__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[0.656s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/scene_srv__rosidl_typesupport_cExport.cmake
+[0.656s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/scene_srv__rosidl_typesupport_cExport-noconfig.cmake
+[0.656s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/scene_srv__rosidl_generator_cppExport.cmake
+[0.656s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/scene_srv__rosidl_typesupport_introspection_cppExport.cmake
+[0.657s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/scene_srv__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[0.657s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/scene_srv__rosidl_typesupport_cppExport.cmake
+[0.657s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/scene_srv__rosidl_typesupport_cppExport-noconfig.cmake
+[0.657s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/rosidl_cmake-extras.cmake
+[0.657s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/ament_cmake_export_dependencies-extras.cmake
+[0.658s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/ament_cmake_export_libraries-extras.cmake
+[0.658s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/ament_cmake_export_targets-extras.cmake
+[0.658s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/ament_cmake_export_include_directories-extras.cmake
+[0.658s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[0.659s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[0.659s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/scene_srvConfig.cmake
+[0.659s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake/scene_srvConfig-version.cmake
+[0.659s] -- Installing: /root/TEAM_AIM/install/scene_srv/share/scene_srv/package.xml
+[0.668s] Invoked command in '/root/TEAM_AIM/build/scene_srv' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/scene_srv

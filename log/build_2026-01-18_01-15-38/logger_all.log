@@ -1,0 +1,842 @@
+[0.196s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--cmake-args', '-DBUILD_TESTING=OFF']
+[0.196s] DEBUG:colcon:Parsed command line arguments: Namespace(ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=['-DBUILD_TESTING=OFF'], cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x79eabdf930a0>>, merge_install=False, metas=['./colcon.meta'], mixin=None, mixin_files=None, mixin_verb=('build',), packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=16, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x79eabdf930a0>, verb_name='build', verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x79eabdf93760>)
+[0.217s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.217s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/Gazebo.meta'
+[0.218s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/fastdds.meta'
+[0.218s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/fastrtps.meta'
+[0.218s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.218s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.218s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.218s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.218s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.218s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/root/TEAM_AIM'
+[0.218s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.230s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.230s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator) by extensions ['ignore', 'ignore_ament_install']
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator) by extension 'ignore'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator) by extension 'ignore_ament_install'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator) by extensions ['colcon_pkg']
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator) by extension 'colcon_pkg'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator) by extensions ['colcon_meta']
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator) by extension 'colcon_meta'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator) by extensions ['ros']
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator) by extension 'ros'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator) by extensions ['cmake', 'python']
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator) by extension 'cmake'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator) by extension 'python'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator) by extensions ['python_setup_py']
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator) by extension 'python_setup_py'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/build) by extensions ['ignore', 'ignore_ament_install']
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/build) by extension 'ignore'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/build) ignored
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/images) by extensions ['ignore', 'ignore_ament_install']
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/images) by extension 'ignore'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/images) by extension 'ignore_ament_install'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/images) by extensions ['colcon_pkg']
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/images) by extension 'colcon_pkg'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/images) by extensions ['colcon_meta']
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/images) by extension 'colcon_meta'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/images) by extensions ['ros']
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/images) by extension 'ros'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/images) by extensions ['cmake', 'python']
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/images) by extension 'cmake'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/images) by extension 'python'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/images) by extensions ['python_setup_py']
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/images) by extension 'python_setup_py'
+[0.240s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/install) by extensions ['ignore', 'ignore_ament_install']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/install) by extension 'ignore'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/install) ignored
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/log) by extensions ['ignore', 'ignore_ament_install']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/log) by extension 'ignore'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/log) ignored
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src) by extensions ['ignore', 'ignore_ament_install']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src) by extension 'ignore'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src) by extension 'ignore_ament_install'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src) by extensions ['colcon_pkg']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src) by extension 'colcon_pkg'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src) by extensions ['colcon_meta']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src) by extension 'colcon_meta'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src) by extensions ['ros']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src) by extension 'ros'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src) by extensions ['cmake', 'python']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src) by extension 'cmake'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src) by extension 'python'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src) by extensions ['python_setup_py']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src) by extension 'python_setup_py'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/communication_manager) by extensions ['ignore', 'ignore_ament_install']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/communication_manager) by extension 'ignore'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/communication_manager) by extension 'ignore_ament_install'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/communication_manager) by extensions ['colcon_pkg']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/communication_manager) by extension 'colcon_pkg'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/communication_manager) by extensions ['colcon_meta']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/communication_manager) by extension 'colcon_meta'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/communication_manager) by extensions ['ros']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/communication_manager) by extension 'ros'
+[0.243s] DEBUG:colcon.colcon_core.package_identification:Package 'Mobility_Challenge_Simulator/src/communication_manager' with type 'ros.ament_cmake' and name 'communication_manager'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/domain_bridge) by extensions ['ignore', 'ignore_ament_install']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/domain_bridge) by extension 'ignore'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/domain_bridge) by extension 'ignore_ament_install'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/domain_bridge) by extensions ['colcon_pkg']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/domain_bridge) by extension 'colcon_pkg'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/domain_bridge) by extensions ['colcon_meta']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/domain_bridge) by extension 'colcon_meta'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/domain_bridge) by extensions ['ros']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/domain_bridge) by extension 'ros'
+[0.244s] DEBUG:colcon.colcon_core.package_identification:Package 'Mobility_Challenge_Simulator/src/domain_bridge' with type 'ros.ament_cmake' and name 'domain_bridge'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/hv_handler) by extensions ['ignore', 'ignore_ament_install']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/hv_handler) by extension 'ignore'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/hv_handler) by extension 'ignore_ament_install'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/hv_handler) by extensions ['colcon_pkg']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/hv_handler) by extension 'colcon_pkg'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/hv_handler) by extensions ['colcon_meta']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/hv_handler) by extension 'colcon_meta'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/hv_handler) by extensions ['ros']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/hv_handler) by extension 'ros'
+[0.245s] DEBUG:colcon.colcon_core.package_identification:Package 'Mobility_Challenge_Simulator/src/hv_handler' with type 'ros.ament_cmake' and name 'hv_handler'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/scene_srv) by extensions ['ignore', 'ignore_ament_install']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/scene_srv) by extension 'ignore'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/scene_srv) by extension 'ignore_ament_install'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/scene_srv) by extensions ['colcon_pkg']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/scene_srv) by extension 'colcon_pkg'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/scene_srv) by extensions ['colcon_meta']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/scene_srv) by extension 'colcon_meta'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/scene_srv) by extensions ['ros']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/scene_srv) by extension 'ros'
+[0.246s] DEBUG:colcon.colcon_core.package_identification:Package 'Mobility_Challenge_Simulator/src/scene_srv' with type 'ros.ament_cmake' and name 'scene_srv'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator) by extensions ['ignore', 'ignore_ament_install']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator) by extension 'ignore'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator) by extension 'ignore_ament_install'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator) by extensions ['colcon_pkg']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator) by extension 'colcon_pkg'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator) by extensions ['colcon_meta']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator) by extension 'colcon_meta'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator) by extensions ['ros']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator) by extension 'ros'
+[0.247s] DEBUG:colcon.colcon_core.package_identification:Package 'Mobility_Challenge_Simulator/src/simulator' with type 'ros.ament_cmake' and name 'simulator'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator_launch) by extensions ['ignore', 'ignore_ament_install']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator_launch) by extension 'ignore'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator_launch) by extension 'ignore_ament_install'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator_launch) by extensions ['colcon_pkg']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator_launch) by extension 'colcon_pkg'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator_launch) by extensions ['colcon_meta']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator_launch) by extension 'colcon_meta'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator_launch) by extensions ['ros']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/src/simulator_launch) by extension 'ros'
+[0.247s] DEBUG:colcon.colcon_core.package_identification:Package 'Mobility_Challenge_Simulator/src/simulator_launch' with type 'ros.ament_cmake' and name 'simulator_launch'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool) by extensions ['ignore', 'ignore_ament_install']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool) by extension 'ignore'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool) by extension 'ignore_ament_install'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool) by extensions ['colcon_pkg']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool) by extension 'colcon_pkg'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool) by extensions ['colcon_meta']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool) by extension 'colcon_meta'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool) by extensions ['ros']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool) by extension 'ros'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool) by extensions ['cmake', 'python']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool) by extension 'cmake'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool) by extension 'python'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool) by extensions ['python_setup_py']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool) by extension 'python_setup_py'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool/waypoint) by extensions ['ignore', 'ignore_ament_install']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool/waypoint) by extension 'ignore'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool/waypoint) by extension 'ignore_ament_install'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool/waypoint) by extensions ['colcon_pkg']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool/waypoint) by extension 'colcon_pkg'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool/waypoint) by extensions ['colcon_meta']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool/waypoint) by extension 'colcon_meta'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool/waypoint) by extensions ['ros']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool/waypoint) by extension 'ros'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool/waypoint) by extensions ['cmake', 'python']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool/waypoint) by extension 'cmake'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool/waypoint) by extension 'python'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool/waypoint) by extensions ['python_setup_py']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(Mobility_Challenge_Simulator/tool/waypoint) by extension 'python_setup_py'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(control) by extensions ['ignore', 'ignore_ament_install']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(control) by extension 'ignore'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(control) by extension 'ignore_ament_install'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(control) by extensions ['colcon_pkg']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(control) by extension 'colcon_pkg'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(control) by extensions ['colcon_meta']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(control) by extension 'colcon_meta'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(control) by extensions ['ros']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(control) by extension 'ros'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(control) by extensions ['cmake', 'python']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(control) by extension 'cmake'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(control) by extension 'python'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(control) by extensions ['python_setup_py']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(control) by extension 'python_setup_py'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(decision) by extensions ['ignore', 'ignore_ament_install']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(decision) by extension 'ignore'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(decision) by extension 'ignore_ament_install'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(decision) by extensions ['colcon_pkg']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(decision) by extension 'colcon_pkg'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(decision) by extensions ['colcon_meta']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(decision) by extension 'colcon_meta'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(decision) by extensions ['ros']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(decision) by extension 'ros'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(decision) by extensions ['cmake', 'python']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(decision) by extension 'cmake'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(decision) by extension 'python'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(decision) by extensions ['python_setup_py']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(decision) by extension 'python_setup_py'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(docker_kaist_aim) by extensions ['ignore', 'ignore_ament_install']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(docker_kaist_aim) by extension 'ignore'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(docker_kaist_aim) by extension 'ignore_ament_install'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(docker_kaist_aim) by extensions ['colcon_pkg']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(docker_kaist_aim) by extension 'colcon_pkg'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(docker_kaist_aim) by extensions ['colcon_meta']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(docker_kaist_aim) by extension 'colcon_meta'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(docker_kaist_aim) by extensions ['ros']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(docker_kaist_aim) by extension 'ros'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(docker_kaist_aim) by extensions ['cmake', 'python']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(docker_kaist_aim) by extension 'cmake'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(docker_kaist_aim) by extension 'python'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(docker_kaist_aim) by extensions ['python_setup_py']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(docker_kaist_aim) by extension 'python_setup_py'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(localization) by extensions ['ignore', 'ignore_ament_install']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(localization) by extension 'ignore'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(localization) by extension 'ignore_ament_install'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(localization) by extensions ['colcon_pkg']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(localization) by extension 'colcon_pkg'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(localization) by extensions ['colcon_meta']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(localization) by extension 'colcon_meta'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(localization) by extensions ['ros']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(localization) by extension 'ros'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(localization) by extensions ['cmake', 'python']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(localization) by extension 'cmake'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(localization) by extension 'python'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(localization) by extensions ['python_setup_py']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(localization) by extension 'python_setup_py'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_1) by extensions ['ignore', 'ignore_ament_install']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_1) by extension 'ignore'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_1) by extension 'ignore_ament_install'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_1) by extensions ['colcon_pkg']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_1) by extension 'colcon_pkg'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_1) by extensions ['colcon_meta']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_1) by extension 'colcon_meta'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_1) by extensions ['ros']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_1) by extension 'ros'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_1) by extensions ['cmake', 'python']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_1) by extension 'cmake'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_1) by extension 'python'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_1) by extensions ['python_setup_py']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_1) by extension 'python_setup_py'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_2) by extensions ['ignore', 'ignore_ament_install']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_2) by extension 'ignore'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_2) by extension 'ignore_ament_install'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_2) by extensions ['colcon_pkg']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_2) by extension 'colcon_pkg'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_2) by extensions ['colcon_meta']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_2) by extension 'colcon_meta'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_2) by extensions ['ros']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_2) by extension 'ros'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_2) by extensions ['cmake', 'python']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_2) by extension 'cmake'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_2) by extension 'python'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_2) by extensions ['python_setup_py']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(mission_1_2) by extension 'python_setup_py'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(perception) by extensions ['ignore', 'ignore_ament_install']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(perception) by extension 'ignore'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(perception) by extension 'ignore_ament_install'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(perception) by extensions ['colcon_pkg']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(perception) by extension 'colcon_pkg'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(perception) by extensions ['colcon_meta']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(perception) by extension 'colcon_meta'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(perception) by extensions ['ros']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(perception) by extension 'ros'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(perception) by extensions ['cmake', 'python']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(perception) by extension 'cmake'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(perception) by extension 'python'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(perception) by extensions ['python_setup_py']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(perception) by extension 'python_setup_py'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/global_path) by extensions ['ignore', 'ignore_ament_install']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/global_path) by extension 'ignore'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/global_path) by extension 'ignore_ament_install'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/global_path) by extensions ['colcon_pkg']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/global_path) by extension 'colcon_pkg'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/global_path) by extensions ['colcon_meta']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/global_path) by extension 'colcon_meta'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/global_path) by extensions ['ros']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/global_path) by extension 'ros'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/global_path) by extensions ['cmake', 'python']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/global_path) by extension 'cmake'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/global_path) by extension 'python'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/global_path) by extensions ['python_setup_py']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/global_path) by extension 'python_setup_py'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_2) by extensions ['ignore', 'ignore_ament_install']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_2) by extension 'ignore'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_2) by extension 'ignore_ament_install'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_2) by extensions ['colcon_pkg']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_2) by extension 'colcon_pkg'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_2) by extensions ['colcon_meta']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_2) by extension 'colcon_meta'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_2) by extensions ['ros']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_2) by extension 'ros'
+[0.252s] DEBUG:colcon.colcon_core.package_identification:Package 'src/mission_2' with type 'ros.ament_cmake' and name 'mission_2'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_3) by extensions ['ignore', 'ignore_ament_install']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_3) by extension 'ignore'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_3) by extension 'ignore_ament_install'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_3) by extensions ['colcon_pkg']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_3) by extension 'colcon_pkg'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_3) by extensions ['colcon_meta']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_3) by extension 'colcon_meta'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_3) by extensions ['ros']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_3) by extension 'ros'
+[0.253s] DEBUG:colcon.colcon_core.package_identification:Package 'src/mission_3' with type 'ros.ament_cmake' and name 'mission_3'
+[0.253s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.253s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.253s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.253s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.253s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.267s] Level 5:colcon.colcon_core.verb:set package 'domain_bridge' build argument 'cmake_args' from command line to '['-DBUILD_TESTING=OFF']'
+[0.267s] Level 5:colcon.colcon_core.verb:set package 'domain_bridge' build argument 'cmake_target' from command line to 'None'
+[0.267s] Level 5:colcon.colcon_core.verb:set package 'domain_bridge' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.267s] Level 5:colcon.colcon_core.verb:set package 'domain_bridge' build argument 'cmake_clean_cache' from command line to 'False'
+[0.267s] Level 5:colcon.colcon_core.verb:set package 'domain_bridge' build argument 'cmake_clean_first' from command line to 'False'
+[0.267s] Level 5:colcon.colcon_core.verb:set package 'domain_bridge' build argument 'cmake_force_configure' from command line to 'False'
+[0.267s] Level 5:colcon.colcon_core.verb:set package 'domain_bridge' build argument 'ament_cmake_args' from command line to 'None'
+[0.267s] Level 5:colcon.colcon_core.verb:set package 'domain_bridge' build argument 'catkin_cmake_args' from command line to 'None'
+[0.267s] Level 5:colcon.colcon_core.verb:set package 'domain_bridge' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.267s] DEBUG:colcon.colcon_core.verb:Building package 'domain_bridge' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/TEAM_AIM/build/domain_bridge', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': ['-DBUILD_TESTING=OFF'], 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/TEAM_AIM/install/domain_bridge', 'merge_install': False, 'path': '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/domain_bridge', 'symlink_install': False, 'test_result_base': None}
+[0.268s] Level 5:colcon.colcon_core.verb:set package 'mission_2' build argument 'cmake_args' from command line to '['-DBUILD_TESTING=OFF']'
+[0.268s] Level 5:colcon.colcon_core.verb:set package 'mission_2' build argument 'cmake_target' from command line to 'None'
+[0.268s] Level 5:colcon.colcon_core.verb:set package 'mission_2' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.268s] Level 5:colcon.colcon_core.verb:set package 'mission_2' build argument 'cmake_clean_cache' from command line to 'False'
+[0.268s] Level 5:colcon.colcon_core.verb:set package 'mission_2' build argument 'cmake_clean_first' from command line to 'False'
+[0.268s] Level 5:colcon.colcon_core.verb:set package 'mission_2' build argument 'cmake_force_configure' from command line to 'False'
+[0.268s] Level 5:colcon.colcon_core.verb:set package 'mission_2' build argument 'ament_cmake_args' from command line to 'None'
+[0.268s] Level 5:colcon.colcon_core.verb:set package 'mission_2' build argument 'catkin_cmake_args' from command line to 'None'
+[0.268s] Level 5:colcon.colcon_core.verb:set package 'mission_2' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.268s] DEBUG:colcon.colcon_core.verb:Building package 'mission_2' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/TEAM_AIM/build/mission_2', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': ['-DBUILD_TESTING=OFF'], 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/TEAM_AIM/install/mission_2', 'merge_install': False, 'path': '/root/TEAM_AIM/src/mission_2', 'symlink_install': False, 'test_result_base': None}
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'mission_3' build argument 'cmake_args' from command line to '['-DBUILD_TESTING=OFF']'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'mission_3' build argument 'cmake_target' from command line to 'None'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'mission_3' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'mission_3' build argument 'cmake_clean_cache' from command line to 'False'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'mission_3' build argument 'cmake_clean_first' from command line to 'False'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'mission_3' build argument 'cmake_force_configure' from command line to 'False'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'mission_3' build argument 'ament_cmake_args' from command line to 'None'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'mission_3' build argument 'catkin_cmake_args' from command line to 'None'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'mission_3' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.269s] DEBUG:colcon.colcon_core.verb:Building package 'mission_3' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/TEAM_AIM/build/mission_3', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': ['-DBUILD_TESTING=OFF'], 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/TEAM_AIM/install/mission_3', 'merge_install': False, 'path': '/root/TEAM_AIM/src/mission_3', 'symlink_install': False, 'test_result_base': None}
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'scene_srv' build argument 'cmake_args' from command line to '['-DBUILD_TESTING=OFF']'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'scene_srv' build argument 'cmake_target' from command line to 'None'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'scene_srv' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'scene_srv' build argument 'cmake_clean_cache' from command line to 'False'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'scene_srv' build argument 'cmake_clean_first' from command line to 'False'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'scene_srv' build argument 'cmake_force_configure' from command line to 'False'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'scene_srv' build argument 'ament_cmake_args' from command line to 'None'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'scene_srv' build argument 'catkin_cmake_args' from command line to 'None'
+[0.269s] Level 5:colcon.colcon_core.verb:set package 'scene_srv' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.270s] DEBUG:colcon.colcon_core.verb:Building package 'scene_srv' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/TEAM_AIM/build/scene_srv', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': ['-DBUILD_TESTING=OFF'], 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/TEAM_AIM/install/scene_srv', 'merge_install': False, 'path': '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/scene_srv', 'symlink_install': False, 'test_result_base': None}
+[0.270s] Level 5:colcon.colcon_core.verb:set package 'simulator_launch' build argument 'cmake_args' from command line to '['-DBUILD_TESTING=OFF']'
+[0.270s] Level 5:colcon.colcon_core.verb:set package 'simulator_launch' build argument 'cmake_target' from command line to 'None'
+[0.270s] Level 5:colcon.colcon_core.verb:set package 'simulator_launch' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.270s] Level 5:colcon.colcon_core.verb:set package 'simulator_launch' build argument 'cmake_clean_cache' from command line to 'False'
+[0.270s] Level 5:colcon.colcon_core.verb:set package 'simulator_launch' build argument 'cmake_clean_first' from command line to 'False'
+[0.270s] Level 5:colcon.colcon_core.verb:set package 'simulator_launch' build argument 'cmake_force_configure' from command line to 'False'
+[0.270s] Level 5:colcon.colcon_core.verb:set package 'simulator_launch' build argument 'ament_cmake_args' from command line to 'None'
+[0.270s] Level 5:colcon.colcon_core.verb:set package 'simulator_launch' build argument 'catkin_cmake_args' from command line to 'None'
+[0.270s] Level 5:colcon.colcon_core.verb:set package 'simulator_launch' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.270s] DEBUG:colcon.colcon_core.verb:Building package 'simulator_launch' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/TEAM_AIM/build/simulator_launch', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': ['-DBUILD_TESTING=OFF'], 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/TEAM_AIM/install/simulator_launch', 'merge_install': False, 'path': '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator_launch', 'symlink_install': False, 'test_result_base': None}
+[0.271s] Level 5:colcon.colcon_core.verb:set package 'communication_manager' build argument 'cmake_args' from command line to '['-DBUILD_TESTING=OFF']'
+[0.271s] Level 5:colcon.colcon_core.verb:set package 'communication_manager' build argument 'cmake_target' from command line to 'None'
+[0.271s] Level 5:colcon.colcon_core.verb:set package 'communication_manager' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.271s] Level 5:colcon.colcon_core.verb:set package 'communication_manager' build argument 'cmake_clean_cache' from command line to 'False'
+[0.271s] Level 5:colcon.colcon_core.verb:set package 'communication_manager' build argument 'cmake_clean_first' from command line to 'False'
+[0.271s] Level 5:colcon.colcon_core.verb:set package 'communication_manager' build argument 'cmake_force_configure' from command line to 'False'
+[0.271s] Level 5:colcon.colcon_core.verb:set package 'communication_manager' build argument 'ament_cmake_args' from command line to 'None'
+[0.271s] Level 5:colcon.colcon_core.verb:set package 'communication_manager' build argument 'catkin_cmake_args' from command line to 'None'
+[0.271s] Level 5:colcon.colcon_core.verb:set package 'communication_manager' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.271s] DEBUG:colcon.colcon_core.verb:Building package 'communication_manager' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/TEAM_AIM/build/communication_manager', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': ['-DBUILD_TESTING=OFF'], 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/TEAM_AIM/install/communication_manager', 'merge_install': False, 'path': '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/communication_manager', 'symlink_install': False, 'test_result_base': None}
+[0.272s] Level 5:colcon.colcon_core.verb:set package 'hv_handler' build argument 'cmake_args' from command line to '['-DBUILD_TESTING=OFF']'
+[0.272s] Level 5:colcon.colcon_core.verb:set package 'hv_handler' build argument 'cmake_target' from command line to 'None'
+[0.272s] Level 5:colcon.colcon_core.verb:set package 'hv_handler' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.272s] Level 5:colcon.colcon_core.verb:set package 'hv_handler' build argument 'cmake_clean_cache' from command line to 'False'
+[0.272s] Level 5:colcon.colcon_core.verb:set package 'hv_handler' build argument 'cmake_clean_first' from command line to 'False'
+[0.272s] Level 5:colcon.colcon_core.verb:set package 'hv_handler' build argument 'cmake_force_configure' from command line to 'False'
+[0.272s] Level 5:colcon.colcon_core.verb:set package 'hv_handler' build argument 'ament_cmake_args' from command line to 'None'
+[0.272s] Level 5:colcon.colcon_core.verb:set package 'hv_handler' build argument 'catkin_cmake_args' from command line to 'None'
+[0.272s] Level 5:colcon.colcon_core.verb:set package 'hv_handler' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.272s] DEBUG:colcon.colcon_core.verb:Building package 'hv_handler' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/TEAM_AIM/build/hv_handler', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': ['-DBUILD_TESTING=OFF'], 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/TEAM_AIM/install/hv_handler', 'merge_install': False, 'path': '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/hv_handler', 'symlink_install': False, 'test_result_base': None}
+[0.272s] Level 5:colcon.colcon_core.verb:set package 'simulator' build argument 'cmake_args' from command line to '['-DBUILD_TESTING=OFF']'
+[0.273s] Level 5:colcon.colcon_core.verb:set package 'simulator' build argument 'cmake_target' from command line to 'None'
+[0.273s] Level 5:colcon.colcon_core.verb:set package 'simulator' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.273s] Level 5:colcon.colcon_core.verb:set package 'simulator' build argument 'cmake_clean_cache' from command line to 'False'
+[0.273s] Level 5:colcon.colcon_core.verb:set package 'simulator' build argument 'cmake_clean_first' from command line to 'False'
+[0.273s] Level 5:colcon.colcon_core.verb:set package 'simulator' build argument 'cmake_force_configure' from command line to 'False'
+[0.273s] Level 5:colcon.colcon_core.verb:set package 'simulator' build argument 'ament_cmake_args' from command line to 'None'
+[0.273s] Level 5:colcon.colcon_core.verb:set package 'simulator' build argument 'catkin_cmake_args' from command line to 'None'
+[0.273s] Level 5:colcon.colcon_core.verb:set package 'simulator' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.273s] DEBUG:colcon.colcon_core.verb:Building package 'simulator' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/TEAM_AIM/build/simulator', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': ['-DBUILD_TESTING=OFF'], 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/TEAM_AIM/install/simulator', 'merge_install': False, 'path': '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator', 'symlink_install': False, 'test_result_base': None}
+[0.273s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.276s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.277s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/scene_srv' with build type 'ament_cmake'
+[0.277s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/scene_srv'
+[0.280s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.280s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.280s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/root/TEAM_AIM/install/simulator_launch' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/root/TEAM_AIM/install/simulator' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/root/TEAM_AIM/install/hv_handler' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/root/TEAM_AIM/install/communication_manager' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/root/TEAM_AIM/install/scene_srv' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/root/TEAM_AIM/install/mission_3' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/root/TEAM_AIM/install/mission_2' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/root/TEAM_AIM/install/domain_bridge' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/root/TEAM_AIM/install/simulator_launch' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/root/TEAM_AIM/install/simulator' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/root/TEAM_AIM/install/hv_handler' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/root/TEAM_AIM/install/communication_manager' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/root/TEAM_AIM/install/scene_srv' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/root/TEAM_AIM/install/mission_3' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/root/TEAM_AIM/install/mission_2' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.281s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/root/TEAM_AIM/install/domain_bridge' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.287s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/domain_bridge' with build type 'ament_cmake'
+[0.287s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/domain_bridge'
+[0.289s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.289s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.295s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/TEAM_AIM/src/mission_2' with build type 'ament_cmake'
+[0.295s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/TEAM_AIM/src/mission_2'
+[0.298s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.299s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.308s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/TEAM_AIM/src/mission_3' with build type 'ament_cmake'
+[0.308s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/TEAM_AIM/src/mission_3'
+[0.311s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.311s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.318s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator_launch' with build type 'ament_cmake'
+[0.318s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator_launch'
+[0.320s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.320s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.332s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/scene_srv': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/scene_srv -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/scene_srv
+[0.336s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/domain_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/domain_bridge -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/domain_bridge
+[0.346s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/mission_2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/src/mission_2 -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/mission_2
+[0.350s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/mission_3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/src/mission_3 -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/mission_3
+[0.357s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/simulator_launch': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator_launch -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/simulator_launch
+[1.005s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/simulator_launch' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator_launch -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/simulator_launch
+[1.009s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/simulator_launch': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/simulator_launch -- -j16 -l16
+[1.049s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/simulator_launch' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/simulator_launch -- -j16 -l16
+[1.084s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/simulator_launch': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/simulator_launch
+[1.098s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(simulator_launch)
+[1.098s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/simulator_launch' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/simulator_launch
+[1.103s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator_launch' for CMake module files
+[1.103s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator_launch' for CMake config files
+[1.103s] Level 1:colcon.colcon_core.shell:create_environment_hook('simulator_launch', 'cmake_prefix_path')
+[1.105s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/hook/cmake_prefix_path.ps1'
+[1.106s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/hook/cmake_prefix_path.dsv'
+[1.106s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/hook/cmake_prefix_path.sh'
+[1.107s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator_launch/bin'
+[1.107s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator_launch/lib/pkgconfig/simulator_launch.pc'
+[1.107s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator_launch/lib/python3.8/site-packages'
+[1.107s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator_launch/bin'
+[1.109s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/package.ps1'
+[1.110s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/package.dsv'
+[1.110s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/package.sh'
+[1.111s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/package.bash'
+[1.111s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/package.zsh'
+[1.112s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/simulator_launch/share/colcon-core/packages/simulator_launch)
+[1.142s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(simulator_launch)
+[1.145s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator_launch' for CMake module files
+[1.146s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator_launch' for CMake config files
+[1.146s] Level 1:colcon.colcon_core.shell:create_environment_hook('simulator_launch', 'cmake_prefix_path')
+[1.148s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/hook/cmake_prefix_path.ps1'
+[1.148s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/hook/cmake_prefix_path.dsv'
+[1.149s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/hook/cmake_prefix_path.sh'
+[1.149s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator_launch/bin'
+[1.149s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator_launch/lib/pkgconfig/simulator_launch.pc'
+[1.149s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator_launch/lib/python3.8/site-packages'
+[1.149s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator_launch/bin'
+[1.152s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/package.ps1'
+[1.152s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/package.dsv'
+[1.152s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/package.sh'
+[1.153s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/package.bash'
+[1.153s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator_launch/share/simulator_launch/package.zsh'
+[1.153s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/simulator_launch/share/colcon-core/packages/simulator_launch)
+[1.531s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/scene_srv' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/scene_srv -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/scene_srv
+[1.535s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/scene_srv': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/scene_srv -- -j16 -l16
+[1.716s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/mission_2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/src/mission_2 -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/mission_2
+[1.719s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/mission_2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_2 -- -j16 -l16
+[1.742s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/mission_3' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/src/mission_3 -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/mission_3
+[1.745s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/mission_3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_3 -- -j16 -l16
+[2.080s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/domain_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/domain_bridge -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/domain_bridge
+[2.085s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/domain_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/domain_bridge -- -j16 -l16
+[4.241s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/scene_srv' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/scene_srv -- -j16 -l16
+[4.359s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/scene_srv': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/scene_srv
+[4.473s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(scene_srv)
+[4.474s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/scene_srv' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/scene_srv
+[4.479s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/scene_srv' for CMake module files
+[4.480s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/scene_srv' for CMake config files
+[4.480s] Level 1:colcon.colcon_core.shell:create_environment_hook('scene_srv', 'cmake_prefix_path')
+[4.492s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/cmake_prefix_path.ps1'
+[4.493s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/cmake_prefix_path.dsv'
+[4.494s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/cmake_prefix_path.sh'
+[4.494s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/scene_srv/lib'
+[4.495s] Level 1:colcon.colcon_core.shell:create_environment_hook('scene_srv', 'ld_library_path_lib')
+[4.504s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/ld_library_path_lib.ps1'
+[4.505s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/ld_library_path_lib.dsv'
+[4.505s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/ld_library_path_lib.sh'
+[4.505s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/scene_srv/bin'
+[4.506s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/scene_srv/lib/pkgconfig/scene_srv.pc'
+[4.506s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages'
+[4.506s] Level 1:colcon.colcon_core.shell:create_environment_hook('scene_srv', 'pythonpath')
+[4.516s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/pythonpath.ps1'
+[4.517s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/pythonpath.dsv'
+[4.517s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/pythonpath.sh'
+[4.518s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/scene_srv/bin'
+[4.521s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/scene_srv/share/scene_srv/package.ps1'
+[4.521s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/scene_srv/share/scene_srv/package.dsv'
+[4.522s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/scene_srv/share/scene_srv/package.sh'
+[4.527s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/scene_srv/share/scene_srv/package.bash'
+[4.527s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/scene_srv/share/scene_srv/package.zsh'
+[4.528s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/scene_srv/share/colcon-core/packages/scene_srv)
+[4.686s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(scene_srv)
+[4.690s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/scene_srv' for CMake module files
+[4.690s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/scene_srv' for CMake config files
+[4.691s] Level 1:colcon.colcon_core.shell:create_environment_hook('scene_srv', 'cmake_prefix_path')
+[4.694s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/cmake_prefix_path.ps1'
+[4.695s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/cmake_prefix_path.dsv'
+[4.695s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/cmake_prefix_path.sh'
+[4.696s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/scene_srv/lib'
+[4.696s] Level 1:colcon.colcon_core.shell:create_environment_hook('scene_srv', 'ld_library_path_lib')
+[4.699s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/ld_library_path_lib.ps1'
+[4.699s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/ld_library_path_lib.dsv'
+[4.700s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/ld_library_path_lib.sh'
+[4.700s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/scene_srv/bin'
+[4.700s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/scene_srv/lib/pkgconfig/scene_srv.pc'
+[4.701s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages'
+[4.701s] Level 1:colcon.colcon_core.shell:create_environment_hook('scene_srv', 'pythonpath')
+[4.703s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/pythonpath.ps1'
+[4.704s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/pythonpath.dsv'
+[4.705s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/scene_srv/share/scene_srv/hook/pythonpath.sh'
+[4.707s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/scene_srv/bin'
+[4.713s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/scene_srv/share/scene_srv/package.ps1'
+[4.714s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/scene_srv/share/scene_srv/package.dsv'
+[4.715s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/scene_srv/share/scene_srv/package.sh'
+[4.716s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/scene_srv/share/scene_srv/package.bash'
+[4.716s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/scene_srv/share/scene_srv/package.zsh'
+[4.717s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/scene_srv/share/colcon-core/packages/scene_srv)
+[4.718s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/hv_handler' with build type 'ament_cmake'
+[4.721s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/hv_handler'
+[4.725s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.726s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[4.738s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator' with build type 'ament_cmake'
+[4.738s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator'
+[4.743s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.743s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[4.761s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/hv_handler': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/hv_handler -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/hv_handler
+[4.779s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/simulator': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/simulator
+[6.309s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/simulator' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/simulator
+[6.316s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/simulator': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/simulator -- -j16 -l16
+[6.350s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/hv_handler' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/hv_handler -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/hv_handler
+[6.353s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/hv_handler': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/hv_handler -- -j16 -l16
+[8.525s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/mission_3' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_3 -- -j16 -l16
+[8.554s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/mission_3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/mission_3
+[8.573s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(mission_3)
+[8.575s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_3' for CMake module files
+[8.576s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/mission_3' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/mission_3
+[8.576s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_3' for CMake config files
+[8.576s] Level 1:colcon.colcon_core.shell:create_environment_hook('mission_3', 'cmake_prefix_path')
+[8.577s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/mission_3/share/mission_3/hook/cmake_prefix_path.ps1'
+[8.578s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/mission_3/share/mission_3/hook/cmake_prefix_path.dsv'
+[8.578s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/mission_3/share/mission_3/hook/cmake_prefix_path.sh'
+[8.578s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_3/lib'
+[8.579s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_3/bin'
+[8.579s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_3/lib/pkgconfig/mission_3.pc'
+[8.579s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_3/lib/python3.8/site-packages'
+[8.579s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_3/bin'
+[8.580s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_3/share/mission_3/package.ps1'
+[8.581s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/mission_3/share/mission_3/package.dsv'
+[8.581s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_3/share/mission_3/package.sh'
+[8.582s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_3/share/mission_3/package.bash'
+[8.582s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_3/share/mission_3/package.zsh'
+[8.582s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/mission_3/share/colcon-core/packages/mission_3)
+[8.613s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(mission_3)
+[8.616s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_3' for CMake module files
+[8.617s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_3' for CMake config files
+[8.617s] Level 1:colcon.colcon_core.shell:create_environment_hook('mission_3', 'cmake_prefix_path')
+[8.619s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/mission_3/share/mission_3/hook/cmake_prefix_path.ps1'
+[8.619s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/mission_3/share/mission_3/hook/cmake_prefix_path.dsv'
+[8.620s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/mission_3/share/mission_3/hook/cmake_prefix_path.sh'
+[8.620s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_3/lib'
+[8.620s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_3/bin'
+[8.620s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_3/lib/pkgconfig/mission_3.pc'
+[8.621s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_3/lib/python3.8/site-packages'
+[8.621s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_3/bin'
+[8.623s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_3/share/mission_3/package.ps1'
+[8.624s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/mission_3/share/mission_3/package.dsv'
+[8.624s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_3/share/mission_3/package.sh'
+[8.625s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_3/share/mission_3/package.bash'
+[8.625s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_3/share/mission_3/package.zsh'
+[8.626s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/mission_3/share/colcon-core/packages/mission_3)
+[8.891s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/domain_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/domain_bridge -- -j16 -l16
+[8.975s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/domain_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/domain_bridge
+[9.040s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(domain_bridge)
+[9.043s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/domain_bridge' for CMake module files
+[9.043s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/domain_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/domain_bridge
+[9.044s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/domain_bridge' for CMake config files
+[9.044s] Level 1:colcon.colcon_core.shell:create_environment_hook('domain_bridge', 'cmake_prefix_path')
+[9.046s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/cmake_prefix_path.ps1'
+[9.046s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/cmake_prefix_path.dsv'
+[9.046s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/cmake_prefix_path.sh'
+[9.047s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/domain_bridge/lib'
+[9.047s] Level 1:colcon.colcon_core.shell:create_environment_hook('domain_bridge', 'ld_library_path_lib')
+[9.048s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/ld_library_path_lib.ps1'
+[9.049s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/ld_library_path_lib.dsv'
+[9.049s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/ld_library_path_lib.sh'
+[9.049s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/domain_bridge/bin'
+[9.049s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/domain_bridge/lib/pkgconfig/domain_bridge.pc'
+[9.049s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/domain_bridge/lib/python3.8/site-packages'
+[9.049s] Level 1:colcon.colcon_core.shell:create_environment_hook('domain_bridge', 'pythonpath')
+[9.051s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/pythonpath.ps1'
+[9.051s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/pythonpath.dsv'
+[9.051s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/pythonpath.sh'
+[9.051s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/domain_bridge/bin'
+[9.053s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/package.ps1'
+[9.053s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/package.dsv'
+[9.054s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/package.sh'
+[9.054s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/package.bash'
+[9.054s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/package.zsh'
+[9.054s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/domain_bridge/share/colcon-core/packages/domain_bridge)
+[9.129s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/mission_2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_2 -- -j16 -l16
+[9.138s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(domain_bridge)
+[9.141s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/domain_bridge' for CMake module files
+[9.141s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/domain_bridge' for CMake config files
+[9.142s] Level 1:colcon.colcon_core.shell:create_environment_hook('domain_bridge', 'cmake_prefix_path')
+[9.143s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/cmake_prefix_path.ps1'
+[9.144s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/cmake_prefix_path.dsv'
+[9.144s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/cmake_prefix_path.sh'
+[9.145s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/domain_bridge/lib'
+[9.145s] Level 1:colcon.colcon_core.shell:create_environment_hook('domain_bridge', 'ld_library_path_lib')
+[9.147s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/ld_library_path_lib.ps1'
+[9.148s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/ld_library_path_lib.dsv'
+[9.148s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/ld_library_path_lib.sh'
+[9.149s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/domain_bridge/bin'
+[9.149s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/domain_bridge/lib/pkgconfig/domain_bridge.pc'
+[9.149s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/domain_bridge/lib/python3.8/site-packages'
+[9.149s] Level 1:colcon.colcon_core.shell:create_environment_hook('domain_bridge', 'pythonpath')
+[9.151s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/pythonpath.ps1'
+[9.151s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/pythonpath.dsv'
+[9.152s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/hook/pythonpath.sh'
+[9.152s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/domain_bridge/bin'
+[9.154s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/package.ps1'
+[9.154s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/package.dsv'
+[9.154s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/package.sh'
+[9.155s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/package.bash'
+[9.155s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/domain_bridge/share/domain_bridge/package.zsh'
+[9.156s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/domain_bridge/share/colcon-core/packages/domain_bridge)
+[9.156s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/communication_manager' with build type 'ament_cmake'
+[9.156s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/TEAM_AIM/Mobility_Challenge_Simulator/src/communication_manager'
+[9.158s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[9.158s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[9.171s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/mission_2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/mission_2
+[9.179s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/communication_manager': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/domain_bridge:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/communication_manager -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/communication_manager
+[9.193s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(mission_2)
+[9.196s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_2' for CMake module files
+[9.197s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/mission_2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/mission_2
+[9.197s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_2' for CMake config files
+[9.197s] Level 1:colcon.colcon_core.shell:create_environment_hook('mission_2', 'cmake_prefix_path')
+[9.200s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/mission_2/share/mission_2/hook/cmake_prefix_path.ps1'
+[9.201s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/mission_2/share/mission_2/hook/cmake_prefix_path.dsv'
+[9.201s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/mission_2/share/mission_2/hook/cmake_prefix_path.sh'
+[9.201s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_2/lib'
+[9.201s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_2/bin'
+[9.202s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_2/lib/pkgconfig/mission_2.pc'
+[9.202s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_2/lib/python3.8/site-packages'
+[9.202s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_2/bin'
+[9.204s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_2/share/mission_2/package.ps1'
+[9.205s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/mission_2/share/mission_2/package.dsv'
+[9.205s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_2/share/mission_2/package.sh'
+[9.206s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_2/share/mission_2/package.bash'
+[9.206s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_2/share/mission_2/package.zsh'
+[9.206s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/mission_2/share/colcon-core/packages/mission_2)
+[9.237s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(mission_2)
+[9.240s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_2' for CMake module files
+[9.241s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_2' for CMake config files
+[9.241s] Level 1:colcon.colcon_core.shell:create_environment_hook('mission_2', 'cmake_prefix_path')
+[9.243s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/mission_2/share/mission_2/hook/cmake_prefix_path.ps1'
+[9.244s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/mission_2/share/mission_2/hook/cmake_prefix_path.dsv'
+[9.245s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/mission_2/share/mission_2/hook/cmake_prefix_path.sh'
+[9.245s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_2/lib'
+[9.245s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_2/bin'
+[9.245s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_2/lib/pkgconfig/mission_2.pc'
+[9.246s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_2/lib/python3.8/site-packages'
+[9.246s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/mission_2/bin'
+[9.248s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_2/share/mission_2/package.ps1'
+[9.249s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/mission_2/share/mission_2/package.dsv'
+[9.250s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_2/share/mission_2/package.sh'
+[9.250s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_2/share/mission_2/package.bash'
+[9.250s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/mission_2/share/mission_2/package.zsh'
+[9.250s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/mission_2/share/colcon-core/packages/mission_2)
+[11.787s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/communication_manager' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/domain_bridge:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/communication_manager -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/communication_manager
+[11.791s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/communication_manager': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/domain_bridge:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/communication_manager -- -j16 -l16
+[13.261s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/hv_handler' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/hv_handler -- -j16 -l16
+[13.361s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/hv_handler': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/hv_handler
+[13.434s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(hv_handler)
+[13.443s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/hv_handler' for CMake module files
+[13.447s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/hv_handler' for CMake config files
+[13.443s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/hv_handler' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/hv_handler
+[13.448s] Level 1:colcon.colcon_core.shell:create_environment_hook('hv_handler', 'cmake_prefix_path')
+[13.455s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/hv_handler/share/hv_handler/hook/cmake_prefix_path.ps1'
+[13.460s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/hv_handler/share/hv_handler/hook/cmake_prefix_path.dsv'
+[13.461s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/hv_handler/share/hv_handler/hook/cmake_prefix_path.sh'
+[13.462s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/hv_handler/lib'
+[13.463s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/hv_handler/bin'
+[13.463s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/hv_handler/lib/pkgconfig/hv_handler.pc'
+[13.464s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/hv_handler/lib/python3.8/site-packages'
+[13.467s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/hv_handler/bin'
+[13.469s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/hv_handler/share/hv_handler/package.ps1'
+[13.474s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/hv_handler/share/hv_handler/package.dsv'
+[13.476s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/hv_handler/share/hv_handler/package.sh'
+[13.477s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/hv_handler/share/hv_handler/package.bash'
+[13.482s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/hv_handler/share/hv_handler/package.zsh'
+[13.483s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/hv_handler/share/colcon-core/packages/hv_handler)
+[13.595s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(hv_handler)
+[13.600s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/hv_handler' for CMake module files
+[13.605s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/hv_handler' for CMake config files
+[13.606s] Level 1:colcon.colcon_core.shell:create_environment_hook('hv_handler', 'cmake_prefix_path')
+[13.610s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/hv_handler/share/hv_handler/hook/cmake_prefix_path.ps1'
+[13.611s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/hv_handler/share/hv_handler/hook/cmake_prefix_path.dsv'
+[13.613s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/hv_handler/share/hv_handler/hook/cmake_prefix_path.sh'
+[13.614s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/hv_handler/lib'
+[13.615s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/hv_handler/bin'
+[13.615s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/hv_handler/lib/pkgconfig/hv_handler.pc'
+[13.616s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/hv_handler/lib/python3.8/site-packages'
+[13.616s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/hv_handler/bin'
+[13.619s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/hv_handler/share/hv_handler/package.ps1'
+[13.621s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/hv_handler/share/hv_handler/package.dsv'
+[13.622s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/hv_handler/share/hv_handler/package.sh'
+[13.623s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/hv_handler/share/hv_handler/package.bash'
+[13.624s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/hv_handler/share/hv_handler/package.zsh'
+[13.625s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/hv_handler/share/colcon-core/packages/hv_handler)
+[47.563s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/communication_manager' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/domain_bridge:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/communication_manager -- -j16 -l16
+[47.645s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/communication_manager': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/domain_bridge:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/communication_manager
+[47.687s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(communication_manager)
+[47.694s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/communication_manager' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/domain_bridge:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/communication_manager
+[47.701s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/communication_manager' for CMake module files
+[47.701s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/communication_manager' for CMake config files
+[47.702s] Level 1:colcon.colcon_core.shell:create_environment_hook('communication_manager', 'cmake_prefix_path')
+[47.707s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/communication_manager/share/communication_manager/hook/cmake_prefix_path.ps1'
+[47.714s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/communication_manager/share/communication_manager/hook/cmake_prefix_path.dsv'
+[47.716s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/communication_manager/share/communication_manager/hook/cmake_prefix_path.sh'
+[47.717s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/communication_manager/lib'
+[47.717s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/communication_manager/bin'
+[47.718s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/communication_manager/lib/pkgconfig/communication_manager.pc'
+[47.718s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/communication_manager/lib/python3.8/site-packages'
+[47.719s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/communication_manager/bin'
+[47.724s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/communication_manager/share/communication_manager/package.ps1'
+[47.725s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/communication_manager/share/communication_manager/package.dsv'
+[47.726s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/communication_manager/share/communication_manager/package.sh'
+[47.726s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/communication_manager/share/communication_manager/package.bash'
+[47.729s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/communication_manager/share/communication_manager/package.zsh'
+[47.731s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/communication_manager/share/colcon-core/packages/communication_manager)
+[47.782s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(communication_manager)
+[47.787s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/communication_manager' for CMake module files
+[47.788s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/communication_manager' for CMake config files
+[47.788s] Level 1:colcon.colcon_core.shell:create_environment_hook('communication_manager', 'cmake_prefix_path')
+[47.791s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/communication_manager/share/communication_manager/hook/cmake_prefix_path.ps1'
+[47.793s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/communication_manager/share/communication_manager/hook/cmake_prefix_path.dsv'
+[47.794s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/communication_manager/share/communication_manager/hook/cmake_prefix_path.sh'
+[47.796s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/communication_manager/lib'
+[47.796s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/communication_manager/bin'
+[47.796s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/communication_manager/lib/pkgconfig/communication_manager.pc'
+[47.796s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/communication_manager/lib/python3.8/site-packages'
+[47.796s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/communication_manager/bin'
+[47.799s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/communication_manager/share/communication_manager/package.ps1'
+[47.800s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/communication_manager/share/communication_manager/package.dsv'
+[47.801s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/communication_manager/share/communication_manager/package.sh'
+[47.801s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/communication_manager/share/communication_manager/package.bash'
+[47.802s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/communication_manager/share/communication_manager/package.zsh'
+[47.802s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/communication_manager/share/colcon-core/packages/communication_manager)
+[60.533s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/simulator' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/simulator -- -j16 -l16
+[60.596s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/TEAM_AIM/build/simulator': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/simulator
+[60.657s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(simulator)
+[60.660s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator' for CMake module files
+[60.661s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/TEAM_AIM/build/simulator' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/simulator
+[60.661s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator' for CMake config files
+[60.662s] Level 1:colcon.colcon_core.shell:create_environment_hook('simulator', 'cmake_prefix_path')
+[60.664s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/simulator/share/simulator/hook/cmake_prefix_path.ps1'
+[60.665s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/simulator/share/simulator/hook/cmake_prefix_path.dsv'
+[60.665s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/simulator/share/simulator/hook/cmake_prefix_path.sh'
+[60.666s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator/lib'
+[60.666s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator/bin'
+[60.666s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator/lib/pkgconfig/simulator.pc'
+[60.666s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator/lib/python3.8/site-packages'
+[60.666s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator/bin'
+[60.668s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator/share/simulator/package.ps1'
+[60.669s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/simulator/share/simulator/package.dsv'
+[60.670s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator/share/simulator/package.sh'
+[60.671s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator/share/simulator/package.bash'
+[60.675s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator/share/simulator/package.zsh'
+[60.676s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/simulator/share/colcon-core/packages/simulator)
+[60.739s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(simulator)
+[60.743s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator' for CMake module files
+[60.744s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator' for CMake config files
+[60.744s] Level 1:colcon.colcon_core.shell:create_environment_hook('simulator', 'cmake_prefix_path')
+[60.746s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/simulator/share/simulator/hook/cmake_prefix_path.ps1'
+[60.747s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/TEAM_AIM/install/simulator/share/simulator/hook/cmake_prefix_path.dsv'
+[60.747s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/TEAM_AIM/install/simulator/share/simulator/hook/cmake_prefix_path.sh'
+[60.747s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator/lib'
+[60.748s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator/bin'
+[60.748s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator/lib/pkgconfig/simulator.pc'
+[60.748s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator/lib/python3.8/site-packages'
+[60.748s] Level 1:colcon.colcon_core.environment:checking '/root/TEAM_AIM/install/simulator/bin'
+[60.750s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator/share/simulator/package.ps1'
+[60.750s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/TEAM_AIM/install/simulator/share/simulator/package.dsv'
+[60.751s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator/share/simulator/package.sh'
+[60.751s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator/share/simulator/package.bash'
+[60.752s] INFO:colcon.colcon_core.shell:Creating package script '/root/TEAM_AIM/install/simulator/share/simulator/package.zsh'
+[60.752s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/TEAM_AIM/install/simulator/share/colcon-core/packages/simulator)
+[60.753s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[60.755s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[60.756s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[60.757s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[60.787s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[60.787s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[60.787s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[60.787s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[60.791s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.Spawn.ExecFailed: /usr/bin/dbus-launch terminated abnormally without any error message
+[60.792s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[60.796s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/TEAM_AIM/install/local_setup.ps1'
+[60.799s] INFO:colcon.colcon_core.shell:Creating prefix util module '/root/TEAM_AIM/install/_local_setup_util_ps1.py'
+[60.801s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/TEAM_AIM/install/setup.ps1'
+[60.806s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/TEAM_AIM/install/local_setup.sh'
+[60.806s] INFO:colcon.colcon_core.shell:Creating prefix util module '/root/TEAM_AIM/install/_local_setup_util_sh.py'
+[60.807s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/TEAM_AIM/install/setup.sh'
+[60.809s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/TEAM_AIM/install/local_setup.bash'
+[60.809s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/TEAM_AIM/install/setup.bash'
+[60.811s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/TEAM_AIM/install/local_setup.zsh'
+[60.812s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/TEAM_AIM/install/setup.zsh'

@@ -1,0 +1,270 @@
+[0.048s] Invoking command in '/root/TEAM_AIM/build/domain_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/domain_bridge -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/domain_bridge
+[0.113s] -- The C compiler identification is GNU 9.4.0
+[0.166s] -- The CXX compiler identification is GNU 9.4.0
+[0.175s] -- Check for working C compiler: /usr/bin/cc
+[0.246s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.246s] -- Detecting C compiler ABI info
+[0.316s] -- Detecting C compiler ABI info - done
+[0.323s] -- Detecting C compile features
+[0.323s] -- Detecting C compile features - done
+[0.325s] -- Check for working CXX compiler: /usr/bin/c++
+[0.414s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.414s] -- Detecting CXX compiler ABI info
+[0.490s] -- Detecting CXX compiler ABI info - done
+[0.497s] -- Detecting CXX compile features
+[0.497s] -- Detecting CXX compile features - done
+[0.500s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.522s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.522s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.642s] -- Found rcl: 1.1.14 (/opt/ros/foxy/share/rcl/cmake)
+[0.667s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.672s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.764s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[0.788s] -- Found FastRTPS: /opt/ros/foxy/include  
+[0.867s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.906s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.907s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.909s] -- Looking for pthread.h
+[0.992s] -- Looking for pthread.h - found
+[0.992s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.062s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.062s] -- Looking for pthread_create in pthreads
+[1.120s] -- Looking for pthread_create in pthreads - not found
+[1.122s] -- Looking for pthread_create in pthread
+[1.185s] -- Looking for pthread_create in pthread - found
+[1.185s] -- Found Threads: TRUE  
+[1.201s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[1.290s] -- Found rosbag2_cpp: 0.3.11 (/opt/ros/foxy/share/rosbag2_cpp/cmake)
+[1.326s] -- Setting yaml-cpp_DIR to: '/opt/ros/foxy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/lib/cmake/yaml-cpp'
+[1.330s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[1.338s] -- Found zstd_vendor: 0.3.11 (/opt/ros/foxy/share/zstd_vendor/cmake)
+[1.339s] -- Found zstd: /opt/ros/foxy/lib/libzstd.so  
+[1.356s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[1.443s] -- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)
+[1.563s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.569s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.587s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") 
+[1.589s] -- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)
+[1.619s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") 
+[1.619s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.619s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+[1.619s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so
+[1.639s] -- Found PythonExtra: .so  
+[1.716s] -- Configuring done
+[1.772s] -- Generating done
+[1.776s] -- Build files have been written to: /root/TEAM_AIM/build/domain_bridge
+[1.793s] Invoked command in '/root/TEAM_AIM/build/domain_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/domain_bridge -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/domain_bridge
+[1.797s] Invoking command in '/root/TEAM_AIM/build/domain_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/domain_bridge -- -j16 -l16
+[1.877s] [35m[1mScanning dependencies of target domain_bridge__cpp[0m
+[1.881s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[1.888s] [  4%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[2.118s] [35m[1mScanning dependencies of target domain_bridge__rosidl_generator_c[0m
+[2.135s] [  6%] [32mBuilding C object CMakeFiles/domain_bridge__rosidl_generator_c.dir/rosidl_generator_c/domain_bridge/msg/detail/compressed_msg__functions.c.o[0m
+[2.180s] [  6%] Built target domain_bridge__cpp
+[2.188s] [  9%] [32m[1mLinking C shared library libdomain_bridge__rosidl_generator_c.so[0m
+[2.191s] [ 13%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[2.191s] [ 13%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[2.192s] [ 15%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[2.236s] [ 15%] Built target domain_bridge__rosidl_generator_c
+[2.252s] [ 20%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[2.252s] [ 20%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[2.358s] [35m[1mScanning dependencies of target domain_bridge__rosidl_typesupport_cpp[0m
+[2.362s] [35m[1mScanning dependencies of target domain_bridge__rosidl_typesupport_introspection_cpp[0m
+[2.369s] [ 22%] [32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/domain_bridge/msg/compressed_msg__type_support.cpp.o[0m
+[2.372s] [35m[1mScanning dependencies of target domain_bridge__rosidl_typesupport_fastrtps_cpp[0m
+[2.373s] [ 25%] [32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/domain_bridge/msg/detail/compressed_msg__type_support.cpp.o[0m
+[2.391s] [ 27%] [32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/domain_bridge/msg/detail/dds_fastrtps/compressed_msg__type_support.cpp.o[0m
+[2.414s] [35m[1mScanning dependencies of target domain_bridge__rosidl_typesupport_introspection_c[0m
+[2.434s] [35m[1mScanning dependencies of target domain_bridge__rosidl_typesupport_c[0m
+[2.435s] [ 29%] [32mBuilding C object CMakeFiles/domain_bridge__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/domain_bridge/msg/detail/compressed_msg__type_support.c.o[0m
+[2.451s] [ 31%] [32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_c.dir/rosidl_typesupport_c/domain_bridge/msg/compressed_msg__type_support.cpp.o[0m
+[2.471s] [ 34%] [32m[1mLinking C shared library libdomain_bridge__rosidl_typesupport_introspection_c.so[0m
+[2.479s] [ 36%] [32m[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_c.so[0m
+[2.516s] [ 36%] Built target domain_bridge__rosidl_typesupport_introspection_c
+[2.526s] [ 36%] Built target domain_bridge__rosidl_typesupport_c
+[2.583s] [ 38%] [32m[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_cpp.so[0m
+[2.624s] [ 38%] Built target domain_bridge__rosidl_typesupport_cpp
+[2.629s] [ 40%] [32m[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_introspection_cpp.so[0m
+[2.700s] [ 40%] Built target domain_bridge__rosidl_typesupport_introspection_cpp
+[2.729s] [ 43%] [32m[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_fastrtps_cpp.so[0m
+[2.810s] [ 43%] Built target domain_bridge__rosidl_typesupport_fastrtps_cpp
+[2.821s] [ 45%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[2.955s] [35m[1mScanning dependencies of target domain_bridge__rosidl_typesupport_fastrtps_c[0m
+[2.969s] [ 47%] [32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/domain_bridge/msg/detail/compressed_msg__type_support_c.cpp.o[0m
+[3.197s] [ 50%] [32m[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_fastrtps_c.so[0m
+[3.272s] [ 50%] Built target domain_bridge__rosidl_typesupport_fastrtps_c
+[3.284s] [35m[1mScanning dependencies of target domain_bridge[0m
+[3.297s] [ 50%] Built target domain_bridge
+[3.310s] [35m[1mScanning dependencies of target domain_bridge__py[0m
+[3.310s] [35m[1mScanning dependencies of target domain_bridge_lib[0m
+[3.324s] [ 52%] [34m[1mGenerating Python code for ROS interfaces[0m
+[3.375s] [ 54%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/compress_messages.cpp.o[0m
+[3.376s] [ 59%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/domain_bridge.cpp.o[0m
+[3.377s] [ 61%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/qos_options.cpp.o[0m
+[3.377s] [ 59%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/parse_domain_bridge_yaml_config.cpp.o[0m
+[3.377s] [ 63%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/domain_bridge_options.cpp.o[0m
+[3.379s] [ 65%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/generic_publisher.cpp.o[0m
+[3.380s] [ 68%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/generic_subscription.cpp.o[0m
+[3.385s] [ 70%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/topic_bridge_options.cpp.o[0m
+[3.385s] [ 72%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/service_bridge_options.cpp.o[0m
+[3.385s] [ 75%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/utils.cpp.o[0m
+[3.819s] [ 75%] Built target domain_bridge__py
+[3.856s] [35m[1mScanning dependencies of target domain_bridge__python[0m
+[3.886s] [ 77%] [32mBuilding C object CMakeFiles/domain_bridge__python.dir/rosidl_generator_py/domain_bridge/msg/_compressed_msg_s.c.o[0m
+[3.987s] [ 79%] [32m[1mLinking C shared library rosidl_generator_py/domain_bridge/libdomain_bridge__python.so[0m
+[4.058s] [ 79%] Built target domain_bridge__python
+[4.073s] [35m[1mScanning dependencies of target domain_bridge__rosidl_typesupport_fastrtps_c__pyext[0m
+[4.073s] [35m[1mScanning dependencies of target domain_bridge__rosidl_typesupport_c__pyext[0m
+[4.078s] [35m[1mScanning dependencies of target domain_bridge__rosidl_typesupport_introspection_c__pyext[0m
+[4.108s] [ 81%] [32mBuilding C object CMakeFiles/domain_bridge__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[4.113s] [ 84%] [32mBuilding C object CMakeFiles/domain_bridge__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[4.120s] [ 86%] [32mBuilding C object CMakeFiles/domain_bridge__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_c.c.o[0m
+[4.239s] [ 88%] [32m[1mLinking C shared library rosidl_generator_py/domain_bridge/domain_bridge_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so[0m
+[4.284s] [ 90%] [32m[1mLinking C shared library rosidl_generator_py/domain_bridge/domain_bridge_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so[0m
+[4.285s] [ 93%] [32m[1mLinking CXX shared library rosidl_generator_py/domain_bridge/domain_bridge_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so[0m
+[4.313s] [ 93%] Built target domain_bridge__rosidl_typesupport_c__pyext
+[4.339s] [ 93%] Built target domain_bridge__rosidl_typesupport_introspection_c__pyext
+[4.375s] [ 93%] Built target domain_bridge__rosidl_typesupport_fastrtps_c__pyext
+[6.727s] [ 95%] [32m[1mLinking CXX shared library libdomain_bridge.so[0m
+[6.908s] [ 95%] Built target domain_bridge_lib
+[6.922s] [35m[1mScanning dependencies of target domain_bridge_exec[0m
+[6.965s] [ 97%] [32mBuilding CXX object CMakeFiles/domain_bridge_exec.dir/src/domain_bridge.cpp.o[0m
+[8.421s] [100%] [32m[1mLinking CXX executable domain_bridge[0m
+[8.578s] [100%] Built target domain_bridge_exec
+[8.603s] Invoked command in '/root/TEAM_AIM/build/domain_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/domain_bridge -- -j16 -l16
+[8.687s] Invoking command in '/root/TEAM_AIM/build/domain_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/domain_bridge
+[8.697s] -- Install configuration: ""
+[8.697s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/ament_index/resource_index/rosidl_interfaces/domain_bridge
+[8.698s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge
+[8.698s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg
+[8.698s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/rosidl_generator_c__visibility_control.h
+[8.698s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/compressed_msg.h
+[8.698s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail
+[8.698s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/compressed_msg__type_support.h
+[8.698s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/compressed_msg__functions.c
+[8.698s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/compressed_msg__functions.h
+[8.698s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/compressed_msg__struct.h
+[8.698s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/environment/library_path.sh
+[8.698s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/environment/library_path.dsv
+[8.698s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__rosidl_generator_c.so
+[8.699s] -- Set runtime path of "/root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__rosidl_generator_c.so" to ""
+[8.699s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge
+[8.699s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg
+[8.699s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[8.699s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail
+[8.699s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/compressed_msg__rosidl_typesupport_fastrtps_c.h
+[8.699s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_fastrtps_c.so
+[8.699s] -- Set runtime path of "/root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_fastrtps_c.so" to ""
+[8.699s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge
+[8.700s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg
+[8.700s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[8.700s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail
+[8.700s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/dds_fastrtps
+[8.700s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/compressed_msg__rosidl_typesupport_fastrtps_cpp.hpp
+[8.700s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_fastrtps_cpp.so
+[8.700s] -- Set runtime path of "/root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_fastrtps_cpp.so" to ""
+[8.700s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge
+[8.700s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg
+[8.700s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail
+[8.700s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/compressed_msg__type_support.c
+[8.700s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/compressed_msg__rosidl_typesupport_introspection_c.h
+[8.701s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[8.701s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_introspection_c.so
+[8.701s] -- Set runtime path of "/root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_introspection_c.so" to ""
+[8.701s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_c.so
+[8.701s] -- Set runtime path of "/root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_c.so" to ""
+[8.701s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge
+[8.701s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg
+[8.702s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/compressed_msg.hpp
+[8.702s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/rosidl_generator_cpp__visibility_control.hpp
+[8.702s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail
+[8.702s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/compressed_msg__builder.hpp
+[8.702s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/compressed_msg__struct.hpp
+[8.702s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/compressed_msg__traits.hpp
+[8.702s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/compressed_msg__type_support.hpp
+[8.702s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge
+[8.702s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg
+[8.702s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail
+[8.702s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/compressed_msg__type_support.cpp
+[8.702s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/msg/detail/compressed_msg__rosidl_typesupport_introspection_cpp.hpp
+[8.702s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_introspection_cpp.so
+[8.703s] -- Set runtime path of "/root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_introspection_cpp.so" to ""
+[8.703s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_cpp.so
+[8.703s] -- Set runtime path of "/root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_cpp.so" to ""
+[8.703s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/environment/pythonpath.sh
+[8.703s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/environment/pythonpath.dsv
+[8.703s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/python3.8/site-packages/domain_bridge/__init__.py
+[8.727s] Compiling '/root/TEAM_AIM/install/domain_bridge/lib/python3.8/site-packages/domain_bridge/__init__.py'...
+[8.730s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/python3.8/site-packages/domain_bridge/msg
+[8.731s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/python3.8/site-packages/domain_bridge/msg/__init__.py
+[8.731s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/python3.8/site-packages/domain_bridge/msg/_compressed_msg.py
+[8.731s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/python3.8/site-packages/domain_bridge/msg/_compressed_msg_s.c
+[8.732s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/python3.8/site-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so
+[8.732s] -- Set runtime path of "/root/TEAM_AIM/install/domain_bridge/lib/python3.8/site-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so" to ""
+[8.732s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/python3.8/site-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so
+[8.733s] -- Set runtime path of "/root/TEAM_AIM/install/domain_bridge/lib/python3.8/site-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so" to ""
+[8.733s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/python3.8/site-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so
+[8.734s] -- Set runtime path of "/root/TEAM_AIM/install/domain_bridge/lib/python3.8/site-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so" to ""
+[8.734s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__python.so
+[8.734s] -- Set runtime path of "/root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge__python.so" to ""
+[8.734s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/msg/CompressedMsg.idl
+[8.737s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/msg/CompressedMsg.msg
+[8.737s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include
+[8.737s] -- Up-to-date: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge
+[8.737s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/topic_bridge_options.hpp
+[8.743s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/service_bridge_impl.inc
+[8.743s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/process_cmd_line_arguments.hpp
+[8.743s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/topic_bridge.hpp
+[8.743s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/domain_bridge.hpp
+[8.743s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/domain_bridge_options.hpp
+[8.743s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/service_bridge_options.hpp
+[8.743s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/qos_options.hpp
+[8.743s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/domain_bridge_config.hpp
+[8.743s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/utils.hpp
+[8.743s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/visibility_control.hpp
+[8.743s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/parse_domain_bridge_yaml_config.hpp
+[8.744s] -- Installing: /root/TEAM_AIM/install/domain_bridge/include/domain_bridge/compress_messages.hpp
+[8.744s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/domain_bridge/domain_bridge
+[8.744s] -- Set runtime path of "/root/TEAM_AIM/install/domain_bridge/lib/domain_bridge/domain_bridge" to ""
+[8.744s] -- Installing: /root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge.so
+[8.746s] -- Set runtime path of "/root/TEAM_AIM/install/domain_bridge/lib/libdomain_bridge.so" to ""
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/examples
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/examples/example_bridge_config.yaml
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/launch
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/launch/domain_bridge.launch.xml
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/ament_index/resource_index/package_run_dependencies/domain_bridge
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/ament_index/resource_index/parent_prefix_path/domain_bridge
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/environment/ament_prefix_path.sh
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/environment/ament_prefix_path.dsv
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/environment/path.sh
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/environment/path.dsv
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/local_setup.bash
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/local_setup.sh
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/local_setup.zsh
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/local_setup.dsv
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/package.dsv
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/ament_index/resource_index/packages/domain_bridge
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_generator_cExport.cmake
+[8.747s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_generator_cExport-noconfig.cmake
+[8.748s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_introspection_cExport.cmake
+[8.748s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[8.748s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_cExport.cmake
+[8.748s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_cExport-noconfig.cmake
+[8.748s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_generator_cppExport.cmake
+[8.748s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_introspection_cppExport.cmake
+[8.749s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[8.749s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_cppExport.cmake
+[8.749s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_cppExport-noconfig.cmake
+[8.749s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridgeExport.cmake
+[8.749s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridgeExport-noconfig.cmake
+[8.749s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/rosidl_cmake-extras.cmake
+[8.750s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/ament_cmake_export_dependencies-extras.cmake
+[8.750s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/ament_cmake_export_libraries-extras.cmake
+[8.750s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/ament_cmake_export_targets-extras.cmake
+[8.750s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/ament_cmake_export_include_directories-extras.cmake
+[8.750s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[8.750s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[8.750s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/domain_bridgeConfig.cmake
+[8.750s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/cmake/domain_bridgeConfig-version.cmake
+[8.751s] -- Installing: /root/TEAM_AIM/install/domain_bridge/share/domain_bridge/package.xml
+[8.756s] Invoked command in '/root/TEAM_AIM/build/domain_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/domain_bridge

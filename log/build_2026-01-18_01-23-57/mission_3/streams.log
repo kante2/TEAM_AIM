@@ -1,0 +1,26 @@
+[0.039s] Invoking command in '/root/TEAM_AIM/build/mission_3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_3 -- -j16 -l16
+[0.101s] [100%] Built target control_tower_mission_3
+[0.101s] [100%] Built target control_cav_mission_3
+[0.122s] Invoked command in '/root/TEAM_AIM/build/mission_3' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_3 -- -j16 -l16
+[0.164s] Invoking command in '/root/TEAM_AIM/build/mission_3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/mission_3
+[0.173s] -- Install configuration: ""
+[0.173s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/lib/mission_3/control_cav_mission_3
+[0.174s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/lib/mission_3/control_tower_mission_3
+[0.174s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/launch
+[0.174s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/launch/mission_3.launch.py
+[0.174s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/ament_index/resource_index/package_run_dependencies/mission_3
+[0.174s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/ament_index/resource_index/parent_prefix_path/mission_3
+[0.174s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/environment/ament_prefix_path.sh
+[0.175s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/environment/ament_prefix_path.dsv
+[0.175s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/environment/path.sh
+[0.177s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/environment/path.dsv
+[0.177s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/local_setup.bash
+[0.177s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/local_setup.sh
+[0.178s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/local_setup.zsh
+[0.178s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/local_setup.dsv
+[0.178s] -- Installing: /root/TEAM_AIM/install/mission_3/share/mission_3/package.dsv
+[0.178s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/ament_index/resource_index/packages/mission_3
+[0.178s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/cmake/mission_3Config.cmake
+[0.178s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/cmake/mission_3Config-version.cmake
+[0.178s] -- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/package.xml
+[0.186s] Invoked command in '/root/TEAM_AIM/build/mission_3' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/mission_3

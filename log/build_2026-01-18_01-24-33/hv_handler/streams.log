@@ -1,0 +1,28 @@
+[0.019s] Invoking command in '/root/TEAM_AIM/build/hv_handler': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/hv_handler -- -j16 -l16
+[0.091s] [100%] Built target hv_handler_node
+[0.105s] Invoked command in '/root/TEAM_AIM/build/hv_handler' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/hv_handler -- -j16 -l16
+[0.134s] Invoking command in '/root/TEAM_AIM/build/hv_handler': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/hv_handler
+[0.153s] -- Install configuration: ""
+[0.153s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/lib/hv_handler/hv_handler_node
+[0.153s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/config
+[0.153s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/config/hv_params.yaml
+[0.153s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/config/belt_lane_three.json
+[0.153s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/config/belt_lane_two.json
+[0.153s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/config/roundabout_lane_two.json
+[0.153s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/config/belt_lane_one.json
+[0.153s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/ament_index/resource_index/package_run_dependencies/hv_handler
+[0.153s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/ament_index/resource_index/parent_prefix_path/hv_handler
+[0.154s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/environment/ament_prefix_path.sh
+[0.154s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/environment/ament_prefix_path.dsv
+[0.154s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/environment/path.sh
+[0.154s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/environment/path.dsv
+[0.154s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/local_setup.bash
+[0.154s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/local_setup.sh
+[0.154s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/local_setup.zsh
+[0.154s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/local_setup.dsv
+[0.155s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/package.dsv
+[0.158s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/ament_index/resource_index/packages/hv_handler
+[0.158s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/cmake/hv_handlerConfig.cmake
+[0.158s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/cmake/hv_handlerConfig-version.cmake
+[0.158s] -- Up-to-date: /root/TEAM_AIM/install/hv_handler/share/hv_handler/package.xml
+[0.159s] Invoked command in '/root/TEAM_AIM/build/hv_handler' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/hv_handler

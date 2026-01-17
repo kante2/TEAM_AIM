@@ -1,0 +1,6 @@
+Invoking command in '/root/TEAM_AIM/build/domain_bridge': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/domain_bridge -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/domain_bridge
+Invoked command in '/root/TEAM_AIM/build/domain_bridge' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/domain_bridge -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/domain_bridge
+Invoking command in '/root/TEAM_AIM/build/domain_bridge': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/domain_bridge -- -j16 -l16
+Invoked command in '/root/TEAM_AIM/build/domain_bridge' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/domain_bridge -- -j16 -l16
+Invoking command in '/root/TEAM_AIM/build/domain_bridge': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/domain_bridge
+Invoked command in '/root/TEAM_AIM/build/domain_bridge' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/domain_bridge

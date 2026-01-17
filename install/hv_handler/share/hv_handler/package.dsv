@@ -1,0 +1,8 @@
+source;share/hv_handler/hook/cmake_prefix_path.ps1
+source;share/hv_handler/hook/cmake_prefix_path.dsv
+source;share/hv_handler/hook/cmake_prefix_path.sh
+source;share/hv_handler/local_setup.bash
+source;share/hv_handler/local_setup.dsv
+source;share/hv_handler/local_setup.ps1
+source;share/hv_handler/local_setup.sh
+source;share/hv_handler/local_setup.zsh

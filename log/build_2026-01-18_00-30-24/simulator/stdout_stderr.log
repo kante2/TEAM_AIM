@@ -1,0 +1,43 @@
+[100%] Built target simulation_node
+-- Install configuration: "Debug"
+-- Installing: /root/TEAM_AIM/install/simulator/lib/simulator/simulation_node
+-- Set runtime path of "/root/TEAM_AIM/install/simulator/lib/simulator/simulation_node" to ""
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/post.frag
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/3Dobject.frag
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/fComposite.frag
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dtext.vert
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/post.vert
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dtext.frag
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dsprite.vert
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/fAntialiasing.frag
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dsprite.frag
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/3Dobject.vert
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/map.json
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/map.obj
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/path.json
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/IDs.png
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/map.mtl
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/sign.png
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/config.ini
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/font
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/font/CascadiaMono.json
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/font/CascadiaMono.ttf
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/font/CascadiaMono.png
+-- Installing: /root/TEAM_AIM/install/simulator/share/ament_index/resource_index/package_run_dependencies/simulator
+-- Installing: /root/TEAM_AIM/install/simulator/share/ament_index/resource_index/parent_prefix_path/simulator
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/environment/ament_prefix_path.sh
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/environment/ament_prefix_path.dsv
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/environment/path.sh
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/environment/path.dsv
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.bash
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.sh
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.zsh
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.dsv
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/package.dsv
+-- Installing: /root/TEAM_AIM/install/simulator/share/ament_index/resource_index/packages/simulator
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/cmake/simulatorConfig.cmake
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/cmake/simulatorConfig-version.cmake
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/package.xml

@@ -1,0 +1,64 @@
+[0.054s] Invoking command in '/root/TEAM_AIM/build/simulator': AMENT_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/opt/ros/foxy LD_LIBRARY_PATH=/root/TEAM_AIM/install/scene_srv/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/simulator
+[0.085s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.134s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.449s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.524s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.537s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.855s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.934s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.937s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.182s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[1.227s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[1.251s] -- Found ament_index_cpp: 1.1.0 (/opt/ros/foxy/share/ament_index_cpp/cmake)
+[1.255s] -- Found scene_srv: 0.0.0 (/root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake)
+[1.280s] -- Found SDL3: /usr/local/lib/cmake/SDL3
+[1.391s] -- Configuring done
+[1.415s] -- Generating done
+[1.418s] -- Build files have been written to: /root/TEAM_AIM/build/simulator
+[1.435s] Invoked command in '/root/TEAM_AIM/build/simulator' returned '0': AMENT_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/opt/ros/foxy LD_LIBRARY_PATH=/root/TEAM_AIM/install/scene_srv/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/simulator
+[1.439s] Invoking command in '/root/TEAM_AIM/build/simulator': AMENT_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/opt/ros/foxy LD_LIBRARY_PATH=/root/TEAM_AIM/install/scene_srv/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /root/TEAM_AIM/build/simulator -- -j16 -l16
+[1.613s] [100%] Built target simulation_node
+[1.651s] Invoked command in '/root/TEAM_AIM/build/simulator' returned '0': AMENT_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/opt/ros/foxy LD_LIBRARY_PATH=/root/TEAM_AIM/install/scene_srv/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /root/TEAM_AIM/build/simulator -- -j16 -l16
+[1.781s] Invoking command in '/root/TEAM_AIM/build/simulator': AMENT_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/opt/ros/foxy LD_LIBRARY_PATH=/root/TEAM_AIM/install/scene_srv/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --install /root/TEAM_AIM/build/simulator
+[1.797s] -- Install configuration: "Debug"
+[1.797s] -- Up-to-date: /root/TEAM_AIM/install/simulator/lib/simulator/simulation_node
+[1.798s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource
+[1.798s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader
+[1.798s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/post.frag
+[1.798s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/3Dobject.frag
+[1.802s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/fComposite.frag
+[1.803s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dtext.vert
+[1.803s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/post.vert
+[1.803s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dtext.frag
+[1.803s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dsprite.vert
+[1.804s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/fAntialiasing.frag
+[1.804s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dsprite.frag
+[1.804s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/3Dobject.vert
+[1.804s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets
+[1.804s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/map.json
+[1.804s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/map.obj
+[1.804s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/path.json
+[1.805s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/IDs.png
+[1.805s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/map.mtl
+[1.805s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/sign.png
+[1.805s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/config.ini
+[1.805s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/font
+[1.806s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/font/CascadiaMono.json
+[1.806s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/font/CascadiaMono.ttf
+[1.806s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/resource/font/CascadiaMono.png
+[1.806s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/ament_index/resource_index/package_run_dependencies/simulator
+[1.806s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/ament_index/resource_index/parent_prefix_path/simulator
+[1.806s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/environment/ament_prefix_path.sh
+[1.806s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/environment/ament_prefix_path.dsv
+[1.807s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/environment/path.sh
+[1.807s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/environment/path.dsv
+[1.807s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.bash
+[1.807s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.sh
+[1.807s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.zsh
+[1.807s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.dsv
+[1.808s] -- Installing: /root/TEAM_AIM/install/simulator/share/simulator/package.dsv
+[1.809s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/ament_index/resource_index/packages/simulator
+[1.818s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/cmake/simulatorConfig.cmake
+[1.819s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/cmake/simulatorConfig-version.cmake
+[1.819s] -- Up-to-date: /root/TEAM_AIM/install/simulator/share/simulator/package.xml
+[1.819s] Invoked command in '/root/TEAM_AIM/build/simulator' returned '0': AMENT_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/opt/ros/foxy LD_LIBRARY_PATH=/root/TEAM_AIM/install/scene_srv/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --install /root/TEAM_AIM/build/simulator

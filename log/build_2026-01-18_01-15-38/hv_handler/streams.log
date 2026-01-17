@@ -1,0 +1,88 @@
+[0.038s] Invoking command in '/root/TEAM_AIM/build/hv_handler': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/hv_handler -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/hv_handler
+[0.143s] -- The C compiler identification is GNU 9.4.0
+[0.201s] -- The CXX compiler identification is GNU 9.4.0
+[0.211s] -- Check for working C compiler: /usr/bin/cc
+[0.297s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.307s] -- Detecting C compiler ABI info
+[0.407s] -- Detecting C compiler ABI info - done
+[0.424s] -- Detecting C compile features
+[0.425s] -- Detecting C compile features - done
+[0.428s] -- Check for working CXX compiler: /usr/bin/c++
+[0.526s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.527s] -- Detecting CXX compiler ABI info
+[0.636s] -- Detecting CXX compiler ABI info - done
+[0.647s] -- Detecting CXX compile features
+[0.647s] -- Detecting CXX compile features - done
+[0.651s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.672s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.672s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.827s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.862s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.869s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.973s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[1.007s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.079s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.124s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.125s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.126s] -- Looking for pthread.h
+[1.200s] -- Looking for pthread.h - found
+[1.200s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.270s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.271s] -- Looking for pthread_create in pthreads
+[1.336s] -- Looking for pthread_create in pthreads - not found
+[1.336s] -- Looking for pthread_create in pthread
+[1.409s] -- Looking for pthread_create in pthread - found
+[1.410s] -- Found Threads: TRUE  
+[1.517s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[1.538s] -- Found ament_index_cpp: 1.1.0 (/opt/ros/foxy/share/ament_index_cpp/cmake)
+[1.542s] -- Found nlohmann_json: /usr/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake (found version "3.7.3") 
+[1.544s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[1.552s] -- Found scene_srv: 0.0.0 (/root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake)
+[1.611s] -- Configuring done
+[1.617s] -- Generating done
+[1.618s] -- Build files have been written to: /root/TEAM_AIM/build/hv_handler
+[1.627s] Invoked command in '/root/TEAM_AIM/build/hv_handler' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/hv_handler -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/hv_handler
+[1.630s] Invoking command in '/root/TEAM_AIM/build/hv_handler': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/hv_handler -- -j16 -l16
+[1.676s] [35m[1mScanning dependencies of target hv_handler_node[0m
+[1.729s] [ 50%] [32mBuilding CXX object CMakeFiles/hv_handler_node.dir/src/hv_handler_node.cpp.o[0m
+[3.046s] In file included from [01m[K/root/TEAM_AIM/Mobility_Challenge_Simulator/src/hv_handler/include/hv_handler/hv_problem_two.hpp:2[m[K,
+[3.046s]                  from [01m[K/root/TEAM_AIM/Mobility_Challenge_Simulator/src/hv_handler/src/hv_handler_node.cpp:2[m[K:
+[3.046s] [01m[K/root/TEAM_AIM/Mobility_Challenge_Simulator/src/hv_handler/include/hv_handler/hv_base.hpp:[m[K In member function ‘[01m[Kreal HVBase::compute_yaw_rate(const HVBase::Vehicle&)[m[K’:
+[3.047s] [01m[K/root/TEAM_AIM/Mobility_Challenge_Simulator/src/hv_handler/include/hv_handler/hv_base.hpp:98:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[3.047s]    98 |         for (int k = 0; [01;35m[Kk < N_[m[K; k++) {
+[3.047s]       |                         [01;35m[K~~^~~~[m[K
+[3.047s] [01m[K/root/TEAM_AIM/Mobility_Challenge_Simulator/src/hv_handler/include/hv_handler/hv_base.hpp:96:14:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kaccum_dist[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[3.047s]    96 |         real [01;35m[Kaccum_dist[m[K = 0.0;
+[3.047s]       |              [01;35m[K^~~~~~~~~~[m[K
+[3.047s] [01m[K/root/TEAM_AIM/Mobility_Challenge_Simulator/src/hv_handler/include/hv_handler/hv_base.hpp:118:14:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kfx[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[3.047s]   118 |         real [01;35m[Kfx[m[K =  std::cos(veh.yaw) * dx + std::sin(veh.yaw) * dy;
+[3.047s]       |              [01;35m[K^~[m[K
+[7.985s] [100%] [32m[1mLinking CXX executable hv_handler_node[0m
+[8.487s] [100%] Built target hv_handler_node
+[8.538s] Invoked command in '/root/TEAM_AIM/build/hv_handler' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/hv_handler -- -j16 -l16
+[8.638s] Invoking command in '/root/TEAM_AIM/build/hv_handler': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/hv_handler
+[8.660s] -- Install configuration: ""
+[8.668s] -- Installing: /root/TEAM_AIM/install/hv_handler/lib/hv_handler/hv_handler_node
+[8.669s] -- Set runtime path of "/root/TEAM_AIM/install/hv_handler/lib/hv_handler/hv_handler_node" to ""
+[8.672s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/config
+[8.675s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/config/hv_params.yaml
+[8.679s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/config/belt_lane_three.json
+[8.680s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/config/belt_lane_two.json
+[8.681s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/config/roundabout_lane_two.json
+[8.688s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/config/belt_lane_one.json
+[8.692s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/ament_index/resource_index/package_run_dependencies/hv_handler
+[8.692s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/ament_index/resource_index/parent_prefix_path/hv_handler
+[8.699s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/environment/ament_prefix_path.sh
+[8.702s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/environment/ament_prefix_path.dsv
+[8.703s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/environment/path.sh
+[8.703s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/environment/path.dsv
+[8.703s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/local_setup.bash
+[8.703s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/local_setup.sh
+[8.703s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/local_setup.zsh
+[8.703s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/local_setup.dsv
+[8.703s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/package.dsv
+[8.703s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/ament_index/resource_index/packages/hv_handler
+[8.703s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/cmake/hv_handlerConfig.cmake
+[8.703s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/cmake/hv_handlerConfig-version.cmake
+[8.711s] -- Installing: /root/TEAM_AIM/install/hv_handler/share/hv_handler/package.xml
+[8.721s] Invoked command in '/root/TEAM_AIM/build/hv_handler' returned '0': CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/root/TEAM_AIM/install/simulator_launch:/root/TEAM_AIM/install/simulator:/root/TEAM_AIM/install/hv_handler:/root/TEAM_AIM/install/communication_manager:/root/TEAM_AIM/install/mission_3:/root/TEAM_AIM/install/mission_2:/root/TEAM_AIM/install/domain_bridge:/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/hv_handler

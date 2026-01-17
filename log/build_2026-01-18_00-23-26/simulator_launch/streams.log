@@ -1,0 +1,44 @@
+[0.080s] Invoking command in '/root/TEAM_AIM/build/simulator_launch': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator_launch -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/simulator_launch
+[0.225s] -- The C compiler identification is GNU 9.4.0
+[0.353s] -- The CXX compiler identification is GNU 9.4.0
+[0.365s] -- Check for working C compiler: /usr/bin/cc
+[0.552s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.552s] -- Detecting C compiler ABI info
+[0.720s] -- Detecting C compiler ABI info - done
+[0.745s] -- Detecting C compile features
+[0.746s] -- Detecting C compile features - done
+[0.751s] -- Check for working CXX compiler: /usr/bin/c++
+[0.954s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.956s] -- Detecting CXX compiler ABI info
+[1.148s] -- Detecting CXX compiler ABI info - done
+[1.174s] -- Detecting CXX compile features
+[1.175s] -- Detecting CXX compile features - done
+[1.180s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[1.234s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[1.235s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.676s] -- Configuring done
+[1.679s] -- Generating done
+[1.681s] -- Build files have been written to: /root/TEAM_AIM/build/simulator_launch
+[1.687s] Invoked command in '/root/TEAM_AIM/build/simulator_launch' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/simulator_launch -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/simulator_launch
+[1.694s] Invoking command in '/root/TEAM_AIM/build/simulator_launch': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/simulator_launch -- -j16 -l16
+[1.783s] Invoked command in '/root/TEAM_AIM/build/simulator_launch' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/simulator_launch -- -j16 -l16
+[1.865s] Invoking command in '/root/TEAM_AIM/build/simulator_launch': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/simulator_launch
+[1.886s] -- Install configuration: ""
+[1.886s] -- Up-to-date: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/launch
+[1.886s] -- Up-to-date: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/launch/simulator_launch.py
+[1.886s] -- Installing: /root/TEAM_AIM/install/simulator_launch/share/ament_index/resource_index/package_run_dependencies/simulator_launch
+[1.887s] -- Installing: /root/TEAM_AIM/install/simulator_launch/share/ament_index/resource_index/parent_prefix_path/simulator_launch
+[1.887s] -- Up-to-date: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/environment/ament_prefix_path.sh
+[1.887s] -- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/environment/ament_prefix_path.dsv
+[1.887s] -- Up-to-date: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/environment/path.sh
+[1.887s] -- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/environment/path.dsv
+[1.888s] -- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/local_setup.bash
+[1.888s] -- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/local_setup.sh
+[1.888s] -- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/local_setup.zsh
+[1.889s] -- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/local_setup.dsv
+[1.889s] -- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/package.dsv
+[1.889s] -- Installing: /root/TEAM_AIM/install/simulator_launch/share/ament_index/resource_index/packages/simulator_launch
+[1.889s] -- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/cmake/simulator_launchConfig.cmake
+[1.890s] -- Installing: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/cmake/simulator_launchConfig-version.cmake
+[1.890s] -- Up-to-date: /root/TEAM_AIM/install/simulator_launch/share/simulator_launch/package.xml
+[1.896s] Invoked command in '/root/TEAM_AIM/build/simulator_launch' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/TEAM_AIM/build/simulator_launch

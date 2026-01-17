@@ -1,0 +1,7 @@
+[01m[K/root/TEAM_AIM/src/mission_3/src/control_rotary_mission_3.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/root/TEAM_AIM/src/mission_3/src/control_rotary_mission_3.cpp:477:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kcav_roi_id[m[K’ [[01;35m[K-Wunused-variable[m[K]
+  477 |             int [01;35m[Kcav_roi_id[m[K = pair.first;
+      |                 [01;35m[K^~~~~~~~~~[m[K
+[01m[K/root/TEAM_AIM/src/mission_3/src/control_rotary_mission_3.cpp:478:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Khv_roi_id[m[K’ [[01;35m[K-Wunused-variable[m[K]
+  478 |             int [01;35m[Khv_roi_id[m[K = pair.second;
+      |                 [01;35m[K^~~~~~~~~[m[K

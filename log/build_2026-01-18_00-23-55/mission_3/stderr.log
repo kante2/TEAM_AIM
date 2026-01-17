@@ -1,0 +1,40 @@
+CMake Error at CMakeLists.txt:71 (add_executable):
+  Cannot find source file:
+
+    src/decision/roi_visualizer.cpp
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+  .hpp .hxx .in .txx
+
+
+CMake Error at CMakeLists.txt:46 (add_executable):
+  Cannot find source file:
+
+    src/control/control_tower_mission_3.cpp
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+  .hpp .hxx .in .txx
+
+
+CMake Error at CMakeLists.txt:31 (add_executable):
+  Cannot find source file:
+
+    src/control/control_cav_mission_3.cpp
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+  .hpp .hxx .in .txx
+
+
+CMake Error at CMakeLists.txt:71 (add_executable):
+  No SOURCES given to target: roi_visualizer
+
+
+CMake Error at CMakeLists.txt:46 (add_executable):
+  No SOURCES given to target: control_tower_mission_3
+
+
+CMake Error at CMakeLists.txt:31 (add_executable):
+  No SOURCES given to target: control_cav_mission_3
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

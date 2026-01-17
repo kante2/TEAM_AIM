@@ -1,0 +1,43 @@
+[0.017s] Invoking command in '/root/TEAM_AIM/build/hv_handler': AMENT_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/opt/ros/foxy LD_LIBRARY_PATH=/root/TEAM_AIM/install/scene_srv/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/hv_handler -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/hv_handler
+[0.074s] -- The C compiler identification is GNU 9.4.0
+[0.121s] -- The CXX compiler identification is GNU 9.4.0
+[0.124s] -- Check for working C compiler: /usr/bin/cc
+[0.187s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.187s] -- Detecting C compiler ABI info
+[0.257s] -- Detecting C compiler ABI info - done
+[0.266s] -- Detecting C compile features
+[0.266s] -- Detecting C compile features - done
+[0.269s] -- Check for working CXX compiler: /usr/bin/c++
+[0.345s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.345s] -- Detecting CXX compiler ABI info
+[0.422s] -- Detecting CXX compiler ABI info - done
+[0.428s] -- Detecting CXX compile features
+[0.428s] -- Detecting CXX compile features - done
+[0.431s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.453s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.454s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.584s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.617s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.622s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.710s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[0.738s] -- Found FastRTPS: /opt/ros/foxy/include  
+[0.811s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.848s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.849s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.850s] -- Looking for pthread.h
+[0.914s] -- Looking for pthread.h - found
+[0.914s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.982s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[0.982s] -- Looking for pthread_create in pthreads
+[1.035s] -- Looking for pthread_create in pthreads - not found
+[1.035s] -- Looking for pthread_create in pthread
+[1.102s] -- Looking for pthread_create in pthread - found
+[1.103s] -- Found Threads: TRUE  
+[1.197s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[1.217s] -- Found ament_index_cpp: 1.1.0 (/opt/ros/foxy/share/ament_index_cpp/cmake)
+[1.220s] -- Found nlohmann_json: /usr/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake (found version "3.7.3") 
+[1.221s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[1.230s] -- Found scene_srv: 0.0.0 (/root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake)
+[1.284s] -- Configuring done
+[1.289s] -- Generating done
+[1.290s] -- Build files have been written to: /root/TEAM_AIM/build/hv_handler

@@ -1,0 +1,56 @@
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+-- Found visualization_msgs: 2.0.5 (/opt/ros/foxy/share/visualization_msgs/cmake)
+-- Found tf2: 0.13.14 (/opt/ros/foxy/share/tf2/cmake)
+-- Found ament_index_cpp: 1.1.0 (/opt/ros/foxy/share/ament_index_cpp/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/TEAM_AIM/build/mission_3
+[35m[1mScanning dependencies of target control_tower_mission_3[0m
+[35m[1mScanning dependencies of target control_cav_mission_3[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/control_cav_mission_3.dir/src/control_cav_mission_3.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/control_tower_mission_3.dir/src/control_tower_mission_3.cpp.o[0m
+[01m[K/root/TEAM_AIM/src/mission_3/src/control_cav_mission_3.cpp:[m[K In function ‘[01m[Kbool loadPathCsv(const string&, std::vector<integrate_path_struct>&)[m[K’:
+[01m[K/root/TEAM_AIM/src/mission_3/src/control_cav_mission_3.cpp:141:5:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kif[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
+  141 |     [01;35m[Kif[m[K (!(ss >> x)) continue; if (!(ss >> comma)) continue; if (!(ss >> y)) continue;
+      |     [01;35m[K^~[m[K
+[01m[K/root/TEAM_AIM/src/mission_3/src/control_cav_mission_3.cpp:141:31:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kif[m[K’
+  141 |     if (!(ss >> x)) continue; [01;36m[Kif[m[K (!(ss >> comma)) continue; if (!(ss >> y)) continue;
+      |                               [01;36m[K^~[m[K
+[01m[K/root/TEAM_AIM/src/mission_3/src/control_tower_mission_3.cpp:[m[K In function ‘[01m[Kint select_best_sub_cav(int, const std::vector<int>&, Pose, double, int)[m[K’:
+[01m[K/root/TEAM_AIM/src/mission_3/src/control_tower_mission_3.cpp:340:22:[m[K [01;35m[Kwarning: [m[Ksuggest parentheses around comparison in operand of ‘[01m[K|[m[K’ [[01;35m[K-Wparentheses[m[K]
+  340 |         if ([01;35m[Kidx_diff > 150[m[K| (main_overlap_idx > 170 && sub_overlap_idx < 30)) {
+      |             [01;35m[K~~~~~~~~~^~~~~[m[K
+[ 75%] [32m[1mLinking CXX executable control_tower_mission_3[0m
+[ 75%] Built target control_tower_mission_3
+[100%] [32m[1mLinking CXX executable control_cav_mission_3[0m
+[100%] Built target control_cav_mission_3
+-- Install configuration: ""
+-- Installing: /root/TEAM_AIM/install/mission_3/lib/mission_3/control_cav_mission_3
+-- Set runtime path of "/root/TEAM_AIM/install/mission_3/lib/mission_3/control_cav_mission_3" to ""
+-- Installing: /root/TEAM_AIM/install/mission_3/lib/mission_3/control_tower_mission_3
+-- Set runtime path of "/root/TEAM_AIM/install/mission_3/lib/mission_3/control_tower_mission_3" to ""
+-- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/launch
+-- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/launch/run_mission_3.launch.py
+-- Up-to-date: /root/TEAM_AIM/install/mission_3/share/ament_index/resource_index/package_run_dependencies/mission_3
+-- Up-to-date: /root/TEAM_AIM/install/mission_3/share/ament_index/resource_index/parent_prefix_path/mission_3
+-- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/environment/ament_prefix_path.sh
+-- Installing: /root/TEAM_AIM/install/mission_3/share/mission_3/environment/ament_prefix_path.dsv
+-- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/environment/path.sh
+-- Installing: /root/TEAM_AIM/install/mission_3/share/mission_3/environment/path.dsv
+-- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/local_setup.bash
+-- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/local_setup.sh
+-- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/local_setup.zsh
+-- Installing: /root/TEAM_AIM/install/mission_3/share/mission_3/local_setup.dsv
+-- Installing: /root/TEAM_AIM/install/mission_3/share/mission_3/package.dsv
+-- Up-to-date: /root/TEAM_AIM/install/mission_3/share/ament_index/resource_index/packages/mission_3
+-- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/cmake/mission_3Config.cmake
+-- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/cmake/mission_3Config-version.cmake
+-- Up-to-date: /root/TEAM_AIM/install/mission_3/share/mission_3/package.xml

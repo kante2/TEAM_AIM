@@ -1,0 +1,129 @@
+[0.000000] (-) TimerEvent: {}
+[0.000947] (-) JobUnselected: {'identifier': 'communication_manager'}
+[0.001005] (-) JobUnselected: {'identifier': 'domain_bridge'}
+[0.001052] (-) JobUnselected: {'identifier': 'hv_handler'}
+[0.001089] (-) JobUnselected: {'identifier': 'mission_3'}
+[0.001114] (-) JobUnselected: {'identifier': 'scene_srv'}
+[0.001178] (-) JobUnselected: {'identifier': 'simulator'}
+[0.001195] (-) JobUnselected: {'identifier': 'simulator_launch'}
+[0.001207] (mission_2) JobQueued: {'identifier': 'mission_2', 'dependencies': OrderedDict()}
+[0.001285] (mission_2) JobStarted: {'identifier': 'mission_2'}
+[0.012548] (mission_2) JobProgress: {'identifier': 'mission_2', 'progress': 'cmake'}
+[0.013256] (mission_2) Command: {'cmd': ['/usr/bin/cmake', '/root/TEAM_AIM/src/mission_2', '-DBUILD_TESTING=OFF', '-DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/mission_2'], 'cwd': '/root/TEAM_AIM/build/mission_2', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('WS', '/root/kaist_contest_ws'), ('ROS_NAMESPACE', 'central'), ('HOSTNAME', 'kante-ASUS-TUF-Gaming-A14-FA401UU-FA401UU'), ('GIT_ASKPASS', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/helpers/browser.sh'), ('HOME', '/root'), ('TERM_PROGRAM_VERSION', '1.108.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-1aeec7e9-bdac-41dd-8c18-804e19d2f9b2.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/root/kaist_contest_ws'), ('ROS_DISTRO', 'foxy'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-d6f47660-f25a-49ec-9d4b-d3aed3d9e4a1.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('HISTCONTROL', 'ignorespace'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-d6f47660-f25a-49ec-9d4b-d3aed3d9e4a1.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XAUTHORITY', '/root/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-4d2a2c3084.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-d6f47660-f25a-49ec-9d4b-d3aed3d9e4a1.sock'), ('ROS_DOMAIN_ID', '100'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('GIT_PAGER', 'cat'), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/root/TEAM_AIM/build/mission_2'), ('LC_ALL', 'C.UTF-8'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('TZ', 'Asia/Seoul'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.028372] (mission_2) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.043003] (mission_2) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.099331] (-) TimerEvent: {}
+[0.139566] (mission_2) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.159594] (mission_2) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.161360] (mission_2) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.199461] (-) TimerEvent: {}
+[0.267265] (mission_2) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.296862] (mission_2) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[0.297643] (mission_2) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.299519] (-) TimerEvent: {}
+[0.379241] (mission_2) StdoutLine: {'line': b'-- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)\n'}
+[0.397516] (mission_2) StdoutLine: {'line': b'-- Found visualization_msgs: 2.0.5 (/opt/ros/foxy/share/visualization_msgs/cmake)\n'}
+[0.399583] (-) TimerEvent: {}
+[0.438609] (mission_2) StdoutLine: {'line': b'-- Found tf2: 0.13.14 (/opt/ros/foxy/share/tf2/cmake)\n'}
+[0.443937] (mission_2) StdoutLine: {'line': b'-- Found ament_index_cpp: 1.1.0 (/opt/ros/foxy/share/ament_index_cpp/cmake)\n'}
+[0.486876] (mission_2) StdoutLine: {'line': b'-- Configuring done\n'}
+[0.492132] (mission_2) StdoutLine: {'line': b'-- Generating done\n'}
+[0.493251] (mission_2) StdoutLine: {'line': b'-- Build files have been written to: /root/TEAM_AIM/build/mission_2\n'}
+[0.498599] (mission_2) CommandEnded: {'returncode': 0}
+[0.499185] (mission_2) JobProgress: {'identifier': 'mission_2', 'progress': 'build'}
+[0.499794] (-) TimerEvent: {}
+[0.501398] (mission_2) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/TEAM_AIM/build/mission_2', '--', '-j16', '-l16'], 'cwd': '/root/TEAM_AIM/build/mission_2', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('WS', '/root/kaist_contest_ws'), ('ROS_NAMESPACE', 'central'), ('HOSTNAME', 'kante-ASUS-TUF-Gaming-A14-FA401UU-FA401UU'), ('GIT_ASKPASS', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/helpers/browser.sh'), ('HOME', '/root'), ('TERM_PROGRAM_VERSION', '1.108.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-1aeec7e9-bdac-41dd-8c18-804e19d2f9b2.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/root/kaist_contest_ws'), ('ROS_DISTRO', 'foxy'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-d6f47660-f25a-49ec-9d4b-d3aed3d9e4a1.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('HISTCONTROL', 'ignorespace'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-d6f47660-f25a-49ec-9d4b-d3aed3d9e4a1.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XAUTHORITY', '/root/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-4d2a2c3084.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-d6f47660-f25a-49ec-9d4b-d3aed3d9e4a1.sock'), ('ROS_DOMAIN_ID', '100'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('GIT_PAGER', 'cat'), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/root/TEAM_AIM/build/mission_2'), ('LC_ALL', 'C.UTF-8'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('TZ', 'Asia/Seoul'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.550264] (mission_2) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target control_cav_mission_2\x1b[0m\n'}
+[0.587728] (mission_2) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/control_cav_mission_2.dir/src/control_cav_mission_2.cpp.o\x1b[0m\n'}
+[0.599939] (-) TimerEvent: {}
+[0.700372] (-) TimerEvent: {}
+[0.800709] (-) TimerEvent: {}
+[0.901087] (-) TimerEvent: {}
+[1.001476] (-) TimerEvent: {}
+[1.101892] (-) TimerEvent: {}
+[1.202403] (-) TimerEvent: {}
+[1.302776] (-) TimerEvent: {}
+[1.403147] (-) TimerEvent: {}
+[1.503521] (-) TimerEvent: {}
+[1.603913] (-) TimerEvent: {}
+[1.617137] (mission_2) StderrLine: {'line': b'\x1b[01m\x1b[K/root/TEAM_AIM/src/mission_2/src/control_cav_mission_2.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid change_csv_state(int, int, std::shared_ptr<rclcpp::Node>)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.617433] (mission_2) StderrLine: {'line': b'\x1b[01m\x1b[K/root/TEAM_AIM/src/mission_2/src/control_cav_mission_2.cpp:582:27:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcav_id\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[1.617542] (mission_2) StderrLine: {'line': b'  582 | void change_csv_state(\x1b[01;35m\x1b[Kint cav_id\x1b[m\x1b[K, int new_lane, std::shared_ptr<rclcpp::Node> node) {\n'}
+[1.617633] (mission_2) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K~~~~^~~~~~\x1b[m\x1b[K\n'}
+[1.663247] (mission_2) StderrLine: {'line': b'\x1b[01m\x1b[K/root/TEAM_AIM/src/mission_2/src/control_cav_mission_2.cpp:\x1b[m\x1b[K In lambda function:\n'}
+[1.663551] (mission_2) StderrLine: {'line': b'\x1b[01m\x1b[K/root/TEAM_AIM/src/mission_2/src/control_cav_mission_2.cpp:952:20:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kvariable \xe2\x80\x98\x1b[01m\x1b[Klane_start_distance\x1b[m\x1b[K\xe2\x80\x99 set but not used [\x1b[01;35m\x1b[K-Wunused-but-set-variable\x1b[m\x1b[K]\n'}
+[1.663666] (mission_2) StderrLine: {'line': b'  952 |             double \x1b[01;35m\x1b[Klane_start_distance\x1b[m\x1b[K = 1e10;\n'}
+[1.663756] (mission_2) StderrLine: {'line': b'      |                    \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.704035] (-) TimerEvent: {}
+[1.804436] (-) TimerEvent: {}
+[1.904810] (-) TimerEvent: {}
+[2.005206] (-) TimerEvent: {}
+[2.105598] (-) TimerEvent: {}
+[2.205976] (-) TimerEvent: {}
+[2.306372] (-) TimerEvent: {}
+[2.406746] (-) TimerEvent: {}
+[2.507139] (-) TimerEvent: {}
+[2.607614] (-) TimerEvent: {}
+[2.708012] (-) TimerEvent: {}
+[2.808381] (-) TimerEvent: {}
+[2.908756] (-) TimerEvent: {}
+[3.009140] (-) TimerEvent: {}
+[3.109513] (-) TimerEvent: {}
+[3.209796] (-) TimerEvent: {}
+[3.310171] (-) TimerEvent: {}
+[3.410538] (-) TimerEvent: {}
+[3.510879] (-) TimerEvent: {}
+[3.611196] (-) TimerEvent: {}
+[3.711574] (-) TimerEvent: {}
+[3.811876] (-) TimerEvent: {}
+[3.912241] (-) TimerEvent: {}
+[4.012539] (-) TimerEvent: {}
+[4.112867] (-) TimerEvent: {}
+[4.213170] (-) TimerEvent: {}
+[4.313567] (-) TimerEvent: {}
+[4.413946] (-) TimerEvent: {}
+[4.514337] (-) TimerEvent: {}
+[4.614685] (-) TimerEvent: {}
+[4.715025] (-) TimerEvent: {}
+[4.815368] (-) TimerEvent: {}
+[4.915779] (-) TimerEvent: {}
+[5.016281] (-) TimerEvent: {}
+[5.116661] (-) TimerEvent: {}
+[5.217043] (-) TimerEvent: {}
+[5.317561] (-) TimerEvent: {}
+[5.417885] (-) TimerEvent: {}
+[5.518269] (-) TimerEvent: {}
+[5.618615] (-) TimerEvent: {}
+[5.719000] (-) TimerEvent: {}
+[5.798446] (mission_2) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable control_cav_mission_2\x1b[0m\n'}
+[5.819125] (-) TimerEvent: {}
+[5.919459] (-) TimerEvent: {}
+[6.019797] (-) TimerEvent: {}
+[6.032490] (mission_2) StdoutLine: {'line': b'[100%] Built target control_cav_mission_2\n'}
+[6.046036] (mission_2) CommandEnded: {'returncode': 0}
+[6.074125] (mission_2) JobProgress: {'identifier': 'mission_2', 'progress': 'install'}
+[6.086268] (mission_2) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/TEAM_AIM/build/mission_2'], 'cwd': '/root/TEAM_AIM/build/mission_2', 'env': OrderedDict([('RCUTILS_LOGGING_BUFFERED_STREAM', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('WS', '/root/kaist_contest_ws'), ('ROS_NAMESPACE', 'central'), ('HOSTNAME', 'kante-ASUS-TUF-Gaming-A14-FA401UU-FA401UU'), ('GIT_ASKPASS', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('RCUTILS_CONSOLE_OUTPUT_FORMAT', '[{severity}]: {message}'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/helpers/browser.sh'), ('HOME', '/root'), ('TERM_PROGRAM_VERSION', '1.108.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-1aeec7e9-bdac-41dd-8c18-804e19d2f9b2.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/root/kaist_contest_ws'), ('ROS_DISTRO', 'foxy'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-d6f47660-f25a-49ec-9d4b-d3aed3d9e4a1.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('HISTCONTROL', 'ignorespace'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/94e8ae2b28cb5cc932b86e1070569c4463565c37/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-d6f47660-f25a-49ec-9d4b-d3aed3d9e4a1.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XAUTHORITY', '/root/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-4d2a2c3084.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-d6f47660-f25a-49ec-9d4b-d3aed3d9e4a1.sock'), ('ROS_DOMAIN_ID', '100'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('GIT_PAGER', 'cat'), ('RCUTILS_LOGGING_USE_STDOUT', '0'), ('PWD', '/root/TEAM_AIM/build/mission_2'), ('LC_ALL', 'C.UTF-8'), ('RCUTILS_COLORIZED_OUTPUT', '1'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('TZ', 'Asia/Seoul'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[6.096267] (mission_2) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[6.096586] (mission_2) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/mission_2/lib/mission_2/control_cav_mission_2\n'}
+[6.100764] (mission_2) StdoutLine: {'line': b'-- Set runtime path of "/root/TEAM_AIM/install/mission_2/lib/mission_2/control_cav_mission_2" to ""\n'}
+[6.101023] (mission_2) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/launch\n'}
+[6.101150] (mission_2) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/launch/mission_2.launch.py\n'}
+[6.101274] (mission_2) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/mission_2/share/ament_index/resource_index/package_run_dependencies/mission_2\n'}
+[6.101391] (mission_2) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/mission_2/share/ament_index/resource_index/parent_prefix_path/mission_2\n'}
+[6.101489] (mission_2) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/environment/ament_prefix_path.sh\n'}
+[6.101613] (mission_2) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/mission_2/share/mission_2/environment/ament_prefix_path.dsv\n'}
+[6.101689] (mission_2) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/environment/path.sh\n'}
+[6.101753] (mission_2) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/mission_2/share/mission_2/environment/path.dsv\n'}
+[6.101788] (mission_2) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/local_setup.bash\n'}
+[6.101821] (mission_2) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/local_setup.sh\n'}
+[6.101871] (mission_2) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/local_setup.zsh\n'}
+[6.101910] (mission_2) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/mission_2/share/mission_2/local_setup.dsv\n'}
+[6.101952] (mission_2) StdoutLine: {'line': b'-- Installing: /root/TEAM_AIM/install/mission_2/share/mission_2/package.dsv\n'}
+[6.101986] (mission_2) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/mission_2/share/ament_index/resource_index/packages/mission_2\n'}
+[6.102020] (mission_2) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/cmake/mission_2Config.cmake\n'}
+[6.102053] (mission_2) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/cmake/mission_2Config-version.cmake\n'}
+[6.102086] (mission_2) StdoutLine: {'line': b'-- Up-to-date: /root/TEAM_AIM/install/mission_2/share/mission_2/package.xml\n'}
+[6.104298] (mission_2) CommandEnded: {'returncode': 0}
+[6.120195] (-) TimerEvent: {}
+[6.155982] (mission_2) JobEnded: {'identifier': 'mission_2', 'rc': 0}
+[6.156549] (-) EventReactorShutdown: {}

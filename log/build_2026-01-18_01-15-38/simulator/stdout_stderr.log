@@ -1,0 +1,103 @@
+-- The C compiler identification is GNU 9.4.0
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+-- Found FastRTPS: /opt/ros/foxy/include  
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+-- Found ament_index_cpp: 1.1.0 (/opt/ros/foxy/share/ament_index_cpp/cmake)
+-- Found scene_srv: 0.0.0 (/root/TEAM_AIM/install/scene_srv/share/scene_srv/cmake)
+-- Found SDL3: /usr/local/lib/cmake/SDL3
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/TEAM_AIM/build/simulator
+[35m[1mScanning dependencies of target simulation_node[0m
+[  6%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/cmake_pch.hxx.gch[0m
+[ 12%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/collision.cpp.o[0m
+[ 18%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/app.cpp.o[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/ros.cpp.o[0m
+[ 31%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/mapload.cpp.o[0m
+[ 37%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/functions/vehicle.cpp.o[0m
+[ 43%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/user.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/vehicle.cpp.o[0m
+[ 56%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/entry.cpp.o[0m
+[ 62%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/plugins/physics.cpp.o[0m
+[ 68%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/worldsetting.cpp.o[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/plugins/mouse.cpp.o[0m
+[ 81%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/plugins/camera.cpp.o[0m
+[ 87%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/plugins/render.cpp.o[0m
+[ 93%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/stb.cpp.o[0m
+[100%] [32m[1mLinking CXX executable bin/simulation_node[0m
+[34m[1mCopying resource folder to build directory[0m
+[100%] Built target simulation_node
+-- Install configuration: "Debug"
+-- Installing: /root/TEAM_AIM/install/simulator/lib/simulator/simulation_node
+-- Set runtime path of "/root/TEAM_AIM/install/simulator/lib/simulator/simulation_node" to ""
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/post.frag
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/3Dobject.frag
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/fComposite.frag
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dtext.vert
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/post.vert
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dtext.frag
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dsprite.vert
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/fAntialiasing.frag
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/2Dsprite.frag
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/shader/3Dobject.vert
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/map.json
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/map.obj
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/path.json
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/IDs.png
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/map.mtl
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/assets/sign.png
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/config.ini
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/font
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/font/CascadiaMono.json
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/font/CascadiaMono.ttf
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/resource/font/CascadiaMono.png
+-- Installing: /root/TEAM_AIM/install/simulator/share/ament_index/resource_index/package_run_dependencies/simulator
+-- Installing: /root/TEAM_AIM/install/simulator/share/ament_index/resource_index/parent_prefix_path/simulator
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/environment/ament_prefix_path.sh
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/environment/ament_prefix_path.dsv
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/environment/path.sh
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/environment/path.dsv
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.bash
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.sh
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.zsh
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/local_setup.dsv
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/package.dsv
+-- Installing: /root/TEAM_AIM/install/simulator/share/ament_index/resource_index/packages/simulator
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/cmake/simulatorConfig.cmake
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/cmake/simulatorConfig-version.cmake
+-- Installing: /root/TEAM_AIM/install/simulator/share/simulator/package.xml

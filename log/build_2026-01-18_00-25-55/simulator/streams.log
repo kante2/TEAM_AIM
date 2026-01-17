@@ -1,0 +1,20 @@
+[0.018s] Invoking command in '/root/TEAM_AIM/build/simulator': AMENT_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/TEAM_AIM/install/scene_srv:/opt/ros/foxy LD_LIBRARY_PATH=/root/TEAM_AIM/install/scene_srv/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/TEAM_AIM/install/scene_srv/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /root/TEAM_AIM/build/simulator -- -j16 -l16
+[0.064s] [35m[1mScanning dependencies of target simulation_node[0m
+[0.177s] [  6%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/cmake_pch.hxx.gch[0m
+[2.455s] [ 25%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/mapload.cpp.o[0m
+[2.455s] [ 25%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/app.cpp.o[0m
+[2.455s] [ 25%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/collision.cpp.o[0m
+[2.455s] [ 31%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/ros.cpp.o[0m
+[2.455s] [ 37%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/functions/vehicle.cpp.o[0m
+[2.461s] [ 43%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/user.cpp.o[0m
+[2.461s] [ 50%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/vehicle.cpp.o[0m
+[2.463s] [ 56%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/app/plugins/worldsetting.cpp.o[0m
+[2.466s] [ 68%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/entry.cpp.o[0m
+[2.467s] [ 68%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/plugins/camera.cpp.o[0m
+[2.469s] [ 75%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/plugins/mouse.cpp.o[0m
+[2.473s] [ 93%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/stb.cpp.o[0m
+[2.474s] [ 93%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/plugins/render.cpp.o[0m
+[2.474s] [ 93%] [32mBuilding CXX object CMakeFiles/simulation_node.dir/src/engine/plugins/physics.cpp.o[0m
+[132.698s] [100%] [32m[1mLinking CXX executable bin/simulation_node[0m
+[135.816s] [34m[1mCopying resource folder to build directory[0m
+[135.879s] [100%] Built target simulation_node

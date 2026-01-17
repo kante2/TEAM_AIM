@@ -1,0 +1,8 @@
+[01m[K/root/TEAM_AIM/src/mission_2/src/control_cav_mission_2.cpp:[m[K In function ‘[01m[Kvoid change_csv_state(int, int, std::shared_ptr<rclcpp::Node>)[m[K’:
+[01m[K/root/TEAM_AIM/src/mission_2/src/control_cav_mission_2.cpp:582:27:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcav_id[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+  582 | void change_csv_state([01;35m[Kint cav_id[m[K, int new_lane, std::shared_ptr<rclcpp::Node> node) {
+      |                       [01;35m[K~~~~^~~~~~[m[K
+[01m[K/root/TEAM_AIM/src/mission_2/src/control_cav_mission_2.cpp:[m[K In lambda function:
+[01m[K/root/TEAM_AIM/src/mission_2/src/control_cav_mission_2.cpp:952:20:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[Klane_start_distance[m[K’ set but not used [[01;35m[K-Wunused-but-set-variable[m[K]
+  952 |             double [01;35m[Klane_start_distance[m[K = 1e10;
+      |                    [01;35m[K^~~~~~~~~~~~~~~~~~~[m[K
