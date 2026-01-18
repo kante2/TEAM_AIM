@@ -2,7 +2,8 @@
 
 ## 1. in host =================
 
-# 1-1 docker engine install
+# 1-1 docker engine install if uninstall 
+# https://github.com/Seo12044/KMC_Docker_Manual 
 # Add Docker's official GPG key:
 sudo apt update
 sudo apt install ca-certificates curl
@@ -38,6 +39,8 @@ export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=1
 
 ## 2. how to use docker ===========
+# VSCODE 에서 dev containers 를 이용
+
 cd /root/TEAM_AIM/docker_kaist_aim
 # build docker image
 docker-compose build
