@@ -2,7 +2,7 @@
 
 ## 1. in host =================
 git clone -b final https://github.com/kante2/TEAM_AIM.git
---> 마운트를 시켜놓았기 떄문에 호스트에 TEAM_AIM 이 존재해야 한다. (~/aim_ws)
+--> 마운트를 시켜놓았기 떄문에 호스트에 TEAM_AIM 이 존재해야 한다. (~/TEAM_AIM)
 
 xhost +local:root
 
