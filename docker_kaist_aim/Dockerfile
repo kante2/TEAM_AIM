@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 # ===============================
 # ROS2 Foxy Dev Image (Ubuntu 20.04)
 # - C++17(g++9), CMake>=3.16

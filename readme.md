@@ -6,6 +6,9 @@ git clone -b final https://github.com/kante2/TEAM_AIM.git
 
 xhost +local:root
 
+export DOCKER_BUILDKIT=1
+export COMPOSE_DOCKER_CLI_BUILD=1
+
 ## 2. how to use docker ===========
 cd /root/TEAM_AIM/docker_kaist_aim
 # build docker image
