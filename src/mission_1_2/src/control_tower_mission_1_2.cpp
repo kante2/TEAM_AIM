@@ -779,7 +779,7 @@ int main(int argc, char** argv) {
   double overlap_threshold = 0.2;
   int lookahead_distance = 100;
   int visualization_lookahead = 20;
-  std::string path_dir = "/home/autonav/KAIST_WS/src/problem_1_1/global_path/";
+  std::string path_dir = "/root/TEAM_AIM/src/global_path/";
 
   RCLCPP_INFO(node->get_logger(), "Loading CSV path files...");
   for (int i = 1; i <= 2; i++) {
