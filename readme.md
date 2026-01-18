@@ -86,7 +86,15 @@ cd /root/TEAM_AIM/docker_kaist_aim
 # build docker image
 docker-compose build
 # run container
-docker run -it --rm --name kaist_aim_container -v /root/TEAM_AIM:/root/TEAM_AIM kaist_aim
+docker run -it --rm \
+  --name kaist_aim_container \
+  --net=host \
+  --privileged \
+  --env="DISPLAY=$DISPLAY" \
+  --env="QT_X11_NO_MITSHM=1" \
+  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+  -v "${HOME}/TEAM_AIM:/root/TEAM_AIM" \
+  team_aim
 
 ## 3. in docker ==================
 
