@@ -1,2 +1,0 @@
-int64 new_event
-int64 scene_number

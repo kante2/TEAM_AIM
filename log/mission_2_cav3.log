@@ -1,3 +1,0 @@
-[0m[INFO]: [INIT] CAV Mission 2 RE-REFACTORED started (CAV_03)[0m
-[0m[INFO]: [PRELOAD] Loading all lanes...[0m
-[31m[ERROR]: [PRELOAD] Failed to load lane 1 (path=/root/TEAM_AIM/src/global_path/path_mission2_3_01.csv)[0m

@@ -1,7 +1,0 @@
-{
-  "package_name": "scene_srv",
-  "non_idl_tuples": [
-    "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/scene_srv:srv/SceneSignal.srv",
-    "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/scene_srv:srv/StartSignal.srv"
-  ]
-}

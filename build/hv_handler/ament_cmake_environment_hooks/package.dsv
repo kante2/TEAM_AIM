@@ -1,4 +1,0 @@
-source;share/hv_handler/local_setup.bash
-source;share/hv_handler/local_setup.dsv
-source;share/hv_handler/local_setup.sh
-source;share/hv_handler/local_setup.zsh

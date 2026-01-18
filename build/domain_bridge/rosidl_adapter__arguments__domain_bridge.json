@@ -1,6 +1,0 @@
-{
-  "package_name": "domain_bridge",
-  "non_idl_tuples": [
-    "/root/TEAM_AIM/Mobility_Challenge_Simulator/src/domain_bridge:msg/CompressedMsg.msg"
-  ]
-}

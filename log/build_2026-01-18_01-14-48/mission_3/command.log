@@ -1,3 +1,0 @@
-Invoking command in '/root/TEAM_AIM/build/mission_3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/src/mission_3 -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/mission_3
-Invoked command in '/root/TEAM_AIM/build/mission_3' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/src/mission_3 -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/mission_3
-Invoking command in '/root/TEAM_AIM/build/mission_3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/mission_3 -- -j16 -l16

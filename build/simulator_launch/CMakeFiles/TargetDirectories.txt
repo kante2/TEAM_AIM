@@ -1,9 +1,0 @@
-/root/TEAM_AIM/build/simulator_launch/CMakeFiles/install/strip.dir
-/root/TEAM_AIM/build/simulator_launch/CMakeFiles/install/local.dir
-/root/TEAM_AIM/build/simulator_launch/CMakeFiles/install.dir
-/root/TEAM_AIM/build/simulator_launch/CMakeFiles/list_install_components.dir
-/root/TEAM_AIM/build/simulator_launch/CMakeFiles/rebuild_cache.dir
-/root/TEAM_AIM/build/simulator_launch/CMakeFiles/edit_cache.dir
-/root/TEAM_AIM/build/simulator_launch/CMakeFiles/test.dir
-/root/TEAM_AIM/build/simulator_launch/CMakeFiles/simulator_launch_uninstall.dir
-/root/TEAM_AIM/build/simulator_launch/CMakeFiles/uninstall.dir

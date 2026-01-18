@@ -1,3 +1,0 @@
-Invoking command in '/root/TEAM_AIM/build/scene_srv': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/scene_srv -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/scene_srv
-Invoked command in '/root/TEAM_AIM/build/scene_srv' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /root/TEAM_AIM/Mobility_Challenge_Simulator/src/scene_srv -DCMAKE_INSTALL_PREFIX=/root/TEAM_AIM/install/scene_srv
-Invoking command in '/root/TEAM_AIM/build/scene_srv': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/TEAM_AIM/build/scene_srv -- -j16 -l16
