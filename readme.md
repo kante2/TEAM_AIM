@@ -210,11 +210,10 @@ docker run -it --rm \
   --env="DISPLAY=$DISPLAY" \
   --env="QT_X11_NO_MITSHM=1" \
   --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-  -v /home/autonav/TEAM_AIM:/root/TEAM_AIM \
+  -v "${HOME}/TEAM_AIM:/root/TEAM_AIM" \
   team_aim
 ```
 
-위 커맨드의 마운트 옵션은 호스트 경로가 `/home/autonav/TEAM_AIM`인 경우입니다. 본인 계정이 다르면 `-v` 옵션을 변경하세요, 예: `-v ${HOME}/TEAM_AIM:/root/TEAM_AIM`.
 
 ## 4. Container 내부에서 미션 실행
 컨테이너 내부에서 `TEAM_AIM` 폴더로 이동합니다 (컨테이너 내부 경로가 `kaist_contest_ws` 등인 경우 포함):
