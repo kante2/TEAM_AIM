@@ -45,8 +45,7 @@ cd /root/TEAM_AIM/docker_kaist_aim
 # build docker image
 docker-compose build
 # run container
-docker run -it --rm --name kaist_aim_container -v /root/TEAM_AIM:/root/TEAM_AIM kaist_aim
-
+docker run -it --rm --name kaist_aim_container -v $HOME/TEAM_AIM:/root/TEAM_AIM team_aim
 ## 3. in docker ==================
 
 ## commands using sh
