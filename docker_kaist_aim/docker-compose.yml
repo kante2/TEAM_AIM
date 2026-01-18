@@ -14,7 +14,14 @@ services:
     ipc: host
     privileged: true
 
-    gpus: all
+    # GPU 설정 
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
 
     environment:
       - DISPLAY=${DISPLAY}
@@ -29,8 +36,8 @@ services:
       - XAUTHORITY=/root/.Xauthority
 
     volumes:
-      # Host: /home/kante/TEAM_AIM  ->  Container: /root/TEAM_AIM
-      - /home/kante/TEAM_AIM:/root/TEAM_AIM
+      - ${HOME}/TEAM_AIM:/root/TEAM_AIM
+
 
       # GUI (X11)
       - /tmp/.X11-unix:/tmp/.X11-unix:rw

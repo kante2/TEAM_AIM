@@ -4,6 +4,10 @@
 git clone -b final https://github.com/kante2/TEAM_AIM.git
 --> 마운트를 시켜놓았기 떄문에 호스트에 TEAM_AIM 이 존재해야 한다. (~/TEAM_AIM)
 
+cd ~/TEAM_AIM
+rm -rf Mobility_Challenge_Simulator
+git clone https://github.com/cislab-kaist/Mobility_Challenge_Simulator
+
 xhost +local:root
 
 export DOCKER_BUILDKIT=1
