@@ -2,6 +2,7 @@
 set -e
 
 cd ~/TEAM_AIM/
+colcon build
 source install/setup.bash
 
 # Launch all mission_3 nodes in separate terminals (gnome-terminal or xterm)

@@ -1,4 +1,21 @@
-# COMMANDS  TEAM :AIM ======================================================
+# COMMANDS  TEAM :AIM ==============
+
+## 1. in host =================
+git clone -b final https://github.com/kante2/TEAM_AIM.git
+--> 마운트를 시켜놓았기 떄문에 호스트에 TEAM_AIM 이 존재해야 한다. (~/aim_ws)
+
+xhost +local:root
+
+## 2. how to use docker ===========
+cd /root/TEAM_AIM/docker_kaist_aim
+# build docker image
+docker-compose build
+# run container
+docker run -it --rm --name kaist_aim_container -v /root/TEAM_AIM:/root/TEAM_AIM kaist_aim
+
+## 3. in docker ==================
+
+## commands using sh
 # mission_1_1
 chmod +x /root/TEAM_AIM/mission_1_1.sh && ./mission_1_1.sh
 

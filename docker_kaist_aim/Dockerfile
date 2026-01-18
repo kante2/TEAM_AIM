@@ -96,6 +96,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libcunit1-dev \
  && rm -rf /var/lib/apt/lists/*
 
+# test_msgs 패키지를 설치하여 테스트용 메시지 타입 사용 가능하게 함
+RUN apt-get update && apt-get install -y ros-foxy-test-msgs
+
 # -------------------------------
 # pip packages (문서 2.4 pip install -U ...)
 # -------------------------------
