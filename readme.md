@@ -1,9 +1,33 @@
 # COMMANDS  TEAM :AIM ==============
 
 ## 1. in host =================
+
+# 1-1 docker engine install
+# Add Docker's official GPG key:
+sudo apt update
+sudo apt install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+sudo apt update
+
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# 1-2
 git clone -b final https://github.com/kante2/TEAM_AIM.git
 --> 마운트를 시켜놓았기 떄문에 호스트에 TEAM_AIM 이 존재해야 한다. (~/TEAM_AIM)
 
+# 1-3 INSTALL simulator ! 
 cd ~/TEAM_AIM
 rm -rf Mobility_Challenge_Simulator
 git clone https://github.com/cislab-kaist/Mobility_Challenge_Simulator
