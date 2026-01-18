@@ -7,6 +7,8 @@
 #include <limits>
 #include <fstream>
 #include <sstream>
+#include <deque>
+#include <numeric>
 
 #include <rclcpp/rclcpp.hpp>
 #include <rclcpp/qos.hpp> 
@@ -26,13 +28,24 @@ struct Pose {
 
 struct HVState {
     int id;                 
-    double start_x;         
-    double start_y;
-    double end_x;
-    double end_y;         
-    bool is_initialized;    
-};
+    
+    // [추가된 변수들] 즉각적인 속도 측정을 위해 필요합니다.
+    bool is_first_msg = true;     // 첫 메시지인지 확인용
+    double prev_x = 0.0;          // 이전 X 좌표
+    double prev_y = 0.0;          // 이전 Y 좌표
+    rclcpp::Time last_time;       // 이전 메시지 수신 시간
+    
+    // 속도 노이즈 제거를 위한 버퍼 (최근 10개 데이터 평균)
+    std::deque<double> vel_buffer;
+    const size_t buffer_size = 10; 
 
+    // 기존 변수들 (혹시 다른 곳에서 쓸 수도 있으니 유지, 필요 없으면 삭제 가능)
+    double start_x = 0.0;         
+    double start_y = 0.0;
+    double end_x = 0.0;
+    double end_y = 0.0;         
+    bool is_initialized = false;    
+};
 
 // =========================
 // Global Variables
@@ -292,95 +305,67 @@ void monitor_all_rois(
 
 
 // ==========================================
-// [Callback] 속도 측정 ,,HV 19  하나로 측정함
+// [New Logic] 즉각적인 속도 측정 함수
 // ==========================================
-void GetVelocityCB(const geometry_msgs::msg::PoseStamped::SharedPtr msg,
-                    int hv_id, 
-                    std::map<int, HVState>& states, 
-                    const std::map<int, vector<Pose>>& paths) 
+void CalculateInstantVelocity(const geometry_msgs::msg::PoseStamped::SharedPtr msg,
+                              int hv_id, 
+                              std::map<int, HVState>& states) 
 {
-    if (paths.find(hv_id) == paths.end() || paths.at(hv_id).empty()) return;
+    HVState& state = states[hv_id];
+    rclcpp::Time current_time = msg->header.stamp;
+    double current_x = msg->pose.position.x;
+    double current_y = msg->pose.position.y;
 
-    HVState& current_hv = states[hv_id];
-
-    if (!current_hv.is_initialized) {
-        int start_idx = find_closest_waypoint_index(paths.at(hv_id), hv_poses[hv_id]) + 10;
-        if (start_idx < 0 || start_idx + 20 >= (int)paths.at(hv_id).size()) return;
-
-        int end_idx = start_idx + 60;
-        current_hv.start_x = paths.at(hv_id)[start_idx].x;
-        current_hv.start_y = paths.at(hv_id)[start_idx].y;
-        current_hv.end_x = paths.at(hv_id)[end_idx].x;
-        current_hv.end_y = paths.at(hv_id)[end_idx].y;
-
-        current_hv.is_initialized = true;
-        std::cout << "[HV " << hv_id << "] Start Point Set." << std::endl;
+    // 1. 첫 메시지면 초기화만 하고 리턴
+    if (state.is_first_msg) {
+        state.prev_x = current_x;
+        state.prev_y = current_y;
+        state.last_time = current_time;
+        state.is_first_msg = false;
         return;
     }
-    rclcpp::Time current_msg_time = msg->header.stamp;
 
-    static bool timer_running = false; 
-    static rclcpp::Time start_time; 
+    // 2. 시간 변화량 (dt) 계산
+    double dt = (current_time - state.last_time).seconds();
+
+    // dt가 너무 작으면(0.02초 미만, 50Hz 기준) 계산 스킵 (Division by zero 방지 및 노이즈 감소)
+    if (dt < 0.001) return; 
+
+    // 3. 이동 거리 (dist) 계산
+    double dx = current_x - state.prev_x;
+    double dy = current_y - state.prev_y;
+    double dist = std::hypot(dx, dy);
+
+    // 4. 순간 속도 계산 (v = d / t)
+    double current_vel = dist / dt;
+
+    // 5. 이동 평균 필터 (Moving Average)
+    // 버퍼에 현재 속도 추가
+    if (state.vel_buffer.size() >= state.buffer_size) {
+        state.vel_buffer.pop_front();
+    }
+    state.vel_buffer.push_back(current_vel);
+
+    // 버퍼 평균 계산
+    double sum = std::accumulate(state.vel_buffer.begin(), state.vel_buffer.end(), 0.0);
+    double avg_vel = sum / state.vel_buffer.size();
+
+    // 6. 전역 변수 업데이트 (혹은 필요한 곳에 사용)
+    // 노이즈로 인한 미세한 움직임은 0으로 처리 (Optional)
+    if (avg_vel < 0.01) avg_vel = 0.0;
     
-    // 구간 거리 계산 (처음 한 번만 실행함)
-    static const double SECTION_DISTANCE = GetArcLength(current_hv.start_x, current_hv.start_y, current_hv.end_x, current_hv.end_y, CENTER_X, CENTER_Y);
-    static bool is_initialized = false;
-    static const double radius = std::hypot(current_hv.start_x - CENTER_X, current_hv.start_y - CENTER_Y);
-    if(!is_initialized) {
-        RCLCPP_INFO(rclcpp::get_logger("init"), "Section Distance: %.3f m", SECTION_DISTANCE);
-        is_initialized = true;
-    }
+    // 최대 속도 제한 (시뮬레이터 튀는 현상 방지)
+    if (avg_vel > 2.5) avg_vel = 2.5;
 
-    double hv_x = msg->pose.position.x;
-    double hv_y = msg->pose.position.y;
-    
-    // 현재 위치와 목표점 사이의 거리 계산 (단순 거리)
-    double dist_to_p1 = std::hypot(hv_x - current_hv.start_x, hv_y - current_hv.start_y);
-    double dist_to_p2 = std::hypot(hv_x - current_hv.end_x, hv_y - current_hv.end_y);
+    measured_hv_vel = avg_vel;
 
+    // 7. 상태 업데이트
+    state.prev_x = current_x;
+    state.prev_y = current_y;
+    state.last_time = current_time;
 
-    // 1. 시작 지점 (P1) 통과 감지
-    if (dist_to_p1 < 0.05) {
-        start_time = current_msg_time; 
-        timer_running = true;
-        RCLCPP_INFO(rclcpp::get_logger("speed_trap"), ">>> PASSED START POINT (P1) <<<");
-    }
-
-    // 2. 종료 지점 (P2) 통과 감지 & 속도 계산
-    if (timer_running && dist_to_p2 < 0.05) {
-        double elapsed = (current_msg_time - start_time).seconds();
-
-        // P1과 P2가 겹치는 오작동 방지를 위해 최소 0.5초 경과 확인
-        if (elapsed > 0.05) {
-            double speed_x = SECTION_DISTANCE / elapsed;
-            double speed_w = speed_x / radius; // 각속도 계산
-
-            if (speed_x > 1.8) {
-              measured_hv_vel = 1.8;
-            }
-            else {
-              measured_hv_vel = speed_x;
-            }
-
-            
-            RCLCPP_INFO(rclcpp::get_logger("speed_trap"), 
-                "\n================ RESULT ================\n" 
-                " Speed_x: %.3f m/s\n"
-                " Speed_w: %.3f rad/s\n"
-                " Time : %.3f sec\n"
-                " Dist : %.3f m\n"
-                "========================================\n", 
-                speed_x, speed_w, elapsed, SECTION_DISTANCE);
-            
-            timer_running = false; // 측정 완료 후 리셋
-        }
-    }
-    
-    // 타임아웃 (10초 지나면 자동 리셋하는거임,, 차가 멈췄거나 경로 이탈 시)
-    if (timer_running && (current_msg_time - start_time).seconds() > 10.0) {
-        timer_running = false;
-        RCLCPP_WARN(rclcpp::get_logger("speed_trap"), "Measurement Timeout. Reset.");
-    }
+    // [Log] 확인용 (필요시 주석 해제)
+    // RCLCPP_INFO(rclcpp::get_logger("hv_vel"), "HV_%d Speed: %.3f m/s", hv_id, measured_hv_vel);
 }
 
 
@@ -459,7 +444,10 @@ int main(int argc, char * argv[])
     auto sub_hv19 = node->create_subscription<geometry_msgs::msg::PoseStamped>(
         "/HV_19", rclcpp::SensorDataQoS(),
         [&](const geometry_msgs::msg::PoseStamped::SharedPtr msg){
-            GetVelocityCB(msg, 19, hv_states, hv_paths);
+            // 기존 hv_19_callback도 필요하다면 여기서 호출하거나 병합
+            hv_19_callback(msg); 
+            // 새로운 속도 측정 함수 호출 (Path 정보 필요 없음)
+            CalculateInstantVelocity(msg, 19, hv_states);
     });
         
 

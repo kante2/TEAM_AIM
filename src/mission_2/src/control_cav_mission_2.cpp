@@ -18,6 +18,8 @@
 #include <vector>
 #include <map>
 #include <chrono>
+#include <deque>      // [추가] 이동 평균 필터용
+#include <numeric>    // [추가] std::accumulate용
 
 using namespace std;
 
@@ -47,6 +49,13 @@ static double cav_yaw = 0.0;
 static std::map<int, std::pair<double, double>> hv_positions;
 
 // =========================
+// Overlap Region Globals
+// =========================
+static int overlap_start_idx = -1; // 겹침 시작 인덱스 (Lane 3 기준)
+static int overlap_end_idx = -1;   // 겹침 끝 인덱스 (Lane 3 기준)
+static bool overlap_detected = false;
+
+// =========================
 // Zone-based collision detection
 // =========================
 // Zone 1: HV ROI
@@ -68,12 +77,12 @@ static std::vector<PathPoint> hv_zone_polygon = {
 };
 
 // Zone 1: CAV ROI (선분)
-static PathPoint cav_zone_start = {3.4, -2.549999952316284};
-static PathPoint cav_zone_end   = {3.2733333110809326, -2.549999952316284};
+static PathPoint cav_zone_start = {4.5, -2.549999952316284};
+static PathPoint cav_zone_end   = {3.0, -2.549999952316284};
 
 // Zone 1 flag (복구!)
 static bool zone_collision_flag = false;
-static bool zone_cav_flag = false;
+static bool zone_cav_flag = false;  // CAV가 Zone 1 안에 있는지 여부
 
 // =========================
 // Zone 2
@@ -83,8 +92,8 @@ static PathPoint cav_zone2_start = {5.058333396911621, 1.0199999809265137};
 static PathPoint cav_zone2_end = {5.058333396911621, 0.0};
 
 // HV Zone 2: 수직 선분
-static PathPoint hv_zone2_start = {5.308333396911621, 0.2};
-static PathPoint hv_zone2_end = {5.308333396911621, -0.5};
+static PathPoint hv_zone2_start = {5.308333396911621, 0.4};
+static PathPoint hv_zone2_end = {5.308333396911621, -0.3};
 
 // Zone 2 flag
 static bool zone2_collision_flag = false;
@@ -145,17 +154,20 @@ struct CavState {
 };
 
 // =========================
-// HV Velocity Measurement (추가!)
+// HV Velocity Measurement (수정됨: 즉시 측정 방식)
 // =========================
 struct HVState {
     int id;
-    double start_x;
-    double start_y;
-    double end_x;
-    double end_y;
-    bool is_initialized{false};
-    bool timer_running{false};
-    rclcpp::Time start_time;
+    
+    // 즉각적인 속도 측정을 위한 변수
+    bool is_first_msg = true;
+    double prev_x = 0.0;
+    double prev_y = 0.0;
+    rclcpp::Time last_time;
+    
+    // 이동 평균 필터용 버퍼
+    std::deque<double> vel_buffer;
+    const size_t buffer_size = 10; // 최근 10개 평균
 };
 
 static std::map<int, HVState> hv_states;  // HV20, HV24 상태 저장
@@ -241,7 +253,7 @@ static bool loadPathCsv(const std::string& csv_path, std::vector<PathPoint>& out
 
 /// HV Zone 안에 HV가 있는지 체크 (각 점 기준 0.2m 반경)
 bool is_hv_in_zone(double hv_x, double hv_y) {
-    const double detection_radius = 0.2;
+    const double detection_radius = 0.1;
 
     for (const auto& zone_point : hv_zone_polygon) {
         double dist = calculateDistance(hv_x, hv_y, zone_point.x, zone_point.y);
@@ -276,12 +288,13 @@ bool is_cav_in_zone(double cav_x_in, double cav_y_in) {
     double dist = calculateDistance(cav_x_in, cav_y_in, closest_x, closest_y);
 
     if (dist <= detection_radius) {
-        cout << "[ZONE3_1_DETECTION] CAV in CAV Zone3_1!" << std::endl;
+        cout << "[ZONE1_DETECTION] CAV in CAV Zone1!" << std::endl;
         return true;
     }
 
     return false;
 }
+
 
 /// Zone 1 충돌 검사: HV Zone에 HV 있고 + CAV Zone에 CAV 있으면 충돌
 bool check_zone_collision() {
@@ -305,7 +318,7 @@ bool check_zone_collision() {
 
 /// HV Zone 2 안에 HV가 있는지 체크 (선분으로부터 거리)
 bool is_hv_in_zone2(double hv_x, double hv_y) {
-    const double detection_radius = 0.3;
+    const double detection_radius = 0.1;
 
     double x1 = hv_zone2_start.x;
     double y1 = hv_zone2_start.y;
@@ -331,7 +344,7 @@ bool is_hv_in_zone2(double hv_x, double hv_y) {
 
 /// CAV Zone 2 안에 CAV가 있는지 체크 (선분으로부터 거리)
 bool is_cav_in_zone2(double cav_x_in, double cav_y_in) {
-    const double detection_radius = 0.2;
+    const double detection_radius = 0.1;
 
     double x1 = cav_zone2_start.x;
     double y1 = cav_zone2_start.y;
@@ -351,6 +364,7 @@ bool is_cav_in_zone2(double cav_x_in, double cav_y_in) {
     double closest_y = y1 + t * (y2 - y1);
 
     double dist = calculateDistance(cav_x_in, cav_y_in, closest_x, closest_y);
+
     return dist <= detection_radius;
 }
 
@@ -532,108 +546,75 @@ bool is_cav_in_zone5(double cav_x_in, double cav_y_in) {
 
 
 // ============================================
-/// HV 속도 측정 콜백 (rotary_tower 로직 기반)
+/// HV 속도 측정 콜백 (수정됨: 즉시 측정 로직)
 // ============================================
-/// HV 경로에서 가장 가까운 waypoint 찾기
-int find_closest_hv_waypoint(const std::vector<PathPoint>& path, double x, double y) {
-    if (path.empty()) return -1;
 
-    double min_distance = 1e10;
-    int closest_idx = 0;
-
-    for (size_t i = 0; i < path.size(); i++) {
-        double distance = calculateDistance(x, y, path[i].x, path[i].y);
-        if (distance < min_distance) {
-            min_distance = distance;
-            closest_idx = static_cast<int>(i);
-        }
-    }
-    return closest_idx;
-}
-
-/// HV 속도 측정 콜백 (rotary_tower 로직 기반)
+/// HV 속도 측정 콜백 (Moving Average 방식)
 void MeasureHVVelocity(const geometry_msgs::msg::PoseStamped::SharedPtr msg,
                        int hv_id,
                        std::shared_ptr<rclcpp::Node> node) {
 
-    // HV 경로가 없으면 리턴
-    if (hv_paths.find(hv_id) == hv_paths.end() || hv_paths[hv_id].empty()) return;
+    // (옵션) 경로 데이터가 로드된 HV만 처리하려면 아래 주석 해제
+    // if (hv_paths.find(hv_id) == hv_paths.end() || hv_paths[hv_id].empty()) return;
 
-    HVState& current_hv = hv_states[hv_id];
+    HVState& state = hv_states[hv_id];
+    state.id = hv_id;
 
-    // 초기화: 시작점과 끝점 설정
-    if (!current_hv.is_initialized) {
-        current_hv.id = hv_id;
+    rclcpp::Time current_time = msg->header.stamp;
+    double current_x = msg->pose.position.x;
+    double current_y = msg->pose.position.y;
 
-        // 현재 HV 위치
-        double hv_x = hv_positions[hv_id].first;
-        double hv_y = hv_positions[hv_id].second;
-
-        int start_idx = find_closest_hv_waypoint(hv_paths[hv_id], hv_x, hv_y) + 10;
-
-        if (start_idx < 0 || start_idx + 60 >= (int)hv_paths[hv_id].size()) return;
-
-        int end_idx = start_idx + 60;
-
-        current_hv.start_x = hv_paths[hv_id][start_idx].x;
-        current_hv.start_y = hv_paths[hv_id][start_idx].y;
-        current_hv.end_x = hv_paths[hv_id][end_idx].x;
-        current_hv.end_y = hv_paths[hv_id][end_idx].y;
-
-        current_hv.is_initialized = true;
-        RCLCPP_INFO(node->get_logger(), "[HV%d] Speed measurement points set", hv_id);
+    // 1. 첫 메시지 처리
+    if (state.is_first_msg) {
+        state.prev_x = current_x;
+        state.prev_y = current_y;
+        state.last_time = current_time;
+        state.is_first_msg = false;
         return;
     }
 
-    // 속도 측정
-    rclcpp::Time current_time = msg->header.stamp;
-    double hv_x = msg->pose.position.x;
-    double hv_y = msg->pose.position.y;
+    // 2. 시간 차이 계산
+    double dt = (current_time - state.last_time).seconds();
+    
+    // dt가 너무 작으면 계산 생략 (0.001초 미만 등)
+    if (dt < 0.001) return;
 
-    double dist_to_start = std::hypot(hv_x - current_hv.start_x, hv_y - current_hv.start_y);
-    double dist_to_end = std::hypot(hv_x - current_hv.end_x, hv_y - current_hv.end_y);
+    // 3. 이동 거리 및 속도 계산
+    double dx = current_x - state.prev_x;
+    double dy = current_y - state.prev_y;
+    double dist = std::hypot(dx, dy);
+    
+    double current_vel = dist / dt;
 
-    // 시작점 통과
-    if (!current_hv.timer_running && dist_to_start < 0.1) {
-        current_hv.start_time = current_time;
-        current_hv.timer_running = true;
-        RCLCPP_INFO(node->get_logger(), "[HV%d] Passed start point", hv_id);
+    // 4. 이동 평균 필터 적용
+    if (state.vel_buffer.size() >= state.buffer_size) {
+        state.vel_buffer.pop_front();
+    }
+    state.vel_buffer.push_back(current_vel);
+
+    double sum = std::accumulate(state.vel_buffer.begin(), state.vel_buffer.end(), 0.0);
+    double avg_vel = sum / state.vel_buffer.size();
+
+    // 5. 노이즈 및 상한선 처리
+    if (avg_vel < 0.01) avg_vel = 0.0; // 정지 상태 처리
+    if (avg_vel > 2.5) avg_vel = 2.5;  // 비정상적으로 튀는 값 제한
+
+    // 6. 전역 변수 업데이트
+    if (hv_id == 20) {
+        measured_hv20_vel = avg_vel;
+        // 디버깅용 로그 (필요 시 주석 해제)
+        // RCLCPP_INFO(node->get_logger(), "[HV20] Vel: %.2f", avg_vel);
+    } else if (hv_id == 24) {
+        measured_hv24_vel = avg_vel;
+        // RCLCPP_INFO(node->get_logger(), "[HV24] Vel: %.2f", avg_vel);
     }
 
-    // 끝점 통과 및 속도 계산
-    if (current_hv.timer_running && dist_to_end < 0.1) {
-        double elapsed = (current_time - current_hv.start_time).seconds();
-
-        if (elapsed > 0.1) {  // 최소 시간 체크
-            double section_distance = calculateDistance(
-                current_hv.start_x, current_hv.start_y,
-                current_hv.end_x, current_hv.end_y
-            );
-
-            double speed = section_distance / elapsed;
-
-            // 속도 저장
-            if (hv_id == 20) {
-                measured_hv20_vel = speed;
-                RCLCPP_INFO(node->get_logger(),
-                    "[HV20 SPEED] %.3f m/s (Lane 3)", speed);
-            } else if (hv_id == 24) {
-                measured_hv24_vel = speed;
-                RCLCPP_INFO(node->get_logger(),
-                    "[HV24 SPEED] %.3f m/s (Lane 2)", speed);
-            }
-
-            current_hv.timer_running = false;
-        }
-    }
-
-    // 타임아웃 (10초)
-    if (current_hv.timer_running &&
-        (current_time - current_hv.start_time).seconds() > 10.0) {
-        current_hv.timer_running = false;
-        RCLCPP_WARN(node->get_logger(), "[HV%d] Speed measurement timeout", hv_id);
-    }
+    // 7. 상태 업데이트
+    state.prev_x = current_x;
+    state.prev_y = current_y;
+    state.last_time = current_time;
 }
+
 // =========================
 // ROI Detection Functions
 // =========================
@@ -661,30 +642,103 @@ int get_lane_start_idx(int lane_id, double cav_x, double cav_y) {
 }
 
 // =========================
-// [NEW] Overlap Detection Function
+// [NEW] Overlap Detection Functiona
 // =========================
 // Lane 2와 Lane 3가 현재 위치(cav_x, cav_y) 기준으로 겹쳐있는지 확인하는 함수
-bool check_overlap_lane23(double x, double y) {
-    // 데이터가 없으면 검사 불가
-    if (lane_paths[2].empty() || lane_paths[3].empty()) return false;
+// bool check_overlap_lane23(double x, double y) {
+//     // 데이터가 없으면 검사 불가
+//     if (lane_paths[2].empty() || lane_paths[3].empty()) return false;
 
-    // 현재 위치에서 각 차선의 가장 가까운 인덱스 계산
-    // (기존 get_lane_start_idx 함수 재사용)
-    int idx2 = get_lane_start_idx(2, x, y);
-    int idx3 = get_lane_start_idx(3, x, y);
+//     // 현재 위치에서 각 차선의 가장 가까운 인덱스 계산
+//     // (기존 get_lane_start_idx 함수 재사용)
+//     int idx2 = get_lane_start_idx(2, x, y);
+//     int idx3 = get_lane_start_idx(3, x, y);
 
-    if (idx2 < 0 || idx3 < 0) return false;
+//     if (idx2 < 0 || idx3 < 0) return false;
 
-    double p2_x = lane_paths[2][idx2].x;
-    double p2_y = lane_paths[2][idx2].y;
-    double p3_x = lane_paths[3][idx3].x;
-    double p3_y = lane_paths[3][idx3].y;
+//     double p2_x = lane_paths[2][idx2].x;
+//     double p2_y = lane_paths[2][idx2].y;
+//     double p3_x = lane_paths[3][idx3].x;
+//     double p3_y = lane_paths[3][idx3].y;
 
-    // 두 차선의 가장 가까운 점 사이의 거리 계산
-    double separation = std::hypot(p2_x - p3_x, p2_y - p3_y);
+//     // 두 차선의 가장 가까운 점 사이의 거리 계산
+//     double separation = std::hypot(p2_x - p3_x, p2_y - p3_y);
 
-    // 거리가 0.2m 미만이면 사실상 같은 경로(중복)로 판단
-    return (separation < 0.1);
+//     // 거리가 0.2m 미만이면 사실상 같은 경로(중복)로 판단
+//     return (separation < 0.2);
+// }
+
+// Lane 2와 Lane 3가 겹치는 구간(인덱스 범위)을 미리 계산하는 함수
+void init_overlap_region() {
+    if (lane_paths[2].empty() || lane_paths[3].empty()) {
+        std::cout << "[OVERLAP_INIT] Paths are empty. Skipping." << std::endl;
+        return;
+    }
+
+    double threshold = 0.2; // 겹침 판단 거리 (m)
+    int path3_size = (int)lane_paths[3].size();
+    
+    int min_idx = -1;
+    int max_idx = -1;
+    bool in_overlap = false;
+
+    // Lane 3의 모든 점을 순회
+    for (int i = 0; i < path3_size; ++i) {
+        double p3_x = lane_paths[3][i].x;
+        double p3_y = lane_paths[3][i].y;
+
+        // Lane 2에서 가장 가까운 점 찾기 (단순 탐색)
+        // (초기화 단계이므로 성능 최적화보다는 정확성 위주로 전체 탐색 or 근처 탐색)
+        double min_dist = 1e10;
+        for (const auto& p2 : lane_paths[2]) {
+            double d = std::hypot(p3_x - p2.x, p3_y - p2.y);
+            if (d < min_dist) min_dist = d;
+        }
+
+        // 겹침 판정
+        if (min_dist <= threshold) {
+            if (min_idx == -1) min_idx = i; // 최초 발견 지점
+            max_idx = i; // 계속 갱신하여 마지막 지점 저장
+            in_overlap = true;
+        }
+    }
+
+    if (in_overlap && min_idx != -1 && max_idx != -1) {
+        overlap_start_idx = min_idx;
+        overlap_end_idx = max_idx;
+        overlap_detected = true;
+        std::cout << "========================================" << std::endl;
+        std::cout << "[OVERLAP_INIT] Overlap Region Detected!" << std::endl;
+        std::cout << "   Range (Lane 3 Index): " << overlap_start_idx << " ~ " << overlap_end_idx << std::endl;
+        std::cout << "========================================" << std::endl;
+    } else {
+        std::cout << "[OVERLAP_INIT] No significant overlap found." << std::endl;
+    }
+}
+
+// 현재 Lane 3 위에서의 내 위치(인덱스)가 겹침 구간에 근접했는지 확인
+bool check_approaching_overlap(int current_lane3_idx) {
+    if (!overlap_detected || overlap_start_idx == -1) return false;
+
+    // 미리 막기 위한 여유 버퍼 (인덱스 개수)
+    // 예: 50개 포인트(약 5~10m) 전부터 Lane 3를 막음
+    int safety_margin = 30; 
+
+    // 순환 경로(Circular) 고려 없이 단순 선형 비교일 경우:
+    // [overlap_start - margin]  ~  [overlap_end] 구간에 있으면 true
+    
+    // 만약 경로가 순환한다면 인덱스 랩어라운드 처리가 필요하지만, 
+    // 여기서는 단순 구간 비교로 구현합니다.
+    
+    int block_start = overlap_start_idx - safety_margin;
+    int block_end = overlap_end_idx + safety_margin;
+
+    // 현재 인덱스가 이 구간 안에 들어오면 true
+    if (current_lane3_idx >= block_start && current_lane3_idx <= block_end) {
+        return true;
+    }
+    
+    return false;
 }
 
 
@@ -757,6 +811,10 @@ int choose_lane(const std::vector<bool>& collision_list, int current_lane, bool 
     bool solid_lane1 = is_cav_in_zone3(cav_x, cav_y);
     bool solid_lane2 = is_cav_in_zone4(cav_x, cav_y);
 
+    if (collision_list[1] && collision_list[2] && collision_list[3]) {
+        return current_lane;
+    }
+
     if (in_zone3 && in_zone4 && in_zone5) {
         return current_lane;
     }
@@ -784,8 +842,13 @@ int choose_lane(const std::vector<bool>& collision_list, int current_lane, bool 
 void change_csv_state(int cav_id, int new_lane, std::shared_ptr<rclcpp::Node> node) {
     if (new_lane < 1 || new_lane > 3) return;
 
-    // [로직 추가] 경로 중복 시 Lane 3 -> Lane 2로 강제 변환
-    bool is_overlap = check_overlap_lane23(cav_x, cav_y);
+    // [수정된 부분 시작] ==========================================
+    // 기존: bool is_overlap = check_overlap_lane23(cav_x, cav_y);
+    
+    // 변경: 좌표(x,y)를 Lane 3 기준 인덱스로 변환 후 검사
+    int current_idx_on_3 = get_lane_start_idx(3, cav_x, cav_y);
+    bool is_overlap = check_approaching_overlap(current_idx_on_3);
+    // [수정된 부분 끝] ============================================
     
     if (is_overlap && (new_lane == 3 || new_lane == 2)) {
         RCLCPP_WARN(node->get_logger(), 
@@ -793,7 +856,7 @@ void change_csv_state(int cav_id, int new_lane, std::shared_ptr<rclcpp::Node> no
         new_lane = 2; // 강제로 2번 차선으로 인식하게 함
     }
 
-    // 이미 해당 차선이면 리턴 (단, 위에서 new_lane이 2로 바뀌었으면 아래 로직을 탈 수 있음)
+    // 이미 해당 차선이면 리턴
     if (new_lane == current_lane) return;
 
     // 경로 교체 및 상태 업데이트
@@ -960,7 +1023,7 @@ void planVelocity(ControllerState& st, bool isCornerDetected, bool stop_flag) {
     
     // 1. 코너 주행 여부 확인
     if (isCornerDetected) {
-        st.speed_mps = 1.0;
+        st.speed_mps = 1.3;
     } else {
         st.speed_mps = 2.0;
     }
@@ -1029,7 +1092,7 @@ int main(int argc, char** argv) {
     RCLCPP_INFO(node->get_logger(), "[PRELOAD] Loading all lanes...");
     for (int lane = 1; lane <= 3; ++lane) {
         std::string csv_path = std::string("/root/TEAM_AIM/src/global_path/") +
-                       "path_mission2_" + std::to_string(cav_id) + "_" + twoDigitId(lane) + ".csv";
+                               "path_mission2_" + std::to_string(cav_id) + "_" + twoDigitId(lane) + ".csv";
         
         if (!loadPathCsv(csv_path, lane_paths[lane])) {
             RCLCPP_ERROR(node->get_logger(), "[PRELOAD] Failed to load lane %d", lane);
@@ -1058,10 +1121,6 @@ int main(int argc, char** argv) {
     } else {
         RCLCPP_WARN(node->get_logger(), "[PRELOAD] Failed to load HV24 path");
     }
-    
-
-    // [중요 수정] 초기화 시점의 중복 제거 로직은 삭제하였습니다.
-    // 런타임에 차량 위치 기준으로 비교하는 것이 더 정확합니다.
 
     // ---- Set initial path
     current_lane = 2;  // Start with CENTER lane
@@ -1114,6 +1173,12 @@ int main(int argc, char** argv) {
         }
     );
     RCLCPP_INFO(node->get_logger(), "[INIT] HV velocity measurement enabled (HV20, HV24)");
+
+    init_overlap_region();
+    // Set initial path
+    current_lane = 2;
+    integrate_path_vector = lane_paths[current_lane];
+    lane_start_idx[current_lane] = 0;
 
     // ---- CAV pose subscription and control loop
     static int pose_callback_count = 0;
@@ -1190,23 +1255,25 @@ int main(int argc, char** argv) {
             }
             else if (zone_cav_flag) {
                 lane_collision[3] = true;
-                lane_collision[1] = true;
+                lane_collision[2] = true;
             }
 
             // =================================================================================
-            // [수정됨] 중복 차선(Overlap) 감지 함수 호출
+            // [MODIFIED] 미리 계산된 인덱스 기반 Overlap 감지
             // =================================================================================
-            bool is_overlap = check_overlap_lane23(cav_x, cav_y);
+            // 현재 내 위치가 Lane 3 경로 상에서 어디쯤(인덱스)인지 확인
+            int my_idx_on_lane3 = get_lane_start_idx(3, cav_x, cav_y);
             
-            if (is_overlap) {
-                // 1) Lane 3는 물리적으로 막힌 것으로 간주 (선택 방지)
+            // 겹침 구간(또는 그 직전)에 진입했는지 확인
+            bool is_overlap_zone = check_approaching_overlap(my_idx_on_lane3);
+            
+            if (is_overlap_zone) {
+                // 1) Lane 3는 막힌 것으로 처리 (미리 차단)
                 lane_collision[3] = true;
-
-                // 2) [추가 기능] 만약 현재 내가 Lane 3라고 생각하고 있다면?
-                //    -> 즉시 Lane 2로 상태를 정정한다 (change_csv_state 호출)
+                
+                // 2) 만약 현재 Lane 3를 달리고 있다면, 강제로 Lane 2로 변경
                 if (current_lane == 3) {
-                    // 여기서 2번 차선으로 변경 요청을 보내면, 
-                    // change_csv_state 내부 로직에 의해 경로가 바뀌고 current_lane = 2가 됨
+                    RCLCPP_WARN(node->get_logger(), "[OVERLAP] Approaching merge zone! Forcing Lane 3 -> Lane 2.");
                     change_csv_state(cav_id, 2, node);
                 }
             }
@@ -1252,13 +1319,13 @@ int main(int argc, char** argv) {
                 std::cout << "\n=== [Lane Status] (CAV" << cav_id << ") ===" << std::endl;
                 std::cout << "CAV Pos: (" << std::fixed << std::setprecision(2) << cav_x << ", " << cav_y << ")" << std::endl;
                 
-                if (is_overlap) {
+                if (is_overlap_zone) { // 변수명을 is_overlap_zone으로 변경
                     std::cout << ">>> OVERLAP DETECTED! Forcing Lane 3 -> Lane 2 logic <<<" << std::endl;
                 }
 
                 for (int lane = 1; lane <= 3; ++lane) {
                     std::string status = lane_collision[lane] ? "X OCCUPIED" : "O FREE";
-                    if (is_overlap && lane == 3) status += " (Overlap Force)";
+                    if (is_overlap_zone && lane == 3) status += " (Overlap Force)"; // 변수명 변경
                     std::cout << "  Lane " << lane << " : " << status << std::endl;
                 }
                 std::cout << "-> Current: " << current_lane << " -> Next: " << next_lane << std::endl;
@@ -1293,16 +1360,25 @@ int main(int argc, char** argv) {
             double wz = st->speed_mps * kappa;
             wz = std::clamp(wz, -st->max_yaw_rate, st->max_yaw_rate);
 
-            // ===== 10. Publish Control =====
+            // ===== 11. Publish Control (수정: 우선순위 재정렬) =====
             geometry_msgs::msg::Accel cmd;
 
-            // [수정 1] Race Over가 가장 최우선 (경기 종료 시 무조건 정지)
+            // [우선순위 1] Race Over (경기 종료 시 무조건 정지)
             if (race_over) {
                 cmd.linear.x = 0.0;
                 cmd.angular.z = 0.0;
             }
-            // [수정 2] Stop Flag가 Zone 진입 여부보다 우선순위가 높아야 함!
-            // Zone 안에 있더라도 앞차가 멈추면(stop_flag) 나도 멈추거나 감속해야 하기 때문입니다.
+            // [우선순위 2] Zone 1 또는 Zone 2 충돌 감지 시 '무조건' 정지 (Stop Flag보다 먼저 검사해야 함!)
+            else if (zone_collision_flag || zone2_collision_flag) {
+                // 로그를 띄워서 정지 원인 확인 (과도한 로그 방지를 위해 Throttle 사용)
+                RCLCPP_WARN_THROTTLE(node->get_logger(), *node->get_clock(), 1000, 
+                    "[EMERGENCY] Zone Collision! Stopping. (Zone1: %d, Zone2: %d)", 
+                    zone_collision_flag, zone2_collision_flag);
+                
+                cmd.linear.x = 0.0;
+                cmd.angular.z = 0.0;
+            }
+            // [우선순위 3] 일반 Stop Flag (앞차 거리 유지 등) -> 감속하거나 정지
             else if (stop_flag) {                       
                 // 각 차선별 감속 로직   
                 if (current_lane == 3 && zone2_collision_flag) {
@@ -1322,17 +1398,11 @@ int main(int argc, char** argv) {
                     cmd.angular.z = 0.0;
                 }
                 else {
-                    // 예외 상황: 기본 감속
                     cmd.linear.x = 0.0; 
                     cmd.angular.z = 0.0;
                 }
             }
-            // [수정 3] Zone 1, 2 충돌 시 (Stop Flag가 없을 때) 정지
-            else if (zone_collision_flag || zone2_collision_flag) {
-                cmd.linear.x = 0.0;
-                cmd.angular.z = 0.0;
-            }
-            // [수정 4] 그 외 일반 주행
+            // [우선순위 4] 그 외 일반 주행
             else {
                 cmd.linear.x = st->speed_mps;
                 cmd.angular.z = wz;
