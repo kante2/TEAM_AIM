@@ -24,8 +24,8 @@ ENV NVIDIA_VISIBLE_DEVICES=all \
     LIBGL_ALWAYS_INDIRECT=0 \
     ROS_LOCALHOST_ONLY=0
 
-# Workspace 경로 (네 compose에 맞춰서 /root/kaist_contest_ws)
-ENV WS=/root/kaist_contest_ws
+# Workspace 경로 (네 compose에 맞춰서 /root/TEAM_AIM)
+ENV WS=/root/TEAM_AIM
 
 # -------------------------------
 # Ubuntu packages (요구사항 묶음)

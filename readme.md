@@ -34,6 +34,7 @@ rm -rf Mobility_Challenge_Simulator
 git clone https://github.com/cislab-kaist/Mobility_Challenge_Simulator
 
 xhost +local:root
+xhost +local:docker
 
 export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=1
@@ -41,13 +42,28 @@ export COMPOSE_DOCKER_CLI_BUILD=1
 ## 2. how to use docker ===========
 # VSCODE 에서 dev containers 를 이용
 
-cd /root/TEAM_AIM/docker_kaist_aim
+cd ~/TEAM_AIM/docker_kaist_aim
 # build docker image
-docker-compose build
+# docker-compose build (old)
+docker compose build
 # run container
-docker run -it --rm --name kaist_aim_container -v /root/TEAM_AIM:/root/TEAM_AIM kaist_aim
+<!-- docker run -it --rm --name kaist_aim_container -v /root/TEAM_AIM:/root/TEAM_AIM kaist_aim -->
+<!-- docker run -it --rm --name kaist_aim_container -v $HOME/TEAM_AIM:/root/TEAM_AIM team_aim -->
+
+docker run -it --rm \
+  --name kaist_aim_container \
+  --net=host \
+  --privileged \
+  --env="DISPLAY=$DISPLAY" \
+  --env="QT_X11_NO_MITSHM=1" \
+  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+  -v /home/autonav/TEAM_AIM:/root/TEAM_AIM \
+  team_aim
 
 ## 3. in docker ==================
+# docker 내의 경로가 kaist_contest_ws 인 경우.,
+cd ..
+cd TEAM_AIM
 
 ## commands using sh
 # mission_1_1
