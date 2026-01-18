@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+cd ~/TEAM_AIM/
+source install/setup.bash
+
 # Simulator
 ( PROBLEM_ID=2 ROLE=simulator ./entrypoint.sh ) &
 

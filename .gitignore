@@ -1,0 +1,82 @@
+# Common ignores for this workspace
+# Build / install / logs
+build/
+install/
+log/
+logs/
+build_*/
+
+# ROS / Colcon
+devel/
+install_isolated/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+venv.bak/
+.venv/
+ENV/
+env.bak/
+pip-log.txt
+pip-delete-this-directory.txt
+*.egg-info/
+dist/
+build/ 
+
+# Byte-compiled / optimized / DLL files
+*.so
+*.dylib
+*.dll
+*.o
+*.obj
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# Coverage / test
+.pytest_cache/
+.coverage
+coverage.xml
+
+# Temporary files
+*~
+*.swp
+.lock-wscript
+.wafpickle-*
+
+# Docker
+.env
+docker-compose.override.yml
+
+# Node
+node_modules/
+
+# Other
+*.bak
+*.tmp
+__MACOSX/
+

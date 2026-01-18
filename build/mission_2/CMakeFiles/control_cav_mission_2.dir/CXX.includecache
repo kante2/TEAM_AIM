@@ -6,16 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/opt/ros/foxy/include/ament_index_cpp/get_package_prefix.hpp
-stdexcept
--
-string
--
-ament_index_cpp/visibility_control.h
-/opt/ros/foxy/include/ament_index_cpp/ament_index_cpp/visibility_control.h
-
-/opt/ros/foxy/include/ament_index_cpp/visibility_control.h
-
 /opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__builder.hpp
 builtin_interfaces/msg/detail/duration__struct.hpp
 /opt/ros/foxy/include/builtin_interfaces/msg/detail/builtin_interfaces/msg/detail/duration__struct.hpp
@@ -4506,9 +4496,5 @@ vector
 map
 -
 chrono
--
-filesystem
--
-ament_index_cpp/get_package_prefix.hpp
 -
 
