@@ -312,6 +312,8 @@ int main(int argc, char** argv)
   RCLCPP_INFO(node->get_logger(), "Loaded path: %zu waypoints", integrate_path_vector.size());
  
   auto accel_pub = node->create_publisher<geometry_msgs::msg::Accel>(accel_topic, rclcpp::SensorDataQoS());
+  // Add publisher for /cmd_vel
+  auto cmdvel_pub = node->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel", rclcpp::SensorDataQoS());
 
   auto flag_sub = node->create_subscription<std_msgs::msg::Int32>(
       red_flag_topic, 50, [node, st](const std_msgs::msg::Int32::SharedPtr msg) { st->red_flag = msg->data; });
@@ -339,72 +341,83 @@ int main(int argc, char** argv)
             PoseCallback(msg, target_id, cav_list);
 
             if (target_id == cav_id) {
-                if (CheckAllFinished(cav_list)) {
-                    geometry_msgs::msg::Accel stop_cmd;
-                    stop_cmd.linear.x = 0.0; stop_cmd.linear.y = 0.0; stop_cmd.linear.z = 0.0;
-                    stop_cmd.angular.x = 0.0; stop_cmd.angular.y = 0.0; stop_cmd.angular.z = 0.0;
-                    accel_pub->publish(stop_cmd);
-                    static int stop_log_cnt = 0;
-                    if (stop_log_cnt++ % 50 == 0) std::cout << ">>> [ALL FINISHED] SYNC STOP! <<<" << std::endl;
-                    return;
-                }
+              if (CheckAllFinished(cav_list)) {
+                geometry_msgs::msg::Accel stop_cmd;
+                stop_cmd.linear.x = 0.0; stop_cmd.linear.y = 0.0; stop_cmd.linear.z = 0.0;
+                stop_cmd.angular.x = 0.0; stop_cmd.angular.y = 0.0; stop_cmd.angular.z = 0.0;
+                accel_pub->publish(stop_cmd);
+                // Also publish zero Twist to /cmd_vel
+                geometry_msgs::msg::Twist stop_twist;
+                stop_twist.linear.x = 0.0; stop_twist.linear.y = 0.0; stop_twist.linear.z = 0.0;
+                stop_twist.angular.x = 0.0; stop_twist.angular.y = 0.0; stop_twist.angular.z = 0.0;
+                cmdvel_pub->publish(stop_twist);
+                static int stop_log_cnt = 0;
+                if (stop_log_cnt++ % 50 == 0) std::cout << ">>> [ALL FINISHED] SYNC STOP! <<<" << std::endl;
+                return;
+              }
 
-                get_pose(msg, x_m, y_m, z_m, x_q, y_q, z_q, w_q);
-                double yaw = yawFromQuat(msg->pose.orientation, st->prev_yaw);
-                if (st->has_prev && std::hypot(x_m - st->prev_x, y_m - st->prev_y) > 1e-4) {
-                    yaw = std::atan2(y_m - st->prev_y, x_m - st->prev_x);
-                }
-                st->prev_x = x_m; st->prev_y = y_m; st->prev_yaw = yaw; st->has_prev = true;
+              get_pose(msg, x_m, y_m, z_m, x_q, y_q, z_q, w_q);
+              double yaw = yawFromQuat(msg->pose.orientation, st->prev_yaw);
+              if (st->has_prev && std::hypot(x_m - st->prev_x, y_m - st->prev_y) > 1e-4) {
+                yaw = std::atan2(y_m - st->prev_y, x_m - st->prev_x);
+              }
+              st->prev_x = x_m; st->prev_y = y_m; st->prev_yaw = yaw; st->has_prev = true;
                 
-                // 퓨어퍼슈트 로직
-                // 1. Closest Point & Velocity
-                int closest_idx = findClosestPoint(integrate_path_vector, x_m, y_m);
-                bool corner_detected = isCorner(integrate_path_vector, st->lookahead_m, closest_idx);
+              // 퓨어퍼슈트 로직
+              // 1. Closest Point & Velocity
+              int closest_idx = findClosestPoint(integrate_path_vector, x_m, y_m);
+              bool corner_detected = isCorner(integrate_path_vector, st->lookahead_m, closest_idx);
 
-                double current_target_speed;
-                if (st->tower_mode) {
-                    current_target_speed = st->target_linear_x;
-                } else {
-                    planVelocity(*st, corner_detected);
-                    current_target_speed = st->speed_mps;
-                }
+              double current_target_speed;
+              if (st->tower_mode) {
+                current_target_speed = st->target_linear_x;
+              } else {
+                planVelocity(*st, corner_detected);
+                current_target_speed = st->speed_mps;
+              }
                 
 
-                st->speed_mps = current_target_speed; 
-                GetLd(*st); 
+              st->speed_mps = current_target_speed; 
+              GetLd(*st); 
 
-                // 2. Pure Pursuit Geometry
-                int target_path_idx = findWaypoint(integrate_path_vector, x_m, y_m, st->lookahead_m);
+              // 2. Pure Pursuit Geometry
+              int target_path_idx = findWaypoint(integrate_path_vector, x_m, y_m, st->lookahead_m);
 
-                const double dx = integrate_path_vector[target_path_idx].x - x_m;
-                const double dy = integrate_path_vector[target_path_idx].y - y_m;
+              const double dx = integrate_path_vector[target_path_idx].x - x_m;
+              const double dy = integrate_path_vector[target_path_idx].y - y_m;
 
-                const double cy = std::cos(yaw);
-                const double sy = std::sin(yaw);
-                const double x_v =  cy * dx + sy * dy;
-                const double y_v = -sy * dx + cy * dy;
-                const double pp_dist = std::max(1e-3, std::hypot(x_v, y_v));
-                const double kappa = (2.0 * y_v) / (pp_dist * pp_dist);
+              const double cy = std::cos(yaw);
+              const double sy = std::sin(yaw);
+              const double x_v =  cy * dx + sy * dy;
+              const double y_v = -sy * dx + cy * dy;
+              const double pp_dist = std::max(1e-3, std::hypot(x_v, y_v));
+              const double kappa = (2.0 * y_v) / (pp_dist * pp_dist);
                 
-                double wz = current_target_speed * kappa;
-                wz = std::clamp(wz, -st->max_yaw_rate, st->max_yaw_rate);
+              double wz = current_target_speed * kappa;
+              wz = std::clamp(wz, -st->max_yaw_rate, st->max_yaw_rate);
 
 
-                // Command Publish
-                geometry_msgs::msg::Accel cmd;
-                if (st->red_flag == 1) { 
-                    cmd.linear.x  = 0.0;
-                    cmd.angular.z = 0.0;
-                } else {
-                    cmd.linear.x  = current_target_speed;
-                    cmd.angular.z = wz;
-                }
-                cmd.linear.y = 0.0; cmd.linear.z = 0.0;
-                cmd.angular.x = 0.0; cmd.angular.y = 0.0;
+              // Command Publish
+              geometry_msgs::msg::Accel cmd;
+              geometry_msgs::msg::Twist twist_msg;
+              if (st->red_flag == 1) { 
+                cmd.linear.x  = 0.0;
+                cmd.angular.z = 0.0;
+                twist_msg.linear.x = 0.0;
+                twist_msg.angular.z = 0.0;
+              } else {
+                cmd.linear.x  = current_target_speed;
+                cmd.angular.z = wz;
+                twist_msg.linear.x = current_target_speed;
+                twist_msg.angular.z = wz;
+              }
+              cmd.linear.y = 0.0; cmd.linear.z = 0.0;
+              cmd.angular.x = 0.0; cmd.angular.y = 0.0;
+              twist_msg.linear.y = 0.0; twist_msg.linear.z = 0.0;
+              twist_msg.angular.x = 0.0; twist_msg.angular.y = 0.0;
                 
-                accel_pub->publish(cmd);
-
-                
+              accel_pub->publish(cmd);
+              cmdvel_pub->publish(twist_msg);
             }
           }
       );
