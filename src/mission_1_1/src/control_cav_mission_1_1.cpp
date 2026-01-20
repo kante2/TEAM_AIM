@@ -1,6 +1,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <geometry_msgs/msg/accel.hpp>
+#include <geometry_msgs/msg/twist.hpp>
 #include <std_msgs/msg/int32.hpp>
 #include <std_msgs/msg/float64.hpp>
 
@@ -156,15 +157,17 @@ static bool loadPathCsv(const std::string& csv_path, std::vector<integrate_path_
 // =========================
 inline int closest_index = 0;
 
+// Ld gain tuning needed (js: recomend 0.6) 
 void GetLd(ControllerState& st) {
-  double gain_ld = 0.4;
+  double gain_ld = 0.8; // 0.4 -> 0.5 ** tuning **
   double max_ld  = 0.355;
-  double min_ld  = 0.15;
+  double min_ld  = 0.1; // 0.15 -> 0.1
 
   double velocity = st.speed_mps;
   double ld = gain_ld * velocity;
   st.lookahead_m = std::max(min_ld, std::min(max_ld, ld));
 }
+
 
 static int findClosestPoint(const std::vector<integrate_path_struct>& path, double x_m, double y_m)
 {
@@ -202,7 +205,8 @@ double normalizeAngle(double angle) {
 }
 
 bool isCorner(const vector<integrate_path_struct>& path, double /*L_d*/, int closest_idx) {
-  int future_offset = 20;
+  // int future_offset = 20; // tuned for path density
+  int future_offset = 20; //60 - 20
   int path_size = (int)path.size();
   if (closest_idx < 0) return false;
   if (closest_idx + future_offset + 1 >= path_size) return false;
@@ -212,10 +216,7 @@ bool isCorner(const vector<integrate_path_struct>& path, double /*L_d*/, int clo
 
   int idx_future_start = closest_idx + future_offset;
   double fut_ang = atan2(path[idx_future_start + 1].y - path[idx_future_start].y,
-                         path[idx_future_start + 1].x - path[idx_future_start + 1].x); // <-- (오타 방지용 자리)
-  // 위 줄은 잘못된 예시가 될 수 있어, 아래 올바른 줄로 다시 계산
-  fut_ang = atan2(path[idx_future_start + 1].y - path[idx_future_start].y,
-                  path[idx_future_start + 1].x - path[idx_future_start].x);
+                         path[idx_future_start + 1].x - path[idx_future_start].x);
 
   double diff = fabs(normalizeAngle(fut_ang - cur_ang));
   if (diff > M_PI / 2) diff = M_PI - diff;
@@ -226,8 +227,8 @@ bool isCorner(const vector<integrate_path_struct>& path, double /*L_d*/, int clo
 }
 
 void planVelocity(ControllerState& st, bool corner) {
-  if (!corner) st.speed_mps = 2.0;
-  else         st.speed_mps = 1.7;
+  if (!corner) st.speed_mps = 1.3;  // 2.0 -> 1.0 -> 0.8
+  else         st.speed_mps = 0.8;  // 1.5
 }
 
 // =========================
@@ -289,7 +290,13 @@ int main(int argc, char** argv)
   const std::string red_flag_topic   = "/CAV_" + my_id_str + "_RED_FLAG";
   const std::string target_vel_topic = "/CAV_" + my_id_str + "_target_vel";
 
+  // [추가] cmd_vel publish 토픽 (기본: /cmd_vel)
+  node->declare_parameter<std::string>("cmd_vel_topic", "/cmd_vel");
+  const std::string cmd_vel_topic = node->get_parameter("cmd_vel_topic").as_string();
+
   RCLCPP_INFO(node->get_logger(), "My CAV_ID=%d", cav_id);
+  RCLCPP_INFO(node->get_logger(), "Publish accel to: %s", accel_topic.c_str());
+  RCLCPP_INFO(node->get_logger(), "Publish cmd_vel to: %s", cmd_vel_topic.c_str());
 
   // ---- Params
   node->declare_parameter<double>("speed_mps", 0.5);
@@ -318,7 +325,10 @@ int main(int argc, char** argv)
   CavState my_cav {cav_id, 0.0, 0.0, 0, false, false, false};
 
   // ---- Pub/Sub
-  auto accel_pub = node->create_publisher<geometry_msgs::msg::Accel>(accel_topic, rclcpp::SensorDataQoS());
+  auto accel_pub   = node->create_publisher<geometry_msgs::msg::Accel>(accel_topic, rclcpp::SensorDataQoS());
+
+  // [추가] cmd_vel publisher (Twist)
+  auto cmd_vel_pub = node->create_publisher<geometry_msgs::msg::Twist>(cmd_vel_topic, rclcpp::QoS(10));
 
   auto flag_sub = node->create_subscription<std_msgs::msg::Int32>(
       red_flag_topic, 50,
@@ -339,18 +349,24 @@ int main(int argc, char** argv)
 
   // ---- 내 차량 pose만 구독
   auto pose_sub = node->create_subscription<geometry_msgs::msg::PoseStamped>(
-      my_pose_topic, rclcpp::SensorDataQoS(),
-      [st, accel_pub, &my_cav](const geometry_msgs::msg::PoseStamped::SharedPtr msg)
+      // my_pose_topic, rclcpp::SensorDataQoS(),
+      "/Ego_pose", rclcpp::SensorDataQoS(), // ** have to fix this topic name !!
+      [st, accel_pub, cmd_vel_pub, &my_cav](const geometry_msgs::msg::PoseStamped::SharedPtr msg)
       {
         // 1) Lap/Finish 업데이트 (내 차량만)
         PoseCallbackForLap(msg, my_cav);
 
-        // 완주 후엔 계속 정지 명령 유지
+        // 완주 후엔 계속 정지 명령 유지 (Accel + cmd_vel 둘 다)
         if (my_cav.finished) {
-          geometry_msgs::msg::Accel stop_cmd;
-          stop_cmd.linear.x = 0.0; stop_cmd.linear.y = 0.0; stop_cmd.linear.z = 0.0;
-          stop_cmd.angular.x = 0.0; stop_cmd.angular.y = 0.0; stop_cmd.angular.z = 0.0;
-          accel_pub->publish(stop_cmd);
+          geometry_msgs::msg::Accel stop_accel;
+          stop_accel.linear.x = 0.0; stop_accel.linear.y = 0.0; stop_accel.linear.z = 0.0;
+          stop_accel.angular.x = 0.0; stop_accel.angular.y = 0.0; stop_accel.angular.z = 0.0;
+          accel_pub->publish(stop_accel);
+
+          geometry_msgs::msg::Twist stop_twist;
+          stop_twist.linear.x = 0.0; stop_twist.linear.y = 0.0; stop_twist.linear.z = 0.0;
+          stop_twist.angular.x = 0.0; stop_twist.angular.y = 0.0; stop_twist.angular.z = 0.0;
+          cmd_vel_pub->publish(stop_twist);
           return;
         }
 
@@ -395,19 +411,35 @@ int main(int argc, char** argv)
         double wz = current_target_speed * kappa;
         wz = std::clamp(wz, -st->max_yaw_rate, st->max_yaw_rate);
 
-        // 4) Publish
-        geometry_msgs::msg::Accel cmd;
-        if (st->red_flag == 1) {
-          cmd.linear.x  = 0.0;
-          cmd.angular.z = 0.0;
-        } else {
-          cmd.linear.x  = current_target_speed;
-          cmd.angular.z = wz;
-        }
-        cmd.linear.y = 0.0; cmd.linear.z = 0.0;
-        cmd.angular.x = 0.0; cmd.angular.y = 0.0;
+        // 4) Publish (Accel + cmd_vel 둘 다)
+        double out_vx = 0.0;
+        double out_wz = 0.0;
 
-        accel_pub->publish(cmd);
+        if (st->red_flag == 1) {
+          out_vx = 0.0;
+          out_wz = 0.0;
+        } else {
+          out_vx = current_target_speed;
+          out_wz = wz;
+        }
+
+        geometry_msgs::msg::Accel accel_cmd;
+        accel_cmd.linear.x  = out_vx;
+        accel_cmd.linear.y  = 0.0;
+        accel_cmd.linear.z  = 0.0;
+        accel_cmd.angular.x = 0.0;
+        accel_cmd.angular.y = 0.0;
+        accel_cmd.angular.z = out_wz;
+        accel_pub->publish(accel_cmd);
+
+        geometry_msgs::msg::Twist twist_cmd;
+        twist_cmd.linear.x  = out_vx;
+        twist_cmd.linear.y  = 0.0;
+        twist_cmd.linear.z  = 0.0;
+        twist_cmd.angular.x = 0.0;
+        twist_cmd.angular.y = 0.0;
+        twist_cmd.angular.z = out_wz;
+        cmd_vel_pub->publish(twist_cmd);
       }
   );
 
