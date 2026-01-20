@@ -15,14 +15,23 @@ ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-110}
 
 cd /root/TEAM_AIM
 source /root/TEAM_AIM/install/setup.bash
+
+# Set default network configuration for all missions
+if [ -z "$ROS_LOCALHOST_ONLY" ]; then
+    export ROS_LOCALHOST_ONLY=0
+fi
+if [ -z "$RMW_IMPLEMENTATION" ]; then
+    export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+fi
+
 # mission_2
 if [ "$PROBLEM_ID" = "3" ]; then
     if [ "$ROLE" = "simulator" ]; then
-        export ROS_DOMAIN_ID=100
+        export ROS_DOMAIN_ID=110
         cd /root/TEAM_AIM/Mobility_Challenge_Simulator
         ros2 launch simulator_launch simulator_launch.py
     elif [ "$ROLE" = "cav" ]; then
-        export ROS_DOMAIN_ID=100
+        export ROS_DOMAIN_ID=110
         export CAV_ID=$CAV_ID
         ros2 run mission_2 control_cav_mission_2
     else
@@ -32,18 +41,18 @@ if [ "$PROBLEM_ID" = "3" ]; then
 # mission_3
 elif [ "$PROBLEM_ID" = "4" ]; then
     if [ "$ROLE" = "simulator" ]; then
-        export ROS_DOMAIN_ID=100
+        export ROS_DOMAIN_ID=101
         cd /root/TEAM_AIM/Mobility_Challenge_Simulator
         ros2 launch simulator_launch simulator_launch.py
     elif [ "$ROLE" = "cav" ]; then
-        export ROS_DOMAIN_ID=100
+        export ROS_DOMAIN_ID=101
         export CAV_ID=$CAV_ID
         ros2 run mission_3 control_cav_mission_3
     elif [ "$ROLE" = "tower" ]; then
-        export ROS_DOMAIN_ID=100
+        export ROS_DOMAIN_ID=101
         ros2 run mission_3 control_tower_mission_3
     elif [ "$ROLE" = "rotary" ]; then
-        export ROS_DOMAIN_ID=100
+        export ROS_DOMAIN_ID=101
         ros2 run mission_3 control_rotary_mission_3
     else
         echo "[ERROR] Unknown ROLE for mission_3: $ROLE" >&2
@@ -53,12 +62,10 @@ elif [ "$PROBLEM_ID" = "4" ]; then
 elif [ "$PROBLEM_ID" = "1" ]; then
     if [ "$ROLE" = "simulator" ]; then
         export ROS_DOMAIN_ID=106
-        # export ROS_DOMAIN_ID=32
         cd /root/TEAM_AIM/Mobility_Challenge_Simulator
         ros2 launch simulator_launch simulator_launch.py
     elif [ "$ROLE" = "cav" ]; then
         export ROS_DOMAIN_ID=106
-        # export ROS_DOMAIN_ID=32
         export CAV_ID=$CAV_ID
         ros2 run mission_1_1 control_cav_mission_1_1
     else
@@ -68,15 +75,15 @@ elif [ "$PROBLEM_ID" = "1" ]; then
 # mission_1_2
 elif [ "$PROBLEM_ID" = "2" ]; then
     if [ "$ROLE" = "simulator" ]; then
-        export ROS_DOMAIN_ID=100
+        export ROS_DOMAIN_ID=107
         cd /root/TEAM_AIM/Mobility_Challenge_Simulator
         ros2 launch simulator_launch simulator_launch.py
     elif [ "$ROLE" = "cav" ]; then
-        export ROS_DOMAIN_ID=100
+        export ROS_DOMAIN_ID=107
         export CAV_ID=$CAV_ID
         ros2 run mission_1_2 control_cav_mission_1_2
     elif [ "$ROLE" = "tower" ]; then
-        export ROS_DOMAIN_ID=100
+        export ROS_DOMAIN_ID=107
         ros2 run mission_1_2 control_tower_mission_1_2
     else
         echo "[ERROR] Unknown ROLE for mission_1_2 : $ROLE" >&2

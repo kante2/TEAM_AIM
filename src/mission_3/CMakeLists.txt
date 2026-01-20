@@ -36,7 +36,6 @@ ament_target_dependencies(control_cav_mission_3
   tf2
   ament_index_cpp
 )
-target_link_libraries(control_cav_mission_3 yaml-cpp)
 install(TARGETS control_cav_mission_3
   DESTINATION lib/${PROJECT_NAME})
 

@@ -10,7 +10,6 @@ source install/setup.bash
 ( PROBLEM_ID=1 ROLE=simulator ./entrypoint.sh ) &
 
 # CAVs
-# ( PROBLEM_ID=1 ROLE=cav CAV_ID=1 ./entrypoint.sh )
 ( PROBLEM_ID=1 ROLE=cav CAV_ID=1 ./entrypoint.sh )
 
 wait

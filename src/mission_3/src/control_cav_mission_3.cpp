@@ -1,12 +1,13 @@
-
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <geometry_msgs/msg/accel.hpp>
 #include <geometry_msgs/msg/twist.hpp>
 #include <std_msgs/msg/int32.hpp>
-#include <std_msgs/msg/float64.hpp>
+#include <std_msgs/msg/float64.hpp> 
+
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2/LinearMath/Matrix3x3.h>
+
 #include <cmath>
 #include <memory>
 #include <algorithm>
@@ -17,7 +18,6 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
-#include <yaml-cpp/yaml.h>
 
 using namespace std;
 
@@ -276,55 +276,26 @@ int main(int argc, char** argv)
   auto node = std::make_shared<rclcpp::Node>("control");
   auto st   = std::make_shared<ControllerState>();
 
+  int total_vehicle_count = 4;
+  std::vector<CavState> cav_list(total_vehicle_count + 1); 
+  for(int i=1; i<(int)cav_list.size(); ++i) cav_list[i] = {i, 0.0, 0.0, 0, false, false, false};
 
-  // Load CAV IDs from YAML file
-  std::vector<int> cav_ids;
-  try {
-    YAML::Node config = YAML::LoadFile("/root/TEAM_AIM/src/mission_3/config/cav_domain.yml");
-    if (config["cav_ids"]) {
-      for (const auto& id : config["cav_ids"]) {
-        cav_ids.push_back(id.as<int>());
-      }
-    }
-  } catch (const std::exception& e) {
-    RCLCPP_ERROR(node->get_logger(), "Failed to load cav_domain.yml: %s", e.what());
-    return 1;
-  }
-  if (cav_ids.empty()) {
-    RCLCPP_ERROR(node->get_logger(), "No CAV IDs found in cav_domain.yml");
-    return 1;
-  }
+  int cav_id_default = readCavIdFromEnvOrDefault(1);
+  node->declare_parameter<int>("cav_id", cav_id_default);
+  const int cav_id = node->get_parameter("cav_id").as_int();
 
-  int total_vehicle_count = cav_ids.size();
-  std::vector<CavState> cav_list(total_vehicle_count + 1);
-  for (size_t i = 0; i < cav_ids.size(); ++i) {
-    int id = cav_ids[i];
-    if (id >= (int)cav_list.size()) cav_list.resize(id + 1);
-    cav_list[id] = {id, 0.0, 0.0, 0, false, false, false};
-  }
-
-
-  // Try to get CAV_ID from environment variable, else from parameter, else from YAML
-  int cav_id = -1;
-  const char* env_cav_id = std::getenv("CAV_ID");
-  if (env_cav_id) {
-    cav_id = std::stoi(env_cav_id);
-  } else {
-    int cav_id_default = cav_ids[0];
-    node->declare_parameter<int>("cav_id", cav_id_default);
-    cav_id = node->get_parameter("cav_id").as_int();
-  }
-  if (std::find(cav_ids.begin(), cav_ids.end(), cav_id) == cav_ids.end()) {
-    RCLCPP_ERROR(node->get_logger(), "CAV_ID(%d) not in cav_domain.yml", cav_id);
-    return -1;
+  if(cav_id >= (int)cav_list.size()) {
+      RCLCPP_ERROR(node->get_logger(), "CAV_ID(%d) Error", cav_id);
+      return -1;
   }
 
   const std::string my_id_str = twoDigitId(cav_id);
-  const std::string accel_topic = "/CAV_" + my_id_str + "_accel";
+  const std::string accel_topic = "/CAV_" + my_id_str + "_accel"; 
   const std::string red_flag_topic = "/CAV_" + my_id_str + "_RED_FLAG";
   const std::string target_vel_topic = "/CAV_" + my_id_str + "_target_vel";
+  const std::string cmd_vel_topic = "/CAV_" + my_id_str + "/cmd_vel";
 
-  RCLCPP_INFO(node->get_logger(), "My CAV_ID=%d, Waiting for %zu vehicles...", cav_id, cav_ids.size());
+  RCLCPP_INFO(node->get_logger(), "My CAV_ID=%d, Waiting for %d vehicles...", cav_id, total_vehicle_count);
 
   node->declare_parameter<double>("speed_mps", 0.5);
   node->declare_parameter<double>("lookahead_m", 0.4);
@@ -343,8 +314,7 @@ int main(int argc, char** argv)
   RCLCPP_INFO(node->get_logger(), "Loaded path: %zu waypoints", integrate_path_vector.size());
  
   auto accel_pub = node->create_publisher<geometry_msgs::msg::Accel>(accel_topic, rclcpp::SensorDataQoS());
-  // Add publisher for /cmd_vel
-  auto cmdvel_pub = node->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel", rclcpp::SensorDataQoS());
+  auto cmd_vel_pub = node->create_publisher<geometry_msgs::msg::Twist>(cmd_vel_topic, rclcpp::QoS(10));
 
   auto flag_sub = node->create_subscription<std_msgs::msg::Int32>(
       red_flag_topic, 50, [node, st](const std_msgs::msg::Int32::SharedPtr msg) { st->red_flag = msg->data; });
@@ -363,91 +333,100 @@ int main(int argc, char** argv)
 
   std::vector<rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr> pose_subs;
 
-  for (int target_id : cav_ids) {
-    std::string target_topic = "/CAV_" + twoDigitId(target_id);
-    auto sub = node->create_subscription<geometry_msgs::msg::PoseStamped>(
-      target_topic, rclcpp::SensorDataQoS(),
-      [node, st, accel_pub, cmdvel_pub, &cav_list, cav_id, target_id](const geometry_msgs::msg::PoseStamped::SharedPtr msg)
-      {
-        PoseCallback(msg, target_id, cav_list);
+  // Only subscribe to my own CAV_ID
+  int target_id = cav_id;
+  {
+      std::string target_topic = "/CAV_" + twoDigitId(target_id);
+      auto sub = node->create_subscription<geometry_msgs::msg::PoseStamped>(
+          target_topic, rclcpp::SensorDataQoS(),
+          [node, st, accel_pub, cmd_vel_pub, &cav_list, cav_id, target_id](const geometry_msgs::msg::PoseStamped::SharedPtr msg)
+          {
+            PoseCallback(msg, target_id, cav_list);
 
-        if (target_id == cav_id) {
-          if (CheckAllFinished(cav_list)) {
-            geometry_msgs::msg::Accel stop_cmd;
-            stop_cmd.linear.x = 0.0; stop_cmd.linear.y = 0.0; stop_cmd.linear.z = 0.0;
-            stop_cmd.angular.x = 0.0; stop_cmd.angular.y = 0.0; stop_cmd.angular.z = 0.0;
-            accel_pub->publish(stop_cmd);
-            // Also publish zero Twist to /cmd_vel
-            geometry_msgs::msg::Twist stop_twist;
-            stop_twist.linear.x = 0.0; stop_twist.linear.y = 0.0; stop_twist.linear.z = 0.0;
-            stop_twist.angular.x = 0.0; stop_twist.angular.y = 0.0; stop_twist.angular.z = 0.0;
-            cmdvel_pub->publish(stop_twist);
-            static int stop_log_cnt = 0;
-            if (stop_log_cnt++ % 50 == 0) std::cout << ">>> [ALL FINISHED] SYNC STOP! <<<" << std::endl;
-            return;
+            // Always execute control for my own CAV
+            {
+                if (CheckAllFinished(cav_list)) {
+                    geometry_msgs::msg::Accel stop_cmd;
+                    stop_cmd.linear.x = 0.0; stop_cmd.linear.y = 0.0; stop_cmd.linear.z = 0.0;
+                    stop_cmd.angular.x = 0.0; stop_cmd.angular.y = 0.0; stop_cmd.angular.z = 0.0;
+                    accel_pub->publish(stop_cmd);
+                    geometry_msgs::msg::Twist stop_twist;
+                    stop_twist.linear.x = 0.0; stop_twist.linear.y = 0.0; stop_twist.linear.z = 0.0;
+                    stop_twist.angular.x = 0.0; stop_twist.angular.y = 0.0; stop_twist.angular.z = 0.0;
+                    cmd_vel_pub->publish(stop_twist);
+                    static int stop_log_cnt = 0;
+                    if (stop_log_cnt++ % 50 == 0) std::cout << ">>> [ALL FINISHED] SYNC STOP! <<<" << std::endl;
+                    return;
+                }
+
+                get_pose(msg, x_m, y_m, z_m, x_q, y_q, z_q, w_q);
+                double yaw = yawFromQuat(msg->pose.orientation, st->prev_yaw);
+                if (st->has_prev && std::hypot(x_m - st->prev_x, y_m - st->prev_y) > 1e-4) {
+                    yaw = std::atan2(y_m - st->prev_y, x_m - st->prev_x);
+                }
+                st->prev_x = x_m; st->prev_y = y_m; st->prev_yaw = yaw; st->has_prev = true;
+                
+                // 퓨어퍼슈트 로직
+                // 1. Closest Point & Velocity
+                int closest_idx = findClosestPoint(integrate_path_vector, x_m, y_m);
+                bool corner_detected = isCorner(integrate_path_vector, st->lookahead_m, closest_idx);
+
+                double current_target_speed;
+                if (st->tower_mode) {
+                    current_target_speed = st->target_linear_x;
+                } else {
+                    planVelocity(*st, corner_detected);
+                    current_target_speed = st->speed_mps;
+                }
+                
+
+                st->speed_mps = current_target_speed; 
+                GetLd(*st); 
+
+                // 2. Pure Pursuit Geometry
+                int target_path_idx = findWaypoint(integrate_path_vector, x_m, y_m, st->lookahead_m);
+
+                const double dx = integrate_path_vector[target_path_idx].x - x_m;
+                const double dy = integrate_path_vector[target_path_idx].y - y_m;
+
+                const double cy = std::cos(yaw);
+                const double sy = std::sin(yaw);
+                const double x_v =  cy * dx + sy * dy;
+                const double y_v = -sy * dx + cy * dy;
+                const double pp_dist = std::max(1e-3, std::hypot(x_v, y_v));
+                const double kappa = (2.0 * y_v) / (pp_dist * pp_dist);
+                
+                double wz = current_target_speed * kappa;
+                wz = std::clamp(wz, -st->max_yaw_rate, st->max_yaw_rate);
+
+
+                // Command Publish
+                geometry_msgs::msg::Accel cmd;
+                geometry_msgs::msg::Twist twist_cmd;
+                if (st->red_flag == 1) { 
+                    cmd.linear.x  = 0.0;
+                    cmd.angular.z = 0.0;
+                    twist_cmd.linear.x = 0.0;
+                    twist_cmd.angular.z = 0.0;
+                } else {
+                    cmd.linear.x  = current_target_speed;
+                    cmd.angular.z = wz;
+                    twist_cmd.linear.x = current_target_speed;
+                    twist_cmd.angular.z = wz;
+                }
+                cmd.linear.y = 0.0; cmd.linear.z = 0.0;
+                cmd.angular.x = 0.0; cmd.angular.y = 0.0;
+                
+                twist_cmd.linear.y = 0.0; twist_cmd.linear.z = 0.0;
+                twist_cmd.angular.x = 0.0; twist_cmd.angular.y = 0.0;
+
+                accel_pub->publish(cmd);
+                cmd_vel_pub->publish(twist_cmd);
+            }
           }
-
-          get_pose(msg, x_m, y_m, z_m, x_q, y_q, z_q, w_q);
-          double yaw = yawFromQuat(msg->pose.orientation, st->prev_yaw);
-          if (st->has_prev && std::hypot(x_m - st->prev_x, y_m - st->prev_y) > 1e-4) {
-            yaw = std::atan2(y_m - st->prev_y, x_m - st->prev_x);
-          }
-          st->prev_x = x_m; st->prev_y = y_m; st->prev_yaw = yaw; st->has_prev = true;
-          // 퓨어퍼슈트 로직
-          int closest_idx = findClosestPoint(integrate_path_vector, x_m, y_m);
-          bool corner_detected = isCorner(integrate_path_vector, st->lookahead_m, closest_idx);
-
-          double current_target_speed;
-          if (st->tower_mode) {
-            current_target_speed = st->target_linear_x;
-          } else {
-            planVelocity(*st, corner_detected);
-            current_target_speed = st->speed_mps;
-          }
-
-          st->speed_mps = current_target_speed;
-          GetLd(*st);
-
-          int target_path_idx = findWaypoint(integrate_path_vector, x_m, y_m, st->lookahead_m);
-
-          const double dx = integrate_path_vector[target_path_idx].x - x_m;
-          const double dy = integrate_path_vector[target_path_idx].y - y_m;
-
-          const double cy = std::cos(yaw);
-          const double sy = std::sin(yaw);
-          const double x_v =  cy * dx + sy * dy;
-          const double y_v = -sy * dx + cy * dy;
-          const double pp_dist = std::max(1e-3, std::hypot(x_v, y_v));
-          const double kappa = (2.0 * y_v) / (pp_dist * pp_dist);
-
-          double wz = current_target_speed * kappa;
-          wz = std::clamp(wz, -st->max_yaw_rate, st->max_yaw_rate);
-
-          geometry_msgs::msg::Accel cmd;
-          geometry_msgs::msg::Twist twist_msg;
-          if (st->red_flag == 1) {
-            cmd.linear.x  = 0.0;
-            cmd.angular.z = 0.0;
-            twist_msg.linear.x = 0.0;
-            twist_msg.angular.z = 0.0;
-          } else {
-            cmd.linear.x  = current_target_speed;
-            cmd.angular.z = wz;
-            twist_msg.linear.x = current_target_speed;
-            twist_msg.angular.z = wz;
-          }
-          cmd.linear.y = 0.0; cmd.linear.z = 0.0;
-          cmd.angular.x = 0.0; cmd.angular.y = 0.0;
-          twist_msg.linear.y = 0.0; twist_msg.linear.z = 0.0;
-          twist_msg.angular.x = 0.0; twist_msg.angular.y = 0.0;
-
-          accel_pub->publish(cmd); // SIMUL COMMAND
-          cmdvel_pub->publish(twist_msg); // ** 
-        }
-      }
-    );
-    pose_subs.push_back(sub);
-    RCLCPP_INFO(node->get_logger(), "Subscribed to %s", target_topic.c_str());
+      );
+      pose_subs.push_back(sub); 
+      RCLCPP_INFO(node->get_logger(), "Subscribed to %s", target_topic.c_str());
   }
 
   (void)flag_sub; (void)vel_sub;
