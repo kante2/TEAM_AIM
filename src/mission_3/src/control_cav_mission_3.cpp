@@ -2,6 +2,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <geometry_msgs/msg/accel.hpp>
+#include <geometry_msgs/msg/twist.hpp>
 #include <std_msgs/msg/int32.hpp>
 #include <std_msgs/msg/float64.hpp>
 #include <tf2/LinearMath/Quaternion.h>
@@ -302,11 +303,17 @@ int main(int argc, char** argv)
     cav_list[id] = {id, 0.0, 0.0, 0, false, false, false};
   }
 
-  // Use the first CAV ID as default for this node
-  int cav_id_default = cav_ids[0];
-  node->declare_parameter<int>("cav_id", cav_id_default);
-  const int cav_id = node->get_parameter("cav_id").as_int();
 
+  // Try to get CAV_ID from environment variable, else from parameter, else from YAML
+  int cav_id = -1;
+  const char* env_cav_id = std::getenv("CAV_ID");
+  if (env_cav_id) {
+    cav_id = std::stoi(env_cav_id);
+  } else {
+    int cav_id_default = cav_ids[0];
+    node->declare_parameter<int>("cav_id", cav_id_default);
+    cav_id = node->get_parameter("cav_id").as_int();
+  }
   if (std::find(cav_ids.begin(), cav_ids.end(), cav_id) == cav_ids.end()) {
     RCLCPP_ERROR(node->get_logger(), "CAV_ID(%d) not in cav_domain.yml", cav_id);
     return -1;
@@ -360,7 +367,7 @@ int main(int argc, char** argv)
     std::string target_topic = "/CAV_" + twoDigitId(target_id);
     auto sub = node->create_subscription<geometry_msgs::msg::PoseStamped>(
       target_topic, rclcpp::SensorDataQoS(),
-      [node, st, accel_pub, &cav_list, cav_id, target_id](const geometry_msgs::msg::PoseStamped::SharedPtr msg)
+      [node, st, accel_pub, cmdvel_pub, &cav_list, cav_id, target_id](const geometry_msgs::msg::PoseStamped::SharedPtr msg)
       {
         PoseCallback(msg, target_id, cav_list);
 
