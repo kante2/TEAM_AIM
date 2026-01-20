@@ -52,11 +52,13 @@ elif [ "$PROBLEM_ID" = "4" ]; then
 # mission_1_1
 elif [ "$PROBLEM_ID" = "1" ]; then
     if [ "$ROLE" = "simulator" ]; then
-        export ROS_DOMAIN_ID=106
+        # export ROS_DOMAIN_ID=106
+        export ROS_DOMAIN_ID=32
         cd /root/TEAM_AIM/Mobility_Challenge_Simulator
         ros2 launch simulator_launch simulator_launch.py
     elif [ "$ROLE" = "cav" ]; then
-        export ROS_DOMAIN_ID=106
+        # export ROS_DOMAIN_ID=106
+        export ROS_DOMAIN_ID=32
         export CAV_ID=$CAV_ID
         ros2 run mission_1_1 control_cav_mission_1_1
     else
