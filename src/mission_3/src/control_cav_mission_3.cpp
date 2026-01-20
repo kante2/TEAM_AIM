@@ -441,8 +441,8 @@ int main(int argc, char** argv)
           twist_msg.linear.y = 0.0; twist_msg.linear.z = 0.0;
           twist_msg.angular.x = 0.0; twist_msg.angular.y = 0.0;
 
-          accel_pub->publish(cmd);
-          cmdvel_pub->publish(twist_msg);
+          accel_pub->publish(cmd); // SIMUL COMMAND
+          cmdvel_pub->publish(twist_msg); // ** 
         }
       }
     );

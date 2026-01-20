@@ -157,7 +157,6 @@ static bool loadPathCsv(const std::string& csv_path, std::vector<integrate_path_
 // =========================
 inline int closest_index = 0;
 
-// Ld gain tuning needed (js: recomend 0.6) 
 void GetLd(ControllerState& st) {
   double gain_ld = 0.8; // 0.4 -> 0.5 ** tuning **
   double max_ld  = 0.355;
@@ -167,7 +166,6 @@ void GetLd(ControllerState& st) {
   double ld = gain_ld * velocity;
   st.lookahead_m = std::max(min_ld, std::min(max_ld, ld));
 }
-
 
 static int findClosestPoint(const std::vector<integrate_path_struct>& path, double x_m, double y_m)
 {
