@@ -53,12 +53,12 @@ elif [ "$PROBLEM_ID" = "4" ]; then
     elif [ "$ROLE" = "tower" ]; then
         # export ROS_DOMAIN_ID=101
         export ROS_DOMAIN_ID=100
-        export CAV_IDS=${CAV_IDS:-"1,2,3,4"}
+        export CAV_IDS=${CAV_IDS:-"3, 5, 32"}
         ros2 run mission_3 control_tower_mission_3
     elif [ "$ROLE" = "rotary" ]; then
         # export ROS_DOMAIN_ID=101
         export ROS_DOMAIN_ID=100
-        export CAV_IDS=${CAV_IDS:-"1,2,3,4"}
+        export CAV_IDS=${CAV_IDS:-"3, 5, 32"}
         ros2 run mission_3 control_rotary_mission_3
     else
         echo "[ERROR] Unknown ROLE for mission_3: $ROLE" >&2

@@ -35,7 +35,7 @@ chmod +x mission_3.sh
 ```bash
 # 도커 환경과 동일 (스크립트가 있으면 사용)
 ./mission_domain_4_SDK.sh # domain connect with docker 
-./mission_SDK.sh          # run cmd bridge node
+PROBLEM_ID="4" ./mission_SDK.sh          # run cmd bridge node
 ```
 
 **Option 2: 수동 실행 (mission_3.sh가 없거나 조정 필요시)**

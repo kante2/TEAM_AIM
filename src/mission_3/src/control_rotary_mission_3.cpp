@@ -390,21 +390,10 @@ int main(int argc, char * argv[])
     int i = 19;
     std::string csv_path = path_dir + "path_mission3_" + std::to_string(i) + ".csv";
     hv_paths[i] = load_csv_file(csv_path);
-    RCLCPP_INFO(node->get_logger(), "CAV_%d: %zu waypoints loaded", i, hv_paths[i].size());
+    RCLCPP_INFO(node->get_logger(), "HV_%d: %zu waypoints loaded", i, hv_paths[i].size());
     
 
-      // RED_FLAG Publisher (CAV 1~4)
-    std::map<int, rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr> red_flag_pubs;
-    std::map<int, rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr> target_vel_pubs;
-    for (int i = 1; i <= 4; i++) {
-      const std::string flag_topic = "/CAV_0" + std::to_string(i) + "_RED_FLAG";
-      red_flag_pubs[i] = node->create_publisher<std_msgs::msg::Int32>(flag_topic, 50);
-      const std::string vel_topic = "/CAV_0" + std::to_string(i) + "_target_vel";
-      target_vel_pubs[i] = node->create_publisher<std_msgs::msg::Float64>(vel_topic, 50);
-    }
-
-
-    // Get CAV_IDS from environment variable (format: "32,1,3,6")
+    // Get CAV_IDS from environment variable (format: "32,3,5,6")
     const char* cav_ids_env = std::getenv("CAV_IDS");
     std::vector<int> active_cav_ids;
     if (cav_ids_env != nullptr && strlen(cav_ids_env) > 0) {
@@ -412,7 +401,6 @@ int main(int argc, char * argv[])
         std::stringstream ss(cav_ids_str);
         std::string token;
         while (std::getline(ss, token, ',')) {
-            // Remove whitespace
             token.erase(0, token.find_first_not_of(" \t"));
             token.erase(token.find_last_not_of(" \t") + 1);
             if (!token.empty()) {
@@ -420,21 +408,36 @@ int main(int argc, char * argv[])
             }
         }
     } else {
-        // Default to 1,2,3,4 if not set
         active_cav_ids = {1, 2, 3, 4};
     }
 
-    // Subscribers for dynamic CAV IDs, HV 19, 20
+    // RED_FLAG Publisher (based on CAV_IDS indices 1-4)
+    std::map<int, rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr> red_flag_pubs;
+    std::map<int, rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr> target_vel_pubs;
+    for (size_t i = 0; i < active_cav_ids.size() && i < 4; i++) {
+        int cav_index = (int)i + 1;  // 1-indexed
+        const std::string cav_id_str = std::string(2 - std::to_string(cav_index).length(), '0') + std::to_string(cav_index);
+        const std::string flag_topic = "/CAV_" + cav_id_str + "_RED_FLAG";
+        red_flag_pubs[cav_index] = node->create_publisher<std_msgs::msg::Int32>(flag_topic, 50);
+        const std::string vel_topic = "/CAV_" + cav_id_str + "_target_vel";
+        target_vel_pubs[cav_index] = node->create_publisher<std_msgs::msg::Float64>(vel_topic, 50);
+        RCLCPP_INFO(node->get_logger(), "Created publishers for CAV_Index_%d (Actual_ID=%d): topics %s, %s", cav_index, active_cav_ids[i], flag_topic.c_str(), vel_topic.c_str());
+    }
+
+    // Subscribers for CAV indices (1-4), HV 19, 20
     std::vector<std::shared_ptr<rclcpp::Subscription<geometry_msgs::msg::PoseStamped>>> cav_subscriptions;
     
-    for (int cav_id : active_cav_ids) {
-        std::string cav_topic = "/CAV_" + std::string(2 - std::to_string(cav_id).length(), '0') + std::to_string(cav_id);
+    for (size_t i = 0; i < active_cav_ids.size() && i < 4; i++) {
+        int cav_index = (int)i + 1;  // 1-indexed
+        const std::string cav_id_str = std::string(2 - std::to_string(cav_index).length(), '0') + std::to_string(cav_index);
+        std::string cav_topic = "/CAV_" + cav_id_str;
         auto sub = node->create_subscription<geometry_msgs::msg::PoseStamped>(
             cav_topic, rclcpp::SensorDataQoS(),
-            [cav_id](const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
-                cav_poses[cav_id] = {msg->pose.position.x, msg->pose.position.y};
+            [cav_index](const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
+                cav_poses[cav_index] = {msg->pose.position.x, msg->pose.position.y};
             });
         cav_subscriptions.push_back(sub);
+        RCLCPP_INFO(node->get_logger(), "Subscribed to CAV_Index_%d: %s", cav_index, cav_topic.c_str());
     }
 
     auto sub19 = node->create_subscription<geometry_msgs::msg::PoseStamped>(
@@ -455,7 +458,6 @@ int main(int argc, char * argv[])
             hv_19_callback(msg); 
             CalculateInstantVelocity(msg, 19, hv_states);
     });
-        
 
 
 
@@ -468,9 +470,6 @@ int main(int argc, char * argv[])
     while(rclcpp::ok()) {
         // 모든 ROI 쌍에 대해 모니터링 수행
     for (const auto& pair : roi_pairs) {
-            int cav_roi_id = pair.first;
-            int hv_roi_id = pair.second;
-            
             // 수정된 함수 호출
             monitor_all_rois(pair.first,        // cav_roi_id
                 pair.second,       // hv_roi_id

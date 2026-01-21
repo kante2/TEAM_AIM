@@ -64,7 +64,7 @@ struct ControllerState
 {
   double speed_mps{0.5};
   double lookahead_m{0.3};
-  double max_yaw_rate{5.5};
+  double max_yaw_rate{2.0}; // ** 5.5 (noise error) -> 2.5 (tuning) ** -> 2.0
 
   double prev_x{0.0};
   double prev_y{0.0};
@@ -159,9 +159,9 @@ static bool loadPathCsv(const std::string& csv_path, std::vector<integrate_path_
 inline int closest_index = 0;
 
 void GetLd(ControllerState& st) {
-  double gain_ld = 0.4; 
-  double max_ld = 0.355; 
-  double min_ld = 0.15;
+  double gain_ld = 0.6; // 0.4 -> 0.6 ** tuning **
+  double max_ld  = 0.355;
+  double min_ld  = 0.1; // 0.15 -> 0.1
   double velocity = st.speed_mps; 
   double ld = gain_ld * velocity;
   st.lookahead_m = max(min_ld, std::min(max_ld, ld));
@@ -203,7 +203,8 @@ double normalizeAngle(double angle) {
 }
 
 bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double /*L_d*/, int closest_idx) {
-    int future_offset = 20; 
+    // int future_offset = 20; // 20 -> 60
+    int future_offset = 60;
     int path_size = (int)integrate_path_vector.size();
     if (closest_idx + future_offset + 1 >= path_size) { return false; }
 
@@ -222,7 +223,7 @@ bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double
 }
 
 void planVelocity(ControllerState& st, bool isCorner) {
-    if (!isCorner) {st.speed_mps = 1.0; } else { st.speed_mps = 0.5; }
+    if (!isCorner) {st.speed_mps = 1.2; } else { st.speed_mps = 0.7; }
 }
 
 bool CheckAllFinished(const std::vector<CavState>& cav_list) {
@@ -282,20 +283,42 @@ int main(int argc, char** argv)
 
   int cav_id_default = readCavIdFromEnvOrDefault(1);
   node->declare_parameter<int>("cav_id", cav_id_default);
-  const int cav_id = node->get_parameter("cav_id").as_int();
+  const int actual_cav_id = node->get_parameter("cav_id").as_int();
 
-  if(cav_id >= (int)cav_list.size()) {
-      RCLCPP_ERROR(node->get_logger(), "CAV_ID(%d) Error", cav_id);
+  if(actual_cav_id >= (int)cav_list.size()) {
+      RCLCPP_ERROR(node->get_logger(), "CAV_ID(%d) Error", actual_cav_id);
       return -1;
   }
 
-  const std::string my_id_str = twoDigitId(cav_id);
+  // Get CAV_IDS from environment variable to determine cav_index (1-4)
+  const char* cav_ids_env = std::getenv("CAV_IDS");
+  int cav_index = 1;  // Default to 1
+  if (cav_ids_env != nullptr && strlen(cav_ids_env) > 0) {
+      std::string cav_ids_str(cav_ids_env);
+      std::stringstream ss(cav_ids_str);
+      std::string token;
+      int idx = 1;
+      while (std::getline(ss, token, ',')) {
+          token.erase(0, token.find_first_not_of(" \t"));
+          token.erase(token.find_last_not_of(" \t") + 1);
+          if (!token.empty()) {
+              int id = std::stoi(token);
+              if (id == actual_cav_id) {
+                  cav_index = idx;
+                  break;
+              }
+              idx++;
+          }
+      }
+  }
+
+  const std::string my_id_str = twoDigitId(cav_index);  // Use cav_index instead of actual_cav_id
   const std::string accel_topic = "/CAV_" + my_id_str + "_accel"; 
   const std::string red_flag_topic = "/CAV_" + my_id_str + "_RED_FLAG";
   const std::string target_vel_topic = "/CAV_" + my_id_str + "_target_vel";
   const std::string cmd_vel_topic = "/CAV_" + my_id_str + "/cmd_vel";
 
-  RCLCPP_INFO(node->get_logger(), "My CAV_ID=%d, Waiting for %d vehicles...", cav_id, total_vehicle_count);
+  RCLCPP_INFO(node->get_logger(), "My Actual_CAV_ID=%d, Mapped_Index=%d, Waiting for %d vehicles...", actual_cav_id, cav_index, total_vehicle_count);
 
   node->declare_parameter<double>("speed_mps", 0.5);
   node->declare_parameter<double>("lookahead_m", 0.4);
@@ -306,7 +329,7 @@ int main(int argc, char** argv)
   st->lookahead_m  = node->get_parameter("lookahead_m").as_double();
   st->max_yaw_rate = node->get_parameter("max_yaw_rate").as_double();
 
-  const std::string path_with_id_csv = std::string("/root/TEAM_AIM/src/global_path/") + "path_mission3_"  + my_id_str + ".csv";
+  const std::string path_with_id_csv = std::string("/root/TEAM_AIM/src/global_path/") + "path_mission3_" + std::string(2 - std::to_string(cav_index).length(), '0') + std::to_string(cav_index) + ".csv";
   if (!loadPathCsv(path_with_id_csv, integrate_path_vector)) {
     RCLCPP_FATAL(node->get_logger(), "Failed to load path csv: %s", path_with_id_csv.c_str());
     rclcpp::shutdown(); return 1;
@@ -333,27 +356,31 @@ int main(int argc, char** argv)
 
   std::vector<rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr> pose_subs;
 
-  // Only subscribe to my own CAV_ID
-  int target_id = cav_id;
+  // Only subscribe to my own CAV_ID (use cav_index for simulator topic)
+  int target_id = cav_index;  // Use cav_index: 1, 2, 3, 4
   {
-      std::string target_topic = "/CAV_" + twoDigitId(target_id);
+      std::string target_topic = "/CAV_" + twoDigitId(target_id);  // /CAV_01, /CAV_02, /CAV_03, /CAV_04
       auto sub = node->create_subscription<geometry_msgs::msg::PoseStamped>(
           target_topic, rclcpp::SensorDataQoS(),
-          [node, st, accel_pub, cmd_vel_pub, &cav_list, cav_id, target_id](const geometry_msgs::msg::PoseStamped::SharedPtr msg)
+          [node, st, accel_pub, cmd_vel_pub, &cav_list, actual_cav_id, target_id](const geometry_msgs::msg::PoseStamped::SharedPtr msg)
           {
             PoseCallback(msg, target_id, cav_list);
 
             // Always execute control for my own CAV
             {
                 if (CheckAllFinished(cav_list)) {
+                    // 시뮬레이션용 정지 명령
                     geometry_msgs::msg::Accel stop_cmd;
                     stop_cmd.linear.x = 0.0; stop_cmd.linear.y = 0.0; stop_cmd.linear.z = 0.0;
                     stop_cmd.angular.x = 0.0; stop_cmd.angular.y = 0.0; stop_cmd.angular.z = 0.0;
                     accel_pub->publish(stop_cmd);
+                    
+                    // 실제 로봇용 정지 명령
                     geometry_msgs::msg::Twist stop_twist;
                     stop_twist.linear.x = 0.0; stop_twist.linear.y = 0.0; stop_twist.linear.z = 0.0;
                     stop_twist.angular.x = 0.0; stop_twist.angular.y = 0.0; stop_twist.angular.z = 0.0;
                     cmd_vel_pub->publish(stop_twist);
+                    
                     static int stop_log_cnt = 0;
                     if (stop_log_cnt++ % 50 == 0) std::cout << ">>> [ALL FINISHED] SYNC STOP! <<<" << std::endl;
                     return;
