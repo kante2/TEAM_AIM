@@ -222,7 +222,7 @@ bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double
 }
 
 void planVelocity(ControllerState& st, bool isCorner) {
-    if (!isCorner) { st.speed_mps = 2.0; } else { st.speed_mps = 1.7; }
+    if (!isCorner) {st.speed_mps = 1.0; } else { st.speed_mps = 0.5; }
 }
 
 bool CheckAllFinished(const std::vector<CavState>& cav_list) {
@@ -276,7 +276,7 @@ int main(int argc, char** argv)
   auto node = std::make_shared<rclcpp::Node>("control");
   auto st   = std::make_shared<ControllerState>();
 
-  int total_vehicle_count = 4;
+  int total_vehicle_count = 32;
   std::vector<CavState> cav_list(total_vehicle_count + 1); 
   for(int i=1; i<(int)cav_list.size(); ++i) cav_list[i] = {i, 0.0, 0.0, 0, false, false, false};
 

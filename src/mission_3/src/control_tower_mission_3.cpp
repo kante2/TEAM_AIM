@@ -750,30 +750,38 @@ int main(int argc, char** argv) {
   auto marker_pub = node->create_publisher<visualization_msgs::msg::MarkerArray>(
       "/control_tower/visualization", 10);
 
-  // Subscribers for CAV 1~4
-  auto sub1 = node->create_subscription<geometry_msgs::msg::PoseStamped>(
-      "/CAV_01", rclcpp::SensorDataQoS(),
-      [node](const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
-        cav_01_callback(msg);
-      });
+  // Get CAV_IDS from environment variable (format: "32,1,3,6")
+  const char* cav_ids_env = std::getenv("CAV_IDS");
+  std::vector<int> active_cav_ids;
+  if (cav_ids_env != nullptr && strlen(cav_ids_env) > 0) {
+      std::string cav_ids_str(cav_ids_env);
+      std::stringstream ss(cav_ids_str);
+      std::string token;
+      while (std::getline(ss, token, ',')) {
+          // Remove whitespace
+          token.erase(0, token.find_first_not_of(" \t"));
+          token.erase(token.find_last_not_of(" \t") + 1);
+          if (!token.empty()) {
+              active_cav_ids.push_back(std::stoi(token));
+          }
+      }
+  } else {
+      // Default to 1,2,3,4 if not set
+      active_cav_ids = {1, 2, 3, 4};
+  }
 
-  auto sub2 = node->create_subscription<geometry_msgs::msg::PoseStamped>(
-      "/CAV_02", rclcpp::SensorDataQoS(),
-      [node](const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
-        cav_02_callback(msg);
-      });
-
-  auto sub3 = node->create_subscription<geometry_msgs::msg::PoseStamped>(
-      "/CAV_03", rclcpp::SensorDataQoS(),
-      [node](const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
-        cav_03_callback(msg);
-      });
-
-  auto sub4 = node->create_subscription<geometry_msgs::msg::PoseStamped>(
-      "/CAV_04", rclcpp::SensorDataQoS(),
-      [node](const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
-        cav_04_callback(msg);
-      });
+  // Subscribers for dynamic CAV IDs
+  std::vector<std::shared_ptr<rclcpp::Subscription<geometry_msgs::msg::PoseStamped>>> cav_subscriptions;
+  
+  for (int cav_id : active_cav_ids) {
+      std::string cav_topic = "/CAV_" + std::string(2 - std::to_string(cav_id).length(), '0') + std::to_string(cav_id);
+      auto sub = node->create_subscription<geometry_msgs::msg::PoseStamped>(
+          cav_topic, rclcpp::SensorDataQoS(),
+          [cav_id](const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
+              cav_poses[cav_id] = {msg->pose.position.x, msg->pose.position.y};
+          });
+      cav_subscriptions.push_back(sub);
+  }
 
   auto sub19 = node->create_subscription<geometry_msgs::msg::PoseStamped>(
         "/HV_19", rclcpp::SensorDataQoS(),
