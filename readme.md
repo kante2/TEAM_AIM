@@ -1,5 +1,74 @@
 # TEAM_AIM (KAIST Mobility Challenge)
 
+## 🚀 빠른 시작 - Mission 3 실행 방법
+
+### 📋 Mission 3 구조
+```bash
+mission_3.sh
+├── CAV_ID=32 → control_cav_mission_3 (/CAV_32 발행)
+├── CAV_ID=1  → control_cav_mission_3 (/CAV_01 발행)
+├── CAV_ID=3  → control_cav_mission_3 (/CAV_03 발행)
+├── CAV_ID=6  → control_cav_mission_3 (/CAV_06 발행)
+├── CAV_IDS="32,1,3,6" → control_tower_mission_3 (4개 CAV 모두 구독)
+└── CAV_IDS="32,1,3,6" → control_rotary_mission_3 (4개 CAV 모두 구독)
+```
+
+### 📝 Mission 3 실행 (host => 도커 내부)
+```bash
+cd /root/TEAM_AIM
+chmod +x mission_3.sh
+./mission_3.sh
+```
+
+**자동 동작:**
+- ✅ colcon build로 모든 패키지 컴파일
+- ✅ 4개 CAV 프로세스 **병렬 실행** (CAV_ID = 32, 1, 3, 6)
+- ✅ Tower 프로세스 **병렬 실행** (CAV_IDS="32,1,3,6" → 4개 CAV 구독)
+- ✅ Rotary 프로세스 **병렬 실행** (CAV_IDS="32,1,3,6" → 4개 CAV 구독)
+
+한 줄 명령어 하나로 모든 프로세스가 동시에 시작됩니다!
+
+### 🤖 로봇에서 실행 명령어 (diffrent package -> KAIST_MOBILITY_CHALLENGE_SDK)
+
+**Option 1: mission_3.sh 스크립트 있는 경우**
+```bash
+# 도커 환경과 동일 (스크립트가 있으면 사용)
+./mission_domain_4_SDK.sh # domain connect with docker 
+./mission_SDK.sh          # run cmd bridge node
+```
+
+**Option 2: 수동 실행 (mission_3.sh가 없거나 조정 필요시)**
+
+각 역할별로 별도 터미널에서 실행:
+```bash
+# 터미널 1: CAV 1 실행
+PROBLEM_ID=4 ROLE=cav CAV_ID=32 ./entrypoint.sh
+
+# 터미널 2: CAV 2 실행
+PROBLEM_ID=4 ROLE=cav CAV_ID=1 ./entrypoint.sh
+
+# 터미널 3: CAV 3 실행
+PROBLEM_ID=4 ROLE=cav CAV_ID=3 ./entrypoint.sh
+
+# 터미널 4: CAV 4 실행
+PROBLEM_ID=4 ROLE=cav CAV_ID=6 ./entrypoint.sh
+
+# 터미널 5: Tower 실행
+PROBLEM_ID=4 ROLE=tower CAV_IDS="32,1,3,6" ./entrypoint.sh
+
+# 터미널 6: Rotary 실행
+PROBLEM_ID=4 ROLE=rotary CAV_IDS="32,1,3,6" ./entrypoint.sh
+```
+
+**환경변수 설명:**
+- `PROBLEM_ID=4`: Mission 3 선택
+- `ROLE`: 실행 역할 (cav, tower, rotary, simulator)
+- `CAV_ID`: CAV 식별자 (각 CAV마다 다른 값)
+- `CAV_IDS`: Tower/Rotary가 구독할 CAV ID 목록 (쉼표로 구분)
+
+---
+
+# TEAM_AIM (KAIST Mobility Challenge) ==> simulator
 KAIST Mobility Challenge 환경에서 **TEAM_AIM 도커 이미지 빌드 + 컨테이너 실행 + 미션 실행**까지 한 번에 따라 할 수 있도록 정리한 README입니다.  
 (대회 측 매뉴얼/구조를 최대한 그대로 사용하는 흐름)
 
