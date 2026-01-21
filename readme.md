@@ -29,6 +29,7 @@ chmod +x mission_3.sh
 한 줄 명령어 하나로 모든 프로세스가 동시에 시작됩니다!
 
 ### 🤖 로봇에서 실행 명령어 (diffrent package -> KAIST_MOBILITY_CHALLENGE_SDK)
+### https://github.com/kante2/KAIST_MOBILITY_CHALLENGE_SDK
 
 **Option 1: mission_3.sh 스크립트 있는 경우**
 ```bash
