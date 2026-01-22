@@ -416,12 +416,13 @@ int main(int argc, char * argv[])
     std::map<int, rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr> target_vel_pubs;
     for (size_t i = 0; i < active_cav_ids.size() && i < 4; i++) {
         int cav_index = (int)i + 1;  // 1-indexed
-        const std::string cav_id_str = std::string(2 - std::to_string(cav_index).length(), '0') + std::to_string(cav_index);
+        int actual_cav_id = active_cav_ids[i];  // actual CAV ID from CAV_IDS
+        const std::string cav_id_str = std::string(2 - std::to_string(actual_cav_id).length(), '0') + std::to_string(actual_cav_id);
         const std::string flag_topic = "/CAV_" + cav_id_str + "_RED_FLAG";
         red_flag_pubs[cav_index] = node->create_publisher<std_msgs::msg::Int32>(flag_topic, 50);
         const std::string vel_topic = "/CAV_" + cav_id_str + "_target_vel";
         target_vel_pubs[cav_index] = node->create_publisher<std_msgs::msg::Float64>(vel_topic, 50);
-        RCLCPP_INFO(node->get_logger(), "Created publishers for CAV_Index_%d (Actual_ID=%d): topics %s, %s", cav_index, active_cav_ids[i], flag_topic.c_str(), vel_topic.c_str());
+        RCLCPP_INFO(node->get_logger(), "Created publishers for CAV_Index_%d (Actual_ID=%d): topics %s, %s", cav_index, actual_cav_id, flag_topic.c_str(), vel_topic.c_str());
     }
 
     // Subscribers for CAV indices (1-4), HV 19, 20
@@ -429,7 +430,8 @@ int main(int argc, char * argv[])
     
     for (size_t i = 0; i < active_cav_ids.size() && i < 4; i++) {
         int cav_index = (int)i + 1;  // 1-indexed
-        const std::string cav_id_str = std::string(2 - std::to_string(cav_index).length(), '0') + std::to_string(cav_index);
+        int actual_cav_id = active_cav_ids[i];  // actual CAV ID from CAV_IDS
+        const std::string cav_id_str = std::string(2 - std::to_string(actual_cav_id).length(), '0') + std::to_string(actual_cav_id);
         std::string cav_topic = "/CAV_" + cav_id_str;
         auto sub = node->create_subscription<geometry_msgs::msg::PoseStamped>(
             cav_topic, rclcpp::SensorDataQoS(),
@@ -437,7 +439,7 @@ int main(int argc, char * argv[])
                 cav_poses[cav_index] = {msg->pose.position.x, msg->pose.position.y};
             });
         cav_subscriptions.push_back(sub);
-        RCLCPP_INFO(node->get_logger(), "Subscribed to CAV_Index_%d: %s", cav_index, cav_topic.c_str());
+        RCLCPP_INFO(node->get_logger(), "Subscribed to CAV_Index_%d (Actual_ID=%d): %s", cav_index, actual_cav_id, cav_topic.c_str());
     }
 
     auto sub19 = node->create_subscription<geometry_msgs::msg::PoseStamped>(

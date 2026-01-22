@@ -223,7 +223,7 @@ bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double
 }
 
 void planVelocity(ControllerState& st, bool isCorner) {
-    if (!isCorner) {st.speed_mps = 1.2; } else { st.speed_mps = 0.7; }
+    if (!isCorner) {st.speed_mps = 1.8; } else { st.speed_mps = 1.3; } // good (1.5 / 1.0)
 }
 
 bool CheckAllFinished(const std::vector<CavState>& cav_list) {
@@ -312,7 +312,7 @@ int main(int argc, char** argv)
       }
   }
 
-  const std::string my_id_str = twoDigitId(cav_index);  // Use cav_index instead of actual_cav_id
+  const std::string my_id_str = twoDigitId(actual_cav_id);  // Use actual_cav_id for all topics
   const std::string accel_topic = "/CAV_" + my_id_str + "_accel"; 
   const std::string red_flag_topic = "/CAV_" + my_id_str + "_RED_FLAG";
   const std::string target_vel_topic = "/CAV_" + my_id_str + "_target_vel";
@@ -356,10 +356,10 @@ int main(int argc, char** argv)
 
   std::vector<rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr> pose_subs;
 
-  // Only subscribe to my own CAV_ID (use cav_index for simulator topic)
-  int target_id = cav_index;  // Use cav_index: 1, 2, 3, 4
+  // Only subscribe to my own CAV_ID (use actual_cav_id for pose topic)
+  int target_id = cav_index;  // Use cav_index for CSV mapping: 1, 2, 3, 4
   {
-      std::string target_topic = "/CAV_" + twoDigitId(target_id);  // /CAV_01, /CAV_02, /CAV_03, /CAV_04
+      std::string target_topic = "/CAV_" + twoDigitId(actual_cav_id);  // /CAV_32, /CAV_02, /CAV_03, /CAV_04
       auto sub = node->create_subscription<geometry_msgs::msg::PoseStamped>(
           target_topic, rclcpp::SensorDataQoS(),
           [node, st, accel_pub, cmd_vel_pub, &cav_list, actual_cav_id, target_id](const geometry_msgs::msg::PoseStamped::SharedPtr msg)
@@ -433,7 +433,7 @@ int main(int argc, char** argv)
                 if (st->red_flag == 1) { 
                     cmd.linear.x  = 0.0;
                     cmd.angular.z = 0.0;
-                    twist_cmd.linear.x = 0.0;
+                    twist_cmd.linear.x = -0.005; // ** -0.01 로 해야지 실제 모터가 정지를 함
                     twist_cmd.angular.z = 0.0;
                 } else {
                     cmd.linear.x  = current_target_speed;

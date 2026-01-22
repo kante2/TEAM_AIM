@@ -41,23 +41,23 @@ if [ "$PROBLEM_ID" = "3" ]; then
 # mission_3
 elif [ "$PROBLEM_ID" = "4" ]; then
     if [ "$ROLE" = "simulator" ]; then
-        export ROS_DOMAIN_ID=100
-        # export ROS_DOMAIN_ID=100
+        # export ROS_DOMAIN_ID=100 # (for real robot)
+        export ROS_DOMAIN_ID=100 # (for simulator)
         cd /root/TEAM_AIM/Mobility_Challenge_Simulator
         ros2 launch simulator_launch simulator_launch.py
     elif [ "$ROLE" = "cav" ]; then
-        # export ROS_DOMAIN_ID=101
-        export ROS_DOMAIN_ID=100
+        export ROS_DOMAIN_ID=100 # (for simulator)
+        # export ROS_DOMAIN_ID=100 # (for real robot)
         export CAV_ID=$CAV_ID
         ros2 run mission_3 control_cav_mission_3
     elif [ "$ROLE" = "tower" ]; then
-        # export ROS_DOMAIN_ID=101
-        export ROS_DOMAIN_ID=100
+        export ROS_DOMAIN_ID=100 # (for simulator)
+        # export ROS_DOMAIN_ID=100 # (for real robot)
         export CAV_IDS=${CAV_IDS:-"3, 5, 32"}
         ros2 run mission_3 control_tower_mission_3
     elif [ "$ROLE" = "rotary" ]; then
-        # export ROS_DOMAIN_ID=101
-        export ROS_DOMAIN_ID=100
+        export ROS_DOMAIN_ID=100 # (for simulator)
+        # export ROS_DOMAIN_ID=100 # (for real robot)
         export CAV_IDS=${CAV_IDS:-"3, 5, 32"}
         ros2 run mission_3 control_rotary_mission_3
     else

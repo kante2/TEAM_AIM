@@ -284,13 +284,23 @@ bool is_moving_away(int cav_id, Pose zone_origin, const std::vector<Pose>& path)
 // Main CAV와 Precollision 후보군에서 Sub CAV 선택
 // =========================
 int select_best_sub_cav(int main_cav_id, const std::vector<int>& precollision_candidates, Pose zone_origin, double overlap_threshold, int lookahead_distance) {
-  if (cav_paths[main_cav_id].empty()) return -1;
+  // 방어 로직: 빈 경로나 없는 CAV 체크
+  if (cav_paths.find(main_cav_id) == cav_paths.end() || cav_paths[main_cav_id].empty()) {
+    return -1;
+  }
+  if (cav_poses.find(main_cav_id) == cav_poses.end()) {
+    return -1;
+  }
 
   int main_idx = find_closest_waypoint_index(cav_paths[main_cav_id], cav_poses[main_cav_id]);
   std::vector<Pose> main_lookahead = get_lookahead_waypoints(cav_paths[main_cav_id], main_idx, lookahead_distance);
 
   std::vector<int> non_overlapping_candidates;
   for (int sub_id : precollision_candidates) {
+    // 각 sub_id도 체크
+    if (cav_paths.find(sub_id) == cav_paths.end() || cav_paths[sub_id].empty()) continue;
+    if (cav_poses.find(sub_id) == cav_poses.end()) continue;
+    
     int sub_idx = find_closest_waypoint_index(cav_paths[sub_id], cav_poses[sub_id]);
     std::vector<Pose> sub_lookahead = get_lookahead_waypoints(cav_paths[sub_id], sub_idx, lookahead_distance);
 
@@ -337,7 +347,7 @@ int select_best_sub_cav(int main_cav_id, const std::vector<int>& precollision_ca
         
         // Main의 앞쪽 점(큰 인덱스)과 Sub의 뒤쪽 점(작은 인덱스)이 만나면 안전
         // 또는 인덱스 차이가 충분히 크면 시간 여유가 있음
-        if (idx_diff > 150 || (main_overlap_idx > 170 && sub_overlap_idx < 30)) {
+        if (idx_diff > 250 || (main_overlap_idx > 200 && sub_overlap_idx < 20)) {
           safe_overlap_candidates.push_back(sub_id);
           std::cout << "[SAFE OVERLAP] CAV_" << sub_id << " added to safe candidates (idx_diff: " << idx_diff << ")" << std::endl;
         }
@@ -610,7 +620,9 @@ void monitor_zone(
     double precollision_radius,
     double imminent_collision_radius,
     double overlap_threshold,
-    int lookahead_distance) {
+    int lookahead_distance,
+    const std::map<int, int>& cav_index_map_actual_to_idx,
+    const std::map<int, int>& cav_index_map_idx_to_actual) {
   
   Pose zone_origin = zones[zone_id];
   std::vector<int> precollision_vehicles;
@@ -662,28 +674,32 @@ if (imminent_vehicles != prev_imminent_vehicles[zone_id]) { //prev_imminent_vehi
     RCLCPP_INFO(node->get_logger(), "[ZONE_%d] Imminent EMPTY", zone_id);
   } else {
     main_cav_id = imminent_vehicles[0]; //아까 imminent_vehicles 거리순으로 정렬해놓음 그래서 젤 가까운게 0번 인덱스
-    RCLCPP_INFO(node->get_logger(), "[ZONE_%d MAIN_CAV] Selected Closest CAV_%d (Dist: %.2fm)", 
-                zone_id, main_cav_id, imminent_with_dist[0].first);
+    
+    // 방어 로직: main_cav_id의 경로가 존재하는지 확인
+    if (cav_paths.find(main_cav_id) != cav_paths.end() && !cav_paths[main_cav_id].empty()) {
+      RCLCPP_INFO(node->get_logger(), "[ZONE_%d MAIN_CAV] Selected Closest CAV_%d (Dist: %.2fm)", 
+                  zone_id, main_cav_id, imminent_with_dist[0].first);
 
-    if (!precollision_vehicles.empty()) {
-      std::vector<int> sub_candidates;
-      for (int cav_id : precollision_vehicles) {
-        if (cav_id == main_cav_id) continue; 
-        if (is_moving_away(cav_id, zone_origin, cav_paths[cav_id])) continue;
-        
-        sub_candidates.push_back(cav_id);
-      }
-
-      if (!sub_candidates.empty()) {
-        cav_sub = select_best_sub_cav(main_cav_id, sub_candidates, zone_origin, overlap_threshold, lookahead_distance);
-
-        if (cav_sub != -1) {
-          RCLCPP_INFO(node->get_logger(), "[ZONE_%d SUB_CAV] Selected Safe CAV_%d", zone_id, cav_sub);
-        } else {
-          RCLCPP_ERROR(node->get_logger(), "[ZONE_%d] All candidates overlap! No Sub CAV selected.", zone_id);
+      if (!precollision_vehicles.empty()) {
+        std::vector<int> sub_candidates;
+        for (int cav_id : precollision_vehicles) {
+          if (cav_id == main_cav_id) continue;
+          if (cav_paths.find(cav_id) == cav_paths.end() || cav_paths[cav_id].empty()) continue;  // 경로 체크
+          if (is_moving_away(cav_id, zone_origin, cav_paths[cav_id])) continue;
+          
+          sub_candidates.push_back(cav_id);
         }
 
-        for (int cav_id : sub_candidates) {
+        if (!sub_candidates.empty()) {
+          cav_sub = select_best_sub_cav(main_cav_id, sub_candidates, zone_origin, overlap_threshold, lookahead_distance);
+
+          if (cav_sub != -1) {
+            RCLCPP_INFO(node->get_logger(), "[ZONE_%d SUB_CAV] Selected Safe CAV_%d", zone_id, cav_sub);
+          } else {
+            RCLCPP_ERROR(node->get_logger(), "[ZONE_%d] All candidates overlap! No Sub CAV selected.", zone_id);
+          }
+
+          for (int cav_id : sub_candidates) {
           if (cav_id == cav_sub) {
             continue; 
           } else {
@@ -692,29 +708,52 @@ if (imminent_vehicles != prev_imminent_vehicles[zone_id]) { //prev_imminent_vehi
         }
       }
     }
+    } // main_cav_id 경로 체크 끝
   }
 
   if (current_red_flag_vehicles != prev_red_flag_vehicles[zone_id]) {
     RCLCPP_WARN(node->get_logger(), "[ZONE_%d RED_FLAG STATE CHANGED]", zone_id);
 
-    for (int prev_id : prev_red_flag_vehicles[zone_id]) {
-      if (std::find(current_red_flag_vehicles.begin(), current_red_flag_vehicles.end(), prev_id) == current_red_flag_vehicles.end()) {
-        auto msg = std_msgs::msg::Int32();
-        msg.data = 0;  //0이 그린플래그imminent_collision_radius
-        red_flag_pubs[prev_id]->publish(msg);
-        RCLCPP_INFO(node->get_logger(), "[ZONE_%d GREEN_FLAG] CAV_%d -> RESUME", zone_id, prev_id);
+    for (int prev_cav_index : prev_red_flag_vehicles[zone_id]) {
+      if (std::find(current_red_flag_vehicles.begin(), current_red_flag_vehicles.end(), prev_cav_index) == current_red_flag_vehicles.end()) {
+        // Convert cav_index to actual_cav_id using reverse map
+        if (cav_index_map_idx_to_actual.count(prev_cav_index)) {
+          int prev_actual_cav_id = cav_index_map_idx_to_actual.at(prev_cav_index);
+          auto msg = std_msgs::msg::Int32();
+          msg.data = 0;  //0이 그린플래그
+          if(red_flag_pubs.count(prev_actual_cav_id)) {
+            red_flag_pubs[prev_actual_cav_id]->publish(msg);
+            RCLCPP_INFO(node->get_logger(), "[ZONE_%d GREEN_FLAG] CAV_%d -> RESUME", zone_id, prev_actual_cav_id);
+          }
+        }
       }
     }
 
-    for (int cav_id : current_red_flag_vehicles) {
+    prev_red_flag_vehicles[zone_id] = current_red_flag_vehicles;
+  }
+
+  // 매 루프마다 현재 상태의 RED_FLAG 지속적으로 전송 (상태 유지)
+  for (int cav_index : current_red_flag_vehicles) {
+    // Convert cav_index to actual_cav_id using reverse map
+    if (cav_index_map_idx_to_actual.count(cav_index)) {
+      int actual_cav_id = cav_index_map_idx_to_actual.at(cav_index);
       auto msg = std_msgs::msg::Int32();
       msg.data = 1;  
-      red_flag_pubs[cav_id]->publish(msg);
-      RCLCPP_WARN(node->get_logger(), "[ZONE_%d RED_FLAG] CAV_%d -> STOP (Main=CAV_%d, Sub=CAV_%d)", 
-                  zone_id, cav_id, main_cav_id, cav_sub);
+      if(red_flag_pubs.count(actual_cav_id)) {
+        red_flag_pubs[actual_cav_id]->publish(msg);
+      }
     }
-
-    prev_red_flag_vehicles[zone_id] = current_red_flag_vehicles;
+  }
+  
+  // 상태 변화 시에만 로그
+  if (current_red_flag_vehicles != prev_red_flag_vehicles[zone_id]) {
+    for (int cav_index : current_red_flag_vehicles) {
+      if (cav_index_map_idx_to_actual.count(cav_index)) {
+        int actual_cav_id = cav_index_map_idx_to_actual.at(cav_index);
+        RCLCPP_WARN(node->get_logger(), "[ZONE_%d RED_FLAG] CAV_%d (Index=%d) -> STOP (Main=Index_%d, Sub=Index_%d)", 
+                    zone_id, actual_cav_id, cav_index, main_cav_id, cav_sub);
+      }
+    }
   }
 }
 
@@ -725,9 +764,9 @@ int main(int argc, char** argv) {
   rclcpp::init(argc, argv);
   auto node = std::make_shared<rclcpp::Node>("control_tower");
 
-  double precollision_radius = 2.3;
-  double imminent_collision_radius = 1.7;
-  double overlap_threshold = 0.2;
+  double precollision_radius = 2.5;  // ** 2.3 -> 2.5
+  double imminent_collision_radius = 2.0; // ** -> 2.0
+  double overlap_threshold = 0.7; // ** 0.2 -> 0.5 -> 0.7
   int lookahead_distance = 90;  // 경로 겹침 체크용 lookahead 거리
   int visualization_lookahead = 90;  // 시각화용 lookahead 거리
   std::string path_dir = "/root/TEAM_AIM/src/global_path/";
@@ -762,12 +801,17 @@ int main(int argc, char** argv) {
 
   // RED_FLAG Publisher (based on active CAV count)
   std::map<int, rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr> red_flag_pubs;
+  std::map<int, int> cav_index_map_actual_to_idx;  // Map actual_cav_id to cav_index
+  std::map<int, int> cav_index_map_idx_to_actual;  // Map cav_index to actual_cav_id (reverse)
   for (size_t i = 0; i < active_cav_ids.size() && i < 4; i++) {
       int cav_index = (int)i + 1;  // 1-indexed
-      const std::string cav_id_str = std::string(2 - std::to_string(cav_index).length(), '0') + std::to_string(cav_index);
+      int actual_cav_id = active_cav_ids[i];  // actual CAV ID from CAV_IDS
+      cav_index_map_actual_to_idx[actual_cav_id] = cav_index;  // Store mapping for CSV lookup
+      cav_index_map_idx_to_actual[cav_index] = actual_cav_id;  // Store reverse mapping for RED_FLAG publishing
+      const std::string cav_id_str = std::string(2 - std::to_string(actual_cav_id).length(), '0') + std::to_string(actual_cav_id);
       const std::string flag_topic = "/CAV_" + cav_id_str + "_RED_FLAG";
-      red_flag_pubs[cav_index] = node->create_publisher<std_msgs::msg::Int32>(flag_topic, 50);
-      RCLCPP_INFO(node->get_logger(), "Created RED_FLAG publisher for CAV_Index_%d: %s", cav_index, flag_topic.c_str());
+      red_flag_pubs[actual_cav_id] = node->create_publisher<std_msgs::msg::Int32>(flag_topic, 50);
+      RCLCPP_INFO(node->get_logger(), "Created RED_FLAG publisher for CAV_Index_%d (Actual_ID=%d): %s", cav_index, actual_cav_id, flag_topic.c_str());
   }
 
   //  Visualization Publisher 추가 
@@ -779,7 +823,8 @@ int main(int argc, char** argv) {
   
   for (size_t i = 0; i < active_cav_ids.size() && i < 4; i++) {
       int cav_index = (int)i + 1;  // 1-indexed
-      const std::string cav_id_str = std::string(2 - std::to_string(cav_index).length(), '0') + std::to_string(cav_index);
+      int actual_cav_id = active_cav_ids[i];  // actual CAV ID from CAV_IDS
+      const std::string cav_id_str = std::string(2 - std::to_string(actual_cav_id).length(), '0') + std::to_string(actual_cav_id);
       std::string cav_topic = "/CAV_" + cav_id_str;
       auto sub = node->create_subscription<geometry_msgs::msg::PoseStamped>(
           cav_topic, rclcpp::SensorDataQoS(),
@@ -787,7 +832,7 @@ int main(int argc, char** argv) {
               cav_poses[cav_index] = {msg->pose.position.x, msg->pose.position.y};
           });
       cav_subscriptions.push_back(sub);
-      RCLCPP_INFO(node->get_logger(), "Subscribed to CAV_Index_%d: %s", cav_index, cav_topic.c_str());
+      RCLCPP_INFO(node->get_logger(), "Subscribed to CAV_Index_%d (Actual_ID=%d): %s", cav_index, actual_cav_id, cav_topic.c_str());
   }
 
   auto sub19 = node->create_subscription<geometry_msgs::msg::PoseStamped>(
@@ -811,7 +856,7 @@ int main(int argc, char** argv) {
     //  Zone 1, 2, 3만 모니터링 (Zone 4 제거) 
     for (int zone_id = 1; zone_id <= 3; zone_id++) {
       monitor_zone(zone_id, node, red_flag_pubs, prev_red_flag_vehicles,
-                   precollision_radius, imminent_collision_radius, overlap_threshold, lookahead_distance);
+                   precollision_radius, imminent_collision_radius, overlap_threshold, lookahead_distance, cav_index_map_actual_to_idx, cav_index_map_idx_to_actual);
     }
     // 시각화 발행 (10Hz) 
     publish_visualization(node, marker_pub, precollision_radius, imminent_collision_radius, visualization_lookahead);
