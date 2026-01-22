@@ -2,6 +2,9 @@
 
 ## 🚀 빠른 시작 - Mission 3 실행 방법
 
+### youtube 실제 주행 영상
+- https://youtu.be/-UvcA1RR8lg?si=9r8A8EASS-dQdqqF
+
 ### 📋 Mission 3 구조
 ```bash
 mission_3.sh
