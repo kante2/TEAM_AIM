@@ -69,6 +69,12 @@ std::map<int, Pose> hv_rois = {
   {2, {1.1, -0.71}}
 };
 
+// Yellow ROI zones (속도 감속 구간)
+std::map<int, Pose> yellow_cav_rois = {
+  {1, {1.1945931911468506, 2.152200222015381}},
+  {2, {-0.4866666793823242, -0.10833333432674408}}
+};
+
 // Key: ROI_ID, Value: 허가받은 차량 ID 목록
 std::map<int, std::set<int>> roi_permit_vehicles;
 
@@ -411,8 +417,9 @@ int main(int argc, char * argv[])
         active_cav_ids = {1, 2, 3, 4};
     }
 
-    // RED_FLAG Publisher (based on CAV_IDS indices 1-4)
+    // RED_FLAG & YELLOW_FLAG Publisher (based on CAV_IDS indices 1-4)
     std::map<int, rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr> red_flag_pubs;
+    std::map<int, rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr> yellow_flag_pubs;
     std::map<int, rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr> target_vel_pubs;
     for (size_t i = 0; i < active_cav_ids.size() && i < 4; i++) {
         int cav_index = (int)i + 1;  // 1-indexed
@@ -420,9 +427,11 @@ int main(int argc, char * argv[])
         const std::string cav_id_str = std::string(2 - std::to_string(actual_cav_id).length(), '0') + std::to_string(actual_cav_id);
         const std::string flag_topic = "/CAV_" + cav_id_str + "_RED_FLAG";
         red_flag_pubs[cav_index] = node->create_publisher<std_msgs::msg::Int32>(flag_topic, 50);
+        const std::string yellow_flag_topic = "/CAV_" + cav_id_str + "_YELLOW_FLAG";
+        yellow_flag_pubs[cav_index] = node->create_publisher<std_msgs::msg::Int32>(yellow_flag_topic, 50);
         const std::string vel_topic = "/CAV_" + cav_id_str + "_target_vel";
         target_vel_pubs[cav_index] = node->create_publisher<std_msgs::msg::Float64>(vel_topic, 50);
-        RCLCPP_INFO(node->get_logger(), "Created publishers for CAV_Index_%d (Actual_ID=%d): topics %s, %s", cav_index, actual_cav_id, flag_topic.c_str(), vel_topic.c_str());
+        RCLCPP_INFO(node->get_logger(), "Created publishers for CAV_Index_%d (Actual_ID=%d): topics %s, %s, %s", cav_index, actual_cav_id, flag_topic.c_str(), yellow_flag_topic.c_str(), vel_topic.c_str());
     }
 
     // Subscribers for CAV indices (1-4), HV 19, 20
@@ -467,6 +476,10 @@ int main(int argc, char * argv[])
     std::map<int, std::vector<int>> prev_red_flag_vehicles;
     std::map<int, std::set<int>> cav_active_states;
     std::map<int, std::set<int>> cav_released_states;
+    std::map<int, std::set<int>> yellow_roi_entered;  // yellow ROI에 진입한 CAV 추적
+    
+    double yellow_roi_detection_radius = 0.3;  // yellow ROI 감지 반경 0.15 -> 0.5
+    
     RCLCPP_INFO(node->get_logger(), "Simple Speed Trap Started.");
     
     while(rclcpp::ok()) {
@@ -481,6 +494,49 @@ int main(int argc, char * argv[])
                 detection_radius,   // double radius
                 resert_radius
             );
+        }
+
+        // Yellow ROI 모니터링 - CAV의 속도 제어 구간
+        for (const auto& [yellow_roi_id, yellow_roi_pose] : yellow_cav_rois) {
+            auto& entered_set = yellow_roi_entered[yellow_roi_id];
+            
+            for (const auto& [cav_index, cav_pose] : cav_poses) {
+                double dist_to_yellow = calculate_distance(cav_pose, yellow_roi_pose);
+                bool is_in_yellow = dist_to_yellow <= yellow_roi_detection_radius;
+                bool was_in_yellow = entered_set.count(cav_index) > 0;
+                
+                if (is_in_yellow && !was_in_yellow) {
+                    // Yellow ROI에 진입함
+                    entered_set.insert(cav_index);
+                    auto yellow_msg = std_msgs::msg::Int32();
+                    yellow_msg.data = 1;  // Yellow flag ON
+                    if (yellow_flag_pubs.count(cav_index)) {
+                        yellow_flag_pubs[cav_index]->publish(yellow_msg);
+                    }
+                    auto vel_msg = std_msgs::msg::Float64();
+                    vel_msg.data = 0.5;  // Yellow flag 시 속도 0.5
+                    if (target_vel_pubs.count(cav_index)) {
+                        target_vel_pubs[cav_index]->publish(vel_msg);
+                    }
+                    RCLCPP_WARN(node->get_logger(), ">>> Yellow ROI_%d: CAV_%d Entered - Yellow Flag ON, Speed Set to 0.5 <<<", yellow_roi_id, cav_index);
+                } 
+                else if (!is_in_yellow && was_in_yellow) {
+                    // Yellow ROI를 빠져나감
+                    entered_set.erase(cav_index);
+                    auto yellow_msg = std_msgs::msg::Int32();
+                    yellow_msg.data = 0;  // Yellow flag OFF
+                    if (yellow_flag_pubs.count(cav_index)) {
+                        yellow_flag_pubs[cav_index]->publish(yellow_msg);
+                    }
+                    // Reset velocity to -1.0 to restore normal driving
+                    auto vel_msg = std_msgs::msg::Float64();
+                    vel_msg.data = -1.0;  // Reset signal to restore normal speed control
+                    if (target_vel_pubs.count(cav_index)) {
+                        target_vel_pubs[cav_index]->publish(vel_msg);
+                    }
+                    RCLCPP_WARN(node->get_logger(), ">>> Yellow ROI_%d: CAV_%d Exited - Yellow Flag OFF, Speed Reset <<<", yellow_roi_id, cav_index);
+                }
+            }
         }
 
         rclcpp::spin_some(node);

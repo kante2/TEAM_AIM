@@ -73,8 +73,7 @@ struct ControllerState
 
   int pos_count{0};
   int red_flag{0}; 
-
-  // 타워 모드 변수
+  int yellow_flag{0};  // Yellow flag for speed control
   bool tower_mode{false};
   double target_linear_x{0.0};
 };
@@ -243,7 +242,7 @@ bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double
 }
 
 void planVelocity(ControllerState& st, bool isCorner) {
-    if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 0.8; } // good (1.5 / 1.0) -> (1.5 / 0.8)
+    if (!isCorner) {st.speed_mps = 1.9; } else { st.speed_mps = 1.5; } // good (1.5 / 1.0) -> (1.5 / 0.8)
 }
 
 bool CheckAllFinished(const std::vector<CavState>& cav_list, int vehicle_count) {
@@ -347,6 +346,7 @@ int main(int argc, char** argv)
   const std::string my_id_str = twoDigitId(actual_cav_id);  // Use actual_cav_id for all topics
   const std::string accel_topic = "/CAV_" + my_id_str + "_accel"; 
   const std::string red_flag_topic = "/CAV_" + my_id_str + "_RED_FLAG";
+  const std::string yellow_flag_topic = "/CAV_" + my_id_str + "_YELLOW_FLAG";
   const std::string target_vel_topic = "/CAV_" + my_id_str + "_target_vel";
   const std::string cmd_vel_topic = "/CAV_" + my_id_str + "/cmd_vel";
 
@@ -373,6 +373,9 @@ int main(int argc, char** argv)
 
   auto flag_sub = node->create_subscription<std_msgs::msg::Int32>(
       red_flag_topic, 50, [node, st](const std_msgs::msg::Int32::SharedPtr msg) { st->red_flag = msg->data; });
+
+  auto yellow_flag_sub = node->create_subscription<std_msgs::msg::Int32>(
+      yellow_flag_topic, 50, [node, st](const std_msgs::msg::Int32::SharedPtr msg) { st->yellow_flag = msg->data; });
 
   auto vel_sub = node->create_subscription<std_msgs::msg::Float64>(
       target_vel_topic, 50, 
@@ -468,11 +471,36 @@ int main(int argc, char** argv)
                 // Command Publish
                 geometry_msgs::msg::Accel cmd;
                 geometry_msgs::msg::Twist twist_cmd;
-                if (st->red_flag == 1) { 
+                
+                // Check if this CAV has finished 5 laps
+                bool cav_finished = false;
+                for (const auto& cav : cav_list) {
+                    if (cav.id == target_id && cav.finished) {
+                        cav_finished = true;
+                        break;
+                    }
+                }
+                
+                if (cav_finished) {
+                    // CAV finished 5 laps - STOP
                     cmd.linear.x  = 0.0;
                     cmd.angular.z = 0.0;
-                    twist_cmd.linear.x = -0.005; // ** -0.01 로 해야지 실제 모터가 정지를 함
+                    twist_cmd.linear.x = -0.005;
                     twist_cmd.angular.z = 0.0;
+                } else if (st->red_flag == 1) { 
+                    // Red flag: STOP with -0.005
+                    cmd.linear.x  = 0.0;
+                    cmd.angular.z = 0.0;
+                    twist_cmd.linear.x = -0.005; // Stop command
+                    twist_cmd.angular.z = 0.0;
+                } else if (st->yellow_flag == 1) {
+                    // Yellow flag: Slow down to 0.8 m/s
+                    cmd.linear.x  = 0.8;
+                    // cmd.angular.z = wz * (0.8 / std::max(current_target_speed, 0.1));
+                    cmd.angular.z = wz;
+                    twist_cmd.linear.x = 0.8;
+                    // twist_cmd.angular.z = wz * (0.5 / std::max(current_target_speed, 0.1));
+                    twist_cmd.angular.z = wz;
                 } else {
                     cmd.linear.x  = current_target_speed;
                     cmd.angular.z = wz;
@@ -494,7 +522,7 @@ int main(int argc, char** argv)
       RCLCPP_INFO(node->get_logger(), "Subscribed to %s", target_topic.c_str());
   }
 
-  (void)flag_sub; (void)vel_sub;
+  (void)flag_sub; (void)yellow_flag_sub; (void)vel_sub;
   rclcpp::spin(node);
   rclcpp::shutdown();
   return 0;
