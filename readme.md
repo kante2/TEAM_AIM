@@ -25,9 +25,9 @@ chmod +x mission_3.sh
 
 **자동 동작:**
 - ✅ colcon build로 모든 패키지 컴파일
-- ✅ 4개 CAV 프로세스 **병렬 실행** (CAV_ID = 32, 1, 3, 6)
-- ✅ Tower 프로세스 **병렬 실행** (CAV_IDS="32,1,3,6" → 4개 CAV 구독)
-- ✅ Rotary 프로세스 **병렬 실행** (CAV_IDS="32,1,3,6" → 4개 CAV 구독)
+- ✅ 4개 CAV 프로세스 **병렬 실행** (CAV_ID = 1, 2, 3, 4)
+- ✅ Tower 프로세스 **병렬 실행** (CAV_IDS="1,2,3,4" → 4개 CAV 구독)
+- ✅ Rotary 프로세스 **병렬 실행** (CAV_IDS="1,2,3,4" → 4개 CAV 구독)
 
 한 줄 명령어 하나로 모든 프로세스가 동시에 시작됩니다!
 
@@ -46,22 +46,22 @@ PROBLEM_ID="4" ./mission_SDK.sh          # run cmd bridge node
 각 역할별로 별도 터미널에서 실행:
 ```bash
 # 터미널 1: CAV 1 실행
-PROBLEM_ID=4 ROLE=cav CAV_ID=32 ./entrypoint.sh
+PROBLEM_ID=4 ROLE=cav CAV_ID=1 ./entrypoint.sh
 
 # 터미널 2: CAV 2 실행
-PROBLEM_ID=4 ROLE=cav CAV_ID=1 ./entrypoint.sh
+PROBLEM_ID=4 ROLE=cav CAV_ID=2 ./entrypoint.sh
 
 # 터미널 3: CAV 3 실행
 PROBLEM_ID=4 ROLE=cav CAV_ID=3 ./entrypoint.sh
 
 # 터미널 4: CAV 4 실행
-PROBLEM_ID=4 ROLE=cav CAV_ID=6 ./entrypoint.sh
+PROBLEM_ID=4 ROLE=cav CAV_ID=4 ./entrypoint.sh
 
 # 터미널 5: Tower 실행
-PROBLEM_ID=4 ROLE=tower CAV_IDS="32,1,3,6" ./entrypoint.sh
+PROBLEM_ID=4 ROLE=tower CAV_IDS="1,2,3,4" ./entrypoint.sh
 
 # 터미널 6: Rotary 실행
-PROBLEM_ID=4 ROLE=rotary CAV_IDS="32,1,3,6" ./entrypoint.sh
+PROBLEM_ID=4 ROLE=rotary CAV_IDS="1,2,3,4" ./entrypoint.sh
 ```
 
 **환경변수 설명:**
@@ -69,6 +69,28 @@ PROBLEM_ID=4 ROLE=rotary CAV_IDS="32,1,3,6" ./entrypoint.sh
 - `ROLE`: 실행 역할 (cav, tower, rotary, simulator)
 - `CAV_ID`: CAV 식별자 (각 CAV마다 다른 값)
 - `CAV_IDS`: Tower/Rotary가 구독할 CAV ID 목록 (쉼표로 구분)
+
+**미션별 도메인 설정 (ROS_DOMAIN_ID):**
+각 미션별 도메인 ID는 entrypoint.sh에 설정되어 있으며, 환경변수로 export할 수 있습니다:
+```bash
+# Mission 1-1 (PROBLEM_ID=1)
+export ROS_DOMAIN_ID=106
+
+# Mission 1-2 (PROBLEM_ID=2)
+export ROS_DOMAIN_ID=107
+
+# Mission 2 (PROBLEM_ID=3)
+export ROS_DOMAIN_ID=110
+
+# Mission 3 (PROBLEM_ID=4)
+export ROS_DOMAIN_ID=100
+
+export ROS_DOMAIN_ID=(미션에 해당하는 ROS_DOMAIN_ID값)
+ros2 topic list 를 하면, 미션에 해당하는 토픽들이 정상적으로 수신됨을 확인할 수 있습니다.
+```
+
+**CAV 정보 확인:**
+- `ros2 topic list` 명령으로 CAV들의 토픽 정보가 잘 확인됨
 
 ---
 

@@ -764,9 +764,9 @@ int main(int argc, char** argv) {
   rclcpp::init(argc, argv);
   auto node = std::make_shared<rclcpp::Node>("control_tower");
 
-  double precollision_radius = 2.5;  // ** 2.3 -> 2.5
-  double imminent_collision_radius = 2.0; // ** -> 2.0
-  double overlap_threshold = 0.7; // ** 0.2 -> 0.5 -> 0.7
+  double precollision_radius = 2.3;  // ** 2.3 -> 2.5
+  double imminent_collision_radius = 1.8; // ** 1.8 -> 2.0
+  double overlap_threshold = 0.2; // ** 0.2 -> 0.5 -> 0.7
   int lookahead_distance = 90;  // 경로 겹침 체크용 lookahead 거리
   int visualization_lookahead = 90;  // 시각화용 lookahead 거리
   std::string path_dir = "/root/TEAM_AIM/src/global_path/";

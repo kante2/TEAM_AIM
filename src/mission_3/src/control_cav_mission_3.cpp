@@ -186,14 +186,34 @@ static int findClosestPoint(const std::vector<integrate_path_struct>& path, doub
   return best;
 }
 
+// int findWaypoint (const vector<integrate_path_struct>& integrate_path_vector, double x_m, double y_m, const double L_d) {
+//     if (integrate_path_vector.empty()) { cout <<"Path Empty" << endl; return -1; }
+//     int closest_idx = findClosestPoint(integrate_path_vector, x_m, y_m);
+//     for (int i = closest_idx; i < (int)integrate_path_vector.size(); ++i) {
+//         double d = hypot(integrate_path_vector[i].x - x_m, integrate_path_vector[i].y - y_m);
+//         if (d > L_d) { return i; }
+//     }
+//     return integrate_path_vector.size() - 1;
+// }
 int findWaypoint (const vector<integrate_path_struct>& integrate_path_vector, double x_m, double y_m, const double L_d) {
     if (integrate_path_vector.empty()) { cout <<"Path Empty" << endl; return -1; }
+    
     int closest_idx = findClosestPoint(integrate_path_vector, x_m, y_m);
-    for (int i = closest_idx; i < (int)integrate_path_vector.size(); ++i) {
-        double d = hypot(integrate_path_vector[i].x - x_m, integrate_path_vector[i].y - y_m);
-        if (d > L_d) { return i; }
+    int path_size = (int)integrate_path_vector.size();
+
+    // Loop를 통해 순환 탐색 (최대 전체 경로 길이만큼 확인)
+    for (int i = 0; i < path_size; ++i) {
+        // [핵심 변경] 모듈러 연산(%)을 사용하여 인덱스가 끝을 넘어가면 0으로 돌아오게 함
+        int current_idx = (closest_idx + i) % path_size;
+
+        double d = hypot(integrate_path_vector[current_idx].x - x_m, integrate_path_vector[current_idx].y - y_m);
+        if (d > L_d) { 
+            return current_idx; 
+        }
     }
-    return integrate_path_vector.size() - 1;
+    
+    // 혹시라도 못 찾으면 현재 위치 바로 다음 점 반환 (순환 고려)
+    return (closest_idx + 1) % path_size;
 }
 
 double normalizeAngle(double angle) {
@@ -223,17 +243,21 @@ bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double
 }
 
 void planVelocity(ControllerState& st, bool isCorner) {
-    if (!isCorner) {st.speed_mps = 1.8; } else { st.speed_mps = 1.3; } // good (1.5 / 1.0)
+    if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 0.8; } // good (1.5 / 1.0) -> (1.5 / 0.8)
 }
 
-bool CheckAllFinished(const std::vector<CavState>& cav_list) {
+bool CheckAllFinished(const std::vector<CavState>& cav_list, int vehicle_count) {
     int finished_count = 0;
-    for (int i = 0; i < (int)cav_list.size(); ++i) {
+    for (int i = 1; i <= vehicle_count; ++i) {
         if (cav_list[i].finished) finished_count++;
     }
-    if (finished_count == (int)cav_list.size() - 1) return true;
+    if (finished_count == vehicle_count) return true;
     return false;
 }
+
+// Global mission completion flag
+static bool mission_completed = false;
+static int stop_publish_count = 0;
 
 void PoseCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg, int cav_id, std::vector<CavState>& states) {
     CavState& current_cav = states[cav_id];
@@ -257,10 +281,14 @@ void PoseCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg, int cav_
         if (!current_cav.is_in_zone) {
             current_cav.current_lap += 1;
             current_cav.is_in_zone = true; 
-            std::cout << "[CAV " << cav_id << "] Lap Increased! Current Lap: " << current_cav.current_lap << std::endl << std::endl;
+            std::cout << "═══════════════════════════════════════════════════════════════" << std::endl;
+            std::cout << "🏁 [CAV " << cav_id << "] Lap: " << current_cav.current_lap << "/5 (";
+            std::cout << (current_cav.current_lap * 100 / 5) << "% Complete)" << std::endl;
+            std::cout << "   Pos: (" << std::fixed << std::setprecision(2) << current_x << ", " << current_y << ")" << std::endl;
+            std::cout << "═══════════════════════════════════════════════════════════════" << std::endl << std::endl;
             if (current_cav.current_lap >= 5) {
                 current_cav.finished = true;
-                std::cout << "[CAV " << cav_id << "] FINISHED 5 LAPS!" << std::endl << std::endl;
+                std::cout << "🎉 [CAV " << cav_id << "] ✓ FINISHED 5 LAPS! ✓" << std::endl << std::endl;
             }
         }
     } else {
@@ -280,6 +308,9 @@ int main(int argc, char** argv)
   int total_vehicle_count = 32;
   std::vector<CavState> cav_list(total_vehicle_count + 1); 
   for(int i=1; i<(int)cav_list.size(); ++i) cav_list[i] = {i, 0.0, 0.0, 0, false, false, false};
+  
+  // 실제 참여 차량 수
+  int actual_vehicle_count = 0;
 
   int cav_id_default = readCavIdFromEnvOrDefault(1);
   node->declare_parameter<int>("cav_id", cav_id_default);
@@ -302,6 +333,7 @@ int main(int argc, char** argv)
           token.erase(0, token.find_first_not_of(" \t"));
           token.erase(token.find_last_not_of(" \t") + 1);
           if (!token.empty()) {
+              actual_vehicle_count++;  // 실제 참여 차량 수 증가
               int id = std::stoi(token);
               if (id == actual_cav_id) {
                   cav_index = idx;
@@ -318,11 +350,11 @@ int main(int argc, char** argv)
   const std::string target_vel_topic = "/CAV_" + my_id_str + "_target_vel";
   const std::string cmd_vel_topic = "/CAV_" + my_id_str + "/cmd_vel";
 
-  RCLCPP_INFO(node->get_logger(), "My Actual_CAV_ID=%d, Mapped_Index=%d, Waiting for %d vehicles...", actual_cav_id, cav_index, total_vehicle_count);
+  RCLCPP_INFO(node->get_logger(), "My Actual_CAV_ID=%d, Mapped_Index=%d, Actual_Vehicle_Count=%d", actual_cav_id, cav_index, actual_vehicle_count);
 
   node->declare_parameter<double>("speed_mps", 0.5);
   node->declare_parameter<double>("lookahead_m", 0.4);
-  node->declare_parameter<double>("max_yaw_rate", 5.5); // [핵심] 고속 주행을 위해 Yaw Rate 제한 대폭 해제
+  node->declare_parameter<double>("max_yaw_rate", 5.5); // [핵심] 고속 주행을 위해 Yaw Rate 제한 대폭 해제 // ** 5.5 -> 2.5 ?**
   node->declare_parameter<std::string>("path_csv", "/root/TEAM_AIM/src/global_path/path.csv");
 
   st->speed_mps    = node->get_parameter("speed_mps").as_double();
@@ -362,27 +394,33 @@ int main(int argc, char** argv)
       std::string target_topic = "/CAV_" + twoDigitId(actual_cav_id);  // /CAV_32, /CAV_02, /CAV_03, /CAV_04
       auto sub = node->create_subscription<geometry_msgs::msg::PoseStamped>(
           target_topic, rclcpp::SensorDataQoS(),
-          [node, st, accel_pub, cmd_vel_pub, &cav_list, actual_cav_id, target_id](const geometry_msgs::msg::PoseStamped::SharedPtr msg)
+          [node, st, accel_pub, cmd_vel_pub, &cav_list, actual_cav_id, target_id, actual_vehicle_count](const geometry_msgs::msg::PoseStamped::SharedPtr msg)
           {
             PoseCallback(msg, target_id, cav_list);
 
+            // Check mission completion and set global flag
+            if (CheckAllFinished(cav_list, actual_vehicle_count) && !mission_completed) {
+                mission_completed = true;
+                std::cout << ">>> [ALL " << actual_vehicle_count << " VEHICLES FINISHED] Starting continuous STOP publish! <<<" << std::endl;
+            }
+
             // Always execute control for my own CAV
             {
-                if (CheckAllFinished(cav_list)) {
-                    // 시뮬레이션용 정지 명령
+                // 미션 완료 후 계속 정지 명령 발행 (실제 로봇이 멈추도록)
+                if (mission_completed) {
                     geometry_msgs::msg::Accel stop_cmd;
                     stop_cmd.linear.x = 0.0; stop_cmd.linear.y = 0.0; stop_cmd.linear.z = 0.0;
                     stop_cmd.angular.x = 0.0; stop_cmd.angular.y = 0.0; stop_cmd.angular.z = 0.0;
                     accel_pub->publish(stop_cmd);
                     
-                    // 실제 로봇용 정지 명령
                     geometry_msgs::msg::Twist stop_twist;
                     stop_twist.linear.x = 0.0; stop_twist.linear.y = 0.0; stop_twist.linear.z = 0.0;
                     stop_twist.angular.x = 0.0; stop_twist.angular.y = 0.0; stop_twist.angular.z = 0.0;
                     cmd_vel_pub->publish(stop_twist);
                     
-                    static int stop_log_cnt = 0;
-                    if (stop_log_cnt++ % 50 == 0) std::cout << ">>> [ALL FINISHED] SYNC STOP! <<<" << std::endl;
+                    if (stop_publish_count++ % 100 == 0) {
+                        std::cout << "[STOP] Continuous STOP command published (" << stop_publish_count << ")" << std::endl;
+                    }
                     return;
                 }
 
