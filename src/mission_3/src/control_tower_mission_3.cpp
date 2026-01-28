@@ -247,8 +247,8 @@ bool check_path_overlap(
   csv_distance = min_dist_found;
 
   if (min_dist_found < overlap_threshold ) {
-    std::cout << "[PATH DEBUG] Min Distance: " << min_dist_found 
-              << "m (Overlap: " << (is_overlapping ? "YES" : "NO") << ")" << std::endl;
+    // std::cout << "[PATH DEBUG] Min Distance: " << min_dist_found 
+    //           << "m (Overlap: " << (is_overlapping ? "YES" : "NO") << ")" << std::endl;
   }
 
   return is_overlapping;
@@ -312,7 +312,7 @@ int select_best_sub_cav(int main_cav_id, const std::vector<int>& precollision_ca
 
   // 경로 안 겹치는 후보군이 없을 때, 안전한 경로 겹침 체크
   if (non_overlapping_candidates.empty()) {
-    std::cout << "[SUB_CAV SELECT] No non-overlapping candidates. Checking safe overlap cases..." << std::endl;
+    // std::cout << "[SUB_CAV SELECT] No non-overlapping candidates. Checking safe overlap cases..." << std::endl;
     
     std::vector<int> safe_overlap_candidates;
     
@@ -340,16 +340,16 @@ int select_best_sub_cav(int main_cav_id, const std::vector<int>& precollision_ca
       if (main_overlap_idx != -1 && sub_overlap_idx != -1) {
         int idx_diff = abs(main_overlap_idx - sub_overlap_idx);
         
-        std::cout << "[OVERLAP CHECK] CAV_" << main_cav_id << " vs CAV_" << sub_id 
-                  << " | Main_idx: " << main_overlap_idx 
-                  << ", Sub_idx: " << sub_overlap_idx 
-                  << ", Diff: " << idx_diff << std::endl;
+        // std::cout << "[OVERLAP CHECK] CAV_" << main_cav_id << " vs CAV_" << sub_id 
+        //           << " | Main_idx: " << main_overlap_idx 
+        //           << ", Sub_idx: " << sub_overlap_idx 
+        //           << ", Diff: " << idx_diff << std::endl;
         
         // Main의 앞쪽 점(큰 인덱스)과 Sub의 뒤쪽 점(작은 인덱스)이 만나면 안전
         // 또는 인덱스 차이가 충분히 크면 시간 여유가 있음
         if (idx_diff > 250 || (main_overlap_idx > 200 && sub_overlap_idx < 20)) {
           safe_overlap_candidates.push_back(sub_id);
-          std::cout << "[SAFE OVERLAP] CAV_" << sub_id << " added to safe candidates (idx_diff: " << idx_diff << ")" << std::endl;
+          // std::cout << "[SAFE OVERLAP] CAV_" << sub_id << " added to safe candidates (idx_diff: " << idx_diff << ")" << std::endl;
         }
       }
     }
@@ -362,12 +362,12 @@ int select_best_sub_cav(int main_cav_id, const std::vector<int>& precollision_ca
         double d = calculate_distance(cav_poses[id], zone_origin);
         if (d < min_d) { min_d = d; selected_sub = id; }
       }
-      std::cout << "[SAFE OVERLAP] Selected CAV_" << selected_sub << " as Sub_CAV" << std::endl;
+      // std::cout << "[SAFE OVERLAP] Selected CAV_" << selected_sub << " as Sub_CAV" << std::endl;
       return selected_sub;
     }
     
     // 안전한 경로 겹침도 없으면 -1 반환 (Main만 진행)
-    std::cout << "[SUB_CAV SELECT] No safe candidates found. Only Main_CAV will proceed." << std::endl;
+    // std::cout << "[SUB_CAV SELECT] No safe candidates found. Only Main_CAV will proceed." << std::endl;
     return -1;
   }
 
@@ -655,13 +655,13 @@ if (imminent_vehicles != prev_imminent_vehicles[zone_id]) { //prev_imminent_vehi
   for (int id : imminent_vehicles) imminent_ids += std::to_string(id) + " ";
 
   if (!imminent_vehicles.empty()) {
-    RCLCPP_WARN(node->get_logger(),
-                "[ZONE_%d IMMINENT] CAVs (Closest First): %s",
-                zone_id, imminent_ids.c_str());
+    // RCLCPP_WARN(node->get_logger(),
+    //             "[ZONE_%d IMMINENT] CAVs (Closest First): %s",
+    //             zone_id, imminent_ids.c_str());
   } else {
-    RCLCPP_INFO(node->get_logger(),
-                "[ZONE_%d IMMINENT] EMPTY",
-                zone_id);
+    // RCLCPP_INFO(node->get_logger(),
+    //             "[ZONE_%d IMMINENT] EMPTY",
+    //             zone_id);
   }
 
   prev_imminent_vehicles[zone_id] = imminent_vehicles;
@@ -671,14 +671,14 @@ if (imminent_vehicles != prev_imminent_vehicles[zone_id]) { //prev_imminent_vehi
   std::vector<int> current_red_flag_vehicles; //이번 실행에서 멈춰야하는 차량  id 목록
 
   if (imminent_vehicles.empty()) {
-    RCLCPP_INFO(node->get_logger(), "[ZONE_%d] Imminent EMPTY", zone_id);
+    // RCLCPP_INFO(node->get_logger(), "[ZONE_%d] Imminent EMPTY", zone_id);
   } else {
     main_cav_id = imminent_vehicles[0]; //아까 imminent_vehicles 거리순으로 정렬해놓음 그래서 젤 가까운게 0번 인덱스
     
     // 방어 로직: main_cav_id의 경로가 존재하는지 확인
     if (cav_paths.find(main_cav_id) != cav_paths.end() && !cav_paths[main_cav_id].empty()) {
-      RCLCPP_INFO(node->get_logger(), "[ZONE_%d MAIN_CAV] Selected Closest CAV_%d (Dist: %.2fm)", 
-                  zone_id, main_cav_id, imminent_with_dist[0].first);
+      // RCLCPP_INFO(node->get_logger(), "[ZONE_%d MAIN_CAV] Selected Closest CAV_%d (Dist: %.2fm)", 
+      //             zone_id, main_cav_id, imminent_with_dist[0].first);
 
       if (!precollision_vehicles.empty()) {
         std::vector<int> sub_candidates;
@@ -694,9 +694,9 @@ if (imminent_vehicles != prev_imminent_vehicles[zone_id]) { //prev_imminent_vehi
           cav_sub = select_best_sub_cav(main_cav_id, sub_candidates, zone_origin, overlap_threshold, lookahead_distance);
 
           if (cav_sub != -1) {
-            RCLCPP_INFO(node->get_logger(), "[ZONE_%d SUB_CAV] Selected Safe CAV_%d", zone_id, cav_sub);
+            // RCLCPP_INFO(node->get_logger(), "[ZONE_%d SUB_CAV] Selected Safe CAV_%d", zone_id, cav_sub);
           } else {
-            RCLCPP_ERROR(node->get_logger(), "[ZONE_%d] All candidates overlap! No Sub CAV selected.", zone_id);
+            // RCLCPP_ERROR(node->get_logger(), "[ZONE_%d] All candidates overlap! No Sub CAV selected.", zone_id);
           }
 
           for (int cav_id : sub_candidates) {
@@ -723,7 +723,7 @@ if (imminent_vehicles != prev_imminent_vehicles[zone_id]) { //prev_imminent_vehi
           msg.data = 0;  //0이 그린플래그
           if(red_flag_pubs.count(prev_actual_cav_id)) {
             red_flag_pubs[prev_actual_cav_id]->publish(msg);
-            RCLCPP_INFO(node->get_logger(), "[ZONE_%d GREEN_FLAG] CAV_%d -> RESUME", zone_id, prev_actual_cav_id);
+            // RCLCPP_INFO(node->get_logger(), "[ZONE_%d GREEN_FLAG] CAV_%d -> RESUME", zone_id, prev_actual_cav_id);
           }
         }
       }

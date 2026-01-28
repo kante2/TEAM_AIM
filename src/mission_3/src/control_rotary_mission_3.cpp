@@ -282,11 +282,11 @@ void monitor_all_rois(
 
                 if(target_vel_pubs.count(cav_id)) target_vel_pubs[cav_id]->publish(vel_msg);
                 if(red_flag_pubs.count(cav_id)) red_flag_pubs[cav_id]->publish(msg);
-                RCLCPP_WARN(node->get_logger(), 
-                    ">>> ROI_%d: HV Arrived! Releasing CAV_%d (was waiting at ROI_%d) <<<", 
-                    hv_roi_id,   //  HV가 도착한 ROI
-                    cav_id, 
-                    cav_roi_id);
+                // RCLCPP_WARN(node->get_logger(), 
+                //     ">>> ROI_%d: HV Arrived! Releasing CAV_%d (was waiting at ROI_%d) <<<", 
+                //     hv_roi_id,   //  HV가 도착한 ROI
+                //     cav_id, 
+                //     cav_roi_id);
             } 
             else {
                 msg.data = 1; // STOP
@@ -294,8 +294,8 @@ void monitor_all_rois(
 
                 if(target_vel_pubs.count(cav_id)) target_vel_pubs[cav_id]->publish(vel_msg);
                 if(red_flag_pubs.count(cav_id)) red_flag_pubs[cav_id]->publish(msg);
-                RCLCPP_WARN_THROTTLE(node->get_logger(), *node->get_clock(), 1000, 
-                    "ROI_%d: CAV_%d Stop", cav_roi_id, cav_id);
+                // RCLCPP_WARN_THROTTLE(node->get_logger(), *node->get_clock(), 1000, 
+                //     "ROI_%d: CAV_%d Stop", cav_roi_id, cav_id);
             }
         }
         // 2. 명령 발행
@@ -518,7 +518,7 @@ int main(int argc, char * argv[])
                     if (target_vel_pubs.count(cav_index)) {
                         target_vel_pubs[cav_index]->publish(vel_msg);
                     }
-                    RCLCPP_WARN(node->get_logger(), ">>> Yellow ROI_%d: CAV_%d Entered - Yellow Flag ON, Speed Set to 0.5 <<<", yellow_roi_id, cav_index);
+                    // RCLCPP_WARN(node->get_logger(), ">>> Yellow ROI_%d: CAV_%d Entered - Yellow Flag ON, Speed Set to 0.5 <<<", yellow_roi_id, cav_index);
                 } 
                 else if (!is_in_yellow && was_in_yellow) {
                     // Yellow ROI를 빠져나감
@@ -534,7 +534,7 @@ int main(int argc, char * argv[])
                     if (target_vel_pubs.count(cav_index)) {
                         target_vel_pubs[cav_index]->publish(vel_msg);
                     }
-                    RCLCPP_WARN(node->get_logger(), ">>> Yellow ROI_%d: CAV_%d Exited - Yellow Flag OFF, Speed Reset <<<", yellow_roi_id, cav_index);
+                    // RCLCPP_WARN(node->get_logger(), ">>> Yellow ROI_%d: CAV_%d Exited - Yellow Flag OFF, Speed Reset <<<", yellow_roi_id, cav_index);
                 }
             }
         }
