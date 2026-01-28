@@ -243,7 +243,7 @@ bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double
 }
 
 void planVelocity(ControllerState& st, bool isCorner) {
-    if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; } // good (1.5 / 1.0) -> (1.5 / 0.8)
+    if (!isCorner) {st.speed_mps = 1.6; } else { st.speed_mps = 1.0; } // good (1.5 / 1.0) -> (1.5 / 0.8)
 }
 
 bool CheckAllFinished(const std::vector<CavState>& cav_list, int vehicle_count) {
@@ -259,19 +259,23 @@ bool CheckAllFinished(const std::vector<CavState>& cav_list, int vehicle_count) 
 static bool mission_completed = false;
 static int stop_publish_count = 0;
 
-void PoseCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg, int cav_id, std::vector<CavState>& states) {
+void PoseCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg, int cav_id, std::vector<CavState>& states, int my_cav_index) {
     CavState& current_cav = states[cav_id];
     double current_x = msg->pose.position.x;
     double current_y = msg->pose.position.y;
+    
+    bool is_my_cav = (cav_id == my_cav_index);  // 자신의 CAV인지 확인
 
     if (!current_cav.is_initialized) {
         current_cav.start_x = current_x;
         current_cav.start_y = current_y;
         current_cav.is_initialized = true;
-        current_cav.is_in_zone = true;
+        current_cav.is_in_zone = false;  // ← FALSE로 시작! 첫 프레임에서 영역 밖으로 설정
         current_cav.lap_start_time = msg->header.stamp;
         // [Zone Info Commented Out]
-        std::cout << "[DEBUG] CAV_index " << cav_id << " initialized at (" << current_x << ", " << current_y << ")" << std::endl;
+        if (is_my_cav) {
+            std::cout << "[DEBUG] CAV_index " << cav_id << " initialized at (" << current_x << ", " << current_y << ")" << std::endl;
+        }
         return;
     }
 
@@ -279,7 +283,7 @@ void PoseCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg, int cav_
 
     double dist_to_start = std::hypot(current_x - current_cav.start_x, current_y - current_cav.start_y);
 
-    if (dist_to_start < 0.1) {
+    if (dist_to_start < 0.15) {
         if (!current_cav.is_in_zone) {
             current_cav.current_lap += 1;
             current_cav.is_in_zone = true;
@@ -288,22 +292,29 @@ void PoseCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg, int cav_
             double lap_time_sec = (rclcpp::Time(msg->header.stamp) - current_cav.lap_start_time).seconds();
             current_cav.lap_start_time = rclcpp::Time(msg->header.stamp);  // Reset for next lap
             
-            std::cout << "═══════════════════════════════════════════════════════════════" << std::endl;
-            std::cout << "🏁 [CAV_index " << cav_id << "] Lap: " << current_cav.current_lap << "/5 (";
-            std::cout << (current_cav.current_lap * 100 / 5) << "% Complete)" << std::endl;
-            std::cout << "   Lap Time: " << std::fixed << std::setprecision(2) << lap_time_sec << " sec" << std::endl;
-            // [Zone Info Commented Out]
-            std::cout << "   Current Pos: (" << std::fixed << std::setprecision(2) << current_x << ", " << current_y << ")" << std::endl;
-            std::cout << "═══════════════════════════════════════════════════════════════" << std::endl << std::endl;
+            if (is_my_cav) {
+                std::cout << "═══════════════════════════════════════════════════════════════" << std::endl;
+                std::cout << "🏁 [CAV_index " << cav_id << "] Lap: " << current_cav.current_lap << "/5 (";
+                std::cout << (current_cav.current_lap * 100 / 5) << "% Complete)" << std::endl;
+                std::cout << "   Lap Time: " << std::fixed << std::setprecision(2) << lap_time_sec << " sec" << std::endl;
+                // [Zone Info Commented Out]
+                std::cout << "   Current Pos: (" << std::fixed << std::setprecision(2) << current_x << ", " << current_y << ")" << std::endl;
+                std::cout << "═══════════════════════════════════════════════════════════════" << std::endl << std::endl;
+            }
+            
             if (current_cav.current_lap >= 5) {
                 current_cav.finished = true;
-                std::cout << "🎉 [CAV_index " << cav_id << "] ✓ FINISHED 5 LAPS! ✓" << std::endl << std::endl;
+                if (is_my_cav) {
+                    std::cout << "🎉 [CAV_index " << cav_id << "] ✓ FINISHED 5 LAPS! ✓" << std::endl << std::endl;
+                }
             }
         }
     } else {
         if (current_cav.is_in_zone) {
             current_cav.is_in_zone = false;
-            std::cout << "[DEBUG] CAV " << cav_id << " left zone (dist=" << std::fixed << std::setprecision(2) << dist_to_start << "m)" << std::endl;
+            if (is_my_cav) {
+                std::cout << "[DEBUG] CAV " << cav_id << " left zone (dist=" << std::fixed << std::setprecision(2) << dist_to_start << "m)" << std::endl;
+            }
         }
     }
 }
@@ -405,6 +416,7 @@ int main(int argc, char** argv)
   std::vector<rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr> pose_subs;
 
   // Get actual CAV IDs from environment variable (reuse existing cav_ids_env)
+  // PARSING FIXED
   std::vector<int> all_active_cav_ids;
   if (cav_ids_env != nullptr && strlen(cav_ids_env) > 0) {
       std::string cav_ids_str(cav_ids_env);
@@ -431,7 +443,7 @@ int main(int argc, char** argv)
           [node, st, accel_pub, cmd_vel_pub, &cav_list, actual_cav_id, csv_index, cav_index, actual_vehicle_count, cmd_vel_topic](const geometry_msgs::msg::PoseStamped::SharedPtr msg)
           {
             // Update lap tracking for this vehicle
-            PoseCallback(msg, csv_index, cav_list);
+            PoseCallback(msg, csv_index, cav_list, cav_index);
 
             // Print lap status of all vehicles periodically
             static int lap_status_counter = 0;
@@ -459,7 +471,8 @@ int main(int argc, char** argv)
                     accel_pub->publish(stop_cmd);
                     
                     geometry_msgs::msg::Twist stop_twist;
-                    stop_twist.linear.x = 0.0; stop_twist.linear.y = 0.0; stop_twist.linear.z = 0.0;
+                    // fix : linear.x 0 -> -0.005
+                    stop_twist.linear.x = -0.005; stop_twist.linear.y = 0.0; stop_twist.linear.z = 0.0;
                     stop_twist.angular.x = 0.0; stop_twist.angular.y = 0.0; stop_twist.angular.z = 0.0;
                     cmd_vel_pub->publish(stop_twist);
                     
@@ -525,7 +538,7 @@ int main(int argc, char** argv)
                     // All CAVs finished 5 laps - STOP
                     cmd.linear.x  = 0.0;
                     cmd.angular.z = 0.0;
-                    twist_cmd.linear.x = -0.005;
+                    twist_cmd.linear.x = -0.005; // Stop command
                     twist_cmd.angular.z = 0.0;
                 } else if (st->red_flag == 1) { 
                     // Red flag: STOP with -0.005
