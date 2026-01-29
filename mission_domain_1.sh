@@ -3,9 +3,10 @@
 
 
 # Set domain for Mission 
-export ROS_DOMAIN_ID=100 
-export ROS_LOCALHOST_ONLY=0
+export FASTRTPS_DEFAULT_PROFILES_FILE=~/TEAM_AIM/fastrtps_profiles.xml
 export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export ROS_DOMAIN_ID=100
+export ROS_LOCALHOST_ONLY=0
 
 echo "=== Mission Domain Settings ==="
 echo "ROS_DOMAIN_ID: $ROS_DOMAIN_ID"
