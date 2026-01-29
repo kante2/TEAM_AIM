@@ -1,13 +1,13 @@
 #!/bin/bash
-# Mission 3 Domain Configuration
+# Mission Domain Configuration
 
 
-# Set domain for Mission 3
+# Set domain for Mission 
 export ROS_DOMAIN_ID=100 # DOMAIN ID // 100(real robot) -> 102(simul)
 export ROS_LOCALHOST_ONLY=0
 export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 
-echo "=== Mission 3 Domain Settings ==="
+echo "=== Mission Domain Settings ==="
 echo "ROS_DOMAIN_ID: $ROS_DOMAIN_ID"
 echo "ROS_LOCALHOST_ONLY: $ROS_LOCALHOST_ONLY"
 echo "RMW_IMPLEMENTATION: $RMW_IMPLEMENTATION"
