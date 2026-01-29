@@ -3,7 +3,7 @@
 
 
 # Set domain for Mission 
-export ROS_DOMAIN_ID=100 # DOMAIN ID // 100(real robot) -> 102(simul)
+export ROS_DOMAIN_ID=100 
 export ROS_LOCALHOST_ONLY=0
 export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 
