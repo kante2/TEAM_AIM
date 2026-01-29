@@ -112,65 +112,6 @@ ros2 topic list
    export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
    ros2 topic list 
 
----
-
-### Mission Domain 1
-1. 터미널 1 (in container)에서 실행:
-   ```bash
-   ./mission_domain_1.sh
-   ```
-
-2. 새 터미널(터미널 2_in host)을 열어 환경 변수 설정 및 토픽 확인:
-   ```bash
-   export ROS_DOMAIN_ID=100
-   export ROS_LOCALHOST_ONLY=0
-   export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
-   ros2 topic list 
-
----
-
-### Mission Domain 2
-1. 터미널 1에서 실행:
-   ```bash
-   ./mission_domain_2.sh
-   ```
-
-2. 새 터미널(터미널 2_in host)을 열어 환경 변수 설정 및 토픽 확인:
-   ```bash
-   export ROS_DOMAIN_ID=100
-   export ROS_LOCALHOST_ONLY=0
-   export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
-   ros2 topic list 
-
----
-
-### Mission Domain 3
-1. 터미널 1에서 실행:
-   ```bash
-   ./mission_domain_3.sh
-   ```
-
-2. 새 터미널(터미널 2_in host)을 열어 환경 변수 설정 및 토픽 확인:
-   ```bash
-   export ROS_DOMAIN_ID=100
-   export ROS_LOCALHOST_ONLY=0
-   export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
-   ros2 topic list 
-
----
-
-### Mission Domain 4
-1. 터미널 1에서 실행:
-   ```bash
-   ./mission_domain_4.sh
-   ```
-
-2. 새 터미널(터미널 2_in host)을 열어 환경 변수 설정 및 토픽 확인:
-   ```bash
-   export ROS_DOMAIN_ID=100
-   export ROS_LOCALHOST_ONLY=0
-   export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
-   ros2 topic list 
 
 ---
 
@@ -178,4 +119,4 @@ ros2 topic list
 
 - **Domain ID**: 모든 미션은 도메인 ID 100을 사용합니다
 - **호스트에서, 환경 변수는 새 터미널을 열 때마다 다시 설정해야 합니다**
-- 호스트에서 토픽을 확인하려면 반드시 위의 환경 변수 3가지를 설정해야 합니다. 그래야만 컨테이너와 호스트간 토픽 확인이 가능해집니다.
+- 호스트에서 토픽을 확인하려면 반드시 위의 환경 변수 3가지를 설정해야 합니다. 그래야만 컨테이너와 호스트간 토픽 확인이 가능해집니다. 감사합니다.
