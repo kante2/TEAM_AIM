@@ -1,8 +1,16 @@
 # TEAM AIM - Mission Simulator Setup Guide
 
+### youtube 실제 주행 영상
+- https://youtu.be/-UvcA1RR8lg?si=9r8A8EASS-dQdqqF
+
 ## Overview
 모든 미션은 도메인 ID 100으로 설정되어 있습니다.  
 각 미션별 shell script를 실행하면 시뮬레이터부터 도메인까지 모든 것이 자동으로 설정됩니다.
+
+## 시뮬레이터 설치
+./start_TEAM_AIM.sh
+
+---
 
 ## Mission 실행 방법
 
