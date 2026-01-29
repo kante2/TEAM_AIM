@@ -45,14 +45,11 @@
 호스트 터미널에서 다음 환경 변수를 설정합니다:
 
 ```bash
-# ROS Domain ID 설정 (도메인 ID 100 사용)
-export ROS_DOMAIN_ID=100
-
-# Localhost 통신 비활성화 (다른 호스트와 통신하기 위함)
-export ROS_LOCALHOST_ONLY=0
-
-# RMW (ROS Middleware) 구현 설정
+xhost +local:docker
+export FASTRTPS_DEFAULT_PROFILES_FILE=~/TEAM_AIM/fastrtps_profiles.xml
 export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export ROS_DOMAIN_ID=100
+export ROS_LOCALHOST_ONLY=0
 ```
 
 ### 2단계: 토픽 확인
@@ -73,9 +70,11 @@ ros2 topic list
 
 2. 새 터미널(터미널 2_in host)을 열어 환경 변수 설정 및 토픽 확인:
    ```bash
+   xhost +local:docker
+   export FASTRTPS_DEFAULT_PROFILES_FILE=~/TEAM_AIM/fastrtps_profiles.xml
+   export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
    export ROS_DOMAIN_ID=100
    export ROS_LOCALHOST_ONLY=0
-   export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
    ros2 topic list 
    ```
 
@@ -89,6 +88,8 @@ ros2 topic list
 
 2. 새 터미널(터미널 2_in host)을 열어 환경 변수 설정 및 토픽 확인:
    ```bash
+   xhost +local:docker
+   export FASTRTPS_DEFAULT_PROFILES_FILE=~/TEAM_AIM/fastrtps_profiles.xml
    export ROS_DOMAIN_ID=100
    export ROS_LOCALHOST_ONLY=0
    export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
@@ -103,6 +104,8 @@ ros2 topic list
    ```
 2. 새 터미널(터미널 2_in host)을 열어 환경 변수 설정 및 토픽 확인:
    ```bash
+   xhost +local:docker
+   export FASTRTPS_DEFAULT_PROFILES_FILE=~/TEAM_AIM/fastrtps_profiles.xml
    export ROS_DOMAIN_ID=100
    export ROS_LOCALHOST_ONLY=0
    export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
@@ -117,6 +120,8 @@ ros2 topic list
 
 2. 새 터미널(터미널 2_in host)을 열어 환경 변수 설정 및 토픽 확인:
    ```bash
+   xhost +local:docker
+   export FASTRTPS_DEFAULT_PROFILES_FILE=~/TEAM_AIM/fastrtps_profiles.xml
    export ROS_DOMAIN_ID=100
    export ROS_LOCALHOST_ONLY=0
    export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
