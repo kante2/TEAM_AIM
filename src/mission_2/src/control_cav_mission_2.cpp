@@ -78,7 +78,7 @@ static std::vector<PathPoint> hv_zone_polygon = {
 
 // Zone 1: CAV ROI (선분)
 static PathPoint cav_zone_start = {4.5, -2.549999952316284};
-static PathPoint cav_zone_end   = {3.0, -2.549999952316284};
+static PathPoint cav_zone_end   = {3.6, -2.549999952316284};
 
 // Zone 1 flag (복구!)
 static bool zone_collision_flag = false;
@@ -89,11 +89,11 @@ static bool zone_cav_flag = false;  // CAV가 Zone 1 안에 있는지 여부
 // =========================
 // CAV Zone 2: 수직 선분
 static PathPoint cav_zone2_start = {5.058333396911621, 1.0199999809265137};
-static PathPoint cav_zone2_end = {5.058333396911621, 0.0};
+static PathPoint cav_zone2_end = {5.058333396911621, -0.3};
 
 // HV Zone 2: 수직 선분
-static PathPoint hv_zone2_start = {5.308333396911621, 0.4};
-static PathPoint hv_zone2_end = {5.308333396911621, -0.3};
+static PathPoint hv_zone2_start = {5.308333396911621, 1.0};
+static PathPoint hv_zone2_end = {5.308333396911621, -0.5};
 
 // Zone 2 flag
 static bool zone2_collision_flag = false;
@@ -128,13 +128,18 @@ static PathPoint cav_zone5_start = {5.29166666666667, 2.30833333333333};
 static PathPoint cav_zone5_end = {5.29166666666667, -0.27};
 static bool zone5_collision_flag = false;
 
+// CAV Zone 6
+static PathPoint cav_zone6_start = {3.18, 2.3083338737487793};
+static PathPoint cav_zone6_end = {3.26, -2.3083338737487793};
+static bool zone6_collision_flag = false;
+
 // =========================
 // Controller state
 // =========================
 struct ControllerState {
     double speed_mps{0.5};
     double lookahead_m{0.3};
-    double max_yaw_rate{1.5};
+    double max_yaw_rate{4.5};
     double prev_x{0.0};
     double prev_y{0.0};
     double prev_yaw{0.0};
@@ -288,7 +293,7 @@ bool is_cav_in_zone(double cav_x_in, double cav_y_in) {
     double dist = calculateDistance(cav_x_in, cav_y_in, closest_x, closest_y);
 
     if (dist <= detection_radius) {
-        cout << "[ZONE1_DETECTION] CAV in CAV Zone1!" << std::endl;
+        // cout << "[ZONE1_DETECTION] CAV in CAV Zone1!" << std::endl;
         return true;
     }
 
@@ -305,7 +310,7 @@ bool check_zone_collision() {
 
     for (const auto& [hv_id, hv_pos] : hv_positions) {
         if (is_hv_in_zone(hv_pos.first, hv_pos.second)) {
-            std::cout << "[ZONE_COLLISION] HV_" << hv_id << " in HV Zone + CAV in CAV Zone!" << std::endl;
+            // std::cout << "[ZONE_COLLISION] HV_" << hv_id << " in HV Zone + CAV in CAV Zone!" << std::endl;
             return true;
         }
     }
@@ -378,7 +383,7 @@ bool check_zone2_collision() {
 
     for (const auto& [hv_id, hv_pos] : hv_positions) {
         if (is_hv_in_zone2(hv_pos.first, hv_pos.second)) {
-            std::cout << "[ZONE2_COLLISION] HV_" << hv_id << " in HV Zone2 + CAV in CAV Zone2!" << std::endl;
+            // std::cout << "[ZONE2_COLLISION] HV_" << hv_id << " in HV Zone2 + CAV in CAV Zone2!" << std::endl;
             return true;
         }
     }
@@ -413,7 +418,7 @@ bool is_cav_in_zone3(double cav_x_in, double cav_y_in) {
     double dist = calculateDistance(cav_x_in, cav_y_in, closest_x, closest_y);
 
     if (dist <= detection_radius) {
-        cout << "[ZONE3_DETECTION] CAV in CAV Zone3!" << std::endl;
+        // cout << "[ZONE3_DETECTION] CAV in CAV Zone3!" << std::endl;
         return true;
     }
 
@@ -443,7 +448,7 @@ bool is_cav_in_zone3_1(double cav_x_in, double cav_y_in) {
     double dist = calculateDistance(cav_x_in, cav_y_in, closest_x, closest_y);
 
     if (dist <= detection_radius) {
-        cout << "[ZONE3_1_DETECTION] CAV in CAV Zone3_1!" << std::endl;
+        // cout << "[ZONE3_1_DETECTION] CAV in CAV Zone3_1!" << std::endl;
         return true;
     }
 
@@ -473,7 +478,7 @@ bool is_cav_in_zone3_2(double cav_x_in, double cav_y_in) {
     double dist = calculateDistance(cav_x_in, cav_y_in, closest_x, closest_y);
 
     if (dist <= detection_radius) {
-        cout << "[ZONE3_2_DETECTION] CAV in CAV Zone3_2!" << std::endl;
+        // cout << "[ZONE3_2_DETECTION] CAV in CAV Zone3_2!" << std::endl;
         return true;
     }
 
@@ -503,7 +508,7 @@ bool is_cav_in_zone4(double cav_x_in, double cav_y_in) {
     double dist = calculateDistance(cav_x_in, cav_y_in, closest_x, closest_y);
 
     if (dist <= detection_radius) {
-        cout << "[ZONE4_DETECTION] CAV in CAV Zone4!" << std::endl;
+        // cout << "[ZONE4_DETECTION] CAV in CAV Zone4!" << std::endl;
         return true;
     }
 
@@ -534,14 +539,42 @@ bool is_cav_in_zone5(double cav_x_in, double cav_y_in) {
     double dist = calculateDistance(cav_x_in, cav_y_in, closest_x, closest_y);
 
     if (dist <= detection_radius) {
-        cout << "[ZONE5_DETECTION] CAV in CAV Zone5!" << std::endl;
+        // cout << "[ZONE5_DETECTION] CAV in CAV Zone5!" << std::endl;
         return true;
     }
 
     return false;
 }
 
+bool is_cav_in_zone6(double cav_x_in, double cav_y_in) {
+    const double detection_radius = 0.1;
 
+    double x1 = cav_zone6_start.x;
+    double y1 = cav_zone6_start.y;
+    double x2 = cav_zone6_end.x;
+    double y2 = cav_zone6_end.y;
+
+    double line_len_sq = (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
+
+    if (line_len_sq < 1e-6) {
+        return calculateDistance(cav_x_in, cav_y_in, x1, y1) <= detection_radius;
+    }
+
+    double t = ((cav_x_in - x1) * (x2 - x1) + (cav_y_in - y1) * (y2 - y1)) / line_len_sq;
+    t = std::max(0.0, std::min(1.0, t));
+
+    double closest_x = x1 + t * (x2 - x1);
+    double closest_y = y1 + t * (y2 - y1);
+
+    double dist = calculateDistance(cav_x_in, cav_y_in, closest_x, closest_y);
+
+    if (dist <= detection_radius) {
+        // cout << "[ZONE5_DETECTION] CAV in CAV Zone5!" << std::endl;
+        return true;
+    }
+
+    return false;
+}
 
 
 
@@ -765,7 +798,7 @@ bool check_lane_roi_collision(int lane_id, int start_idx,
     int path_size = (int)path.size(); // 전체 경로 크기
 
     // Check points ahead
-    std::vector<int> roi_offsets = {-20, -15, -10, -5, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 70, 80, 90};
+    std::vector<int> roi_offsets = {-20, -15, -10, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 70, 80, 90};
     
     for (int offset : roi_offsets) {
         int check_idx = start_idx + offset;
@@ -865,9 +898,9 @@ void change_csv_state(int cav_id, int new_lane, std::shared_ptr<rclcpp::Node> no
     
     lane_start_idx[new_lane] = get_lane_start_idx(new_lane, cav_x, cav_y);
 
-    RCLCPP_INFO(node->get_logger(), 
-                "[LANE_SWITCH] Switched to Lane %d (size: %zu, start_idx: %d)", 
-                new_lane, integrate_path_vector.size(), lane_start_idx[new_lane]);
+    // RCLCPP_INFO(node->get_logger(), 
+    //             "[LANE_SWITCH] Switched to Lane %d (size: %zu, start_idx: %d)", 
+    //             new_lane, integrate_path_vector.size(), lane_start_idx[new_lane]);
 }
 
 
@@ -1042,8 +1075,8 @@ void planVelocity(ControllerState& st, bool isCornerDetected, bool stop_flag) {
 
 void GetLd(ControllerState& st) {
     double gain_ld = 0.5;
-    double max_ld = 0.35;
-    double min_ld = 0.0;
+    double max_ld = 0.45;
+    double min_ld = 0.15;
     double ld = gain_ld * st.speed_mps;
     st.lookahead_m = std::max(min_ld, std::min(max_ld, ld));
 }
@@ -1076,8 +1109,8 @@ int main(int argc, char** argv) {
     const std::string accel_topic = "/CAV_" + my_id_str + "_accel";
     const std::string red_flag_topic = "/CAV_" + my_id_str + "_RED_FLAG";
 
-    RCLCPP_INFO(node->get_logger(), 
-                "[INIT] CAV Mission 2 RE-REFACTORED started (CAV_%s)", my_id_str.c_str());
+    // RCLCPP_INFO(node->get_logger(), 
+    //             "[INIT] CAV Mission 2 RE-REFACTORED started (CAV_%s)", my_id_str.c_str());
 
     // ---- Control parameters
     node->declare_parameter<double>("speed_mps", 1.5);
@@ -1089,7 +1122,7 @@ int main(int argc, char** argv) {
     st->max_yaw_rate = node->get_parameter("max_yaw_rate").as_double();
 
     // ---- Preload all lane paths
-    RCLCPP_INFO(node->get_logger(), "[PRELOAD] Loading all lanes...");
+    // RCLCPP_INFO(node->get_logger(), "[PRELOAD] Loading all lanes...");
     for (int lane = 1; lane <= 3; ++lane) {
         std::string csv_path = std::string("/root/TEAM_AIM/src/global_path/") +
                                "path_mission2_" + std::to_string(cav_id) + "_" + twoDigitId(lane) + ".csv";
@@ -1099,12 +1132,12 @@ int main(int argc, char** argv) {
             rclcpp::shutdown();
             return 1;
         }
-        RCLCPP_INFO(node->get_logger(), "[PRELOAD] Lane %d loaded: %zu points", 
-                    lane, lane_paths[lane].size());
+        // RCLCPP_INFO(node->get_logger(), "[PRELOAD] Lane %d loaded: %zu points", 
+        //             lane, lane_paths[lane].size());
     }
 
     // HV 경로 로드 (추가!)
-    RCLCPP_INFO(node->get_logger(), "[PRELOAD] Loading HV paths for velocity measurement...");
+    // RCLCPP_INFO(node->get_logger(), "[PRELOAD] Loading HV paths for velocity measurement...");
 
     // HV20 (Lane 3) 경로
     std::string hv20_path = "/root/TEAM_AIM/src/global_path/path_mission2_1_20.csv";
@@ -1137,7 +1170,7 @@ int main(int argc, char** argv) {
     auto accel_pub = node->create_publisher<geometry_msgs::msg::Accel>(accel_topic, rclcpp::SensorDataQoS());
 
     auto flag_sub = node->create_subscription<std_msgs::msg::Int32>(
-        red_flag_topic, 10,
+        red_flag_topic, 1,
         [st](const std_msgs::msg::Int32::SharedPtr msg) {
             st->red_flag = msg->data;
         }
@@ -1222,6 +1255,7 @@ int main(int argc, char** argv) {
             zone3_2_collision_flag = is_cav_in_zone3_2(cav_x, cav_y);
             zone4_collision_flag = is_cav_in_zone4(cav_x, cav_y);
             zone5_collision_flag = is_cav_in_zone5(cav_x, cav_y);
+            zone6_collision_flag = is_cav_in_zone6(cav_x, cav_y);
 
             // ===== 3. Get closest index for each lane =====
             std::vector<int> lane_closest(4);
@@ -1248,14 +1282,18 @@ int main(int argc, char** argv) {
             else if (current_lane == 2 && zone5_collision_flag || zone3_collision_flag) {
                 lane_collision[3] = true;
             }
+            else if (current_lane == 3 && zone6_collision_flag) {
+                lane_collision[3] = true;
+                lane_collision[2] = true;
+                lane_collision[1] = true;
+            }
             // zone4 는 실선이므로 차선변경 불가능하게 막음 (실선 차선 변경 불가능)
             else if (current_lane == 3 && zone3_1_collision_flag || zone4_collision_flag) {
                 lane_collision[2] = true;
                 lane_collision[1] = true;
             }
-            else if (zone_cav_flag) {
+            else if (zone_collision_flag) {
                 lane_collision[3] = true;
-                lane_collision[2] = true;
             }
 
             // =================================================================================
@@ -1273,7 +1311,7 @@ int main(int argc, char** argv) {
                 
                 // 2) 만약 현재 Lane 3를 달리고 있다면, 강제로 Lane 2로 변경
                 if (current_lane == 3) {
-                    RCLCPP_WARN(node->get_logger(), "[OVERLAP] Approaching merge zone! Forcing Lane 3 -> Lane 2.");
+                    // RCLCPP_WARN(node->get_logger(), "[OVERLAP] Approaching merge zone! Forcing Lane 3 -> Lane 2.");
                     change_csv_state(cav_id, 2, node);
                 }
             }
@@ -1316,7 +1354,7 @@ int main(int argc, char** argv) {
             auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(now - last_log_time).count();
             
             if (elapsed >= LOG_INTERVAL_MS) {
-                std::cout << "\n=== [Lane Status] (CAV" << cav_id << ") ===" << std::endl;
+                std::cout << "\n=== [Lane LAB] (CAV" << cav_id << ") ===" << std::endl;
                 std::cout << "CAV Pos: (" << std::fixed << std::setprecision(2) << cav_x << ", " << cav_y << ")" << std::endl;
                 
                 if (is_overlap_zone) { // 변수명을 is_overlap_zone으로 변경
@@ -1369,11 +1407,11 @@ int main(int argc, char** argv) {
                 cmd.angular.z = 0.0;
             }
             // [우선순위 2] Zone 1 또는 Zone 2 충돌 감지 시 '무조건' 정지 (Stop Flag보다 먼저 검사해야 함!)
-            else if (zone_collision_flag || zone2_collision_flag) {
+            else if (zone2_collision_flag) {
                 // 로그를 띄워서 정지 원인 확인 (과도한 로그 방지를 위해 Throttle 사용)
-                RCLCPP_WARN_THROTTLE(node->get_logger(), *node->get_clock(), 1000, 
-                    "[EMERGENCY] Zone Collision! Stopping. (Zone1: %d, Zone2: %d)", 
-                    zone_collision_flag, zone2_collision_flag);
+                // RCLCPP_WARN_THROTTLE(node->get_logger(), *node->get_clock(), 1000, 
+                //     "[EMERGENCY] Zone Collision! Stopping. (Zone1: %d, Zone2: %d)", 
+                //     zone_collision_flag, zone2_collision_flag);
                 
                 cmd.linear.x = 0.0;
                 cmd.angular.z = 0.0;
