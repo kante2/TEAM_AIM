@@ -9,7 +9,7 @@
 
 ## 시뮬레이터 재설치
 ```bash
-./start_TEAM_AIM.s
+./start_TEAM_AIM.sh
 ```
 
 ---
