@@ -1,7 +1,7 @@
 # TEAM AIM - Mission Simulator Setup Guide
 
 ### youtube 실제 주행 영상
-- https://youtu.be/-UvcA1RR8lg?si=9r8A8EASS-dQdqqF
+- https://youtu.be/1H9E8ckReM0?si=kfsPTFC-xzXFp3OD
 
 ## Overview
 모든 미션은 도메인 ID 100으로 설정되어 있습니다.  
