@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# domain
+./mission_domain_1.sh
+
 cd ~/TEAM_AIM/
 colcon build
 source install/setup.bash

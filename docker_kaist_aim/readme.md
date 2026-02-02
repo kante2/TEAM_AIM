@@ -23,7 +23,7 @@ To start the container:
 ```bash
 docker run -it --rm \
   --name kaist_aim_container \
-  -v /root/TEAM_AIM:/root/TEAM_AIM \
+  -v /home/autonav/TEAM_AIM:/root/TEAM_AIM \
   kaist_aim
 ```
 
