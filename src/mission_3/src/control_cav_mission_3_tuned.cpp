@@ -243,22 +243,7 @@ bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double
 }
 
 void planVelocity(ControllerState& st, bool isCorner) {
-    if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; } // good (1.5 / 1.0) -> (1.5 / 0.8)
-    // if (!isCorner) {st.speed_mps = 1.7; } else { st.speed_mps = 1.4; } // good (1.5 / 1.0) -> (1.5 / 0.8)
-    /*
-    ver1 -> 1.5     / 1.0     / 0.8
-    ver2 -> 1.6     / 1.2     / 1.0
-    ver3 -> 1.6     / 1.2     / 1.1
-    ver4 -> 1.7     / 1.3     / 0.8
-    ver5 -> 1.75    / 1.3     / 0.8
-    ver 6 -> 1.75    / 1.3     / 1.0
-    ver 7 -> 1.8     / 1.5     / 0.8
-    ver 8 -> 1.8    / 1.5     / 1.0
-    ver 9 -> 1.9     / 1.5     / 0.8
-    ver 10 - > 1.9    /   1.5.  /   1.0
-    ver 11 -> 2.0     / 1.5     / 0.8
-    ver 12 -> 2.0     / 1.5     / 1.0
-    */
+    if (!isCorner) {st.speed_mps = 1.7; } else { st.speed_mps = 1.4; } // good (1.5 / 1.0) -> (1.5 / 0.8)
 }
 
 bool CheckAllFinished(const std::vector<CavState>& cav_list, int vehicle_count) {
@@ -563,10 +548,10 @@ int main(int argc, char** argv)
                     twist_cmd.angular.z = 0.0;
                 } else if (st->yellow_flag == 1) {
                     // Yellow flag: Slow down to 0.8 m/s
-                    cmd.linear.x  = 0.8; // 0.8 -> 1.0
+                    cmd.linear.x  = 0.8;
                     // cmd.angular.z = wz * (0.8 / std::max(current_target_speed, 0.1));
                     cmd.angular.z = wz;
-                    twist_cmd.linear.x = 0.8; // 0.8 -> 1.5
+                    twist_cmd.linear.x = 0.8;
                     // twist_cmd.angular.z = wz * (0.5 / std::max(current_target_speed, 0.1));
                     twist_cmd.angular.z = wz;
                 } else {

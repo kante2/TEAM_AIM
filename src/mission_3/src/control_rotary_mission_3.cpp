@@ -15,6 +15,8 @@
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <std_msgs/msg/int32.hpp>
 #include <std_msgs/msg/float64.hpp>
+#include <visualization_msgs/msg/marker.hpp>
+#include <visualization_msgs/msg/marker_array.hpp>
 
 using namespace std;
 
@@ -71,9 +73,16 @@ std::map<int, Pose> hv_rois = {
 
 // Yellow ROI zones (속도 감속 구간)
 std::map<int, Pose> yellow_cav_rois = {
-  {1, {1.1945931911468506, 2.152200222015381}},
-  {2, {-0.4866666793823242, -0.10833333432674408}}
+  {1, {1.1945931911468506, 2.152200222015381}},     // CIRCLE 로타리 up ->DOWN  진입
+  {2, {-0.4866666793823242, -0.10833333432674408}}, // CIRCLE 로타리 LEFT 진입
+  {3, {-3.738260269165039, -0.35879406332969666}},   // 2ND 사지교차로 LEFT 진입
+  {4, {-2.2249999046325684, -1.3799999952316284}},   // 2ND 사지교차로 down-> up 진입 
+  {5, {-2.4662363529205322, 1.4755114316940308}},   // 2ND 사지교차로 RIGHT 진입
+  {6, {-3.6093127727508545, 2.3087010383605957}},   // IST RIGHT 진입
+  {7, {-1.1506917476654053, -2.30232834815979}}   // 3RD RIGHT 진입
 };
+
+
 
 // Key: ROI_ID, Value: 허가받은 차량 ID 목록
 std::map<int, std::set<int>> roi_permit_vehicles;
@@ -212,6 +221,76 @@ int find_closest_waypoint_index(const std::vector<Pose>& path, Pose current_pose
     }
   }
   return closest_idx;
+}
+
+// =========================
+// Yellow Zone Visualization Function
+// =========================
+void publish_yellow_zone_markers(std::shared_ptr<rclcpp::Node> node, 
+                                  rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr marker_pub,
+                                  double yellow_roi_detection_radius) {
+    auto marker_array = std::make_shared<visualization_msgs::msg::MarkerArray>();
+    
+    int marker_id = 0;
+    for (const auto& [yellow_roi_id, yellow_roi_pose] : yellow_cav_rois) {
+        auto marker = visualization_msgs::msg::Marker();
+        marker.header.frame_id = "map";
+        marker.header.stamp = node->now();
+        marker.ns = "yellow_zones";
+        marker.id = marker_id++;
+        marker.type = visualization_msgs::msg::Marker::CYLINDER;
+        marker.action = visualization_msgs::msg::Marker::ADD;
+        
+        // Set position
+        marker.pose.position.x = yellow_roi_pose.x;
+        marker.pose.position.y = yellow_roi_pose.y;
+        marker.pose.position.z = 0.0;
+        
+        // Set orientation (no rotation needed for cylinder)
+        marker.pose.orientation.x = 0.0;
+        marker.pose.orientation.y = 0.0;
+        marker.pose.orientation.z = 0.0;
+        marker.pose.orientation.w = 1.0;
+        
+        // Set scale (radius and height)
+        marker.scale.x = yellow_roi_detection_radius * 2.0;  // diameter
+        marker.scale.y = yellow_roi_detection_radius * 2.0;  // diameter
+        marker.scale.z = 0.01;  // thin cylinder for top-down view
+        
+        // Set color: Yellow (RGB)
+        marker.color.r = 1.0f;
+        marker.color.g = 1.0f;
+        marker.color.b = 0.0f;
+        marker.color.a = 0.3f;  // semi-transparent
+        
+        marker_array->markers.push_back(marker);
+        
+        // Add text label
+        auto text_marker = visualization_msgs::msg::Marker();
+        text_marker.header.frame_id = "map";
+        text_marker.header.stamp = node->now();
+        text_marker.ns = "yellow_zone_labels";
+        text_marker.id = marker_id++;
+        text_marker.type = visualization_msgs::msg::Marker::TEXT_VIEW_FACING;
+        text_marker.action = visualization_msgs::msg::Marker::ADD;
+        
+        text_marker.pose.position.x = yellow_roi_pose.x;
+        text_marker.pose.position.y = yellow_roi_pose.y;
+        text_marker.pose.position.z = 0.2;
+        
+        text_marker.pose.orientation.w = 1.0;
+        text_marker.scale.z = 0.15;  // text size
+        
+        text_marker.color.r = 1.0f;
+        text_marker.color.g = 1.0f;
+        text_marker.color.b = 0.0f;
+        text_marker.color.a = 1.0f;
+        
+        text_marker.text = "Yellow_ROI_" + std::to_string(yellow_roi_id);
+        marker_array->markers.push_back(text_marker);
+    }
+    
+    marker_pub->publish(*marker_array);
 }
 
 // =========================
@@ -421,6 +500,10 @@ int main(int argc, char * argv[])
     std::map<int, rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr> red_flag_pubs;
     std::map<int, rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr> yellow_flag_pubs;
     std::map<int, rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr> target_vel_pubs;
+    
+    // Marker Publisher for yellow zone visualization
+    auto marker_pub = node->create_publisher<visualization_msgs::msg::MarkerArray>("/yellow_zones_markers", 10);
+    
     for (size_t i = 0; i < active_cav_ids.size() && i < 4; i++) {
         int cav_index = (int)i + 1;  // 1-indexed
         int actual_cav_id = active_cav_ids[i];  // actual CAV ID from CAV_IDS
@@ -478,11 +561,13 @@ int main(int argc, char * argv[])
     std::map<int, std::set<int>> cav_released_states;
     std::map<int, std::set<int>> yellow_roi_entered;  // yellow ROI에 진입한 CAV 추적
     
-    double yellow_roi_detection_radius = 0.3;  // yellow ROI 감지 반경 0.15 -> 0.5
-    
+    double yellow_roi_detection_radius = 0.5;  // yellow ROI 감지 반경 0.3 / 0.5 / 0.4
     RCLCPP_INFO(node->get_logger(), "Simple Speed Trap Started.");
     
     while(rclcpp::ok()) {
+        // Publish yellow zone markers for visualization in RViz
+        publish_yellow_zone_markers(node, marker_pub, yellow_roi_detection_radius);
+        
         // 모든 ROI 쌍에 대해 모니터링 수행
     for (const auto& pair : roi_pairs) {
             // 수정된 함수 호출

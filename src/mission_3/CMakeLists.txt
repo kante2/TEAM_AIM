@@ -61,7 +61,7 @@ install(TARGETS control_tower_mission_3
 # Mission 3: Control rotary
 # =============================================================================
 add_executable(control_rotary_mission_3 src/control_rotary_mission_3.cpp)
-ament_target_dependencies(control_rotary_mission_3 rclcpp std_msgs geometry_msgs)
+ament_target_dependencies(control_rotary_mission_3 rclcpp std_msgs geometry_msgs visualization_msgs)
 install(TARGETS control_rotary_mission_3 DESTINATION lib/${PROJECT_NAME})
 
 
