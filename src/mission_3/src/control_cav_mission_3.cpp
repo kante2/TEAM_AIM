@@ -245,6 +245,7 @@ bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double
 void planVelocity(ControllerState& st, bool isCorner) {
     if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; } // good (1.5 / 1.0) -> (1.5 / 0.8)
     // if (!isCorner) {st.speed_mps = 1.7; } else { st.speed_mps = 1.4; } // good (1.5 / 1.0) -> (1.5 / 0.8)
+    // *** 
     /*
     ver1 -> 1.5     / 1.0     / 0.8
     ver2 -> 1.6     / 1.2     / 1.0
@@ -563,7 +564,9 @@ int main(int argc, char** argv)
                     twist_cmd.angular.z = 0.0;
                 } else if (st->yellow_flag == 1) {
                     // Yellow flag: Slow down to 0.8 m/s
+                    // ***
                     cmd.linear.x  = 0.8; // 0.8 -> 1.0
+                    // cmd.linear.x = 1.0;
                     // cmd.angular.z = wz * (0.8 / std::max(current_target_speed, 0.1));
                     cmd.angular.z = wz;
                     twist_cmd.linear.x = 0.8; // 0.8 -> 1.5
