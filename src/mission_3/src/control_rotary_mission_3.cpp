@@ -74,12 +74,35 @@ std::map<int, Pose> hv_rois = {
 // Yellow ROI zones (속도 감속 구간)
 std::map<int, Pose> yellow_cav_rois = {
   {1, {1.1945931911468506, 2.152200222015381}},     // CIRCLE 로타리 up ->DOWN  진입
-  {2, {-0.4866666793823242, -0.10833333432674408}}, // CIRCLE 로타리 LEFT 진입
-  {3, {-3.738260269165039, -0.35879406332969666}},   // 2ND 사지교차로 LEFT 진입
+  {2, {-0.4866666793823242, -0.53259406332969666}}, // CIRCLE 로타리 LEFT 진입
+//   {3, {-3.738260269165039, -0.35879406332969666}},   // 2ND 사지교차로 LEFT 진입
+  {3, {-3.518260269165039, -0.53259406332969666}},   // 2ND 사지교차로 LEFT 진입
   {4, {-2.2249999046325684, -1.3799999952316284}},   // 2ND 사지교차로 down-> up 진입 
   {5, {-2.4662363529205322, 1.4755114316940308}},   // 2ND 사지교차로 RIGHT 진입
   {6, {-3.6093127727508545, 2.3087010383605957}},   // IST RIGHT 진입
-  {7, {-1.1506917476654053, -2.30232834815979}}   // 3RD RIGHT 진입
+  {7, {-1.1506917476654053, -2.30232834815979}},   // 3RD RIGHT 진입
+  {8, {-0.4866666793823242, +0.53259406332969666}}
+};
+
+// ========================= 
+// Yellow Zone Groups (존별 속도 제어)
+// =========================
+// yellow_zone_group1: Zone 1,2 - 낮은 속도
+// yellow_zone_group2: Zone 3,4,5,6,7 - 다른 속도
+std::map<int, int> yellow_roi_to_zone_group = {
+  {1, 1}, {2, 1},           // Zone 1,2 -> Group 1
+  {3, 2}, {4, 2}, {5, 2}, {6, 2}, {7, 2}, {8,2}  // Zone 3,4,5,6,7,8 -> Group 2
+};
+
+// Zone Group별 속도 설정
+std::map<int, double> zone_group_speeds = {
+  {1, 0.8},  // Group 1 (Zone 1,2): 0.8 m/s
+  {2, 1.5}   // Group 2 (Zone 3,4,5,6,7): 1.5 m/s
+};
+
+// CAV별 현재 속한 zone_group 추적 (0 = 아무 zone도 아님)
+std::map<int, int> cav_current_zone_group = {
+  {1, 0}, {2, 0}, {3, 0}, {4, 0}
 };
 
 
@@ -205,6 +228,20 @@ double calculate_distance(Pose pose1, Pose pose2) {
     double dx = pose1.x - pose2.x;
     double dy = pose1.y - pose2.y;
     return std::hypot(dx, dy);
+}
+
+// =========================
+// CAV의 현재 zone group 판단 함수
+// =========================
+int get_zone_group_for_cav(int cav_index, const Pose& cav_pose, double detection_radius) {
+    for (const auto& [yellow_roi_id, yellow_roi_pose] : yellow_cav_rois) {
+        double dist = calculate_distance(cav_pose, yellow_roi_pose);
+        if (dist <= detection_radius) {
+            // yellow_roi_to_zone_group에서 해당 zone group 반환
+            return yellow_roi_to_zone_group[yellow_roi_id];
+        }
+    }
+    return 0;  // 어떤 zone에도 속하지 않음
 }
 
 int find_closest_waypoint_index(const std::vector<Pose>& path, Pose current_pose) {
@@ -509,11 +546,11 @@ int main(int argc, char * argv[])
         int actual_cav_id = active_cav_ids[i];  // actual CAV ID from CAV_IDS
         const std::string cav_id_str = std::string(2 - std::to_string(actual_cav_id).length(), '0') + std::to_string(actual_cav_id);
         const std::string flag_topic = "/CAV_" + cav_id_str + "_RED_FLAG";
-        red_flag_pubs[cav_index] = node->create_publisher<std_msgs::msg::Int32>(flag_topic, 50);
+        red_flag_pubs[cav_index] = node->create_publisher<std_msgs::msg::Int32>(flag_topic, 1);
         const std::string yellow_flag_topic = "/CAV_" + cav_id_str + "_YELLOW_FLAG";
-        yellow_flag_pubs[cav_index] = node->create_publisher<std_msgs::msg::Int32>(yellow_flag_topic, 50);
+        yellow_flag_pubs[cav_index] = node->create_publisher<std_msgs::msg::Int32>(yellow_flag_topic, 1);
         const std::string vel_topic = "/CAV_" + cav_id_str + "_target_vel";
-        target_vel_pubs[cav_index] = node->create_publisher<std_msgs::msg::Float64>(vel_topic, 50);
+        target_vel_pubs[cav_index] = node->create_publisher<std_msgs::msg::Float64>(vel_topic, 1);
         RCLCPP_INFO(node->get_logger(), "Created publishers for CAV_Index_%d (Actual_ID=%d): topics %s, %s, %s", cav_index, actual_cav_id, flag_topic.c_str(), yellow_flag_topic.c_str(), vel_topic.c_str());
     }
 
@@ -559,7 +596,6 @@ int main(int argc, char * argv[])
     std::map<int, std::vector<int>> prev_red_flag_vehicles;
     std::map<int, std::set<int>> cav_active_states;
     std::map<int, std::set<int>> cav_released_states;
-    std::map<int, std::set<int>> yellow_roi_entered;  // yellow ROI에 진입한 CAV 추적
     
     double yellow_roi_detection_radius = 0.5;  // yellow ROI 감지 반경 0.3 / 0.5 / 0.4
     RCLCPP_INFO(node->get_logger(), "Simple Speed Trap Started.");
@@ -581,45 +617,26 @@ int main(int argc, char * argv[])
             );
         }
 
-        // Yellow ROI 모니터링 - CAV의 속도 제어 구간
-        for (const auto& [yellow_roi_id, yellow_roi_pose] : yellow_cav_rois) {
-            auto& entered_set = yellow_roi_entered[yellow_roi_id];
+        // Yellow ROI 모니터링 - Zone Group별 플래그 발행
+        for (const auto& [cav_index, cav_pose] : cav_poses) {
+            int current_zone_group = get_zone_group_for_cav(cav_index, cav_pose, yellow_roi_detection_radius);
+            int previous_zone_group = cav_current_zone_group[cav_index];
             
-            for (const auto& [cav_index, cav_pose] : cav_poses) {
-                double dist_to_yellow = calculate_distance(cav_pose, yellow_roi_pose);
-                bool is_in_yellow = dist_to_yellow <= yellow_roi_detection_radius;
-                bool was_in_yellow = entered_set.count(cav_index) > 0;
+            // Zone group이 변경되었을 때
+            if (current_zone_group != previous_zone_group) {
+                cav_current_zone_group[cav_index] = current_zone_group;
                 
-                if (is_in_yellow && !was_in_yellow) {
-                    // Yellow ROI에 진입함
-                    entered_set.insert(cav_index);
-                    auto yellow_msg = std_msgs::msg::Int32();
-                    yellow_msg.data = 1;  // Yellow flag ON
-                    if (yellow_flag_pubs.count(cav_index)) {
-                        yellow_flag_pubs[cav_index]->publish(yellow_msg);
-                    }
-                    auto vel_msg = std_msgs::msg::Float64();
-                    vel_msg.data = 0.5;  // Yellow flag 시 속도 0.5
-                    if (target_vel_pubs.count(cav_index)) {
-                        target_vel_pubs[cav_index]->publish(vel_msg);
-                    }
-                    // RCLCPP_WARN(node->get_logger(), ">>> Yellow ROI_%d: CAV_%d Entered - Yellow Flag ON, Speed Set to 0.5 <<<", yellow_roi_id, cav_index);
-                } 
-                else if (!is_in_yellow && was_in_yellow) {
-                    // Yellow ROI를 빠져나감
-                    entered_set.erase(cav_index);
-                    auto yellow_msg = std_msgs::msg::Int32();
-                    yellow_msg.data = 0;  // Yellow flag OFF
-                    if (yellow_flag_pubs.count(cav_index)) {
-                        yellow_flag_pubs[cav_index]->publish(yellow_msg);
-                    }
-                    // Reset velocity to -1.0 to restore normal driving
-                    auto vel_msg = std_msgs::msg::Float64();
-                    vel_msg.data = -1.0;  // Reset signal to restore normal speed control
-                    if (target_vel_pubs.count(cav_index)) {
-                        target_vel_pubs[cav_index]->publish(vel_msg);
-                    }
-                    // RCLCPP_WARN(node->get_logger(), ">>> Yellow ROI_%d: CAV_%d Exited - Yellow Flag OFF, Speed Reset <<<", yellow_roi_id, cav_index);
+                // yellow_flag_1 또는 yellow_flag_2 발행 (또는 0으로 리셋)
+                auto yellow_msg = std_msgs::msg::Int32();
+                yellow_msg.data = current_zone_group;  // 0, 1, or 2
+                if (yellow_flag_pubs.count(cav_index)) {
+                    yellow_flag_pubs[cav_index]->publish(yellow_msg);
+                }
+                
+                if (current_zone_group == 0) {
+                    RCLCPP_WARN(node->get_logger(), ">>> CAV_%d: Left Yellow Zone - Yellow Flag OFF <<<", cav_index);
+                } else {
+                    RCLCPP_WARN(node->get_logger(), ">>> CAV_%d: Entered Yellow Zone Group_%d - Yellow Flag = %d <<<", cav_index, current_zone_group, current_zone_group);
                 }
             }
         }

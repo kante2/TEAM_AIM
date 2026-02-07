@@ -26,6 +26,21 @@ find_package(ament_index_cpp REQUIRED)
 
 
 # =============================================================================
+# Mission 3: Motor Check
+# =============================================================================
+add_executable(check_motor src/check_motor.cpp)
+ament_target_dependencies(check_motor
+  rclcpp
+  geometry_msgs
+  std_msgs
+  tf2
+  ament_index_cpp
+)
+install(TARGETS check_motor
+  DESTINATION lib/${PROJECT_NAME})
+
+
+# =============================================================================
 # Mission 3: CAV control
 # =============================================================================
 add_executable(control_cav_mission_3 src/control_cav_mission_3.cpp)

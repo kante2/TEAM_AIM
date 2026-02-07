@@ -41,8 +41,8 @@ if [ "$PROBLEM_ID" = "3" ]; then
 # mission_3
 elif [ "$PROBLEM_ID" = "4" ]; then
     if [ "$ROLE" = "simulator" ]; then
-        export ROS_DOMAIN_ID=100 # (for real robot)
         # export ROS_DOMAIN_ID=102 # (for simulator)
+        export ROS_DOMAIN_ID=100 # (for real robot)
         cd /root/TEAM_AIM/Mobility_Challenge_Simulator
         ros2 launch simulator_launch simulator_launch.py
     elif [ "$ROLE" = "cav" ]; then
@@ -61,6 +61,11 @@ elif [ "$PROBLEM_ID" = "4" ]; then
         export ROS_DOMAIN_ID=100 # (for real robot)
         export CAV_IDS=${CAV_IDS:-"1,2,3,4"}
         ros2 run mission_3 control_rotary_mission_3
+    elif [ "$ROLE" = "check_motor" ]; then
+        # export ROS_DOMAIN_ID=102 # (for simulator)
+        export ROS_DOMAIN_ID=100 # (for real robot)
+        export CAV_ID=$CAV_ID
+        ros2 run mission_3 check_motor
     else
         echo "[ERROR] Unknown ROLE for mission_3: $ROLE" >&2
         exit 2

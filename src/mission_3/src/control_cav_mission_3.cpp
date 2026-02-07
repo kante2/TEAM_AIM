@@ -161,7 +161,7 @@ inline int closest_index = 0;
 void GetLd(ControllerState& st) {
   double gain_ld = 0.6; // 0.4 -> 0.6 ** tuning **
   double max_ld  = 0.355;
-  double min_ld  = 0.1; // 0.15 -> 0.1
+  double min_ld  = 0.33; // 0.15 -> 0.1 -> 0.2 // ** 0.33 -> 0.23 
   double velocity = st.speed_mps; 
   double ld = gain_ld * velocity;
   st.lookahead_m = max(min_ld, std::min(max_ld, ld));
@@ -204,11 +204,11 @@ int findWaypoint (const vector<integrate_path_struct>& integrate_path_vector, do
     // Loop를 통해 순환 탐색 (최대 전체 경로 길이만큼 확인)
     for (int i = 0; i < path_size; ++i) {
         // [핵심 변경] 모듈러 연산(%)을 사용하여 인덱스가 끝을 넘어가면 0으로 돌아오게 함
-        int current_idx = (closest_idx + i) % path_size;
+        int target_path_idx_with_LD = (closest_idx + i) % path_size;
 
-        double d = hypot(integrate_path_vector[current_idx].x - x_m, integrate_path_vector[current_idx].y - y_m);
+        double d = hypot(integrate_path_vector[target_path_idx_with_LD].x - x_m, integrate_path_vector[target_path_idx_with_LD].y - y_m);
         if (d > L_d) { 
-            return current_idx; 
+            return target_path_idx_with_LD; 
         }
     }
     
@@ -241,33 +241,34 @@ bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double
     double threshold_rad = threshold_deg * (M_PI / 180.0);
     return (diff > threshold_rad);
 }
-
+// *** 
 void planVelocity(ControllerState& st, bool isCorner) {
-    if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; } // good (1.5 / 1.0) -> (1.5 / 0.8)
-    // if (!isCorner) {st.speed_mps = 1.7; } else { st.speed_mps = 1.4; } // good (1.5 / 1.0) -> (1.5 / 0.8)
-    // *** 
-    /*
-    ver1 -> 1.5     / 1.0     / 0.8
-    ver2 -> 1.6     / 1.2     / 1.0
-    ver3 -> 1.6     / 1.2     / 1.1
-    ver4 -> 1.7     / 1.3     / 0.8
-    ver5 -> 1.75    / 1.3     / 0.8
-    ver 6 -> 1.75    / 1.3     / 1.0
-    ver 7 -> 1.8     / 1.5     / 0.8
-    ver 8 -> 1.8    / 1.5     / 1.0
-    ver 9 -> 1.9     / 1.5     / 0.8
-    ver 10 - > 1.9    /   1.5.  /   1.0
-    ver 11 -> 2.0     / 1.5     / 0.8
-    ver 12 -> 2.0     / 1.5     / 1.0
-    */
+    if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; }     // < ---------------1------------------
+    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.4; }  //  < --------------2-------------------
+    // if (!isCorner) {st.speed_mps = 1.6; } else { st.speed_mps = 1.1; }  //  < --------------3-------------------
+    // if (!isCorner) {st.speed_mps = 1.6; } else { st.speed_mps = 1.2; }  //  < --------------4-------------------
+    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; }  //  < --------------5-------------------
+    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; }  //  < --------------6--------------------
+    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; }  //  < --------------7------------------
+    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; }  //  < --------------8-------------------
+    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; }  //  < --------------9-------------------
+    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; }  //  < --------------10-------------------
+    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; }  //  < --------------11------------------
+
+
 }
 
 bool CheckAllFinished(const std::vector<CavState>& cav_list, int vehicle_count) {
     int finished_count = 0;
-    for (int i = 1; i <= vehicle_count; ++i) {
+    // for (int i = 1; i <= vehicle_count; ++i) {
+    //     if (cav_list[i].finished) finished_count++;
+    // }
+    // if (finished_count == vehicle_count) return true;
+    // return false;
+    for (int i = 1; i <= 4; ++i) {
         if (cav_list[i].finished) finished_count++;
     }
-    if (finished_count == vehicle_count) return true;
+    if (finished_count == 4) return true;
     return false;
 }
 
@@ -388,13 +389,13 @@ int main(int argc, char** argv)
   const std::string red_flag_topic = "/CAV_" + my_id_str + "_RED_FLAG";
   const std::string yellow_flag_topic = "/CAV_" + my_id_str + "_YELLOW_FLAG";
   const std::string target_vel_topic = "/CAV_" + my_id_str + "_target_vel";
-  const std::string cmd_vel_topic = "/CAV_" + my_id_str + "/cmd_vel";
+  const std::string cmd_vel_topic = "/CAV_" + my_id_str + "/cmd_vel_"; // motor_topic
 
 //   RCLCPP_INFO(node->get_logger(), "My Actual_CAV_ID=%d, Mapped_Index=%d, Actual_Vehicle_Count=%d", actual_cav_id, cav_index, actual_vehicle_count);
 
   node->declare_parameter<double>("speed_mps", 0.5);
   node->declare_parameter<double>("lookahead_m", 0.4);
-  node->declare_parameter<double>("max_yaw_rate", 5.5); // [핵심] 고속 주행을 위해 Yaw Rate 제한 대폭 해제 // ** 5.5 -> 2.5 ?**
+  node->declare_parameter<double>("max_yaw_rate", 5.5); // [핵심] 고속 주행을 위해 Yaw Rate 제한 대폭 해제 // ** 5.5 -> 2.5 ?** // ****
   node->declare_parameter<std::string>("path_csv", "/root/TEAM_AIM/src/global_path/path.csv");
 
   st->speed_mps    = node->get_parameter("speed_mps").as_double();
@@ -412,13 +413,13 @@ int main(int argc, char** argv)
   auto cmd_vel_pub = node->create_publisher<geometry_msgs::msg::Twist>(cmd_vel_topic, rclcpp::QoS(10));
 
   auto flag_sub = node->create_subscription<std_msgs::msg::Int32>(
-      red_flag_topic, 50, [node, st](const std_msgs::msg::Int32::SharedPtr msg) { st->red_flag = msg->data; });
+      red_flag_topic, 1, [node, st](const std_msgs::msg::Int32::SharedPtr msg) { st->red_flag = msg->data; });
 
   auto yellow_flag_sub = node->create_subscription<std_msgs::msg::Int32>(
-      yellow_flag_topic, 50, [node, st](const std_msgs::msg::Int32::SharedPtr msg) { st->yellow_flag = msg->data; });
+      yellow_flag_topic, 1, [node, st](const std_msgs::msg::Int32::SharedPtr msg) { st->yellow_flag = msg->data; });
 
   auto vel_sub = node->create_subscription<std_msgs::msg::Float64>(
-      target_vel_topic, 50, 
+      target_vel_topic, 1, 
       [st](const std_msgs::msg::Float64::SharedPtr msg) {
           if (msg->data < 0.0) {
               st->tower_mode = false;
@@ -488,6 +489,7 @@ int main(int argc, char** argv)
                     
                     geometry_msgs::msg::Twist stop_twist;
                     // fix : linear.x 0 -> -0.005
+                    // ** 
                     stop_twist.linear.x = -0.005; stop_twist.linear.y = 0.0; stop_twist.linear.z = 0.0;
                     stop_twist.angular.x = 0.0; stop_twist.angular.y = 0.0; stop_twist.angular.z = 0.0;
                     cmd_vel_pub->publish(stop_twist);
@@ -562,15 +564,36 @@ int main(int argc, char** argv)
                     cmd.angular.z = 0.0;
                     twist_cmd.linear.x = -0.005; // Stop command
                     twist_cmd.angular.z = 0.0;
+                // ***
                 } else if (st->yellow_flag == 1) {
-                    // Yellow flag: Slow down to 0.8 m/s
-                    // ***
-                    cmd.linear.x  = 0.8; // 0.8 -> 1.0
-                    // cmd.linear.x = 1.0;
-                    // cmd.angular.z = wz * (0.8 / std::max(current_target_speed, 0.1));
+                    // Yellow flag Group 1 (Zone 1,2): Slow down to 0.8 m/s
+                    cmd.linear.x  = 0.8;
+                    twist_cmd.linear.x = 0.8;    //  < --------------1-------------------
+                    // twist_cmd.linear.x = 0.8; //  < --------------2-------------------
+                    // twist_cmd.linear.x = 0.8; //  < --------------3-------------------
+                    // twist_cmd.linear.x = 0.8; //  < --------------4-------------------
+                    // twist_cmd.linear.x = 0.8; //  < --------------5-------------------
+                    // twist_cmd.linear.x = 0.8; //  < --------------6-------------------
+                    // twist_cmd.linear.x = 0.8; //  < --------------7-------------------
+                    // twist_cmd.linear.x = 0.8; //  < --------------8-------------------
+                    // twist_cmd.linear.x = 0.8; //  < --------------9-------------------
+                    // twist_cmd.linear.x = 0.8; //  < --------------10-------------------
                     cmd.angular.z = wz;
-                    twist_cmd.linear.x = 0.8; // 0.8 -> 1.5
-                    // twist_cmd.angular.z = wz * (0.5 / std::max(current_target_speed, 0.1));
+                    twist_cmd.angular.z = wz;
+                } else if (st->yellow_flag == 2) {
+                    // Yellow flag Group 2 (Zone 3,4,5,6,7,8): Slow down to 1.5 m/s
+                    cmd.linear.x  = 1.0;
+                    twist_cmd.linear.x = 1.0;      // < ---------------1-------------------
+                    // twist_cmd.linear.x = 1.0;   //  < --------------2-------------------
+                    // twist_cmd.linear.x = 1.0;   //  < --------------3-------------------
+                    // twist_cmd.linear.x = 1.0;   //  < --------------4-------------------
+                    // twist_cmd.linear.x = 1.0;   //  < --------------5-------------------
+                    // twist_cmd.linear.x = 1.0;   //  < --------------6-------------------
+                    // twist_cmd.linear.x = 1.0;   //  < --------------7-------------------
+                    // twist_cmd.linear.x = 1.0;   //  < --------------8-------------------
+                    // twist_cmd.linear.x = 1.0;   //  < --------------9-------------------
+                    // twist_cmd.linear.x = 1.0;   //  < --------------10-------------------
+                    cmd.angular.z = wz;
                     twist_cmd.angular.z = wz;
                 } else {
                     cmd.linear.x  = current_target_speed;
@@ -584,8 +607,8 @@ int main(int argc, char** argv)
                 twist_cmd.linear.y = 0.0; twist_cmd.linear.z = 0.0;
                 twist_cmd.angular.x = 0.0; twist_cmd.angular.y = 0.0;
 
-                accel_pub->publish(cmd);
-                cmd_vel_pub->publish(twist_cmd);
+                accel_pub->publish(cmd);    // simulator
+                cmd_vel_pub->publish(twist_cmd); // motoir
             }
           }
       );

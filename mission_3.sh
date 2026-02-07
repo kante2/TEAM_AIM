@@ -16,7 +16,12 @@ source install/setup.bash
 # CAVs
 
 # Four CAVs SIMULATOR
-# 1,2,3,4
+# 1,2,3,4  -> have to fix it !
+# ( PROBLEM_ID=4 ROLE=cav CAV_ID=1 CAV_IDS="1,2,3,4" ./entrypoint.sh ) & # path_mission3_01.csv
+# ( PROBLEM_ID=4 ROLE=cav CAV_ID=2 CAV_IDS="1,2,3,4" ./entrypoint.sh ) & # path_mission3_02.csv
+# ( PROBLEM_ID=4 ROLE=cav CAV_ID=3 CAV_IDS="1,2,3,4" ./entrypoint.sh ) & # path_mission3_03.csv
+# ( PROBLEM_ID=4 ROLE=cav CAV_ID=4 CAV_IDS="1,2,3,4" ./entrypoint.sh ) & # path_mission3_04.csv
+
 ( PROBLEM_ID=4 ROLE=cav CAV_ID=1 CAV_IDS="1,2,3,4" ./entrypoint.sh ) & # path_mission3_01.csv
 ( PROBLEM_ID=4 ROLE=cav CAV_ID=2 CAV_IDS="1,2,3,4" ./entrypoint.sh ) & # path_mission3_02.csv
 ( PROBLEM_ID=4 ROLE=cav CAV_ID=3 CAV_IDS="1,2,3,4" ./entrypoint.sh ) & # path_mission3_03.csv
@@ -27,6 +32,24 @@ source install/setup.bash
 ( PROBLEM_ID=4 ROLE=tower CAV_IDS="1,2,3,4" ./entrypoint.sh ) &
 # Rotary
 ( PROBLEM_ID=4 ROLE=rotary CAV_IDS="1,2,3,4" ./entrypoint.sh ) &
+
+
+# ==========================================
+
+
+# 1,2,3,4  -> have to fix it !
+# ( PROBLEM_ID=4 ROLE=cav CAV_ID=10 CAV_IDS="10,20,30,40" ./entrypoint.sh ) & # path_mission3_01.csv
+# ( PROBLEM_ID=4 ROLE=cav CAV_ID=20 CAV_IDS="10,20,30,40" ./entrypoint.sh ) & # path_mission3_02.csv
+# ( PROBLEM_ID=4 ROLE=cav CAV_ID=30 CAV_IDS="10,20,30,40" ./entrypoint.sh ) & # path_mission3_03.csv
+# ( PROBLEM_ID=4 ROLE=cav CAV_ID=40 CAV_IDS="10,20,30,40" ./entrypoint.sh ) & # path_mission3_04.csv
+
+# # have to use cav_ids for using four cavs in tower and rotary !! KANTE
+# # Tower
+# ( PROBLEM_ID=4 ROLE=tower CAV_IDS="10,20,30,40" ./entrypoint.sh ) &
+# # Rotary
+# ( PROBLEM_ID=4 ROLE=rotary CAV_IDS="10,20,30,40" ./entrypoint.sh ) &
+
+# ==========================================
 
 
 # # # Four CAVs REAL ROBOT

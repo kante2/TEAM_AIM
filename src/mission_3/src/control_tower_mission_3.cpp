@@ -815,7 +815,7 @@ int main(int argc, char** argv) {
       cav_index_map_idx_to_actual[cav_index] = actual_cav_id;  // Store reverse mapping for RED_FLAG publishing
       const std::string cav_id_str = std::string(2 - std::to_string(actual_cav_id).length(), '0') + std::to_string(actual_cav_id);
       const std::string flag_topic = "/CAV_" + cav_id_str + "_RED_FLAG";
-      red_flag_pubs[actual_cav_id] = node->create_publisher<std_msgs::msg::Int32>(flag_topic, 50);
+      red_flag_pubs[actual_cav_id] = node->create_publisher<std_msgs::msg::Int32>(flag_topic, 1);
       RCLCPP_INFO(node->get_logger(), "Created RED_FLAG publisher for CAV_Index_%d (Actual_ID=%d): %s", cav_index, actual_cav_id, flag_topic.c_str());
   }
 
