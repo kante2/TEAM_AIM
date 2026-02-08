@@ -81,6 +81,12 @@ struct ControllerState
   double current_velocity{0.0};  // 실제 발행되는 속도
 //   double max_acceleration{0.8};  // 최대 가속도 (m/s²) - 조정 가능
   double max_acceleration{2.5};  // 최대 가속도 (m/s²) - 조정 가능
+  
+  // ✅ [추가] Red flag 상태 추적 (정지 후 느리게 속도 올림)
+  int red_flag_hold_count{0};  // Red flag 지속 카운트
+  const int RED_FLAG_RELEASE_STABILIZE_CYCLES = 200;  // ~1초 (50Hz에서)
+  double max_acceleration_after_red_flag{0.8};  // Red flag 해제 후 느린 가속도
+  
   rclcpp::Time last_update_time;  // 마지막 업데이트 시간
 };
 
@@ -171,7 +177,8 @@ void GetLd(ControllerState& st) {
   double max_ld  = 0.4;  // 
   double min_ld  = 0.3; // 0.15 -> 0.1 -> 0.2 // ** 0.33 -> 0.23 
   double velocity = st.speed_mps; 
-  double ld = gain_ld * velocity;
+//   double ld = gain_ld * velocity;
+  double ld = 3.0;
   st.lookahead_m = max(min_ld, std::min(max_ld, ld));
 }
 
@@ -251,7 +258,10 @@ bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double
 }
 // *** 
 void planVelocity(ControllerState& st, bool isCorner) {
-    if (!isCorner) {st.speed_mps = 1.9; } else { st.speed_mps = 1.5; }     // < ---------------1------------------
+    // 1.7 ==> 1:05
+    // 1.8 ==> 1:04
+    // 2.0 ==> 1:00
+    if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; }     // < ---------------1------------------
     // if (!isCorner) {st.speed_mps = 1.7; } else { st.speed_mps = 1.5; }  //  < --------------2 [v]-------------------
     // if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; }  //  < --------------3-------------------
     // if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; }  //  < --------------4-------------------
@@ -275,15 +285,27 @@ double applyVelocityRamp(ControllerState& st, double target_velocity, rclcpp::Ti
     // 경과 시간 계산
     double dt = (current_time - st.last_update_time).seconds();
     if (dt < 0.001) dt = 0.001;  // 최소 1ms
-    if (dt > 0.1) dt = 0.1;      // 최대 100ms (센서 끊김 방지)
+    if (dt > 0.1) dt = 0.2;      // 최대 100ms (센서 끊김 방지)
     
     st.last_update_time = current_time;
     
     // 목표 속도와 현재 속도의 차이
     double velocity_diff = target_velocity - st.current_velocity;
     
+    // ✅ [수정] Red flag 해제 후 일시적으로 낮은 가속도 사용
+    double effective_max_accel = st.max_acceleration;
+    
+    if (st.red_flag == 0 && st.red_flag_hold_count < st.RED_FLAG_RELEASE_STABILIZE_CYCLES) {
+        // Red flag가 해제되었지만, 안정화 기간 중
+        st.red_flag_hold_count++;
+        effective_max_accel = st.max_acceleration_after_red_flag;  // 느린 가속도 적용
+    } else if (st.red_flag == 1) {
+        // Red flag 중: 카운트 리셋
+        st.red_flag_hold_count = 0;
+    }
+    
     // 최대 가속도에 따른 속도 변화량 계산
-    double max_delta_v = st.max_acceleration * dt;
+    double max_delta_v = effective_max_accel * dt;
     
     // 속도 제한 (급격한 변화 방지)
     if (velocity_diff > max_delta_v) {
@@ -437,22 +459,16 @@ int main(int argc, char** argv)
 
 //   RCLCPP_INFO(node->get_logger(), "My Actual_CAV_ID=%d, Mapped_Index=%d, Actual_Vehicle_Count=%d", actual_cav_id, cav_index, actual_vehicle_count);
 
-  // Get TEAM_AIM_HOME environment variable (default: /root/TEAM_AIM)
-  const char* team_aim_home = std::getenv("TEAM_AIM_HOME");
-  std::string base_path = (team_aim_home != nullptr && strlen(team_aim_home) > 0) 
-                          ? std::string(team_aim_home) 
-                          : std::string("/root/TEAM_AIM");
-
   node->declare_parameter<double>("speed_mps", 0.5);
   node->declare_parameter<double>("lookahead_m", 0.4);
   node->declare_parameter<double>("max_yaw_rate", 5.5); // [핵심] 고속 주행을 위해 Yaw Rate 제한 대폭 해제 // ** 5.5 -> 2.5 ?** // ****
-  node->declare_parameter<std::string>("path_csv", base_path + "/src/global_path/path.csv");
+  node->declare_parameter<std::string>("path_csv", "/root/TEAM_AIM/src/global_path/path.csv");
 
   st->speed_mps    = node->get_parameter("speed_mps").as_double();
   st->lookahead_m  = node->get_parameter("lookahead_m").as_double();
   st->max_yaw_rate = node->get_parameter("max_yaw_rate").as_double();
 
-  const std::string path_with_id_csv = base_path + std::string("/src/global_path/") + "path_mission3_" + std::string(2 - std::to_string(cav_index).length(), '0') + std::to_string(cav_index) + ".csv";
+  const std::string path_with_id_csv = std::string("/root/TEAM_AIM/src/global_path/") + "path_mission3_" + std::string(2 - std::to_string(cav_index).length(), '0') + std::to_string(cav_index) + ".csv";
   if (!loadPathCsv(path_with_id_csv, integrate_path_vector)) {
     RCLCPP_FATAL(node->get_logger(), "Failed to load path csv: %s", path_with_id_csv.c_str());
     rclcpp::shutdown(); return 1;
