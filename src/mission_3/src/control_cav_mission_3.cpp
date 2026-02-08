@@ -243,17 +243,14 @@ bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double
 }
 // *** 
 void planVelocity(ControllerState& st, bool isCorner) {
-    if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; }     // < ---------------1------------------
-    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.4; }  //  < --------------2-------------------
-    // if (!isCorner) {st.speed_mps = 1.6; } else { st.speed_mps = 1.1; }  //  < --------------3-------------------
-    // if (!isCorner) {st.speed_mps = 1.6; } else { st.speed_mps = 1.2; }  //  < --------------4-------------------
-    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; }  //  < --------------5-------------------
-    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; }  //  < --------------6--------------------
-    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; }  //  < --------------7------------------
-    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; }  //  < --------------8-------------------
-    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; }  //  < --------------9-------------------
-    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; }  //  < --------------10-------------------
-    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.0; }  //  < --------------11------------------
+    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.2; }     // < ---------------1------------------
+    // if (!isCorner) {st.speed_mps = 1.7; } else { st.speed_mps = 1.5; }  //  < --------------2 [v]-------------------
+    // if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; }  //  < --------------3-------------------
+    // if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; }  //  < --------------4-------------------
+    // if (!isCorner) {st.speed_mps = 1.9; } else { st.speed_mps = 1.5; }  //  < --------------5-------------------
+    // if (!isCorner) {st.speed_mps = 1.9; } else { st.speed_mps = 1.5; }  //  < --------------6--------------------
+    // if (!isCorner) {st.speed_mps = 1.8; } else { st.speed_mps = 1.5; }  //  < --------------7------------------
+    // if (!isCorner) {st.speed_mps = 1.8; } else { st.speed_mps = 1.5; }  //  < --------------8-------------------
 
 
 }
@@ -383,6 +380,8 @@ int main(int argc, char** argv)
           }
       }
   }
+sudo chmod 666 /dev/ttyUSB0   # 임시(재부팅/재연결 시 원복될 수 있음)
+./cav_4_SDK.sh
 
   const std::string my_id_str = twoDigitId(actual_cav_id);  // Use actual_cav_id for all topics
   const std::string accel_topic = "/CAV_" + my_id_str + "_accel"; 
@@ -540,6 +539,13 @@ int main(int argc, char** argv)
                 double wz = current_target_speed * kappa;
                 wz = std::clamp(wz, -st->max_yaw_rate, st->max_yaw_rate);
 
+                /*
+                kappa - 곡률
+                ws(각속도) - 속도 * 곡률 = 회전각도 
+                clamp를 통해, 최대 조향을 제한
+                마지막으로 twist.cmd.angular_z = ws 로 각속도를 전달
+                */
+
                 // [New] Print current speed info periodically
                 // static int speed_print_counter = 0;
                 // if (speed_print_counter++ % 50 == 0) {  // Print every 50 cycles (~1 second at 50Hz)
@@ -584,11 +590,11 @@ int main(int argc, char** argv)
                     // Yellow flag Group 2 (Zone 3,4,5,6,7,8): Slow down to 1.5 m/s
                     cmd.linear.x  = 1.0;
                     twist_cmd.linear.x = 1.0;      // < ---------------1-------------------
-                    // twist_cmd.linear.x = 1.0;   //  < --------------2-------------------
+                    // twist_cmd.linear.x = 1.3;   //  < --------------2-------------------
                     // twist_cmd.linear.x = 1.0;   //  < --------------3-------------------
-                    // twist_cmd.linear.x = 1.0;   //  < --------------4-------------------
+                    // twist_cmd.linear.x = 1.3;   //  < --------------4-------------------
                     // twist_cmd.linear.x = 1.0;   //  < --------------5-------------------
-                    // twist_cmd.linear.x = 1.0;   //  < --------------6-------------------
+                    // twist_cmd.linear.x = 1.3;   //  < --------------6-------------------
                     // twist_cmd.linear.x = 1.0;   //  < --------------7-------------------
                     // twist_cmd.linear.x = 1.0;   //  < --------------8-------------------
                     // twist_cmd.linear.x = 1.0;   //  < --------------9-------------------

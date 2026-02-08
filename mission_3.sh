@@ -11,7 +11,7 @@ source install/setup.bash
 
 # Launch all mission_3 nodes in separate terminals (gnome-terminal or xterm)
 # Simulator
-( PROBLEM_ID=4 ROLE=simulator ./entrypoint.sh ) &
+# ( PROBLEM_ID=4 ROLE=simulator ./entrypoint.sh ) &
 
 # CAVs
 
