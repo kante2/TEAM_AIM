@@ -76,6 +76,12 @@ struct ControllerState
   int yellow_flag{0};  // Yellow flag for speed control
   bool tower_mode{false};
   double target_linear_x{0.0};
+  
+  // Velocity ramp control
+  double current_velocity{0.0};  // 실제 발행되는 속도
+//   double max_acceleration{0.8};  // 최대 가속도 (m/s²) - 조정 가능
+  double max_acceleration{2.5};  // 최대 가속도 (m/s²) - 조정 가능
+  rclcpp::Time last_update_time;  // 마지막 업데이트 시간
 };
 
 // =========================
@@ -159,9 +165,11 @@ static bool loadPathCsv(const std::string& csv_path, std::vector<integrate_path_
 inline int closest_index = 0;
 
 void GetLd(ControllerState& st) {
-  double gain_ld = 0.6; // 0.4 -> 0.6 ** tuning **
-  double max_ld  = 0.355;
-  double min_ld  = 0.33; // 0.15 -> 0.1 -> 0.2 // ** 0.33 -> 0.23 
+//   double gain_ld = 0.6; // 0.4 -> 0.6 ** tuning **
+  double gain_ld = 0.7; // 0.4 -> 0.6 ** tuning ** 0.6 -> 0.7 
+//   double max_ld  = 0.355;
+  double max_ld  = 0.4;  // 
+  double min_ld  = 0.3; // 0.15 -> 0.1 -> 0.2 // ** 0.33 -> 0.23 
   double velocity = st.speed_mps; 
   double ld = gain_ld * velocity;
   st.lookahead_m = max(min_ld, std::min(max_ld, ld));
@@ -243,7 +251,7 @@ bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double
 }
 // *** 
 void planVelocity(ControllerState& st, bool isCorner) {
-    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.2; }     // < ---------------1------------------
+    if (!isCorner) {st.speed_mps = 3.0; } else { st.speed_mps = 1.5; }     // < ---------------1------------------
     // if (!isCorner) {st.speed_mps = 1.7; } else { st.speed_mps = 1.5; }  //  < --------------2 [v]-------------------
     // if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; }  //  < --------------3-------------------
     // if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; }  //  < --------------4-------------------
@@ -253,6 +261,43 @@ void planVelocity(ControllerState& st, bool isCorner) {
     // if (!isCorner) {st.speed_mps = 1.8; } else { st.speed_mps = 1.5; }  //  < --------------8-------------------
 
 
+}
+
+// *** 속도 래프 함수: 최대 가속도 제한 ***
+double applyVelocityRamp(ControllerState& st, double target_velocity, rclcpp::Time current_time) {
+    // 첫 호출 시 초기화
+    if (st.last_update_time.nanoseconds() == 0) {
+        st.last_update_time = current_time;
+        st.current_velocity = 0.0;
+        return 0.0;
+    }
+    
+    // 경과 시간 계산
+    double dt = (current_time - st.last_update_time).seconds();
+    if (dt < 0.001) dt = 0.001;  // 최소 1ms
+    if (dt > 0.1) dt = 0.1;      // 최대 100ms (센서 끊김 방지)
+    
+    st.last_update_time = current_time;
+    
+    // 목표 속도와 현재 속도의 차이
+    double velocity_diff = target_velocity - st.current_velocity;
+    
+    // 최대 가속도에 따른 속도 변화량 계산
+    double max_delta_v = st.max_acceleration * dt;
+    
+    // 속도 제한 (급격한 변화 방지)
+    if (velocity_diff > max_delta_v) {
+        st.current_velocity += max_delta_v;
+    } else if (velocity_diff < -max_delta_v) {
+        st.current_velocity -= max_delta_v;
+    } else {
+        st.current_velocity = target_velocity;
+    }
+    
+    // 속도가 음수가 되지 않도록 제한
+    st.current_velocity = std::max(0.0, st.current_velocity);
+    
+    return st.current_velocity;
 }
 
 bool CheckAllFinished(const std::vector<CavState>& cav_list, int vehicle_count) {
@@ -380,8 +425,8 @@ int main(int argc, char** argv)
           }
       }
   }
-sudo chmod 666 /dev/ttyUSB0   # 임시(재부팅/재연결 시 원복될 수 있음)
-./cav_4_SDK.sh
+// sudo chmod 666 /dev/ttyUSB0   # 임시(재부팅/재연결 시 원복될 수 있음)
+// ./cav_4_SDK.sh
 
   const std::string my_id_str = twoDigitId(actual_cav_id);  // Use actual_cav_id for all topics
   const std::string accel_topic = "/CAV_" + my_id_str + "_accel"; 
@@ -519,8 +564,10 @@ sudo chmod 666 /dev/ttyUSB0   # 임시(재부팅/재연결 시 원복될 수 있
                     current_target_speed = st->speed_mps;
                 }
                 
-
-                st->speed_mps = current_target_speed; 
+                // *** [핵심] 속도 래프 적용 - 급가속 방지 및 헤딩 안정화 ***
+                double ramped_speed = applyVelocityRamp(*st, current_target_speed, msg->header.stamp);
+                
+                st->speed_mps = current_target_speed;  // 목표값 유지
                 GetLd(*st); 
 
                 // 2. Pure Pursuit Geometry
@@ -536,7 +583,8 @@ sudo chmod 666 /dev/ttyUSB0   # 임시(재부팅/재연결 시 원복될 수 있
                 const double pp_dist = std::max(1e-3, std::hypot(x_v, y_v));
                 const double kappa = (2.0 * y_v) / (pp_dist * pp_dist);
                 
-                double wz = current_target_speed * kappa;
+                // *** [수정] ramped_speed를 사용하여 각속도도 부드럽게 제어 ***
+                double wz = ramped_speed * kappa;
                 wz = std::clamp(wz, -st->max_yaw_rate, st->max_yaw_rate);
 
                 /*
@@ -602,9 +650,9 @@ sudo chmod 666 /dev/ttyUSB0   # 임시(재부팅/재연결 시 원복될 수 있
                     cmd.angular.z = wz;
                     twist_cmd.angular.z = wz;
                 } else {
-                    cmd.linear.x  = current_target_speed;
+                    cmd.linear.x  = ramped_speed;
                     cmd.angular.z = wz;
-                    twist_cmd.linear.x = current_target_speed;
+                    twist_cmd.linear.x = ramped_speed;
                     twist_cmd.angular.z = wz;
                 }
                 cmd.linear.y = 0.0; cmd.linear.z = 0.0;

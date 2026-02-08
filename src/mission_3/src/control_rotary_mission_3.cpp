@@ -63,7 +63,8 @@ std::map<int, HVState> hv_states;
 // =========================
 std::map<int, Pose> cav_rois = {
   {1, {1.43333333333, 1.5}},
-  {2, {0.1, -0.4}}
+  {2, {0, -0.4}}
+//   {2, {0.1, -0.4}}
 };
 
 std::map<int, Pose> hv_rois = {
@@ -90,8 +91,8 @@ std::map<int, Pose> yellow_cav_rois = {
 // yellow_zone_group1: Zone 1,2 - 낮은 속도
 // yellow_zone_group2: Zone 3,4,5,6,7 - 다른 속도
 std::map<int, int> yellow_roi_to_zone_group = {
-  {1, 1}, {2, 1},           // Zone 1,2 -> Group 1
-  {3, 2}, {4, 2}, {5, 2}, {6, 2}, {7, 2}, {8,2}  // Zone 3,4,5,6,7,8 -> Group 2
+  {1, 1}, {3, 1},          // Zone 1,2 -> Group 1 // ->  zone3 append
+  {2, 2}, {4, 2}, {5, 2}, {6, 2}, {7, 2}, {8, 2}  // Zone 3,4,5,6,7,8 -> Group 2
 };
 
 // Zone Group별 속도 설정
