@@ -1,1 +1,1 @@
-source ~/TEAM_AIM/install/setup.bash
+source /home/aim/TEAM_AIM/install/setup.bash

@@ -506,7 +506,7 @@ int main(int argc, char * argv[])
         {2, 2}  // CAV ROI 2 <-> HV ROI 2
     };
 
-    std::string path_dir = "/root/TEAM_AIM/src/global_path/";
+    std::string path_dir = "/home/aim/TEAM_AIM/src/global_path";
 
     RCLCPP_INFO(node->get_logger(), "Loading CSV path files...");
     int i = 19;

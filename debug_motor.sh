@@ -8,11 +8,11 @@ set -e
 CAV_ID=${1:-1}  # Default to 1 if not specified
 
 echo "Building TEAM_AIM workspace..."
-cd /root/TEAM_AIM
+cd /home/aim/TEAM_AIM
 colcon build --symlink-install --packages-select mission_3
 
 echo "Sourcing setup..."
-source /root/TEAM_AIM/install/setup.bash
+source /home/aim/TEAM_AIM/install/setup.bash
 
 echo "======================================"
 echo "Running check_motor with CAV_ID=$CAV_ID"

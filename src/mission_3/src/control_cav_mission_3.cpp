@@ -243,7 +243,7 @@ bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double
 }
 // *** 
 void planVelocity(ControllerState& st, bool isCorner) {
-    // if (!isCorner) {st.speed_mps = 1.5; } else { st.speed_mps = 1.2; }     // < ---------------1------------------
+    if (!isCorner) {st.speed_mps = 1.7; } else { st.speed_mps = 1.5; }     // < ---------------1------------------
     // if (!isCorner) {st.speed_mps = 1.7; } else { st.speed_mps = 1.5; }  //  < --------------2 [v]-------------------
     // if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; }  //  < --------------3-------------------
     // if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; }  //  < --------------4-------------------
@@ -380,8 +380,6 @@ int main(int argc, char** argv)
           }
       }
   }
-sudo chmod 666 /dev/ttyUSB0   # 임시(재부팅/재연결 시 원복될 수 있음)
-./cav_4_SDK.sh
 
   const std::string my_id_str = twoDigitId(actual_cav_id);  // Use actual_cav_id for all topics
   const std::string accel_topic = "/CAV_" + my_id_str + "_accel"; 
@@ -395,13 +393,13 @@ sudo chmod 666 /dev/ttyUSB0   # 임시(재부팅/재연결 시 원복될 수 있
   node->declare_parameter<double>("speed_mps", 0.5);
   node->declare_parameter<double>("lookahead_m", 0.4);
   node->declare_parameter<double>("max_yaw_rate", 5.5); // [핵심] 고속 주행을 위해 Yaw Rate 제한 대폭 해제 // ** 5.5 -> 2.5 ?** // ****
-  node->declare_parameter<std::string>("path_csv", "/root/TEAM_AIM/src/global_path/path.csv");
+  node->declare_parameter<std::string>("path_csv", "/home/aim/TEAM_AIM/src/global_path/path.csv");
 
   st->speed_mps    = node->get_parameter("speed_mps").as_double();
   st->lookahead_m  = node->get_parameter("lookahead_m").as_double();
   st->max_yaw_rate = node->get_parameter("max_yaw_rate").as_double();
 
-  const std::string path_with_id_csv = std::string("/root/TEAM_AIM/src/global_path/") + "path_mission3_" + std::string(2 - std::to_string(cav_index).length(), '0') + std::to_string(cav_index) + ".csv";
+  const std::string path_with_id_csv = std::string("/home/aim/TEAM_AIM/src/global_path/") + "path_mission3_" + std::string(2 - std::to_string(cav_index).length(), '0') + std::to_string(cav_index) + ".csv";
   if (!loadPathCsv(path_with_id_csv, integrate_path_vector)) {
     RCLCPP_FATAL(node->get_logger(), "Failed to load path csv: %s", path_with_id_csv.c_str());
     rclcpp::shutdown(); return 1;
@@ -588,8 +586,8 @@ sudo chmod 666 /dev/ttyUSB0   # 임시(재부팅/재연결 시 원복될 수 있
                     twist_cmd.angular.z = wz;
                 } else if (st->yellow_flag == 2) {
                     // Yellow flag Group 2 (Zone 3,4,5,6,7,8): Slow down to 1.5 m/s
-                    cmd.linear.x  = 1.0;
-                    twist_cmd.linear.x = 1.0;      // < ---------------1-------------------
+                    cmd.linear.x  = 0.8;
+                    twist_cmd.linear.x = 0.8;      // < ---------------1-------------------
                     // twist_cmd.linear.x = 1.3;   //  < --------------2-------------------
                     // twist_cmd.linear.x = 1.0;   //  < --------------3-------------------
                     // twist_cmd.linear.x = 1.3;   //  < --------------4-------------------

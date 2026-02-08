@@ -5,7 +5,7 @@ set -e
 ./mission_domain_4.sh
 
 # Build the workspace
-cd ~/TEAM_AIM/
+cd /home/aim/TEAM_AIM/
 colcon build
 source install/setup.bash
 

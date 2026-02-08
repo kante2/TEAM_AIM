@@ -13,8 +13,8 @@ ROLE=${ROLE:-simulator}
 CAV_ID=${CAV_ID:-1}
 ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-110}
 
-cd /root/TEAM_AIM
-source /root/TEAM_AIM/install/setup.bash
+cd /home/aim/TEAM_AIM
+source /home/aim/TEAM_AIM/install/setup.bash
 
 # Set default network configuration for all missions
 if [ -z "$ROS_LOCALHOST_ONLY" ]; then
@@ -28,7 +28,7 @@ fi
 if [ "$PROBLEM_ID" = "3" ]; then
     if [ "$ROLE" = "simulator" ]; then
         export ROS_DOMAIN_ID=100
-        cd /root/TEAM_AIM/Mobility_Challenge_Simulator
+        cd /home/aim/TEAM_AIM/Mobility_Challenge_Simulator
         ros2 launch simulator_launch simulator_launch.py
     elif [ "$ROLE" = "cav" ]; then
         export ROS_DOMAIN_ID=100
@@ -43,7 +43,7 @@ elif [ "$PROBLEM_ID" = "4" ]; then
     if [ "$ROLE" = "simulator" ]; then
         # export ROS_DOMAIN_ID=102 # (for simulator)
         export ROS_DOMAIN_ID=100 # (for real robot)
-        cd /root/TEAM_AIM/Mobility_Challenge_Simulator
+        cd /home/aim/TEAM_AIM/Mobility_Challenge_Simulator
         ros2 launch simulator_launch simulator_launch.py
     elif [ "$ROLE" = "cav" ]; then
         # export ROS_DOMAIN_ID=102 # (for simulator)
@@ -74,7 +74,7 @@ elif [ "$PROBLEM_ID" = "4" ]; then
 elif [ "$PROBLEM_ID" = "1" ]; then
     if [ "$ROLE" = "simulator" ]; then
         export ROS_DOMAIN_ID=100
-        cd /root/TEAM_AIM/Mobility_Challenge_Simulator
+        cd /home/aim/TEAM_AIM/Mobility_Challenge_Simulator
         ros2 launch simulator_launch simulator_launch.py
     elif [ "$ROLE" = "cav" ]; then
         export ROS_DOMAIN_ID=100
@@ -88,7 +88,7 @@ elif [ "$PROBLEM_ID" = "1" ]; then
 elif [ "$PROBLEM_ID" = "2" ]; then
     if [ "$ROLE" = "simulator" ]; then
         export ROS_DOMAIN_ID=100
-        cd /root/TEAM_AIM/Mobility_Challenge_Simulator
+        cd /home/aim/TEAM_AIM/Mobility_Challenge_Simulator
         ros2 launch simulator_launch simulator_launch.py
     elif [ "$ROLE" = "cav" ]; then
         export ROS_DOMAIN_ID=100
