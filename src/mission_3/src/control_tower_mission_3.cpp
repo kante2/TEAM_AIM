@@ -774,7 +774,13 @@ int main(int argc, char** argv) {
   double overlap_threshold = 0.2; // ** 0.2 -> 0.5 -> 0.7
   int lookahead_distance = 90;  // 경로 겹침 체크용 lookahead 거리
   int visualization_lookahead = 90;  // 시각화용 lookahead 거리
-  std::string path_dir = "/root/TEAM_AIM/src/global_path/";
+  
+  // Get TEAM_AIM_HOME environment variable (default: /root/TEAM_AIM)
+  const char* team_aim_home = std::getenv("TEAM_AIM_HOME");
+  std::string base_path = (team_aim_home != nullptr && strlen(team_aim_home) > 0) 
+                          ? std::string(team_aim_home) 
+                          : std::string("/root/TEAM_AIM");
+  std::string path_dir = base_path + "/src/global_path/";
 
   // Get CAV_IDS from environment variable (format: "32,3,5,6")
   const char* cav_ids_env = std::getenv("CAV_IDS");

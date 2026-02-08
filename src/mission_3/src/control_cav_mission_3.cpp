@@ -251,7 +251,7 @@ bool isCorner(const vector<integrate_path_struct>& integrate_path_vector, double
 }
 // *** 
 void planVelocity(ControllerState& st, bool isCorner) {
-    if (!isCorner) {st.speed_mps = 3.0; } else { st.speed_mps = 1.5; }     // < ---------------1------------------
+    if (!isCorner) {st.speed_mps = 1.9; } else { st.speed_mps = 1.5; }     // < ---------------1------------------
     // if (!isCorner) {st.speed_mps = 1.7; } else { st.speed_mps = 1.5; }  //  < --------------2 [v]-------------------
     // if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; }  //  < --------------3-------------------
     // if (!isCorner) {st.speed_mps = 2.0; } else { st.speed_mps = 1.5; }  //  < --------------4-------------------
@@ -437,16 +437,22 @@ int main(int argc, char** argv)
 
 //   RCLCPP_INFO(node->get_logger(), "My Actual_CAV_ID=%d, Mapped_Index=%d, Actual_Vehicle_Count=%d", actual_cav_id, cav_index, actual_vehicle_count);
 
+  // Get TEAM_AIM_HOME environment variable (default: /root/TEAM_AIM)
+  const char* team_aim_home = std::getenv("TEAM_AIM_HOME");
+  std::string base_path = (team_aim_home != nullptr && strlen(team_aim_home) > 0) 
+                          ? std::string(team_aim_home) 
+                          : std::string("/root/TEAM_AIM");
+
   node->declare_parameter<double>("speed_mps", 0.5);
   node->declare_parameter<double>("lookahead_m", 0.4);
   node->declare_parameter<double>("max_yaw_rate", 5.5); // [핵심] 고속 주행을 위해 Yaw Rate 제한 대폭 해제 // ** 5.5 -> 2.5 ?** // ****
-  node->declare_parameter<std::string>("path_csv", "/root/TEAM_AIM/src/global_path/path.csv");
+  node->declare_parameter<std::string>("path_csv", base_path + "/src/global_path/path.csv");
 
   st->speed_mps    = node->get_parameter("speed_mps").as_double();
   st->lookahead_m  = node->get_parameter("lookahead_m").as_double();
   st->max_yaw_rate = node->get_parameter("max_yaw_rate").as_double();
 
-  const std::string path_with_id_csv = std::string("/root/TEAM_AIM/src/global_path/") + "path_mission3_" + std::string(2 - std::to_string(cav_index).length(), '0') + std::to_string(cav_index) + ".csv";
+  const std::string path_with_id_csv = base_path + std::string("/src/global_path/") + "path_mission3_" + std::string(2 - std::to_string(cav_index).length(), '0') + std::to_string(cav_index) + ".csv";
   if (!loadPathCsv(path_with_id_csv, integrate_path_vector)) {
     RCLCPP_FATAL(node->get_logger(), "Failed to load path csv: %s", path_with_id_csv.c_str());
     rclcpp::shutdown(); return 1;

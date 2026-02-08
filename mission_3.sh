@@ -4,8 +4,16 @@ set -e
 # domain
 ./mission_domain_4.sh
 
+# ==========================================
 # Build the workspace
+# using simulator
 cd ~/TEAM_AIM/
+
+# real
+cd /home/aim/TEAM_AIM/
+
+# ==========================================
+
 colcon build
 source install/setup.bash
 

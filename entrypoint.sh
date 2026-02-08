@@ -70,6 +70,7 @@ elif [ "$PROBLEM_ID" = "4" ]; then
         echo "[ERROR] Unknown ROLE for mission_3: $ROLE" >&2
         exit 2
     fi
+
 # mission_1_1
 elif [ "$PROBLEM_ID" = "1" ]; then
     if [ "$ROLE" = "simulator" ]; then
